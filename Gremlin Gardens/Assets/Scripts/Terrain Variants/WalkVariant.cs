@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class WalkVariant : TerrainVariant
 {
-    public float relativeSpeed(Gremlin gremlin) {
+    public override float relativeSpeed(Gremlin gremlin) {
         return gremlin.speedThing;
     }
 
-    public Vector3 positionFunction(float time) {
-        Debug.Log(time);
-        return new Vector3(Mathf.Cos(time) * 100, 1, 1);
+    public override Vector3 positionFunction(float time) {
+        return new Vector3(0, 0, Mathf.Sin(time * 15)/5);
     }
 }

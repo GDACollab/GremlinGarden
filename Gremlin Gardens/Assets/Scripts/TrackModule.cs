@@ -86,9 +86,7 @@ public class TrackModule : MonoBehaviour
             }
             else
             {
-                activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop); //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
-                Debug.Log(TerrainVariant.positionFunction(100));
-                activeGremlin.transform.position.Scale(TerrainVariant.positionFunction(timePassed));
+                activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + TerrainVariant.positionFunction(timePassed); //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
                 timePassed += Time.fixedDeltaTime;
             }
         }

@@ -1,7 +1,5 @@
 Feel free to ignore this.
 
 - Make tweens between points (Only for resetting animations).
-- Custom functions to dictate position while moving
-(Fix Terrain Variant. Getting the TerrainVariant of an object only gets you TerrainVariant).
 - Get demo looking nice
 - Write down instructions for making this system work.
