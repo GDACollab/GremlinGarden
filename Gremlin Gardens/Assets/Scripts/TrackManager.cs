@@ -8,7 +8,9 @@ using UnityEngine;
 /// </summary>
 public class TrackManager : MonoBehaviour
 {
-
+    /// <summary>
+    /// The current module that the gremlin is on.
+    /// </summary>
     public TrackModule activeModule;
     void Start()
     {

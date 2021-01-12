@@ -605,7 +605,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -981,6 +981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f600cfb3793576941b05bd8e3802c0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeModule: {fileID: 0}
 --- !u!1 &1132302697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,6 +1148,7 @@ GameObject:
   - component: {fileID: 1951643575}
   - component: {fileID: 1951643574}
   - component: {fileID: 1951643578}
+  - component: {fileID: 1951643579}
   m_Layer: 0
   m_Name: Running
   m_TagString: Untagged
@@ -1262,7 +1264,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -1283,3 +1285,16 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
+--- !u!114 &1951643579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951643573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSpeed: 5
