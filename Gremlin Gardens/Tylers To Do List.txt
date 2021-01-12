@@ -1,0 +1,5 @@
+Feel free to ignore this.
+
+- Tweening for individual track modules
+- Track Module Modifiers (Animation Playing, Speed, Transition Duration At Start, Transition Duration At End)
+- Custom functions to dictate position while moving
