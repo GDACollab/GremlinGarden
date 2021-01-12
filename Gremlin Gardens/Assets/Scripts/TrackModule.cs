@@ -20,7 +20,7 @@ public class TrackModule : MonoBehaviour
     public string AnimationToPlay;
 
     /// <summary>
-    /// Get a GameObject's TerrainVariant data. Be sure to give an empty object a TerrainVariant script (or a script that extends TerrainVariant).
+    /// Get a GameObject's TerrainVariant data (how to move, how fast to move). Be sure to give an empty object a TerrainVariant script (or a script that extends TerrainVariant).
     /// </summary>
     public TerrainVariant TerrainVariant;
 
