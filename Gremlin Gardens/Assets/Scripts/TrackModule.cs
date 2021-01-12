@@ -45,7 +45,8 @@ public class TrackModule : MonoBehaviour
     /// <summary>
     /// Percentage of the base speed that the gremlin's going to move at.
     /// </summary>
-    float modifiedSpeed;
+    [HideInInspector]
+    public float modifiedSpeed;
     Gremlin activeGremlin; //Class name subject to change?
     float timePassed;
     public delegate void Callback();
@@ -62,16 +63,12 @@ public class TrackModule : MonoBehaviour
         gremlinMoving = true;
         activeGremlin = gremlin;
         modifiedSpeed = TerrainVariant.relativeSpeed(activeGremlin);
-        activeGremlin.GetComponent<Animator>().Play(AnimationToPlay);
-        activeGremlin.GetComponent<Animator>().speed = modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
         timePassed = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
     }
 
     public void EndMove() {
-        activeGremlin.GetComponent<Animator>().Play("Neutral"); //Reset the Gremlin. If the Gremlin doesn't have a "Neutral" animation state (different from Idle, since this is to reset the Gremlin), artifacts from the previous animation will remain.
-        
         gremlinMoving = false;
         toCallback();
     }

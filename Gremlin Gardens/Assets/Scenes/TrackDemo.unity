@@ -1534,7 +1534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 5
   AnimationToPlay: 
-  TerrainVariant: {fileID: 498448819}
+  TerrainVariant: {fileID: 0}
   gremlinMoving: 0
 --- !u!1 &1362559975
 GameObject:
@@ -1647,7 +1647,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 11db339fd0c2314488658086daef55de, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
