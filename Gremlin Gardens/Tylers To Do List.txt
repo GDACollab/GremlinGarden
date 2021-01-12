@@ -1,7 +1,0 @@
-Feel free to ignore this.
-
-- TrackManager should have an option to loop or stop when done (loop for testing).
-- Get demo looking nice
-- Make a second identical track with a slower or faster Gremlin.
-- Write down instructions for making this system work.
-- Double check and update documentation.

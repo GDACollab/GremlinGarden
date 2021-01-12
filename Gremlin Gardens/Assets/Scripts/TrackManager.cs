@@ -29,7 +29,7 @@ public class TrackManager : MonoBehaviour
     /// <summary>
     /// The current module that the gremlin is on.
     /// </summary>
-    int currentChild = 0;
+    int currentChild;
 
     public delegate void Callback(TrackManager activeManager);
     /// <summary>
@@ -38,6 +38,7 @@ public class TrackManager : MonoBehaviour
     Callback toCallback;
 
     public void StartRace(Callback callback) {
+        currentChild = 0;
         toCallback = callback;
         Race();
     }

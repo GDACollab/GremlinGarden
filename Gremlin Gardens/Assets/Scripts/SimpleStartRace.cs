@@ -5,6 +5,7 @@ using UnityEngine;
 public class SimpleStartRace : MonoBehaviour
 {
     public TrackManager trackManagerToRace;
+    public bool ShouldLoop = true;
 
     private void Start()
     {
@@ -12,6 +13,9 @@ public class SimpleStartRace : MonoBehaviour
     }
 
     public void RaceIsEnded(TrackManager manager) {
-        Debug.Log(manager.RacingGremlin.name);    
+        Debug.Log(manager.RacingGremlin.name + " finished track.");
+        if (ShouldLoop) {
+            manager.StartRace(RaceIsEnded);
+        }
     }
 }
