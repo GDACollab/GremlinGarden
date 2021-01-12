@@ -31,6 +31,15 @@ public class TrackModule : MonoBehaviour
     public bool gremlinMoving = false;
 
     /// <summary>
+    /// Position where the bezier path for this module starts. Intended to be used when constructing a track procedurally, to connect each point.
+    /// </summary>
+    public static Vector3 pathStart;
+    /// <summary>
+    /// Position where the bezier path for this module ends. Intended to be used when constructing a track procedurally, to connect each point.
+    /// </summary>
+    public static Vector3 pathEnd;
+
+    /// <summary>
     /// How much the gremlin has moved along the track module.
     /// </summary>
     float totalDistance;
@@ -40,6 +49,8 @@ public class TrackModule : MonoBehaviour
     {
         totalDistance = 0;
         internalCreator = GetComponent<PathCreator>();
+        pathStart = internalCreator.path.GetPoint(0);
+        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1);
     }
 
     /// <summary>
@@ -49,6 +60,7 @@ public class TrackModule : MonoBehaviour
     public float modifiedSpeed;
     Gremlin activeGremlin; //Class name subject to change?
     float timePassed;
+    Vector3 gOffset;
     public delegate void Callback();
     /// <summary>
     /// A callback called at the end of the move.
@@ -58,10 +70,12 @@ public class TrackModule : MonoBehaviour
     /// Start moving the Gremlin across the track module.
     /// </summary>
     /// <param name="gremlin">The Gremlin that's being moved.</param>
+    /// <param name="gremlinOffset">The offset of the gremlin (see: TrackManager.GremlinOffset).</param>
     /// <param name="callbackFunc">The function that TrackManager will pass to callback to later.</param>
-    public void BeginMove(Gremlin gremlin, Callback callbackFunc) {
+    public void BeginMove(Gremlin gremlin, Vector3 gremlinOffset, Callback callbackFunc) {
         gremlinMoving = true;
         activeGremlin = gremlin;
+        gOffset = gremlinOffset;
         modifiedSpeed = TerrainVariant.relativeSpeed(activeGremlin);
         timePassed = 0.0f;
         totalDistance = 0;
@@ -75,15 +89,15 @@ public class TrackModule : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (gremlinMoving) { //Move the little Gremlin around.
-            totalDistance += modifiedSpeed * BaseSpeed * Time.fixedDeltaTime;
+        if (gremlinMoving) { //Move the Gremlin around.
+            totalDistance += modifiedSpeed * BaseSpeed * Time.fixedDeltaTime; //Keeping track of how far along the Gremlin is in this module.
             if (totalDistance >= internalCreator.path.length)
             {
                 EndMove();
             }
             else
-            {
-                activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + TerrainVariant.positionFunction(timePassed); //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
+            { //Move the Gremlin.
+                activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + TerrainVariant.positionFunction(timePassed) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
                 timePassed += Time.fixedDeltaTime;
             }
         }

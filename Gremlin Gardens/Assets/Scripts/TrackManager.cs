@@ -16,6 +16,15 @@ public class TrackManager : MonoBehaviour
     /// </summary>
     public GameObject RacingGremlin;
 
+    /// <summary>
+    /// How long in seconds for animations to CrossFade for.
+    /// </summary>
+    public float TransitionTime = 0.25f;
+
+    /// <summary>
+    /// How far we should offset the Gremlin from its center of mass.
+    /// </summary>
+    public Vector3 GremlinOffset;
 
     /// <summary>
     /// The current module that the gremlin is on.
@@ -44,8 +53,8 @@ public class TrackManager : MonoBehaviour
         else
         {
             TrackModule module = transform.GetChild(currentChild).GetComponent<TrackModule>();
-            module.BeginMove(RacingGremlin.GetComponent<Gremlin>(), Race); //Keep the Gremlin moving.
-            RacingGremlin.GetComponent<Animator>().CrossFade(module.AnimationToPlay, 2f); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
+            module.BeginMove(RacingGremlin.GetComponent<Gremlin>(), GremlinOffset, Race); //Keep the Gremlin moving.
+            RacingGremlin.GetComponent<Animator>().CrossFade(module.AnimationToPlay, TransitionTime); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
             RacingGremlin.GetComponent<Animator>().speed = module.modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
             currentChild += 1;
         }

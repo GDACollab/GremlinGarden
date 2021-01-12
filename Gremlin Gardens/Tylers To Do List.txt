@@ -1,7 +1,5 @@
 Feel free to ignore this.
 
-- Add anchor/offset option for TrackManager.
-- TrackModule properties that give position of first and last points.
 - TrackManager should have an option to loop or stop when done (loop for testing).
 - Get demo looking nice
 - Make a second identical track with a slower or faster Gremlin.

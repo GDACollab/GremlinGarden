@@ -275,6 +275,108 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedThing: 1
+--- !u!1 &144443652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 144443653}
+  - component: {fileID: 144443655}
+  - component: {fileID: 144443654}
+  m_Layer: 0
+  m_Name: ClimbWalk
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &144443653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144443652}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 1.33, y: 0.977, z: 0}
+  m_LocalScale: {x: 1, y: 1.7785, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1036160508}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &144443654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144443652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSpeed: 0.5
+  AnimationToPlay: Walk
+  TerrainVariant: {fileID: 41227869}
+  gremlinMoving: 0
+  modifiedSpeed: 0
+--- !u!114 &144443655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144443652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: -0.39105147, y: 0.48629743, z: 0}
+      - {x: -0.24578999, y: 0.5903376, z: 0}
+      - {x: 0.1181534, y: 0.51469195, z: 0}
+      - {x: 0.25861663, y: 0.55525947, z: 0}
+      isClosed: 0
+      space: 0
+      controlMode: 0
+      autoControlLength: 0.3
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 0, y: 0, z: 0}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      globalNormalsAngle: 0
+      flipNormals: 0
+    vertexPathUpToDate: 0
+    vertexPathMaxAngleError: 0.3
+    vertexPathMinVertexSpacing: 0.01
+    showTransformTool: 1
+    showPathBounds: 0
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 1
+    globalDisplaySettingsFoldout: 0
+    keepConstantHandleSize: 0
+    showNormalsInVertexMode: 0
+    showBezierPathInVertexMode: 0
+    showDisplayOptions: 0
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 0
+    showVertexPathOptions: 1
+    showNormals: 0
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
 --- !u!1 &169867738
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RacingGremlin: {fileID: 0}
+  TransitionTime: 0.25
+  GremlinOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &458100660
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +676,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1036160508}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &501064054
 MonoBehaviour:
@@ -643,6 +747,7 @@ MonoBehaviour:
   AnimationToPlay: QuickBounce
   TerrainVariant: {fileID: 956936594}
   gremlinMoving: 0
+  modifiedSpeed: 0
 --- !u!1 &567758736
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,13 +860,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -0.342625, y: -0.39038807, z: 0}
-      - {x: -0.34291106, y: 0.077454604, z: 0}
-      - {x: -0.6107857, y: 0.5333677, z: 0.009703098}
-      - {x: -0.25174314, y: 0.61542493, z: 0.00576548}
-      - {x: -0.10153976, y: 0.6497531, z: 0.0041182}
-      - {x: 0.044215836, y: 0.538777, z: 0}
-      - {x: 0.2406854, y: 0.54602, z: 0}
+      - {x: -0.49857697, y: -0.39038807, z: 0}
+      - {x: -0.49886307, y: 0.077454604, z: 0}
+      - {x: -0.5373429, y: 0.49825686, z: 0.0032259235}
+      - {x: -0.39885312, y: 0.48867625, z: 0.0058139414}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -771,7 +873,6 @@ MonoBehaviour:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
       perAnchorNormalsAngle:
-      - 0
       - 0
       - 0
       globalNormalsAngle: 0
@@ -813,6 +914,7 @@ MonoBehaviour:
   AnimationToPlay: Bounce
   TerrainVariant: {fileID: 956936594}
   gremlinMoving: 0
+  modifiedSpeed: 0
 --- !u!1 &583739623
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,7 +948,7 @@ Transform:
   m_LocalScale: {x: 2.2983, y: 0.15848, z: 1}
   m_Children: []
   m_Father: {fileID: 1036160508}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &583739625
 MonoBehaviour:
@@ -979,6 +1081,7 @@ MonoBehaviour:
   AnimationToPlay: Walk
   TerrainVariant: {fileID: 41227869}
   gremlinMoving: 0
+  modifiedSpeed: 0
 --- !u!1 &594812235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,7 +1177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.7785, z: 1}
   m_Children: []
   m_Father: {fileID: 1036160508}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &594812240
 MonoBehaviour:
@@ -1149,6 +1252,7 @@ MonoBehaviour:
   AnimationToPlay: Bounce
   TerrainVariant: {fileID: 956936594}
   gremlinMoving: 0
+  modifiedSpeed: 0
 --- !u!1 &658428695
 GameObject:
   m_ObjectHideFlags: 0
@@ -1347,6 +1451,7 @@ Transform:
   m_Children:
   - {fileID: 1951643577}
   - {fileID: 567758737}
+  - {fileID: 144443653}
   - {fileID: 501064053}
   - {fileID: 594812239}
   - {fileID: 583739624}
@@ -1366,6 +1471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RacingGremlin: {fileID: 1362559975}
+  TransitionTime: 0.25
+  GremlinOffset: {x: 0, y: 0.37, z: 0}
 --- !u!1 &1132302697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,6 +1643,7 @@ MonoBehaviour:
   AnimationToPlay: 
   TerrainVariant: {fileID: 0}
   gremlinMoving: 0
+  modifiedSpeed: 0
 --- !u!1 &1362559975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,8 +1888,8 @@ MonoBehaviour:
       points:
       - {x: -0.3810967, y: 0.06295939, z: 0}
       - {x: -0.036770385, y: 0.067208275, z: -0.020820417}
-      - {x: 0.018010598, y: 0.065070204, z: 0.00084981293}
-      - {x: 0.44561237, y: 0.06740492, z: 0}
+      - {x: -0.123502776, y: 0.065070204, z: 0.00084981293}
+      - {x: 0.304099, y: 0.06740492, z: 0}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -1832,6 +1940,7 @@ MonoBehaviour:
   AnimationToPlay: Walk
   TerrainVariant: {fileID: 41227869}
   gremlinMoving: 0
+  modifiedSpeed: 0
 --- !u!1 &1967203284
 GameObject:
   m_ObjectHideFlags: 0
