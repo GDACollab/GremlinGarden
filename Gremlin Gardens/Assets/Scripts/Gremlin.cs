@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class Gremlin : MonoBehaviour
 {
+    public float speedThing = 1.0f;
     //Placeholder
 }

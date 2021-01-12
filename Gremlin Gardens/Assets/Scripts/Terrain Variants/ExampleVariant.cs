@@ -2,7 +2,7 @@
 {
     public float relativeSpeed(Gremlin gremlin)
     {
-        return 2;
+        return gremlin.speedThing / 1000;
     }
 
 }

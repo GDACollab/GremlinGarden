@@ -12,7 +12,7 @@ public class TrackModule : MonoBehaviour
     /// <summary>
     /// How fast the Gremlin moves in units per fixed frame count.
     /// </summary>
-    public float BaseSpeed = 5.0f;
+    public float BaseSpeed = .5f;
 
     /// <summary>
     /// The animation name to play for this TrackModule.
@@ -54,27 +54,24 @@ public class TrackModule : MonoBehaviour
     /// </summary>
     Callback toCallback;
     /// <summary>
-    /// When we're done moving, where are we headed next?
-    /// </summary>
-    Vector3 nextPos;
-    /// <summary>
     /// Start moving the Gremlin across the track module.
     /// </summary>
     /// <param name="gremlin">The Gremlin that's being moved.</param>
     /// <param name="callbackFunc">The function that TrackManager will pass to callback to later.</param>
-    public void BeginMove(Gremlin gremlin, Vector3 nextPos, Callback callbackFunc) {
+    public void BeginMove(Gremlin gremlin, Callback callbackFunc) {
         gremlinMoving = true;
         activeGremlin = gremlin;
         modifiedSpeed = TerrainVariant.relativeSpeed(activeGremlin);
         activeGremlin.GetComponent<Animator>().Play(AnimationToPlay);
+        activeGremlin.GetComponent<Animator>().speed = modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
         timePassed = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
     }
 
     public void EndMove() {
-        activeGremlin.GetComponent<Animator>().Play("Neutral"); //Reset the Gremlin. If the Gremlin doesn't have a "Neutral" animation state, artifacts from the previous animation will remain.
-
+        activeGremlin.GetComponent<Animator>().Play("Neutral"); //Reset the Gremlin. If the Gremlin doesn't have a "Neutral" animation state (different from Idle, since this is to reset the Gremlin), artifacts from the previous animation will remain.
+        
         gremlinMoving = false;
         toCallback();
     }
@@ -90,6 +87,7 @@ public class TrackModule : MonoBehaviour
             else
             {
                 activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop); //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
+                Debug.Log(TerrainVariant.positionFunction(100));
                 activeGremlin.transform.position.Scale(TerrainVariant.positionFunction(timePassed));
                 timePassed += Time.fixedDeltaTime;
             }

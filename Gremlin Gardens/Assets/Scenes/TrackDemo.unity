@@ -123,6 +123,158 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &41227867
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41227868}
+  - component: {fileID: 41227869}
+  m_Layer: 0
+  m_Name: WalkVariant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &41227868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41227867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1967203285}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &41227869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41227867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45596049ef8b9147b53657e5752d6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &139515620
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139515624}
+  - component: {fileID: 139515623}
+  - component: {fileID: 139515622}
+  - component: {fileID: 139515621}
+  - component: {fileID: 139515625}
+  m_Layer: 0
+  m_Name: TestGremlin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &139515621
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139515620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &139515622
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139515620}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &139515623
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139515620}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &139515624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139515620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.29, y: 0.06, z: -2.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &139515625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 139515620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe2671efbd5e244bb05234828136781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedThing: 1
 --- !u!1 &169867738
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,13 +351,58 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169867738}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 7.83, z: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 2.18, z: 4.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!1 &397180154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 397180155}
+  - component: {fileID: 397180156}
+  m_Layer: 0
+  m_Name: TestTrack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &397180155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397180154}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.42885005, y: 1.655726, z: -0.3611319}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1132302698}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &397180156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397180154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f600cfb3793576941b05bd8e3802c0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RacingGremlin: {fileID: 0}
 --- !u!1 &458100660
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,8 +640,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseSpeed: 5
-  AnimationToPlay: Bounce
-  TerrainVariant: {fileID: 498448819}
+  AnimationToPlay: QuickBounce
+  TerrainVariant: {fileID: 1639448087}
   gremlinMoving: 0
 --- !u!1 &567758736
 GameObject:
@@ -560,9 +757,9 @@ MonoBehaviour:
       points:
       - {x: -0.342625, y: -0.39038807, z: 0}
       - {x: -0.34291106, y: 0.077454604, z: 0}
-      - {x: -0.44556955, y: 0.51665455, z: 0}
-      - {x: -0.2612585, y: 0.5511712, z: 0}
-      - {x: -0.13024035, y: 0.57570744, z: 0}
+      - {x: -0.6107857, y: 0.5333677, z: 0.009703098}
+      - {x: -0.25174314, y: 0.61542493, z: 0.00576548}
+      - {x: -0.10153976, y: 0.6497531, z: 0.0041182}
       - {x: 0.044215836, y: 0.538777, z: 0}
       - {x: 0.2406854, y: 0.54602, z: 0}
       isClosed: 0
@@ -579,7 +776,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -612,7 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseSpeed: 5
+  BaseSpeed: 0.5
   AnimationToPlay: Bounce
   TerrainVariant: {fileID: 956936594}
   gremlinMoving: 0
@@ -645,7 +842,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583739623}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -2.983, y: 0.14, z: 0}
+  m_LocalPosition: {x: -3.17, y: 0.14, z: 0}
   m_LocalScale: {x: 2.2983, y: 0.15848, z: 1}
   m_Children: []
   m_Father: {fileID: 1036160508}
@@ -778,9 +975,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseSpeed: 5
-  AnimationToPlay: Bounce
-  TerrainVariant: {fileID: 956936594}
+  BaseSpeed: 1
+  AnimationToPlay: Walk
+  TerrainVariant: {fileID: 41227869}
   gremlinMoving: 0
 --- !u!1 &594812235
 GameObject:
@@ -873,7 +1070,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 594812235}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -1.52, y: 0.977, z: 0}
+  m_LocalPosition: {x: -1.52, y: 0.977, z: -0.01}
   m_LocalScale: {x: 1, y: 1.7785, z: 1}
   m_Children: []
   m_Father: {fileID: 1036160508}
@@ -948,7 +1145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseSpeed: 5
+  BaseSpeed: 0.5
   AnimationToPlay: Bounce
   TerrainVariant: {fileID: 956936594}
   gremlinMoving: 0
@@ -1149,6 +1346,7 @@ GameObject:
   - component: {fileID: 1132302701}
   - component: {fileID: 1132302700}
   - component: {fileID: 1132302699}
+  - component: {fileID: 1132302703}
   m_Layer: 0
   m_Name: TestClimb
   m_TagString: Untagged
@@ -1164,11 +1362,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132302697}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.321, y: 0.977, z: -2.675}
+  m_LocalPosition: {x: 1.74985, y: -0.67872596, z: -2.313868}
   m_LocalScale: {x: 1, y: 1.7785, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 397180155}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1132302699
 MonoBehaviour:
@@ -1289,6 +1487,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1132302697}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1132302703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132302697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSpeed: 5
+  AnimationToPlay: 
+  TerrainVariant: {fileID: 498448819}
+  gremlinMoving: 0
 --- !u!1 &1362559975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1418,6 +1632,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe2671efbd5e244bb05234828136781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedThing: 1
+--- !u!1 &1639448085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1639448086}
+  - component: {fileID: 1639448087}
+  m_Layer: 0
+  m_Name: JumpVariant
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1639448086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639448085}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1967203285}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1639448087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639448085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3277878b12860c54bad740bb38abea5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1951643573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,8 +1789,8 @@ MonoBehaviour:
     _bezierPath:
       points:
       - {x: -0.3810967, y: 0.06295939, z: 0}
-      - {x: -0.25133434, y: 0.06028998, z: 0.000026667507}
-      - {x: 0.3496804, y: 0.065070175, z: 0.00092639227}
+      - {x: -0.036770385, y: 0.067208275, z: -0.020820417}
+      - {x: 0.018010598, y: 0.065070204, z: 0.00084981293}
       - {x: 0.44561237, y: 0.06740492, z: 0}
       isClosed: 0
       space: 0
@@ -1582,7 +1840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1
   AnimationToPlay: Walk
-  TerrainVariant: {fileID: 498448819}
+  TerrainVariant: {fileID: 41227869}
   gremlinMoving: 0
 --- !u!1 &1967203284
 GameObject:
@@ -1614,6 +1872,8 @@ Transform:
   m_Children:
   - {fileID: 956936593}
   - {fileID: 498448818}
+  - {fileID: 1639448086}
+  - {fileID: 41227868}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
