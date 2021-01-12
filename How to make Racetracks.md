@@ -47,7 +47,8 @@ This actually moves the Gremlin along its specific path. Needs to be a child of 
 
 Animation To Play will be the actual name of the animation that the Gremlin has in its Animator component to play while moving along. You can leave this blank.
 
-Base speed is just the speed in units per fixed frame rate that the Gremlin will travel along the path. Ideally, you'd make an animation, and then time the base speed with that animation.
+Base speed is just the speed in units per fixed frame rate that the Gremlin will travel along the path. Base speed will not affect the speed of the animation, but the relativeSpeed function of TerrainVariants will.
+Ideally, you'd make an animation, and then time the base speed with that animation.
 
 Terrain Variants are something we'll cover... right now.
 
@@ -111,6 +112,7 @@ public class ExampleVariant : TerrainVariant
 
 So we can override either the positionFunction (which tells us how to offset the Gremlin, so you could do a zig zagging/arcing/random motion or something while the Gremlin is walking/running/swimming) or (more importantly), the **relativeSpeed** function, which is used for telling a Gremlin how fast it can move by returning a percentage after we do some calculations on the Gremlin's stats.
 
+Note that the relativeSpeed function will also affect how fast the animations play (just to make sure the timing of animations isn't off for different Goblins).
 ### Simple Start Race
 
 Ideally, we'd have some sort of complex thing to start and time races. For that, you'd call TrackManager.StartRace(Callback), where Callback is a  function which takes a TrackManager object as a parameter:
