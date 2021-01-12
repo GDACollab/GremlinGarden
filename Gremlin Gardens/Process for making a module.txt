@@ -1,5 +1,0 @@
-1. Add a PathCreator and Track Module component.
-2. Move the curves to match your geometry.
-3. Fiddle with TrackModule. Make sure that whatever animation you're playing
-matches with the base speed of your TrackModule (The TrackManager will speed or slow 
-both the Gremlin's speed and animations based on their skill).
