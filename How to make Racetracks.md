@@ -1,26 +1,37 @@
-Alright, you're gonna wanna start by making an empty game object. This will contain our TrackManager, to keep track of the Gremlin and move it along the path. Add the TrackManager component.
+Let's just start with the barebones components of a racetrack.
 
-Next, make drag the Gremlin prefab from the prefabs folder into your scene. Drag the newly made gremlin from the hierarchy into the "Racing Gremlin" part of the inspector for the TrackManager. Don't worry about the other options, we'll cover those later.
+First up, we're going to need a TrackManager, to keep track of the Gremlin as it moves along the racetrack. For this, make an empty object, and attach a TrackManager component.
+
+Next, we're going to make our Gremlin. You can either drag a Gremlin from the prefabs folder, or you can create a cube (or some other model) and attach the Animator component and the Gremlin class. The Gremlin needs both these components so the TrackModules and TerrainVariants (which we'll be covering shortly) can both animate the Gremlin and speed or slow the Gremlin based on specific statistics. Add your new Gremlin under the "Racing Gremlin" field in the Inspector view for the TrackManager.
 
 ![starting out](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/startingOutPrefab.PNG)
 
-Okay, so you've got your Gremlin and your TrackManager. Next, you're going to want to add your racetrack model (or models) to the scene.
+So we now have the overall hierarchy for our race. Next up, we're going to actually need things for the Gremlin to race on. Start by importing some models (or making some default cubes, what do I care) to make up your racetrack.
 
-For each segment of your racetrack, you're going to either: create an empty object with the Path Creator and Track Module components, or attach Path Creator and  Track Module components to a model. You're then going to parent your model/empty object to your Track Manager. Make sure to order the children of the TrackManager in the order that you want the Gremlin to do the obstacle course, otherwise your Gremlin will teleport from place to place.
+For each segment of your racetrack (that is, for each different running, swimming, sliding, or whatever else kind of race type), you're going to want to either: create an empty object with the PathCreator and TrackModule components, or attach PathCreator and TrackModule components to a model.
 
-Now, edit the Bezier curves that appear from each Empty Object or Model to make a racetrack:
+The TrackManager requires children with which to run a race. Starting with the first child, and iterating through all of its children, it will look at the PathCreator and TrackModule components of each child, saying "Hey, I need to race this Gremlin along this child's PathCreator. Better call up the TrackModule component to tell the Gremlin to race there." 
+
+The TrackModule is paired with the PathCreator component because the PathCreator doesn't have a function to automatically have an object follow a path. So, we add a bunch of fields that you can tweak to the TrackModule to change how fast or slow a Gremlin will be going.
+
+Now that everything's in place, you can then edit the Beziér curves to make what looks like a racetrack:
+
 ![making a racetrack](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/makingRacetrack.PNG)
 
-Okay, so we've made the basics of a racetrack. To get it running, create an empty object. Attach the Simple Start Race script, and in the "Track Manager To Race" section, select your Track Manager. If you click run... nothing will happen, because we haven't added Terrain Variants to tell the Gremlins their speed. Drag the TerrainManager from the Prefabs folder into your scene.
+If you hit run right now, nothing will happen, and that's because we're missing two things. Firstly, we need a script to actually start the race. If you just create an empty Game Object, attach the "Simple Start Race" script to it, and select the game object with your TrackManager script, you'll be fine. The second missing thing is a little more tricky. All TrackModules are missing something that's called a TerrainVariant.
 
-For each racetrack segment with the TrackModule component, select a TerrainVariant from the TerrainVariant slot. "TerrainVariant" is fine.
+What are TerrainVariants? Well, a Gremlin's statistics will ultimately affect how a race is going, we don't have anything to tell a TrackModule how fast or slow a Gremlin should be going based on its statistics, and the calculations for how fast or slow a Gremlin should be going will be different for each type of track (a Gremlin might be faster at swimming than running). So we make something called a TerrainVariant, which has two important jobs (as of right now, it may have more later): To calculate a Gremlin's statistics to tell the TrackModule how fast that Gremlin should be going, and to tell the Gremlin how much it should be offset while on the track (this is for any animations that require the Gremlin to be moved while they're following a path. So if you want the Gremlin to bob up and down while swimming, you'd do that here).
 
-Now play the scene. Everything should be working.
+To import the TerrainVariants, either import the TerrainManager prefab or create an empty object and attach a TerrainVariant script for each TerrainVariant you want to be used in the race.
+
+Then for each TrackModule script, attach the relevant TerrainVariant script (i.e., RunVariant for running, SwimVariant for swimming).
+
+Now play the scene. Everything should be working. If you have any questions, let me know (ambiguousname#1972 on discord).
 
 ![We're done, kinda](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/wereDone.PNG)
 
 ## What did I just do?
-Let's break down each process one by one.
+Let's go into a little more detail.
 
 ### Track Manager
 First, we made the TrackManager. The TrackManager is in charge of well, managing the track. It will iterate through every child it has (it won't go through children of children, just children), and it will look at each PathCreator and TrackModule component of its children. It says "Hey, I have RacingGremlin assigned to be this Gremlin, and I know that I've just started the race, so this Gremlin should be here."
@@ -126,6 +137,6 @@ From there, you'd be able to access the TrackManager's properties (like TrackMan
 
 But Simple Start Race will just run the race (and will enable looping, if you hit the checkbox in the inspector). Just create an empty object, attach Simple Start Race, select the TrackManager, and hit play.
 
-Okay, that's a wrap on the tutorial. If you want to mess around with this yourself, load the TrackDemo or TrackTutorial scene to mess around with all the different components. If you have any questions, let me know (ambiguousname#1972 on discord).
+Okay, that's a wrap on the tutorial. If you want to mess around with this yourself, load the TrackDemo or TrackTutorial scene to mess around with all the different components.
 
 Thanks for taking the time to read this!
