@@ -26,7 +26,11 @@ To import the TerrainVariants, either import the TerrainManager prefab or create
 
 Then for each TrackModule script, attach the relevant TerrainVariant script (i.e., RunVariant for running, SwimVariant for swimming).
 
-Now play the scene. Everything should be working. If you have any questions, let me know (ambiguousname#1972 on discord).
+Now play the scene. Everything should be working.
+
+If you want to know more about what you can modify you can either read below, or look at the tooltips for each field in the Inspector view.
+
+If you have any questions, let me know (ambiguousname#1972 on discord).
 
 ![We're done, kinda](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/wereDone.PNG)
 
