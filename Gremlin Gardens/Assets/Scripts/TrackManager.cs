@@ -49,9 +49,9 @@ public class TrackManager : MonoBehaviour
     /// <summary>
     /// Start racing with the selected Gremlin.
     /// </summary>
-    /// <param name="endRaceCallback">A function that takes TrackManager as a parameter, to be called at the end of the race.</param>
-    /// <param name="moduleSwitchCallback">A function that takes TrackManager and TrackModule as parameters, and is called when the Gremlin reaches a new TrackModule. </param>
-    public void StartRace(Callback endRaceCallback, RacingCallback moduleSwitchCallback) {
+    /// <param name="endRaceCallback">A callback function (returns void) that takes TrackManager as a parameter, to be called at the end of the race. Optional.</param>
+    /// <param name="moduleSwitchCallback">A callback function (returns void) that takes TrackManager and TrackModule as parameters, and is called when the Gremlin reaches a new TrackModule. Optional.</param>
+    public void StartRace(Callback endRaceCallback = null, RacingCallback moduleSwitchCallback = null) { //The = null makes both of these optional parameters, in case you don't want to call them.
         currentChild = 0;
         toCallback = endRaceCallback;
         racingCallback = moduleSwitchCallback;
