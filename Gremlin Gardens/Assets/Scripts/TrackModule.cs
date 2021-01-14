@@ -10,18 +10,21 @@ using PathCreation;
 public class TrackModule : MonoBehaviour
 {
     /// <summary>
-    /// How fast the Gremlin moves in units per fixed frame count.
+    /// How fast the Gremlin moves in units per fixed frame count. Does NOT affect animation speed (see TerrainVariant instead).
     /// </summary>
+    [Tooltip("How fast the Gremlin moves in units per fixed frame count. Does NOT affect animation speed (see TerrainVariant instead).")]
     public float BaseSpeed = .5f;
 
     /// <summary>
-    /// The animation name to play for this TrackModule.
+    /// The animation name to play from the Animator for this TrackModule.
     /// </summary>
+    [Tooltip("The animation name to play from the Animator for this TrackModule.")]
     public string AnimationToPlay;
 
     /// <summary>
     /// Get a GameObject's TerrainVariant data (how to move, how fast to move). Be sure to give an empty object a TerrainVariant script (or a script that extends TerrainVariant).
     /// </summary>
+    [Tooltip("Get a GameObject's TerrainVariant data (how to move, how fast to move). Be sure to give an empty object a TerrainVariant script (or a script that extends TerrainVariant).")]
     public TerrainVariant TerrainVariant;
 
     /// <summary>

@@ -14,22 +14,26 @@ public class TrackManager : MonoBehaviour
     /// <summary>
     /// The Gremlin that we're going to race with.
     /// </summary>
+    [Tooltip("The Gremlin that we're going to race with.")]
     public GameObject RacingGremlin;
 
     /// <summary>
     /// How long in seconds for animations to CrossFade for.
     /// </summary>
+    [Tooltip("How long in seconds for animations to CrossFade for.")]
     public float TransitionTime = 0.25f;
 
     /// <summary>
     /// How far we should offset the Gremlin from its center of mass.
     /// </summary>
+    [Tooltip("How far we should offset the Gremlin from its center of mass.")]
     public Vector3 GremlinOffset;
 
     /// <summary>
-    /// The current module that the gremlin is on.
+    /// The current module that the gremlin is on. Use TrackManager.GetChild(currentChild).GetComponent<TrackModule>(); to access the active TrackModule component.
     /// </summary>
-    int currentChild;
+    [HideInInspector]
+    public int currentChild;
 
     public delegate void Callback(TrackManager activeManager);
     /// <summary>
