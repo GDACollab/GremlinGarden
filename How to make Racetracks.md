@@ -52,7 +52,7 @@ We attach the Animator component because the TrackModules will play specific ani
 
 [This is the Beziér Curve tool made by Sebastian Lague](https://assetstore.unity.com/packages/tools/utilities/b-zier-path-creator-136082#description).
 
-The documentation (and instructions for using this tool) is in this branch, available [here](https://github.com/GDACollab/GremlinGarden/blob/track-system/Gremlin%20Gardens/Assets/PathCreator/Documentation/Documentation.pdf).
+The documentation/instructions for using this tool are in this branch [here](https://github.com/GDACollab/GremlinGarden/blob/track-system/Gremlin%20Gardens/Assets/PathCreator/Documentation/Documentation.pdf).
 
 Just move the Beziér Curve around until it fits your liking.
 
