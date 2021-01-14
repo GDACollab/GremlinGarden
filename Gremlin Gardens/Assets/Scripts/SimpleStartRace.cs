@@ -9,13 +9,17 @@ public class SimpleStartRace : MonoBehaviour
 
     private void Start()
     {
-        trackManagerToRace.StartRace(RaceIsEnded);
+        trackManagerToRace.StartRace(RaceIsEnded, ModuleSwitch);
+    }
+
+    public void ModuleSwitch(TrackManager manager, TrackModule module) {
+        Debug.Log(manager.RacingGremlin + " on " + module.name + " module.");
     }
 
     public void RaceIsEnded(TrackManager manager) {
         Debug.Log(manager.RacingGremlin.name + " finished track.");
         if (ShouldLoop) {
-            manager.StartRace(RaceIsEnded);
+            manager.StartRace(RaceIsEnded, ModuleSwitch);
         }
     }
 }

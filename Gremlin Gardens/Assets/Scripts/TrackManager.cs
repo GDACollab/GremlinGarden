@@ -40,10 +40,21 @@ public class TrackManager : MonoBehaviour
     /// A callback called at the end of the race. Will pass this current TrackManager in case you need to know anything from the TrackManager.
     /// </summary>
     Callback toCallback;
+    public delegate void RacingCallback(TrackManager activeManager, TrackModule activeModule);
+    /// <summary>
+    /// A callback to be called whenever we switch to a new module.
+    /// </summary>
+    RacingCallback racingCallback;
 
-    public void StartRace(Callback callback) {
+    /// <summary>
+    /// Start racing with the selected Gremlin.
+    /// </summary>
+    /// <param name="endRaceCallback">A function that takes TrackManager as a parameter, to be called at the end of the race.</param>
+    /// <param name="moduleSwitchCallback">A function that takes TrackManager and TrackModule as parameters, and is called when the Gremlin reaches a new TrackModule. </param>
+    public void StartRace(Callback endRaceCallback, RacingCallback moduleSwitchCallback) {
         currentChild = 0;
-        toCallback = callback;
+        toCallback = endRaceCallback;
+        racingCallback = moduleSwitchCallback;
         Race();
     }
 
@@ -61,6 +72,7 @@ public class TrackManager : MonoBehaviour
             module.BeginMove(RacingGremlin.GetComponent<Gremlin>(), GremlinOffset, Race); //Keep the Gremlin moving.
             RacingGremlin.GetComponent<Animator>().CrossFade(module.AnimationToPlay, TransitionTime); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
             RacingGremlin.GetComponent<Animator>().speed = module.modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
+            racingCallback(this, transform.GetChild(currentChild).GetComponent<TrackModule>());
             currentChild += 1;
         }
     }
