@@ -31,9 +31,8 @@ public class Gremlin : Object
         {"Happiness", 1},
         {"Running", 2},
         {"Climbing", 3},
-        {"Running", 4},
-        {"Swimming", 5},
-        {"Flying", 6}
+        {"Swimming", 4},
+        {"Flying", 5}
     };
 
     public Gremlin()
