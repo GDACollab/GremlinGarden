@@ -21,24 +21,18 @@ public class GremlinClass : MonoBehaviour
 // Class that defines and alters each Gremlin's stats
 public class Gremlin : Object
 {
-    // Array of all stats associated with each gremlin
-    private float[] gremlinStats;
-
-    // Dictionary of all indices in gremlinStats with a key of what stat that index represents
-    public static readonly Dictionary<string, int> gremlinStatIndices = new Dictionary<string, int>()
+    // Dictionary of all gremlin stats and their values
+    private Dictionary<string, float> gremlinStats = new Dictionary<string, float>()
     {
         {"Stamina", 0},
-        {"Happiness", 1},
-        {"Running", 2},
-        {"Climbing", 3},
-        {"Swimming", 4},
-        {"Flying", 5}
+        {"Happiness", 0},
+        {"Running", 0},
+        {"Climbing", 0},
+        {"Swimming", 0},
+        {"Flying", 0}
     };
 
-    public Gremlin()
-    {
-        gremlinStats = new float[gremlinStatIndices.Count];
-    }
+    public Gremlin(){}
 
     /*
      * Modifies the value of a specified stat to a given value
@@ -48,7 +42,7 @@ public class Gremlin : Object
      */
     public void setStat(string stat, float value)
     {
-        gremlinStats[gremlinStatIndices[stat]] = value;
+        gremlinStats[stat] = value;
     }
 
     /*
@@ -59,6 +53,6 @@ public class Gremlin : Object
      */
     public float getStat(string stat)
     {
-        return gremlinStats[gremlinStatIndices[stat]];
+        return gremlinStats[stat];
     }
 }
