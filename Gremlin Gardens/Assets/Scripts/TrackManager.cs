@@ -59,9 +59,9 @@ public class TrackManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Start the race, pick which Gremlin to race with.
+    /// Iterate through children of this GameObject, moving the Gremlin across each TrackModule component until we reach the end of the list.
     /// </summary>
-    public void Race() {
+    private void Race() {
         if (currentChild == transform.childCount) //Race is over, we've reached the end.
         {
             EndRace();
@@ -72,12 +72,12 @@ public class TrackManager : MonoBehaviour
             module.BeginMove(RacingGremlin.GetComponent<Gremlin>(), GremlinOffset, Race); //Keep the Gremlin moving.
             RacingGremlin.GetComponent<Animator>().CrossFade(module.AnimationToPlay, TransitionTime); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
             RacingGremlin.GetComponent<Animator>().speed = module.modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
-            racingCallback(this, transform.GetChild(currentChild).GetComponent<TrackModule>());
+            racingCallback(this, module);
             currentChild += 1;
         }
     }
 
-    public void EndRace() {
+    private void EndRace() {
         toCallback(this);
     }
 }

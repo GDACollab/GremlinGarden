@@ -25,7 +25,7 @@ public class TrackModule : MonoBehaviour
     /// Get a GameObject's TerrainVariant data (how to move, how fast to move). Be sure to give an empty object a TerrainVariant script (or a script that extends TerrainVariant).
     /// </summary>
     [Tooltip("Get a GameObject's TerrainVariant data (how to move, how fast to move). Be sure to give an empty object a TerrainVariant script (or a script that extends TerrainVariant).")]
-    public TerrainVariant TerrainVariant;
+    public TerrainVariant terrainVariant;
 
     /// <summary>
     /// Is the gremlin moving across this track module?
@@ -48,7 +48,7 @@ public class TrackModule : MonoBehaviour
     float totalDistance;
     PathCreator internalCreator;
     
-    public void Start()
+    void Start()
     {
         totalDistance = 0;
         internalCreator = GetComponent<PathCreator>();
@@ -79,13 +79,13 @@ public class TrackModule : MonoBehaviour
         gremlinMoving = true;
         activeGremlin = gremlin;
         gOffset = gremlinOffset;
-        modifiedSpeed = TerrainVariant.relativeSpeed(activeGremlin);
+        modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin);
         timePassed = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
     }
 
-    public void EndMove() {
+    private void EndMove() {
         gremlinMoving = false;
         toCallback();
     }
@@ -100,7 +100,7 @@ public class TrackModule : MonoBehaviour
             }
             else
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
-                activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + TerrainVariant.positionFunction(timePassed * modifiedSpeed) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
+                activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + terrainVariant.positionFunction(timePassed * modifiedSpeed) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
                 timePassed += Time.fixedDeltaTime;
             }
         }
