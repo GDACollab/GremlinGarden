@@ -274,6 +274,10 @@ PrefabInstance:
       propertyPath: TerrainVariant
       value: 
       objectReference: {fileID: 1299007970}
+    - target: {fileID: 3817743412196192315, guid: 0127c398966e3b948b8d1a46494d2043, type: 3}
+      propertyPath: terrainVariant
+      value: 
+      objectReference: {fileID: 1299007970}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0127c398966e3b948b8d1a46494d2043, type: 3}
 --- !u!4 &538287738 stripped
@@ -441,6 +445,10 @@ PrefabInstance:
       propertyPath: TerrainVariant
       value: 
       objectReference: {fileID: 1299007970}
+    - target: {fileID: 7784531517403883189, guid: bc31fa8f37ad41e418dac937d394a8c1, type: 3}
+      propertyPath: terrainVariant
+      value: 
+      objectReference: {fileID: 1299007970}
     - target: {fileID: 7784531517403883191, guid: bc31fa8f37ad41e418dac937d394a8c1, type: 3}
       propertyPath: m_Name
       value: Running
@@ -500,6 +508,7 @@ MonoBehaviour:
   RacingGremlin: {fileID: 427920851}
   TransitionTime: 0.25
   GremlinOffset: {x: 0, y: 0, z: 0}
+  currentChild: 0
 --- !u!1 &1243381758
 GameObject:
   m_ObjectHideFlags: 0
