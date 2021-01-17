@@ -448,7 +448,7 @@ PrefabInstance:
     - target: {fileID: 7784531517403883189, guid: bc31fa8f37ad41e418dac937d394a8c1, type: 3}
       propertyPath: terrainVariant
       value: 
-      objectReference: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
+      objectReference: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
     - target: {fileID: 7784531517403883191, guid: bc31fa8f37ad41e418dac937d394a8c1, type: 3}
       propertyPath: m_Name
       value: Running
