@@ -1,3 +1,0 @@
-Feel free
-- Update everything which has TerrainVariant as an extension of MonoBehavior
-(Scenes, The Walkthrough, Screenshots, Documentation)

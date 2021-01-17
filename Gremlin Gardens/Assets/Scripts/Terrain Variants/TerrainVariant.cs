@@ -9,6 +9,11 @@ using UnityEngine;
 public class TerrainVariant : ScriptableObject
 {
     /// <summary>
+    /// How much to multiply the TerrainVariant's relativeSpeed function. 
+    /// </summary>
+    [Tooltip("How much to multiply the TerrainVariant's modified speed by.")]
+    public float speedModifier = 1.0f;
+    /// <summary>
     /// Calculate how fast the gremlin should be moving in terms of percentage, based on a Gremlin's stats. For a skill at the average level, it should return 1.
     /// </summary>
     /// <example>
@@ -17,7 +22,7 @@ public class TerrainVariant : ScriptableObject
     /// <param name="gremlin">Track Module will pass the Gremlin object that it recieves from TrackManager.</param>
     /// <returns>A percentage of how fast that Gremlin should be moving.</returns>
     public virtual float relativeSpeed(Gremlin gremlin) {
-        return 1;
+        return 1 * speedModifier;
     }
 
     /// <summary>

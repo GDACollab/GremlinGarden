@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d044f36e281124446abcab2c8894b475, type: 3}
-  m_Name: SlowMoVariant
+  m_Script: {fileID: 11500000, guid: 035c98a8796add94fa809beff99d9907, type: 3}
+  m_Name: SlowMo
   m_EditorClassIdentifier: 
+  speedModifier: 0.1
