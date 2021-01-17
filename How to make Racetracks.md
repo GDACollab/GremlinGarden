@@ -80,6 +80,14 @@ using UnityEngine;
 /// <summary>
 /// A template for new terrain. Place this in an empty game object so that TrackModule can access that game object.
 /// </summary>
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// A template for new terrain. Place this in an empty game object so that TrackModule can access that game object.
+/// </summary>
+[CreateAssetMenu(fileName = "TerrainVariant", menuName = "Terrain Variants/TerrainVariant")]
 public class TerrainVariant : ScriptableObject
 {
     /// <summary>
@@ -109,15 +117,26 @@ public class TerrainVariant : ScriptableObject
     }
 }
 ```
+You might be asking me, "What's a scriptable object?" They're basically a way to store and change data outside of a scene, which means the data will persist outside of the editor. This allows us to use all the TerrainVariants across scenes, and it allows us to make changes to the pre-existing TerrainVariants. Each new TerrainVariant is saved as a TerrainVariant.asset, which you can then duplicate and edit how you wish, and affect every single instance that uses that TerrainVariant. 
+
+To make a copy of a TerrainVariant based on an existing Variant, either copy the .asset file, or right click, click "Create", "Terrain Variants", and then click on the desired TerrainVariant. Make your changes as desired, and then insert into the relevant TrackModule.
 
 And here's the Example Terrain Variant:
 
 ```csharp
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "ExampleVariant", menuName = "Terrain Variants/ExampleVariant")]
 public class ExampleVariant : TerrainVariant
 {
     public override float relativeSpeed(Gremlin gremlin)
     {
-        return gremlin.speedThing / 1000;
+        return gremlin.speedThing * speedModifier;
+    }
+
+    public override Vector3 positionFunction(float time)
+    {
+        return new Vector3(0, Mathf.Sin(time)/10, 0);
     }
 
 }
