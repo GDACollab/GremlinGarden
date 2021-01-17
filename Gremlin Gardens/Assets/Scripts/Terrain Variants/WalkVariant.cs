@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "WalkVariant", menuName = "Terrain Variants/WalkVariant")]
 public class WalkVariant : TerrainVariant
 {
     public override float relativeSpeed(Gremlin gremlin) {

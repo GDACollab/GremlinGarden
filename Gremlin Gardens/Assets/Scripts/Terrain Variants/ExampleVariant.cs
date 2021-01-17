@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[CreateAssetMenu(fileName = "ExampleVariant", menuName = "Terrain Variants/ExampleVariant")]
 public class ExampleVariant : TerrainVariant
 {
     public override float relativeSpeed(Gremlin gremlin)

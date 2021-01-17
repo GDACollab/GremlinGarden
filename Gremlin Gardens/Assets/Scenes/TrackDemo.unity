@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &41227869 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 982756626374176169, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-  m_PrefabInstance: {fileID: 982756626341870580}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a45596049ef8b9147b53657e5752d6ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &94146375
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 4
   AnimationToPlay: JumpMiddle
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &94146378
@@ -282,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &144443655
@@ -610,7 +599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &436143819
@@ -777,7 +766,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Bounce
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &445985235
@@ -1090,7 +1079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 4
   AnimationToPlay: JumpMiddle
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!1 &541648823
@@ -1139,7 +1128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1.2
   AnimationToPlay: JumpEnd
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &541648826
@@ -1359,7 +1348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Bounce
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!1 &583739623
@@ -1429,7 +1418,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -1526,7 +1515,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!1 &594812235
@@ -1693,7 +1682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Bounce
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!1 &658428695
@@ -1834,7 +1823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1.2
   AnimationToPlay: JumpEnd
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &738817957
@@ -1936,7 +1925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.6
   AnimationToPlay: JumpingStart
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &750817564
@@ -2038,7 +2027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &817697082
@@ -2094,22 +2083,6 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
---- !u!4 &917256367 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-  m_PrefabInstance: {fileID: 982756626341870580}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &956936594 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 982756626459855462, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-  m_PrefabInstance: {fileID: 982756626341870580}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 035c98a8796add94fa809beff99d9907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1022908723
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,7 +2132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &1022908726
@@ -2379,7 +2352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &1058786367
@@ -2484,7 +2457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &1103824727
@@ -2648,7 +2621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &1153887335
@@ -2753,7 +2726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Bounce
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &1268421743
@@ -3026,7 +2999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.6
   AnimationToPlay: JumpingStart
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!1 &1362559975 stripped
@@ -3218,7 +3191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Bounce
-  terrainVariant: {fileID: 956936594}
+  terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &1682527112
@@ -3438,7 +3411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &1819121573
@@ -3540,7 +3513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 0.5
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!114 &1837456418
@@ -3760,7 +3733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 1
   AnimationToPlay: Walk
-  terrainVariant: {fileID: 41227869}
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   modifiedSpeed: 0
 --- !u!1 &1967203284
@@ -3792,8 +3765,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.0086174, y: 1.6405349, z: -0.22579575}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 917256367}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3849,63 +3821,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7784531517403883188, guid: bc31fa8f37ad41e418dac937d394a8c1, type: 3}
   m_PrefabInstance: {fileID: 7784531517499544634}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &982756626341870580
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1967203285}
-    m_Modifications:
-    - target: {fileID: 982756626570707802, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_Name
-      value: Terrain
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 982756626570707803, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 002ff96d1e634d047bf828a938d2f258, type: 3}
 --- !u!1001 &1941079123602480979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3916,11 +3831,11 @@ PrefabInstance:
     - target: {fileID: 1941079123305988476, guid: 146bb0ab6029f2448818c98babd02fd6, type: 3}
       propertyPath: TerrainVariant
       value: 
-      objectReference: {fileID: 956936594}
+      objectReference: {fileID: 0}
     - target: {fileID: 1941079123305988476, guid: 146bb0ab6029f2448818c98babd02fd6, type: 3}
       propertyPath: terrainVariant
       value: 
-      objectReference: {fileID: 956936594}
+      objectReference: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
     - target: {fileID: 1941079123305988477, guid: 146bb0ab6029f2448818c98babd02fd6, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.178
@@ -4033,11 +3948,11 @@ PrefabInstance:
     - target: {fileID: 2795416235159918271, guid: b31f2ac66bef97345878667035501804, type: 3}
       propertyPath: TerrainVariant
       value: 
-      objectReference: {fileID: 956936594}
+      objectReference: {fileID: 0}
     - target: {fileID: 2795416235159918271, guid: b31f2ac66bef97345878667035501804, type: 3}
       propertyPath: terrainVariant
       value: 
-      objectReference: {fileID: 956936594}
+      objectReference: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b31f2ac66bef97345878667035501804, type: 3}
 --- !u!1001 &2831780062461264718
@@ -4050,11 +3965,11 @@ PrefabInstance:
     - target: {fileID: 2831780062982805366, guid: 4773121dc41716a43b4223f51f9300ed, type: 3}
       propertyPath: TerrainVariant
       value: 
-      objectReference: {fileID: 956936594}
+      objectReference: {fileID: 0}
     - target: {fileID: 2831780062982805366, guid: 4773121dc41716a43b4223f51f9300ed, type: 3}
       propertyPath: terrainVariant
       value: 
-      objectReference: {fileID: 956936594}
+      objectReference: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
     - target: {fileID: 2831780062982805368, guid: 4773121dc41716a43b4223f51f9300ed, type: 3}
       propertyPath: m_Name
       value: JumpStart
@@ -4163,11 +4078,11 @@ PrefabInstance:
     - target: {fileID: 3817743412196192315, guid: 0127c398966e3b948b8d1a46494d2043, type: 3}
       propertyPath: TerrainVariant
       value: 
-      objectReference: {fileID: 956936594}
+      objectReference: {fileID: 0}
     - target: {fileID: 3817743412196192315, guid: 0127c398966e3b948b8d1a46494d2043, type: 3}
       propertyPath: terrainVariant
       value: 
-      objectReference: {fileID: 956936594}
+      objectReference: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0127c398966e3b948b8d1a46494d2043, type: 3}
 --- !u!1001 &4099818287183738416
@@ -4281,11 +4196,11 @@ PrefabInstance:
     - target: {fileID: 7784531517403883189, guid: bc31fa8f37ad41e418dac937d394a8c1, type: 3}
       propertyPath: TerrainVariant
       value: 
-      objectReference: {fileID: 41227869}
+      objectReference: {fileID: 0}
     - target: {fileID: 7784531517403883189, guid: bc31fa8f37ad41e418dac937d394a8c1, type: 3}
       propertyPath: terrainVariant
       value: 
-      objectReference: {fileID: 41227869}
+      objectReference: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
     - target: {fileID: 7784531517403883191, guid: bc31fa8f37ad41e418dac937d394a8c1, type: 3}
       propertyPath: m_Name
       value: Running

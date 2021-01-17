@@ -5,7 +5,8 @@ using UnityEngine;
 /// <summary>
 /// A template for new terrain. Place this in an empty game object so that TrackModule can access that game object.
 /// </summary>
-public class TerrainVariant : MonoBehaviour //Have to extend monobehaviour so that you can add TerrainVariant to TrackModule.
+[CreateAssetMenu(fileName = "TerrainVariant", menuName = "Terrain Variants/TerrainVariant")]
+public class TerrainVariant : ScriptableObject
 {
     /// <summary>
     /// Calculate how fast the gremlin should be moving in terms of percentage, based on a Gremlin's stats. For a skill at the average level, it should return 1.
