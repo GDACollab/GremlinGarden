@@ -45,6 +45,7 @@ public class TrackModule : MonoBehaviour
     /// <summary>
     /// How much the gremlin has moved along the track module.
     /// </summary>
+    [HideInInspector]
     public float totalDistance;
     PathCreator internalCreator;
     
