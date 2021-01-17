@@ -24,6 +24,8 @@ What are TerrainVariants? Well, a Gremlin's statistics will ultimately affect ho
 
 Drag a TerrainVariant from the Scripts/Terrain Variants folder into the empty TerrainVariant slot for each of your TrackModules, or just double click the empty TerrainVariant slot from the InspectorView and select the appropriate TerrainVariant. For this tutorial, we'll just be attaching the default TerrainVariant script.
 
+If you ever want to duplicate an existing TerrainVariant to make changes to, you'll need to do the following: Right click, click "Create", "Terrain Variants", and then select the TerrainVariant you want to duplicate and modify.
+
 ![We're done, kinda](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/newTerrainVariant.PNG)
 
 Now play the scene. Everything should be working.
