@@ -45,7 +45,7 @@ public class TrackModule : MonoBehaviour
     /// <summary>
     /// How much the gremlin has moved along the track module.
     /// </summary>
-    float totalDistance;
+    public float totalDistance;
     PathCreator internalCreator;
     
     void Start()
@@ -61,7 +61,8 @@ public class TrackModule : MonoBehaviour
     /// </summary>
     [HideInInspector]
     public float modifiedSpeed;
-    Gremlin activeGremlin; //Class name subject to change?
+    [HideInInspector]
+    public Gremlin activeGremlin; //Class name subject to change?
     float timePassed;
     Vector3 gOffset;
     public delegate void Callback();
@@ -101,7 +102,6 @@ public class TrackModule : MonoBehaviour
             else
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
                 activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + terrainVariant.positionFunction(timePassed * modifiedSpeed, this) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
-                activeGremlin.transform.rotation = Quaternion.Euler(terrainVariant.rotationFunction(timePassed * modifiedSpeed, this));
                 timePassed += Time.fixedDeltaTime;
             }
         }

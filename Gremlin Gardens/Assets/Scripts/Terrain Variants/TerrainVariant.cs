@@ -39,14 +39,4 @@ public class TerrainVariant : ScriptableObject
     public virtual Vector3 positionFunction(float time, TrackModule activeModule) {
         return Vector3.zero;
     }
-
-    /// <summary>
-    /// Update a Gremlin's rotation based on time, or maybe something else you wanna choose.
-    /// </summary>
-    /// <param name="time">The time that's elapsed since starting the module.</param>
-    /// <param name="activeModule">The active module that called this function.</param>
-    /// <returns></returns>
-    public virtual Vector3 rotationFunction(float time, TrackModule activeModule) {
-        return Vector3.zero;
-    }
 }
