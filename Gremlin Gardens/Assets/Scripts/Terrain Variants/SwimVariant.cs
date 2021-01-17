@@ -4,9 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "SwimVariant", menuName = "Terrain Variants/SwimVariant")]
 public class SwimVariant : TerrainVariant
 {
-    public override float relativeSpeed(Gremlin gremlin)
+    public override float relativeSpeed(Gremlin gremlin, TrackModule activeModule)
     {
-        return base.relativeSpeed(gremlin);
+        return base.relativeSpeed(gremlin, activeModule);
     }
 
     public override Vector3 positionFunction(float time, TrackModule activeModule)

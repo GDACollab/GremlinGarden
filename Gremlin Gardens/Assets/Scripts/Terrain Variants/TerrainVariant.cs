@@ -20,8 +20,9 @@ public class TerrainVariant : ScriptableObject
     /// return gremlin.somestatistic/gremlin.somestatisticaverage;
     /// </example>
     /// <param name="gremlin">Track Module will pass the Gremlin object that it recieves from TrackManager.</param>
+    /// <param name="activeModule">The active module, if you need that to calculate other things.</param>
     /// <returns>A percentage of how fast that Gremlin should be moving.</returns>
-    public virtual float relativeSpeed(Gremlin gremlin) {
+    public virtual float relativeSpeed(Gremlin gremlin, TrackModule activeModule) {
         return 1 * speedModifier;
     }
 
@@ -34,7 +35,7 @@ public class TerrainVariant : ScriptableObject
     /// return new Vector3(Mathf.Sin(time), 0, 0);
     /// </example>
     /// <param name="time">The time that's elapsed since starting the module.</param>
-    /// <param name="activeModule">The module that called this function.</param>
+    /// <param name="activeModule">The module that called this function. Can be used if you need to look at other data.</param>
     /// <returns>A Vector 3 giving the offset of a Gremlin when moving on this TerrainVariant.</returns>
     public virtual Vector3 positionFunction(float time, TrackModule activeModule) {
         return Vector3.zero;

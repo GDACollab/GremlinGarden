@@ -3,7 +3,7 @@
 [CreateAssetMenu(fileName = "ExampleVariant", menuName = "Terrain Variants/ExampleVariant")]
 public class ExampleVariant : TerrainVariant
 {
-    public override float relativeSpeed(Gremlin gremlin)
+    public override float relativeSpeed(Gremlin gremlin, TrackModule activeModule)
     {
         return gremlin.speedThing * speedModifier;
     }
