@@ -160,6 +160,6 @@ From there, you'd be able to access the TrackManager's properties (like TrackMan
 
 But Simple Start Race will just run the race (and will enable looping, if you hit the checkbox in the inspector). Just create an empty object, attach Simple Start Race, select the TrackManager, and hit play.
 
-Okay, that's a wrap on the tutorial. If you want to mess around with this yourself, load the TrackDemo or TrackTutorial scene to mess around with all the different components.
+Okay, that's a wrap on the tutorial. If you want to mess around with this yourself, load the TrackDemo, TrackTutorial, or SampleRace scene to mess around with all the different components.
 
 Thanks for taking the time to read this!
