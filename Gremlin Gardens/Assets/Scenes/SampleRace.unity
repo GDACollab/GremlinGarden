@@ -1368,7 +1368,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!43 &23433234
 Mesh:
   m_ObjectHideFlags: 0
@@ -2222,7 +2224,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &134211463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4101,7 +4105,9 @@ MonoBehaviour:
   AnimationToPlay: SwimEnd
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!43 &306813969
 Mesh:
   m_ObjectHideFlags: 0
@@ -4314,7 +4320,9 @@ MonoBehaviour:
   AnimationToPlay: NinjaRightJump
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &329639871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4416,7 +4424,9 @@ MonoBehaviour:
   AnimationToPlay: NinjaLeftJump
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &337898789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6285,7 +6295,9 @@ MonoBehaviour:
   AnimationToPlay: SlowWalk
   terrainVariant: {fileID: 11400000, guid: 00b9db791982c6c4db07a5b633d68a54, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!1 &446803129
 GameObject:
   m_ObjectHideFlags: 0
@@ -8630,7 +8642,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!1 &522461195
 GameObject:
   m_ObjectHideFlags: 0
@@ -8679,7 +8693,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &522461198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9571,7 +9587,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &568204663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10548,7 +10566,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &616867430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10867,7 +10887,9 @@ MonoBehaviour:
   AnimationToPlay: NinjaRightJump
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!1 &702782867
 GameObject:
   m_ObjectHideFlags: 0
@@ -11550,7 +11572,9 @@ MonoBehaviour:
   AnimationToPlay: PrepareStep
   terrainVariant: {fileID: 11400000, guid: eb21b39afbfd9034c8d6f7b0e6c88a67, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &867255759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13935,7 +13959,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1147341510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14037,7 +14063,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1147951509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14139,7 +14167,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1156481162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14302,7 +14332,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1170479092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14568,7 +14600,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1186100085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14670,7 +14704,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1195553901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15548,7 +15584,9 @@ MonoBehaviour:
   AnimationToPlay: Walk
   terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1256098581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15894,7 +15932,9 @@ MonoBehaviour:
   AnimationToPlay: Swim
   terrainVariant: {fileID: 11400000, guid: b53bca9aeb535f3448a6b3001dce004b, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1280728379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16579,7 +16619,9 @@ MonoBehaviour:
   AnimationToPlay: SwimStart
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!1 &1422893601
 GameObject:
   m_ObjectHideFlags: 0
@@ -29334,7 +29376,9 @@ MonoBehaviour:
   AnimationToPlay: NinjaRightEnd
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!1 &1473673339
 GameObject:
   m_ObjectHideFlags: 0
@@ -30898,7 +30942,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1526755479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32564,7 +32610,9 @@ MonoBehaviour:
   AnimationToPlay: Walk
   terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!1 &1684402457
 GameObject:
   m_ObjectHideFlags: 0
@@ -33143,7 +33191,9 @@ MonoBehaviour:
   AnimationToPlay: NinjaRightJump
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!1 &1716258443
 GameObject:
   m_ObjectHideFlags: 0
@@ -33982,7 +34032,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1795810483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34548,7 +34600,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1813738121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35753,7 +35807,9 @@ MonoBehaviour:
   AnimationToPlay: NinjaLeftJump
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1871811291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36221,7 +36277,9 @@ MonoBehaviour:
   AnimationToPlay: NinjaRightStart
   terrainVariant: {fileID: 11400000, guid: eb21b39afbfd9034c8d6f7b0e6c88a67, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!43 &1950939091
 Mesh:
   m_ObjectHideFlags: 0
@@ -36434,7 +36492,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &1974337811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38445,7 +38505,9 @@ MonoBehaviour:
   AnimationToPlay: Walk
   terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &2048673839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38547,7 +38609,9 @@ MonoBehaviour:
   AnimationToPlay: Step
   terrainVariant: {fileID: 11400000, guid: b59b0f34c14fdaf4f84aa6ba73942ff1, type: 2}
   gremlinMoving: 0
+  totalDistance: 0
   modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
 --- !u!114 &2114746944
 MonoBehaviour:
   m_ObjectHideFlags: 0
