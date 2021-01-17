@@ -22,9 +22,7 @@ If you hit run right now, nothing will happen, and that's because we're missing 
 
 What are TerrainVariants? Well, a Gremlin's statistics will ultimately affect how a race is going, we don't have anything to tell a TrackModule how fast or slow a Gremlin should be going based on its statistics, and the calculations for how fast or slow a Gremlin should be going will be different for each type of track (a Gremlin might be faster at swimming than running). So we make something called a TerrainVariant, which has two important jobs (as of right now, it may have more later): To calculate a Gremlin's statistics to tell the TrackModule how fast that Gremlin should be going, and to tell the Gremlin how much it should be offset while on the track (this is for any animations that require the Gremlin to be moved while they're following a path. So if you want the Gremlin to bob up and down while swimming, you'd do that here).
 
-Drag a TerrainVariant from the Scripts/Terrain Variants folder into the empty TerrainVariant slot for each of your TrackModules.
-
-Then for each TrackModule script, attach the relevant TerrainVariant script (i.e., RunVariant for running, SwimVariant for swimming).
+Drag a TerrainVariant from the Scripts/Terrain Variants folder into the empty TerrainVariant slot for each of your TrackModules, or just double click the empty TerrainVariant slot from the InspectorView and select the appropriate TerrainVariant. For this tutorial, we'll just be attaching the default TerrainVariant script.
 
 Now play the scene. Everything should be working.
 
