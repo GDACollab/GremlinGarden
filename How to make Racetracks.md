@@ -24,13 +24,13 @@ What are TerrainVariants? Well, a Gremlin's statistics will ultimately affect ho
 
 Drag a TerrainVariant from the Scripts/Terrain Variants folder into the empty TerrainVariant slot for each of your TrackModules, or just double click the empty TerrainVariant slot from the InspectorView and select the appropriate TerrainVariant. For this tutorial, we'll just be attaching the default TerrainVariant script.
 
+![We're done, kinda](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/newTerrainVariant.PNG)
+
 Now play the scene. Everything should be working.
 
 If you want to know more about what you can modify you can either read below, or look at the tooltips for each field in the Inspector view.
 
 If you have any questions, let me know (ambiguousname#1972 on discord).
-
-![We're done, kinda](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/wereDone.PNG)
 
 ## What did I just do?
 Let's go into a little more detail.
