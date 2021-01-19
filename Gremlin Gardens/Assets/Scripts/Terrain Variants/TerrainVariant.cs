@@ -13,6 +13,7 @@ public class TerrainVariant : ScriptableObject
     /// </summary>
     [Tooltip("How much to multiply the TerrainVariant's modified speed by.")]
     public float speedModifier = 1.0f;
+
     /// <summary>
     /// Calculate how fast the gremlin should be moving in terms of percentage, based on a Gremlin's stats. For a skill at the average level, it should return 1.
     /// </summary>
@@ -25,6 +26,28 @@ public class TerrainVariant : ScriptableObject
     public virtual float relativeSpeed(Gremlin gremlin, TrackModule activeModule) {
         return 1 * speedModifier;
     }
+
+    /// <summary>
+    /// Only to be used by EquationTrackModule.
+    /// The domain of time for positionFunction. domain.x will determine what t is equal to when positionFunction is first called,
+    /// and if domain.y == t, the Gremlin will stop moving. You may set domain.y = Math.Infinity to only rely on positionClip.
+    /// </summary>
+    [HideInInspector]
+    public virtual Vector2 domain { get; }
+
+    /// <summary>
+    /// Only to be used by EquationTrackModule.
+    /// A position on the function at which to stop the function. Set each axis equal to Mathf.Infinity if you want that to remain unused.
+    /// </summary>
+    [HideInInspector]
+    public virtual Vector3 positionClip { get; }
+
+    /// <summary>
+    /// Only to be used by EquationTrackModule.
+    /// The tolerance of distance between PositionClip and the position of the function to trigger a stop to Gremlin movement.
+    /// </summary>
+    [HideInInspector]
+    public virtual float clipTolerance { get; }
 
     /// <summary>
     /// The function that TrackModule will use to update a Gremlin's position whilst following the Bezier curve.
