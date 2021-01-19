@@ -65,7 +65,8 @@ Animation To Play will be the actual name of the animation that the Gremlin has 
 Base speed is just the speed in units per fixed frame rate that the Gremlin will travel along the path. Base speed will not affect the speed of the animation, but the relativeSpeed function of TerrainVariants will.
 Ideally, you'd make an animation, and then time the base speed with that animation.
 
-Terrain Variants are something we'll cover... right now.
+There are also different kinds of TrackModules (besides the base TrackModule), such as TweenTrackModule, which will tween between its previous and next siblings in the hierarchy, and 
+EquationTrackModule, which uses the positionFunction of a TerrainVariant to determine the position of its Gremlin.
 
 ### Terrain Variants
 
@@ -160,6 +161,6 @@ From there, you'd be able to access the TrackManager's properties (like TrackMan
 
 But Simple Start Race will just run the race (and will enable looping, if you hit the checkbox in the inspector). Just create an empty object, attach Simple Start Race, select the TrackManager, and hit play.
 
-Okay, that's a wrap on the tutorial. If you want to mess around with this yourself, load the TrackDemo, TrackTutorial, or SampleRace scene to mess around with all the different components.
+Okay, that's a wrap on the tutorial. If you want to mess around with this yourself, load the TrackDemo, TrackTutorial, GlideDemo, or SampleRace scene to mess around with all the different components.
 
 Thanks for taking the time to read this!

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Tween between the 
+/// TrackModule that tweens between the previous and next siblings of this TrackModule in the hierarchy (requires TrackManager to be parent).
 /// </summary>
 public class TweenTrackModule : TrackModule
 {
