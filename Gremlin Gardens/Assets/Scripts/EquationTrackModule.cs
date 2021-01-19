@@ -6,7 +6,7 @@ using UnityEngine;
 /// Takes an equation instead of a PathCreator.
 /// Uses a TerrainVariant's positionFunction as the equation (So positionFunction will actually be used for position in EquationTrackModule rather than offset).
 /// BaseSpeed is how much to increment the function by per fixed frame rate.
-/// The next child should be a TransitionTrackModule to properly move the Gremlin to the next TrackModule.
+/// The next child should be a TweenTrackModule to properly move the Gremlin to the next TrackModule.
 /// </summary>
 public class EquationTrackModule : TrackModule
 {
