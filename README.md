@@ -1,6 +1,6 @@
 # Gremlin Garden
 
-*Made by [GDA](http://gdacollab.con) 2020–2021*
+*Made by the student-led [GDA](http://gdacollab.com) club at UC Santa Cruz, 2020–2021*
 
 3D, first-person monster trainer with cute and comfy vibes.
 
@@ -10,4 +10,4 @@ Acquire Gremlins, feed gremlins, take care of gremlins, hold gremlins,  and make
 
 ---
 
-Made in Unity 2020.1.6f. The Unity Editor can be downloaded from the [Unity Download Archive](https://unity3d.com/get-unity/download/archive) or through Unity Hub.
+Made in Unity 2020.1.6f1. Unity can be downloaded from the [Unity Download Archive](https://unity3d.com/get-unity/download/archive) or through Unity Hub.
