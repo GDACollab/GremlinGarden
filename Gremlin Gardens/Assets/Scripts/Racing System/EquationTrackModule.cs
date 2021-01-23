@@ -28,11 +28,11 @@ public class EquationTrackModule : TrackModule
     }
 
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (gremlinMoving)
         { //Move the Gremlin around.
-            totalDistance += modifiedSpeed * BaseSpeed * Time.fixedDeltaTime; //Keeping track of how far along the Gremlin is in this module.
+            totalDistance += modifiedSpeed * BaseSpeed * Time.deltaTime; //Keeping track of how far along the Gremlin is in this module.
             var isStopping = true;
             for (int i = 0; i < 3; i++) { //Go through each axis on PositionClip, and check if we're within the threshold. If not, don't EndMove.
                 float position = terrainVariant.positionClip[i];
@@ -49,7 +49,7 @@ public class EquationTrackModule : TrackModule
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
                 modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this); //Get modifiedSpeed again in case it's somehow changed.
                 activeGremlin.transform.position = terrainVariant.positionFunction(totalDistance, this) + gOffset + worldPosOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
-                timePassed += Time.fixedDeltaTime;
+                timePassed += Time.deltaTime;
             }
         }
     }

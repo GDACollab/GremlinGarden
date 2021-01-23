@@ -10,7 +10,7 @@ using PathCreation;
 public class TrackModule : MonoBehaviour
 {
     /// <summary>
-    /// How fast the Gremlin moves in units per fixed frame count. Does NOT affect animation speed (see TerrainVariant instead).
+    /// How fast the Gremlin moves in units per frame. Does NOT affect animation speed (see TerrainVariant instead).
     /// </summary>
     [Tooltip("How fast the Gremlin moves in units per fixed frame count. Does NOT affect animation speed (see TerrainVariant instead).")]
     public float BaseSpeed = .5f;
@@ -98,10 +98,10 @@ public class TrackModule : MonoBehaviour
         toCallback();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (gremlinMoving) { //Move the Gremlin around.
-            totalDistance += modifiedSpeed * BaseSpeed * Time.fixedDeltaTime; //Keeping track of how far along the Gremlin is in this module.
+            totalDistance += modifiedSpeed * BaseSpeed * Time.deltaTime; //Keeping track of how far along the Gremlin is in this module.
             if (totalDistance >= internalCreator.path.length)
             {
                 EndMove();
@@ -110,7 +110,7 @@ public class TrackModule : MonoBehaviour
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
                 modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this); //Get modifiedSpeed again in case it's somehow changed.
                 activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + terrainVariant.positionFunction(timePassed * modifiedSpeed, this) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
-                timePassed += Time.fixedDeltaTime;
+                timePassed += Time.deltaTime;
             }
         }
     }
