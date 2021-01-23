@@ -21,6 +21,9 @@ public class GremlinClass : MonoBehaviour
 // Class that defines and alters each Gremlin's stats
 public class Gremlin : Object
 {
+    //Name of the gremlin
+    private string gremlinName;
+
     // Dictionary of all gremlin stats and their values
     private Dictionary<string, float> gremlinStats = new Dictionary<string, float>()
     {
@@ -32,7 +35,26 @@ public class Gremlin : Object
         {"Flying", 0}
     };
 
-    public Gremlin(){}
+    /*
+     * Constructor
+     * Sets the name of the gremlin
+     * 
+     * @param name = the name of the gremlin
+     */
+    public Gremlin(string name)
+    {
+        gremlinName = name;
+    }
+
+    /*
+     * Gives the name of the gremlin
+     *
+     * @return - The name of the gremlin
+     */
+    public string getName()
+    {
+        return gremlinName;
+    }
 
     /*
      * Modifies the value of a specified stat to a given value
