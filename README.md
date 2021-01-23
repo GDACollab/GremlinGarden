@@ -1,6 +1,6 @@
 # Gremlin Garden
 
-*Made by the student-led [GDA](http://gdacollab.com) club at UC Santa Cruz, 2020–2021*
+*Made by the student-led [Game Design and Art Collab](http://gdacollab.com) club at UC Santa Cruz, 2020–2021*
 
 3D, first-person monster trainer with cute and comfy vibes.
 
