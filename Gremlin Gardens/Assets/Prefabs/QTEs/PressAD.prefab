@@ -213,6 +213,11 @@ MonoBehaviour:
   activeModule: {fileID: 0}
   firstKey: a
   secondKey: d
+  firstKeyImage: {fileID: 6083779338225395043}
+  secondKeyImage: {fileID: 6083779339027733117}
+  firstSprite: {fileID: 21300000, guid: 7f599f16ec74afd4a9b9aedeea06d3d6, type: 3}
+  secondSprite: {fileID: 21300000, guid: ca6e9af097125b34c8799d8314a81867, type: 3}
+  frameRate: 0.5
   speedIncrease: 3
   speedDecrease: 0.5
 --- !u!1 &6083779338225395046
@@ -281,8 +286,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7f599f16ec74afd4a9b9aedeea06d3d6, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -436,8 +441,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7f599f16ec74afd4a9b9aedeea06d3d6, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

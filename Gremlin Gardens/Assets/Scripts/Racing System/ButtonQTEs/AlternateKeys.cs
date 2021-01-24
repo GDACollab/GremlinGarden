@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AlternateKeys : QTEScript
 {
@@ -14,6 +15,37 @@ public class AlternateKeys : QTEScript
     /// </summary>
     [Tooltip("Second key to press.")]
     public string secondKey = "";
+
+    /// <summary>
+    /// First key's image to change.
+    /// </summary>
+    [Tooltip("First key's image to change.")]
+    public Image firstKeyImage;
+    /// <summary>
+    /// Second key's image to change.
+    /// </summary>
+    [Tooltip("Second key's image to change.")]
+    public Image secondKeyImage;
+
+    /// <summary>
+    /// First frame to use.
+    /// </summary>
+    [Tooltip("First frame to use.")]
+    public Sprite firstSprite;
+    /// <summary>
+    /// Second frame to use.
+    /// </summary>
+    [Tooltip("Second frame to use.")]
+    public Sprite secondSprite;
+
+    /// <summary>
+    /// The frame rate of the animation.
+    /// </summary>
+    [Tooltip("The Frame Rate of the animation. Not really a frame rate, it's based on Time.deltaTime, but... whatever.")]
+    public float frameRate = 1;
+
+    float firstKeyFrames = 0.5f;
+    float secondKeyFrames = 0;
 
     /// <summary>
     /// How much to increase the speed by.
@@ -64,6 +96,29 @@ public class AlternateKeys : QTEScript
         }
         if (Input.GetKeyUp(secondKey) && secondKeyDown == true) {
             secondKeyDown = false;
+        }
+        firstKeyFrames += Time.deltaTime;
+        secondKeyFrames += Time.deltaTime;
+        if (firstKeyFrames > frameRate)
+        {
+            firstKeyFrames = 0;
+            if (firstKeyImage.sprite == firstSprite)
+            {
+                firstKeyImage.sprite = secondSprite;
+            }
+            else {
+                firstKeyImage.sprite = firstSprite;
+            }
+        }
+        if (secondKeyFrames > frameRate) {
+            secondKeyFrames = 0;
+            if (secondKeyImage.sprite == firstSprite)
+            {
+                secondKeyImage.sprite = secondSprite;
+            }
+            else {
+                secondKeyImage.sprite = firstSprite;
+            }
         }
     }
 }
