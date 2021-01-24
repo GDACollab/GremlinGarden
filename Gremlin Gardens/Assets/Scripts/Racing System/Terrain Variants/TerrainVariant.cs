@@ -15,6 +15,12 @@ public class TerrainVariant : ScriptableObject
     public float speedModifier = 1.0f;
 
     /// <summary>
+    /// Prefab button with associated script to use in this TerrainVariant's QTE.
+    /// </summary>
+    [Tooltip("Prefab button with associated script to use in this TerrainVariant's QTE.")]
+    public GameObject QTEButton;
+
+    /// <summary>
     /// Calculate how fast the gremlin should be moving in terms of percentage, based on a Gremlin's stats. For a skill at the average level, it should return 1.
     /// </summary>
     /// <example>

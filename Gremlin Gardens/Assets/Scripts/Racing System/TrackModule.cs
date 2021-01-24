@@ -72,6 +72,10 @@ public class TrackModule : MonoBehaviour
     public float timePassed;
     [HideInInspector]
     public Vector3 gOffset;
+    /// <summary>
+    /// The QTE object pulled from terrainVariant.
+    /// </summary>
+    GameObject qteObject;
     public delegate void Callback();
     /// <summary>
     /// A callback called at the end of the move.
@@ -83,7 +87,7 @@ public class TrackModule : MonoBehaviour
     /// <param name="gremlin">The Gremlin that's being moved.</param>
     /// <param name="gremlinOffset">The offset of the gremlin (see: TrackManager.GremlinOffset).</param>
     /// <param name="callbackFunc">The function that TrackManager will pass to callback to later.</param>
-    public void BeginMove(Gremlin gremlin, Vector3 gremlinOffset, Callback callbackFunc) {
+    public void BeginMove(Gremlin gremlin, Vector3 gremlinOffset, Callback callbackFunc, GameObject UI) {
         gremlinMoving = true;
         activeGremlin = gremlin;
         gOffset = gremlinOffset;
@@ -91,10 +95,18 @@ public class TrackModule : MonoBehaviour
         timePassed = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
+        if (terrainVariant.QTEButton != null) {
+            qteObject = Instantiate(terrainVariant.QTEButton, UI.transform);
+            qteObject.GetComponent<QTEScript>().activeModule = this;
+        }
     }
 
     public void EndMove() {
         gremlinMoving = false;
+        if (qteObject != null)
+        {
+            Destroy(qteObject);
+        }
         toCallback();
     }
 

@@ -18,6 +18,12 @@ public class TrackManager : MonoBehaviour
     public GameObject RacingGremlin;
 
     /// <summary>
+    /// The UI to attach QTEs to.
+    /// </summary>
+    [Tooltip("The UI to attach QTEs to.")]
+    public GameObject ActiveUI;
+
+    /// <summary>
     /// How far we should offset the Gremlin from its center of mass.
     /// </summary>
     [Tooltip("How far we should offset the Gremlin from its center of mass.")]
@@ -63,7 +69,7 @@ public class TrackManager : MonoBehaviour
         else
         {
             TrackModule module = transform.GetChild(currentChild).GetComponent<TrackModule>();
-            module.BeginMove(RacingGremlin.GetComponent<Gremlin>(), GremlinOffset, Race); //Keep the Gremlin moving.
+            module.BeginMove(RacingGremlin.GetComponent<Gremlin>(), GremlinOffset, Race, ActiveUI); //Keep the Gremlin moving.
             RacingGremlin.GetComponent<Animator>().Play(module.AnimationToPlay); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
             RacingGremlin.GetComponent<Animator>().speed = module.modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
             racingCallback(this, module);
