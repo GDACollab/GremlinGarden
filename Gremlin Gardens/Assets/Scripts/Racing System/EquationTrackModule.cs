@@ -47,7 +47,7 @@ public class EquationTrackModule : TrackModule
             }
             else
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
-                modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this); //Get modifiedSpeed again in case it's somehow changed.
+                SetModifiedSpeed();
                 activeGremlin.transform.position = terrainVariant.positionFunction(totalDistance, this) + gOffset + worldPosOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
                 timePassed += Time.deltaTime;
             }

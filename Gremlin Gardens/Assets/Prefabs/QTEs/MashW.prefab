@@ -226,5 +226,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeModule: {fileID: 0}
   key: w
-  distanceIncrease: 0.5
+  speedIncrease: 3
   isKeyDown: 0
