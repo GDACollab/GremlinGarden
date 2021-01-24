@@ -4,6 +4,8 @@ using UnityEngine;
 
 /// <summary>
 /// A pretty hacky solution if I do say so myself. Have every QTE event extend QTE script so that the TrackModule script can attach itself to the relevant script.
+/// Here's how you're supposed to use this. First, make something in the UI, and attach a QTEScript (or something that extends the QTEScript) to that something.
+/// Then, make that thing a prefab, and delete it from the UI. Then, drag the prefab in to any TerrainVariant's "QTEButton" slot in the Inspector. Now every TrackModule with that TerrainVariant will use that QTE.
 /// </summary>
 public class QTEScript : MonoBehaviour
 {

@@ -148,6 +148,8 @@ public class ExampleVariant : TerrainVariant
 So we can override either the positionFunction (which tells us how to offset the Gremlin, so you could do a zig zagging/arcing/random motion or something while the Gremlin is walking/running/swimming) or (more importantly), the **relativeSpeed** function, which is used for telling a Gremlin how fast it can move by returning a percentage after we do some calculations on the Gremlin's stats.
 
 Note that the relativeSpeed function will also affect how fast the animations play (just to make sure the timing of animations isn't off for different Goblins).
+
+TerrainVariants also allow you to slot in prefabs from the UI to act as QTE buttons. See the QTEScript class (Scripts/Racing System/ButtonQTEs folder) for more details.
 ### Simple Start Race
 
 Ideally, we'd have some sort of complex thing to start and time races. For that, you'd call TrackManager.StartRace(Callback), where Callback is a  function which takes a TrackManager object as a parameter:

@@ -22,6 +22,9 @@ public class MashButton : QTEScript
     [Tooltip("How much to decrease the gremlin's speed over time by.")]
     public float speedDecrease = 0.5f;
 
+    /// <summary>
+    /// The speed that we're going to add to activeModule.modifiedSpeed in ModifySpeed().
+    /// </summary>
     float speedChange;
 
     [HideInInspector]
