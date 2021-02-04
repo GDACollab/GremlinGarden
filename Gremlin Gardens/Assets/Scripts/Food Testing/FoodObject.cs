@@ -11,11 +11,14 @@ public class FoodObject : MonoBehaviour
     public GameObject foodModel;
     private Rigidbody rgbd;
     public float size;
-    // Start is called before the first frame update
 
+    // Variable that defines the food and all stats correlated with it 
+    private Food foodStats;
+    
+    // Start is called before the first frame update
     void Start()
     {
-        //Sets the Model
+        // Sets the Model
         MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
         MeshFilter objMesh = gameObject.AddComponent<MeshFilter>();
         objMesh.mesh = foodModel.GetComponent<MeshFilter>().sharedMesh;
@@ -27,7 +30,8 @@ public class FoodObject : MonoBehaviour
         //Scales Size Down
         scaleObjectSize(gameObject, size);
         
-
+        // Initializing the food itself and its stats
+        foodStats = new Food();
     }
 
     // Update is called once per frame
@@ -48,7 +52,7 @@ public class FoodObject : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gremlin"))
         {
-            Debug.Log("Gremlin ate Food!");
+            Debug.Log($"Gremlin ate {foodStats.getName()}!");
             Destroy(gameObject);
         }
     }
