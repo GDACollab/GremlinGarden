@@ -55,6 +55,6 @@ public class PlayerMovement : MonoBehaviour
         currentDir = Vector2.SmoothDamp(currentDir, targetDir, ref currentDirVelocity, moveSmoothTime);
 
         Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * walkSpeed;
-        controller.Move(velocity * Time.deltaTime);
+        controller.SimpleMove(velocity * Time.deltaTime);
     }
 }
