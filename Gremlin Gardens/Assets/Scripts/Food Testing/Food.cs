@@ -7,7 +7,7 @@ public class Food : Object
 {
     // Database of all possible food
     // Indices [changed stat(s) & by how much, name, model] 
-    public static  Dictionary<string, Food> allPossibleFood = new Dictionary<string, Food>() {
+    public static readonly Dictionary<string, Food> allPossibleFood = new Dictionary<string, Food>() {
         {"Apple", new Food(Resources.Load("Apple") as GameObject, "Apple", new Dictionary<string, float>() {
             {"strength", 0.25f }, {"speed", 0f}
         })},
@@ -25,7 +25,7 @@ public class Food : Object
     // The model used by the food in-game
     private GameObject model;
 
-    //Contructions Non-Random Food Object
+    // Constructor for a Non-Random Food object
     public Food(GameObject model, string foodName, Dictionary<string, float> alteredStats)
     {
         this.model = model;
@@ -33,6 +33,7 @@ public class Food : Object
         this.alteredStats = alteredStats;
     }
 
+    // Constructor for a Random Food object
     public Food()
     {
         // The index of allPossibleFood from which the stats will be drawn from
@@ -45,20 +46,36 @@ public class Food : Object
         this.alteredStats = reference.alteredStats;
     }
 
+    // Returns the model associated with the food
     public GameObject getModel()
     {
         return model;
     }
 
+    // Returns the name of the food
     public string getName()
     {
-        return name;
+        return foodName;
     }
 
+    /**
+     * Returs a dictionary of all the stats that will be altered and how much they will be altered by
+     * 
+     * @return: a copy of alteredStats
+     */
     public Dictionary<string, float> getStats()
     {
-        return alteredStats;
+        return new Dictionary<string, float>(alteredStats);
     }
 
-
+    /**
+     * Returns how much a given stat will change when a gremlin eats the food
+     * 
+     * @param stat: the stat in question
+     * @return: how much the given stat will change
+     */
+    public double getStatAlteration(string stat)
+    {
+        return alteredStats[stat];
+    }
 }
