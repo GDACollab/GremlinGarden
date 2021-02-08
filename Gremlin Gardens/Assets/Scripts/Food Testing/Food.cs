@@ -74,7 +74,7 @@ public class Food : Object
      * @param stat: the stat in question
      * @return: how much the given stat will change
      */
-    public double getStatAlteration(string stat)
+    public float getStatAlteration(string stat)
     {
         return alteredStats[stat];
     }
