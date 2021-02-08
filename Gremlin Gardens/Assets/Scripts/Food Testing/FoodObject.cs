@@ -6,21 +6,21 @@ public class FoodObject : MonoBehaviour
 {
 
     // Attach this script to an empty game object and it will become a food scaled to a size of 1
-    public int foodID;
+    public string foodID;
     private Food food;
-    public GameObject foodModel;
     private Rigidbody rgbd;
     public float size;
     // Start is called before the first frame update
 
     void Start()
     {
+        food = Food.allPossibleFood[foodID];
         //Sets the Model
         MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
         MeshFilter objMesh = gameObject.AddComponent<MeshFilter>();
-        objMesh.mesh = foodModel.GetComponent<MeshFilter>().sharedMesh;
+        objMesh.mesh = food.getModel().GetComponent<MeshFilter>().sharedMesh;
         //Sets the Material
-        renderer.material = foodModel.GetComponent<MeshRenderer>().sharedMaterial;
+        renderer.material = food.getModel().GetComponent<MeshRenderer>().sharedMaterial;
         //Adds Necessary Collision Components
         gameObject.AddComponent<SphereCollider>();
         rgbd = gameObject.AddComponent<Rigidbody>();
@@ -49,6 +49,7 @@ public class FoodObject : MonoBehaviour
         if (collision.gameObject.CompareTag("Gremlin"))
         {
             Debug.Log("Gremlin ate Food!");
+            collision.gameObject.GetComponent<TempGremlinMove>().EatFood(food);
             Destroy(gameObject);
         }
     }
