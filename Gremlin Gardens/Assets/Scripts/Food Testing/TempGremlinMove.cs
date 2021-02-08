@@ -29,7 +29,7 @@ public class TempGremlinMove : MonoBehaviour
         {
             gameObject.transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         }
-        Debug.Log(transform.rotation.y);
+        //Debug.Log(transform.rotation.y);
 
 
         float x = transform.position.x;

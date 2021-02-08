@@ -48,7 +48,7 @@ public class FoodObject : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gremlin"))
         {
-            Debug.Log("Gremlin ate Food!");
+            Debug.Log($"Gremlin ate {food.getName()}!");
             collision.gameObject.GetComponent<TempGremlinMove>().EatFood(food);
             Destroy(gameObject);
         }
