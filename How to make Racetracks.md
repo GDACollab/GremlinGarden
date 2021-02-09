@@ -4,7 +4,7 @@ First up, we're going to need a TrackManager, to keep track of the Gremlin as it
 
 Next, we're going to make our Gremlin. You can either drag a Gremlin from the prefabs folder, or you can create a cube (or some other model) and attach the Animator component and the Gremlin class. The Gremlin needs both these components so the TrackModules and TerrainVariants (which we'll be covering shortly) can both animate the Gremlin and speed or slow the Gremlin based on specific statistics. Add your new Gremlin under the "Racing Gremlin" field in the Inspector view for the TrackManager.
 
-![starting out](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/startingOutPrefab.PNG)
+![starting out](./TutorialImages/startingOutPrefab.PNG)
 
 So we now have the overall hierarchy for our race. Next up, we're going to actually need things for the Gremlin to race on. Start by importing some models (or making some default cubes, what do I care) to make up your racetrack.
 
@@ -16,7 +16,7 @@ The TrackModule is paired with the PathCreator component because the PathCreator
 
 Now that everything's in place, you can then edit the Beziér curves to make what looks like a racetrack:
 
-![making a racetrack](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/makingRacetrack.PNG)
+![making a racetrack](./TutorialImages/makingRacetrack.PNG)
 
 If you hit run right now, nothing will happen, and that's because we're missing two things. Firstly, we need a script to actually start the race. If you just create an empty Game Object, attach the "Simple Start Race" script to it, and select the game object with your TrackManager script, you'll be fine. The second missing thing is a little more tricky. All TrackModules are missing something that's called a TerrainVariant.
 
@@ -26,7 +26,7 @@ Drag a TerrainVariant from the Scripts/Terrain Variants folder into the empty Te
 
 If you ever want to duplicate an existing TerrainVariant to make changes to, you'll need to do the following: Right click, click "Create", "Terrain Variants", and then select the TerrainVariant you want to duplicate and modify.
 
-![We're done, kinda](https://github.com/GDACollab/GremlinGarden/blob/track-system/TutorialImages/newTerrainVariant.PNG)
+![We're done, kinda](./TutorialImages/newTerrainVariant.PNG)
 
 Now play the scene. Everything should be working.
 
