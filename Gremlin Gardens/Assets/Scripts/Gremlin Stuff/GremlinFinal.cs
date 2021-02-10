@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Class that defines and alters each Gremlin's stats
-public class Gremlin : Object
+public class GremlinFinal : Object
 {
     //Name of the gremlin
     private string gremlinName;
@@ -25,7 +25,7 @@ public class Gremlin : Object
      * 
      * @param name = the name of the gremlin
      */
-    public Gremlin(string name)
+    public GremlinFinal(string name)
     {
         gremlinName = name;
     }
