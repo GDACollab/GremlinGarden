@@ -29,7 +29,7 @@ public class TerrainVariant : ScriptableObject
     /// <param name="gremlin">Track Module will pass the Gremlin object that it recieves from TrackManager.</param>
     /// <param name="activeModule">The active module, if you need that to calculate other things.</param>
     /// <returns>A percentage of how fast that Gremlin should be moving.</returns>
-    public virtual float relativeSpeed(Gremlin gremlin, TrackModule activeModule) {
+    public virtual float relativeSpeed(GremlinObject gremlin, TrackModule activeModule) {
         return 1 * speedModifier;
     }
 

@@ -6,7 +6,7 @@ using UnityEngine;
 public class GremlinObject : MonoBehaviour
 {
     // Variables for the in-game gremlins
-    GremlinFinal gremlin;
+    public Gremlin gremlin;
     Rigidbody body;
     string gremlinName;
     
@@ -14,7 +14,7 @@ public class GremlinObject : MonoBehaviour
     void Start()
     {
         // Defines the Gremlin
-        gremlin = new GremlinFinal(gremlinName);
+        gremlin = new Gremlin(gremlinName);
 
         //Adds Necessary Collision Components
         gameObject.AddComponent<SphereCollider>();
