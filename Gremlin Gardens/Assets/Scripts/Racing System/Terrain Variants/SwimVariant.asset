@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb9e0938898a1d449f5f77b974377d6, type: 3}
   m_Name: SwimVariant
   m_EditorClassIdentifier: 
+  speedModifier: 1
+  QTEButton: {fileID: 6083779338184274474, guid: 9b134e05afda0ce4793a11da96650bb4, type: 3}

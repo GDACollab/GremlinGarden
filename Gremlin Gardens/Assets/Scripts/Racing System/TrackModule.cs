@@ -67,11 +67,15 @@ public class TrackModule : MonoBehaviour
     [HideInInspector]
     public float modifiedSpeed;
     [HideInInspector]
-    public Gremlin activeGremlin; //Class name subject to change?
+    public GremlinObject activeGremlin; //Class name subject to change?
     [HideInInspector]
     public float timePassed;
     [HideInInspector]
     public Vector3 gOffset;
+    /// <summary>
+    /// The QTE object pulled from terrainVariant.
+    /// </summary>
+    GameObject qteObject;
     public delegate void Callback();
     /// <summary>
     /// A callback called at the end of the move.
@@ -83,7 +87,7 @@ public class TrackModule : MonoBehaviour
     /// <param name="gremlin">The Gremlin that's being moved.</param>
     /// <param name="gremlinOffset">The offset of the gremlin (see: TrackManager.GremlinOffset).</param>
     /// <param name="callbackFunc">The function that TrackManager will pass to callback to later.</param>
-    public void BeginMove(Gremlin gremlin, Vector3 gremlinOffset, Callback callbackFunc) {
+    public void BeginMove(GremlinObject gremlin, Vector3 gremlinOffset, Callback callbackFunc, GameObject UI) {
         gremlinMoving = true;
         activeGremlin = gremlin;
         gOffset = gremlinOffset;
@@ -91,11 +95,29 @@ public class TrackModule : MonoBehaviour
         timePassed = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
+        if (terrainVariant.QTEButton != null) {
+            qteObject = Instantiate(terrainVariant.QTEButton, UI.transform);
+            qteObject.GetComponent<QTEScript>().SetActiveModule(this);
+        }
     }
 
     public void EndMove() {
         gremlinMoving = false;
+        if (qteObject != null)
+        {
+            Destroy(qteObject);
+        }
         toCallback();
+    }
+
+    /// <summary>
+    /// Set modified speed with the terrainVariant, but also set it with the QTE script, if you need that sort of thing.
+    /// </summary>
+    public void SetModifiedSpeed() {
+        modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
+        if (qteObject != null) {
+            modifiedSpeed += qteObject.GetComponent<QTEScript>().ModifySpeed();
+        }
     }
 
     void Update()
@@ -108,7 +130,7 @@ public class TrackModule : MonoBehaviour
             }
             else
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
-                modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this); //Get modifiedSpeed again in case it's somehow changed.
+                SetModifiedSpeed(); //Set modifiedSpeed again in case it's somehow changed.
                 activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + terrainVariant.positionFunction(timePassed * modifiedSpeed, this) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
                 timePassed += Time.deltaTime;
             }

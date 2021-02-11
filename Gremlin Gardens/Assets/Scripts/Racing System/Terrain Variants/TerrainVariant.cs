@@ -15,6 +15,12 @@ public class TerrainVariant : ScriptableObject
     public float speedModifier = 1.0f;
 
     /// <summary>
+    /// Prefab button with associated script to use in this TerrainVariant's QTE. Make a prefab and attach something from the Scripts/Racing System/Button QTEs folder.
+    /// </summary>
+    [Tooltip("Prefab button with associated script to use in this TerrainVariant's QTE. Make a prefab and attach something from the Scripts/Racing System/Button QTEs folder.")]
+    public GameObject QTEButton;
+
+    /// <summary>
     /// Calculate how fast the gremlin should be moving in terms of percentage, based on a Gremlin's stats. For a skill at the average level, it should return 1.
     /// </summary>
     /// <example>
@@ -23,7 +29,7 @@ public class TerrainVariant : ScriptableObject
     /// <param name="gremlin">Track Module will pass the Gremlin object that it recieves from TrackManager.</param>
     /// <param name="activeModule">The active module, if you need that to calculate other things.</param>
     /// <returns>A percentage of how fast that Gremlin should be moving.</returns>
-    public virtual float relativeSpeed(Gremlin gremlin, TrackModule activeModule) {
+    public virtual float relativeSpeed(GremlinObject gremlin, TrackModule activeModule) {
         return 1 * speedModifier;
     }
 
