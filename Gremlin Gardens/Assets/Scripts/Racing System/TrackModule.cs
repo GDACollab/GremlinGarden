@@ -67,7 +67,7 @@ public class TrackModule : MonoBehaviour
     [HideInInspector]
     public float modifiedSpeed;
     [HideInInspector]
-    public Gremlin activeGremlin; //Class name subject to change?
+    public GremlinObject activeGremlin; //Class name subject to change?
     [HideInInspector]
     public float timePassed;
     [HideInInspector]
@@ -87,7 +87,7 @@ public class TrackModule : MonoBehaviour
     /// <param name="gremlin">The Gremlin that's being moved.</param>
     /// <param name="gremlinOffset">The offset of the gremlin (see: TrackManager.GremlinOffset).</param>
     /// <param name="callbackFunc">The function that TrackManager will pass to callback to later.</param>
-    public void BeginMove(Gremlin gremlin, Vector3 gremlinOffset, Callback callbackFunc, GameObject UI) {
+    public void BeginMove(GremlinObject gremlin, Vector3 gremlinOffset, Callback callbackFunc, GameObject UI) {
         gremlinMoving = true;
         activeGremlin = gremlin;
         gOffset = gremlinOffset;
