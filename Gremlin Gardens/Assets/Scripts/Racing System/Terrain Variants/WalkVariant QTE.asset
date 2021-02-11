@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d130a6ad1fa26994a8ed367813f904bd, type: 3}
-  m_Name: ExampleVariant
+  m_Script: {fileID: 11500000, guid: a45596049ef8b9147b53657e5752d6ea, type: 3}
+  m_Name: WalkVariant QTE
   m_EditorClassIdentifier: 
+  speedModifier: 1
+  QTEButton: {fileID: 5794175187822283999, guid: 528342a348933b746a51e811cf49258a, type: 3}
