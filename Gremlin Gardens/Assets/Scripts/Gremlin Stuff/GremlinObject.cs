@@ -22,7 +22,7 @@ public class GremlinObject : MonoBehaviour
         gremlin.setStat("Stamina", 1);
         gremlin.setStat("Climbing", 1);
         gremlin.setStat("Happiness", 1);
-        gremlin.setStat("Swiming", 1);
+        gremlin.setStat("Swimming", 1);
         //Adds Necessary Collision Components
         gameObject.AddComponent<SphereCollider>();
         body = gameObject.AddComponent<Rigidbody>();
