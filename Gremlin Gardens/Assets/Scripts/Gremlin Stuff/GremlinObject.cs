@@ -11,8 +11,8 @@ public class GremlinObject : MonoBehaviour
     Rigidbody body;
     public string gremlinName;
     
-    // Start is called before the first frame update
-    void Start()
+    //Use Awake instead of Start so that we get the stats ASAP. Useful for preventing bugs where the Gremlin is spawned in immediately but does not have stats yet.
+    void Awake()
     {
         // Defines the Gremlin
         gremlin = new Gremlin(gremlinName);
