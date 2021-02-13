@@ -29,6 +29,12 @@ public class RandomGremlinRace : MonoBehaviour
         for (int i = 0; i < gremlinCount; i++)
         {
             var gremlin = Instantiate(gremlinObject);
+            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Running", Random.Range(0.5f, 1f));
+            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Flying", Random.Range(0.5f, 1f));
+            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Stamina", Random.Range(0.5f, 1f));
+            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Climbing", Random.Range(0.5f, 1f));
+            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Happiness", Random.Range(0.5f, 1f));
+            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Swimming", Random.Range(0.5f, 1f));
             gremlin.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
             gremlinList.Add(gremlin);
         }

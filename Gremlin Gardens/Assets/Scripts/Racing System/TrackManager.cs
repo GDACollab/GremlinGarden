@@ -86,6 +86,9 @@ public class TrackManager : MonoBehaviour
     }
 
     private void EndRace() {
-        toCallback(this);
+        if (toCallback != null)
+        {
+            toCallback(this);
+        }
     }
 }
