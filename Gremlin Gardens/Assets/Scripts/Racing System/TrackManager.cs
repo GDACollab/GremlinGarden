@@ -47,6 +47,12 @@ public class TrackManager : MonoBehaviour
     RacingCallback racingCallback;
 
     /// <summary>
+    /// The width of the track, used in RaceManager for offsetting.
+    /// </summary>
+    [Tooltip("The width of the track, used in RaceManager for offsetting.")]
+    public float trackWidth;
+
+    /// <summary>
     /// Start racing with the selected Gremlin.
     /// </summary>
     /// <param name="endRaceCallback">A callback function (returns void) that takes TrackManager as a parameter, to be called at the end of the race. Optional.</param>

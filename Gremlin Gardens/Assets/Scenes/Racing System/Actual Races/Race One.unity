@@ -198,6 +198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 477010827}
+  - component: {fileID: 477010828}
   m_Layer: 0
   m_Name: RaceManager
   m_TagString: Untagged
@@ -213,12 +214,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477010826}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.0954213, y: 4.816882, z: -2.488047}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &477010828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477010826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdd10bddc2a6d69438f980a5736c7b4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActiveUI: {fileID: 1096559084}
+  playerTrack: {fileID: 3250037331611529709, guid: 79101deceb269b74aa42feaffa1b44ea, type: 3}
+  aiTrack: {fileID: 3667841751432075436, guid: ca7b11ba91198aa41be1b5a066112089, type: 3}
+  trackSides: {fileID: 0}
+  racetracks: []
+  placementOffsetDimension: {x: 0, y: 0, z: 1}
 --- !u!1 &1096559084
 GameObject:
   m_ObjectHideFlags: 0
