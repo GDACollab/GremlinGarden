@@ -21,14 +21,15 @@ public class RaceManager : MonoBehaviour
     [Tooltip("The AI's version of the track (for stuff without QTEs). The track object requires a TrackManager component.")]
     public GameObject aiTrack;
     /// <summary>
-    /// The side geometry of the track, to be used on both ends.
+    /// The side geometry of the track, to be used on both ends. Try making an empty object and making the geometry children of that object, and experiment to see what works.
     /// </summary>
-    [Tooltip("The side geometry of the track, to be used on both ends.")]
+    [Tooltip("The side geometry of the track, to be used on both ends. Try making an empty object and making the geometry children of that object, and experiment to see what works.")]
     public GameObject trackSides;
 
     /// <summary>
     /// The current list of racetracks being run.
     /// </summary>
+    [Tooltip("The current list of racetracks being run.")]
     public List<GameObject> racetracks;
 
     /// <summary>
@@ -38,18 +39,21 @@ public class RaceManager : MonoBehaviour
     public Vector3 placementOffsetDimension = Vector3.left;
     float placementOffset;
 
-    private void Start()
-    {
-        placementOffset = 0;
-    }
-
     /// <summary>
     /// Gets the track ready for racing.
     /// </summary>
     /// <param name="racingGremlins">The list of gremlin objects to use in the race. Assigns them a track based on their order. Assumes that the Gremlins in the list already exist as objects in the game world.</param>
     /// <param name="playerIndex">The index that the player Gremlin is stored at (so we can make a different track)</param>
     public void TrackSetup(List<GameObject> racingGremlins, int playerIndex) {
-        Instantiate(trackSides, this.transform);
+        var side = Instantiate(trackSides, this.transform);
+        side.transform.position = Vector3.zero;
+        if (playerIndex == 0)
+        {
+            placementOffset = playerTrack.GetComponent<TrackManager>().trackWidth;
+        }
+        else {
+            placementOffset = aiTrack.GetComponent<TrackManager>().trackWidth;
+        }
         for (int i = 0; i < racingGremlins.Count; i++) {
             GameObject track;
             if (i == playerIndex)
@@ -65,12 +69,15 @@ public class RaceManager : MonoBehaviour
             track.GetComponent<TrackManager>().RacingGremlin = racingGremlins[i];
             racetracks.Add(track);
         }
+        placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
         var otherSide = Instantiate(trackSides, this.transform);
         otherSide.transform.position += placementOffset * placementOffsetDimension;
     }
 
-    public void StartRace() { 
-        
+    public void StartTracks() {
+        foreach (GameObject track in racetracks) { //Let's hope this won't create any unfair results.
+            track.GetComponent<TrackManager>().StartRace();
+        }
     }
 
     // Update is called once per frame

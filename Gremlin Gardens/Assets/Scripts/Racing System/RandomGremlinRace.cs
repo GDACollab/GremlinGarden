@@ -29,10 +29,11 @@ public class RandomGremlinRace : MonoBehaviour
         for (int i = 0; i < gremlinCount; i++)
         {
             var gremlin = Instantiate(gremlinObject);
-            gremlin.GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1));
+            gremlin.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
             gremlinList.Add(gremlin);
         }
         raceManager.TrackSetup(gremlinList, Random.Range(0, gremlinCount));
+        raceManager.StartTracks();
     }
 
     // Update is called once per frame

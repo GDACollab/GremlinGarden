@@ -189,6 +189,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &447309158
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 447309159}
+  - component: {fileID: 447309160}
+  m_Layer: 0
+  m_Name: RandomRace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &447309159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447309158}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &447309160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447309158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62aff5aa13039ea42a55af4d087c5366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raceManager: {fileID: 477010828}
+  gremlinObject: {fileID: 2547044761531899819, guid: bd57b7de9f50ee440ac2388cec0eb061, type: 3}
+  gremlinCount: 4
 --- !u!1 &477010826
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +281,7 @@ MonoBehaviour:
   ActiveUI: {fileID: 1096559084}
   playerTrack: {fileID: 3250037331611529709, guid: 79101deceb269b74aa42feaffa1b44ea, type: 3}
   aiTrack: {fileID: 3667841751432075436, guid: ca7b11ba91198aa41be1b5a066112089, type: 3}
-  trackSides: {fileID: 0}
+  trackSides: {fileID: 2507957336823102628, guid: 110a037dd07d1284e917fa61b4514b33, type: 3}
   racetracks: []
   placementOffsetDimension: {x: 0, y: 0, z: 1}
 --- !u!1 &1096559084
