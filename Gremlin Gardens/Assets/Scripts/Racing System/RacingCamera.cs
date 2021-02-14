@@ -38,7 +38,7 @@ public class RacingCamera : MonoBehaviour
     /// Sets the gremlin the camera is currently tracking.
     /// </summary>
     /// <param name="gremlin">The gremlin to track.</param>
-    /// <param name="updatePos">Should the camera immediately update its position?</param>
+    /// <param name="updatePos">Should the camera immediately jump to this gremlin?</param>
     public void SetGremlinFocus(GameObject gremlin, bool updatePos) {
         gremlinFocus = gremlin;
         if (updatePos == true) {

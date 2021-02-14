@@ -17,6 +17,8 @@ public class RandomGremlinRace : MonoBehaviour
     /// </summary>
     public GameObject gremlinObject;
 
+    string[] GremlinNames = {"Happy", "Grumpy", "Doc", "Sleepy", "Bashful", "Sneezy", "Dopey", "Shrek", "Donkey"};
+
     /// <summary>
     /// Number of gremlins to populate the race with.
     /// </summary>
@@ -36,6 +38,7 @@ public class RandomGremlinRace : MonoBehaviour
             gremlin.GetComponent<GremlinObject>().gremlin.setStat("Happiness", Random.Range(0.5f, 1f));
             gremlin.GetComponent<GremlinObject>().gremlin.setStat("Swimming", Random.Range(0.5f, 1f));
             gremlin.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
+            gremlin.name = GremlinNames[Random.Range(0, GremlinNames.Length)];
             gremlinList.Add(gremlin);
         }
         raceManager.TrackSetup(gremlinList, Random.Range(0, gremlinCount));

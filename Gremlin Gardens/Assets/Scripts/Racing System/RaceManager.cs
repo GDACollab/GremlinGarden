@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -43,7 +44,19 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     [Tooltip("Which way on the axes to offset tracks. So (1, 0, 0) for offsetting positively on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.")]
     public Vector3 placementOffsetDimension = Vector3.left;
+    /// <summary>
+    /// How much we've actually offset by in constructing the track.
+    /// </summary>
     float placementOffset;
+
+    float timeElapsed = -1;
+    /// <summary>
+    /// The resulting times from the races.
+    /// </summary>
+    public float[] raceTimes;
+    int[] trackIndices; //Keeps the indices of the tracks for sorting with raceTimes.
+
+
 
     /// <summary>
     /// Gets the track ready for racing.
@@ -53,6 +66,8 @@ public class RaceManager : MonoBehaviour
     public void TrackSetup(List<GameObject> racingGremlins, int playerIndex) {
         var side = Instantiate(trackSides, this.transform);
         side.transform.position = Vector3.zero;
+        raceTimes = new float[racingGremlins.Count];
+        trackIndices = new int[racingGremlins.Count];
         if (playerIndex == 0)
         {
             placementOffset = playerTrack.GetComponent<TrackManager>().trackWidth;
@@ -71,6 +86,8 @@ public class RaceManager : MonoBehaviour
             else {
                 track = Instantiate(aiTrack, this.transform);
             }
+            trackIndices[i] = i;
+            track.GetComponent<TrackManager>().trackID = i;
             track.transform.position = placementOffset * placementOffsetDimension;
             placementOffset += track.GetComponent<TrackManager>().trackWidth;
             track.GetComponent<TrackManager>().RacingGremlin = racingGremlins[i];
@@ -82,14 +99,41 @@ public class RaceManager : MonoBehaviour
     }
 
     public void StartTracks() {
+        timeElapsed = 0;
         foreach (GameObject track in racetracks) { //Let's hope this won't create any unfair results.
-            track.GetComponent<TrackManager>().StartRace();
+            track.GetComponent<TrackManager>().StartRace(UpdateResults);
+        }
+    }
+
+    private void UpdateResults(TrackManager activeManager) { //A race has ended, so add it to the results.
+        raceTimes[activeManager.trackID] = timeElapsed;
+        var raceIsDone = true;
+        for (int i = 0; i < raceTimes.Length; i++) {
+            if (!(raceTimes[i] > 0)) {
+                raceIsDone = false;
+            }
+        }
+        if (raceIsDone) {
+            PostResults();
+        }
+    }
+
+    /// <summary>
+    /// Puts the results on the active UI. Needs to be redesigned.
+    /// </summary>
+    private void PostResults() {
+        Array.Sort(raceTimes, trackIndices); //Probably a better solution, but whatever. I don't know Quicksort.
+        for (int i = 0; i < raceTimes.Length; i++) {
+            Debug.Log(raceTimes[i]);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (timeElapsed >= 0)
+        {
+            timeElapsed += Time.deltaTime;
+        }
     }
 }

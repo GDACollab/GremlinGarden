@@ -53,6 +53,12 @@ public class TrackManager : MonoBehaviour
     public float trackWidth;
 
     /// <summary>
+    /// Set by the RaceManager. This identifies the track for the RaceManager to use in calcluations.
+    /// </summary>
+    [HideInInspector]
+    public int trackID;
+
+    /// <summary>
     /// Start racing with the selected Gremlin.
     /// </summary>
     /// <param name="endRaceCallback">A callback function (returns void) that takes TrackManager as a parameter, to be called at the end of the race. Optional.</param>
