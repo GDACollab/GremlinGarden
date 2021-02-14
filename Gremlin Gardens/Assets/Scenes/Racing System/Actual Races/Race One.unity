@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raceManager: {fileID: 477010828}
   gremlinObject: {fileID: 2547044761531899819, guid: bd57b7de9f50ee440ac2388cec0eb061, type: 3}
-  gremlinCount: 4
+  gremlinCount: 5
 --- !u!1 &477010826
 GameObject:
   m_ObjectHideFlags: 0

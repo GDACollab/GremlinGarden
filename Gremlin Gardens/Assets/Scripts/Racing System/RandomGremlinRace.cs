@@ -17,7 +17,7 @@ public class RandomGremlinRace : MonoBehaviour
     /// </summary>
     public GameObject gremlinObject;
 
-    string[] GremlinNames = {"Happy", "Grumpy", "Doc", "Sleepy", "Bashful", "Sneezy", "Dopey", "Shrek", "Donkey"};
+    string[] GremlinNames = {"Happy", "Grumpy", "Doc", "Sleepy", "Bashful", "Sneezy", "Dopey", "Shrek", "Donkey", "Gremstork", "Dave"};
 
     /// <summary>
     /// Number of gremlins to populate the race with.

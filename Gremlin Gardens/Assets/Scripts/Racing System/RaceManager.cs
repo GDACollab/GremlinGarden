@@ -82,11 +82,12 @@ public class RaceManager : MonoBehaviour
         }
         for (int i = 0; i < racingGremlins.Count; i++) {
             GameObject track;
+            //Disable Gremlin Rigidbodies so nothing weird happens.
+            racingGremlins[i].GetComponent<Rigidbody>().isKinematic = true;
             if (i == playerIndex)
             {
                 track = Instantiate(playerTrack, this.transform);
                 track.GetComponent<TrackManager>().ActiveUI = ActiveUI;
-                racingCamera.SetGremlinFocus(racingGremlins[playerIndex], true);
             }
             else {
                 track = Instantiate(aiTrack, this.transform);
@@ -94,8 +95,13 @@ public class RaceManager : MonoBehaviour
             trackIndices[i] = i;
             track.GetComponent<TrackManager>().trackID = i;
             track.transform.position = placementOffset * placementOffsetDimension;
+            //Set the Gremlin's position to be the new track's earliest position so we can update the camera.
+            racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.transform.GetChild(0).transform.position;
             placementOffset += track.GetComponent<TrackManager>().trackWidth;
             track.GetComponent<TrackManager>().RacingGremlin = racingGremlins[i];
+            if (i == playerIndex) {
+                racingCamera.SetGremlinFocus(racingGremlins[playerIndex], true);
+            }
             racetracks.Add(track);
         }
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
@@ -112,6 +118,7 @@ public class RaceManager : MonoBehaviour
 
     private void UpdateResults(TrackManager activeManager) { //A race has ended, so add it to the results.
         raceTimes[activeManager.trackID] = timeElapsed;
+        activeManager.RacingGremlin.GetComponent<Rigidbody>().isKinematic = false; //Re-enable Rigidbody, just in case.
         var raceIsDone = true;
         for (int i = 0; i < raceTimes.Length; i++) {
             if (!(raceTimes[i] > 0)) {
