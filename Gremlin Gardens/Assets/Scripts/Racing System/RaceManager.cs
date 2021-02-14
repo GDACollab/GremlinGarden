@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RaceManager : MonoBehaviour
 {
@@ -55,6 +56,10 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     public float[] raceTimes;
     int[] trackIndices; //Keeps the indices of the tracks for sorting with raceTimes.
+
+    //Temporary way to render leaderboards. Awaiting a more graphically fancy version.
+    public GameObject leaderboardHeader;
+    public GameObject leaderboardText;
 
 
 
@@ -119,12 +124,20 @@ public class RaceManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Puts the results on the active UI. Needs to be redesigned.
+    /// Puts the results on the active UI. Needs to be redesigned to look better.
     /// </summary>
     private void PostResults() {
         Array.Sort(raceTimes, trackIndices); //Probably a better solution, but whatever. I don't know Quicksort.
+        float heightOffset = -30;
+        var header = Instantiate(leaderboardHeader, ActiveUI.transform);
         for (int i = 0; i < raceTimes.Length; i++) {
-            Debug.Log(raceTimes[i]);
+            var text = Instantiate(leaderboardText, header.transform);
+            var time = Instantiate(leaderboardText, header.transform);
+            text.GetComponent<Text>().text = racetracks[trackIndices[i]].GetComponent<TrackManager>().RacingGremlin.name;
+            time.GetComponent<Text>().text = raceTimes[i].ToString() + " seconds";
+            text.transform.position = new Vector3(-101.6f, heightOffset) + header.transform.position;
+            time.transform.position = new Vector3(104.7f, heightOffset) + header.transform.position;
+            heightOffset -= 30;
         }
     }
 

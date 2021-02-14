@@ -285,6 +285,9 @@ MonoBehaviour:
   racetracks: []
   racingCamera: {fileID: 1962604627}
   placementOffsetDimension: {x: 0, y: 0, z: 1}
+  raceTimes: []
+  leaderboardHeader: {fileID: 6814948536976317220, guid: ceeb861aa37e7174ba68b410902075e1, type: 3}
+  leaderboardText: {fileID: 1137656264600321813, guid: e3fedfe53e2f2f44196a0ccdbc4aec75, type: 3}
 --- !u!1 &1096559084
 GameObject:
   m_ObjectHideFlags: 0
