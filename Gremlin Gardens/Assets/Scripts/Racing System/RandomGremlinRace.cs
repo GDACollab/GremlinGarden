@@ -17,6 +17,9 @@ public class RandomGremlinRace : MonoBehaviour
     /// </summary>
     public GameObject gremlinObject;
 
+    /// <summary>
+    /// What to attach to the player's gremlin to differentiate them from the others.
+    /// </summary>
     public GameObject playerIndicator;
 
     string[] GremlinNames = {"Happy", "Grumpy", "Doc", "Sleepy", "Bashful", "Sneezy", "Dopey", "Shrek", "Donkey", "Gremstork", "Dave"};

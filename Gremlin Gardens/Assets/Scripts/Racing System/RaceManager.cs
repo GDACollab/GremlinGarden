@@ -57,8 +57,16 @@ public class RaceManager : MonoBehaviour
     public float[] raceTimes;
     int[] trackIndices; //Keeps the indices of the tracks for sorting with raceTimes.
 
-    //Temporary way to render leaderboards. Awaiting a more graphically fancy version.
+    //Temporary way to render leaderboards. Awaiting a more graphically fancy version. TODO: Make this look better and scalable.
+    /// <summary>
+    /// A UI Prefab to use as the header for the leaderboards.
+    /// </summary>
+    [Tooltip("A UI Prefab to use as the header for the leaderboards.")]
     public GameObject leaderboardHeader;
+    /// <summary>
+    /// A UI Prefab to populate the leaderboards with (requires a Text component).
+    /// </summary>
+    [Tooltip("A UI Prefab to populate the leaderboards with (requires a Text component).")]
     public GameObject leaderboardText;
 
 
@@ -107,6 +115,9 @@ public class RaceManager : MonoBehaviour
         otherSide.transform.position += placementOffset * placementOffsetDimension;
     }
 
+    /// <summary>
+    /// Call after TrackSetup(). Will begin each race.
+    /// </summary>
     public void StartTracks() {
         timeElapsed = 0;
         foreach (GameObject track in racetracks) { //Let's hope this won't create any unfair results.
@@ -114,6 +125,10 @@ public class RaceManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// When a race is finished, this is called, and this updates the leaderboards.
+    /// </summary>
+    /// <param name="activeManager">The TrackManager that called this function.</param>
     private void UpdateResults(TrackManager activeManager) { //A race has ended, so add it to the results.
         raceTimes[activeManager.trackID] = timeElapsed;
         activeManager.RacingGremlin.GetComponent<Rigidbody>().isKinematic = false; //Re-enable Rigidbody, just in case.
