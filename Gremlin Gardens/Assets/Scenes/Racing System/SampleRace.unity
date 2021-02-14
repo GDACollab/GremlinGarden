@@ -472,8 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17476110f65e1654e9dfe561492452c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gremlinBounds: {x: -10, y: 3, z: 50}
-  cameraOffset: {x: 5, y: 10, z: 5}
+  gremlinBounds: {x: 20, y: 3, z: 50}
+  cameraOffset: {x: -20, y: 10, z: 5}
   lookAtFocus: 1
   cameraMode: racing
 --- !u!1 &2096600923

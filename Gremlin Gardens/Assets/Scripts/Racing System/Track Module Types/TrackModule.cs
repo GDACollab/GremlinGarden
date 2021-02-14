@@ -53,7 +53,7 @@ public class TrackModule : MonoBehaviour
     public float totalDistance;
     PathCreator internalCreator;
     
-    void Start()
+    void Awake()
     {
         totalDistance = 0;
         internalCreator = GetComponent<PathCreator>();
