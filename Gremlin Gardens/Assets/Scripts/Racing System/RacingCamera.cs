@@ -33,6 +33,12 @@ public class RacingCamera : MonoBehaviour
     [Tooltip("The gremlin the camera is currently focusing on.")]
     GameObject gremlinFocus;
 
+    /// <summary>
+    /// Used to switch between the various camera "modes", like previewing a track or following a gremlin.
+    /// </summary>
+    [HideInInspector]
+    public string cameraMode = "racing";
+
 
     /// <summary>
     /// Sets the gremlin the camera is currently tracking.
@@ -41,6 +47,7 @@ public class RacingCamera : MonoBehaviour
     /// <param name="updatePos">Should the camera immediately jump to this gremlin?</param>
     public void SetGremlinFocus(GameObject gremlin, bool updatePos) {
         gremlinFocus = gremlin;
+        cameraMode = "racing";
         if (updatePos == true) {
             this.transform.position = gremlinFocus.transform.position + cameraOffset;
             if (lookAtFocus == true)
@@ -52,18 +59,23 @@ public class RacingCamera : MonoBehaviour
 
     void Update()
     {
-        Vector3 newPos = this.transform.position;
-        for (int i = 0; i < 3; i++)
+        if (cameraMode == "racing")
         {
-            if (Mathf.Abs(gremlinFocus.transform.position[i] - this.transform.position[i]) > gremlinBounds[i]) {
-                newPos[i] = gremlinFocus.transform.position[i] + cameraOffset[i];
+            Vector3 newPos = this.transform.position;
+            for (int i = 0; i < 3; i++)
+            {
+                if (Mathf.Abs(gremlinFocus.transform.position[i] - this.transform.position[i]) > gremlinBounds[i])
+                {
+                    newPos[i] = gremlinFocus.transform.position[i] + cameraOffset[i];
+                }
             }
+            if (lookAtFocus == true)
+            {
+                //We round so that subtle movements don't impact rotation, causing motion sickness.
+                Vector3 newRotation = new Vector3(Mathf.Round(gremlinFocus.transform.position.x - this.transform.position.x), Mathf.Round(gremlinFocus.transform.position.y - this.transform.position.y), Mathf.Round(gremlinFocus.transform.position.z - this.transform.position.z));
+                this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
+            }
+            this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
         }
-        if (lookAtFocus == true) {
-            //We round so that subtle movements don't impact rotation, causing motion sickness.
-            Vector3 newRotation = new Vector3(Mathf.Round(gremlinFocus.transform.position.x - this.transform.position.x), Mathf.Round(gremlinFocus.transform.position.y - this.transform.position.y), Mathf.Round(gremlinFocus.transform.position.z - this.transform.position.z));
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
-        }
-        this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
     }
 }

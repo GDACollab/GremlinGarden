@@ -17,6 +17,8 @@ public class RandomGremlinRace : MonoBehaviour
     /// </summary>
     public GameObject gremlinObject;
 
+    public GameObject playerIndicator;
+
     string[] GremlinNames = {"Happy", "Grumpy", "Doc", "Sleepy", "Bashful", "Sneezy", "Dopey", "Shrek", "Donkey", "Gremstork", "Dave"};
 
     /// <summary>
@@ -28,6 +30,7 @@ public class RandomGremlinRace : MonoBehaviour
     void Start()
     {
         List<GameObject> gremlinList = new List<GameObject>();
+        int playerGremlin = Random.Range(0, gremlinCount);
         for (int i = 0; i < gremlinCount; i++)
         {
             var gremlin = Instantiate(gremlinObject);
@@ -37,11 +40,20 @@ public class RandomGremlinRace : MonoBehaviour
             gremlin.GetComponent<GremlinObject>().gremlin.setStat("Climbing", Random.Range(0.5f, 1f));
             gremlin.GetComponent<GremlinObject>().gremlin.setStat("Happiness", Random.Range(0.5f, 1f));
             gremlin.GetComponent<GremlinObject>().gremlin.setStat("Swimming", Random.Range(0.5f, 1f));
-            gremlin.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
-            gremlin.name = GremlinNames[Random.Range(0, GremlinNames.Length)];
+            
+            if (i == playerGremlin)
+            {
+                gremlin.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red);
+                Instantiate(playerIndicator, gremlin.transform);
+                gremlin.name = "Player";
+            }
+            else {
+                gremlin.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
+                gremlin.name = GremlinNames[Random.Range(0, GremlinNames.Length)];
+            }
             gremlinList.Add(gremlin);
         }
-        raceManager.TrackSetup(gremlinList, Random.Range(0, gremlinCount));
+        raceManager.TrackSetup(gremlinList, playerGremlin);
         raceManager.StartTracks();
     }
 
