@@ -283,6 +283,7 @@ MonoBehaviour:
   aiTrack: {fileID: 3667841751432075436, guid: ca7b11ba91198aa41be1b5a066112089, type: 3}
   trackSides: {fileID: 2507957336823102628, guid: 110a037dd07d1284e917fa61b4514b33, type: 3}
   racetracks: []
+  racingCamera: {fileID: 1962604627}
   placementOffsetDimension: {x: 0, y: 0, z: 1}
 --- !u!1 &1096559084
 GameObject:
@@ -546,6 +547,7 @@ GameObject:
   - component: {fileID: 1962604626}
   - component: {fileID: 1962604625}
   - component: {fileID: 1962604624}
+  - component: {fileID: 1962604627}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -618,3 +620,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1962604627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962604623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17476110f65e1654e9dfe561492452c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gremlinBounds: {x: 10, y: 3, z: 50}
+  cameraOffset: {x: 10, y: 5, z: 10}
+  lookAtFocus: 1

@@ -33,6 +33,12 @@ public class RaceManager : MonoBehaviour
     public List<GameObject> racetracks;
 
     /// <summary>
+    /// The current camera to use for racing.
+    /// </summary>
+    [Tooltip("The current camera to use for racing.")]
+    public RacingCamera racingCamera;
+
+    /// <summary>
     /// Which way on the axes to offset tracks. So (1, 0, 0) for offsetting on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.
     /// </summary>
     [Tooltip("Which way on the axes to offset tracks. So (1, 0, 0) for offsetting positively on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.")]
@@ -60,6 +66,7 @@ public class RaceManager : MonoBehaviour
             {
                 track = Instantiate(playerTrack, this.transform);
                 track.GetComponent<TrackManager>().ActiveUI = ActiveUI;
+                racingCamera.SetGremlinFocus(racingGremlins[playerIndex], true);
             }
             else {
                 track = Instantiate(aiTrack, this.transform);
