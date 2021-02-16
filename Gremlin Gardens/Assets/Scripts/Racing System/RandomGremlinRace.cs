@@ -57,7 +57,7 @@ public class RandomGremlinRace : MonoBehaviour
             gremlinList.Add(gremlin);
         }
         raceManager.TrackSetup(gremlinList, playerGremlin);
-        
+        //raceManager.StartTracks();
     }
 
     // Update is called once per frame

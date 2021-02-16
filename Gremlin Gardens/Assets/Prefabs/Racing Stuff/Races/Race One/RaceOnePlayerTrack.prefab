@@ -599,7 +599,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1490188902255930783, guid: 75d87d88099b60441ae74356b625c208, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490188902255930783, guid: 75d87d88099b60441ae74356b625c208, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[2].x
+      value: 2.1722565
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490188902255930783, guid: 75d87d88099b60441ae74356b625c208, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[2].y
+      value: 13.83094
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490188902255930783, guid: 75d87d88099b60441ae74356b625c208, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[1].x
+      value: 2.352806
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490188902255930783, guid: 75d87d88099b60441ae74356b625c208, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[1].y
+      value: 2.143433
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75d87d88099b60441ae74356b625c208, type: 3}

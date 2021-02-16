@@ -122,8 +122,12 @@ public class RacingCamera : MonoBehaviour
                 }
                 else
                 {
-                    this.transform.position = cameraOffset + flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                    this.transform.position = Vector3.Lerp(cameraOffset + flyoverPath.path.GetPointAtDistance(cameraTrackProgress), this.transform.position, Time.deltaTime);
                     cameraTrackProgress += cameraFlySpeed;
+                    if (lookAtFocus == true) {
+                        Vector3 newRotation = flyoverPath.path.GetPointAtDistance(cameraTrackProgress + cameraFlySpeed) - flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
+                    }
                 }
             } else
             {
@@ -134,8 +138,13 @@ public class RacingCamera : MonoBehaviour
                 }
                 else
                 {
-                    this.transform.position = cameraOffset + flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                    this.transform.position = Vector3.Lerp(cameraOffset + flyoverPath.path.GetPointAtDistance(cameraTrackProgress), this.transform.position, Time.deltaTime);
                     cameraTrackProgress -= cameraFlySpeed;
+                    if (lookAtFocus == true)
+                    {
+                        Vector3 newRotation = flyoverPath.path.GetPointAtDistance(cameraTrackProgress - cameraFlySpeed) - flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
+                    }
                 }
             }
         }
