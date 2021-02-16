@@ -122,10 +122,18 @@ public class RacingCamera : MonoBehaviour
                 }
                 else
                 {
-                    this.transform.position = Vector3.Lerp(cameraOffset + flyoverPath.path.GetPointAtDistance(cameraTrackProgress), this.transform.position, Time.deltaTime);
+                    Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                    Vector3 nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress + cameraFlySpeed);
+                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath) {
+                        Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
+                        followLine.Normalize();
+                        newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
+                        nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
+                    }
+                    this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
                     cameraTrackProgress += cameraFlySpeed;
-                    if (lookAtFocus == true) {
-                        Vector3 newRotation = flyoverPath.path.GetPointAtDistance(cameraTrackProgress + cameraFlySpeed) - flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate) {
+                        Vector3 newRotation = nextPos - newPos;
                         this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
                     }
                 }
@@ -138,11 +146,20 @@ public class RacingCamera : MonoBehaviour
                 }
                 else
                 {
-                    this.transform.position = Vector3.Lerp(cameraOffset + flyoverPath.path.GetPointAtDistance(cameraTrackProgress), this.transform.position, Time.deltaTime);
-                    cameraTrackProgress -= cameraFlySpeed;
-                    if (lookAtFocus == true)
+                    Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                    Vector3 nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress - cameraFlySpeed);
+                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath)
                     {
-                        Vector3 newRotation = flyoverPath.path.GetPointAtDistance(cameraTrackProgress - cameraFlySpeed) - flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                        Vector3 followLine =  flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
+                        followLine.Normalize();
+                        newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
+                        nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
+                    }
+                    this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
+                    cameraTrackProgress -= cameraFlySpeed;
+                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate)
+                    {
+                        Vector3 newRotation =  newPos - nextPos;
                         this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
                     }
                 }

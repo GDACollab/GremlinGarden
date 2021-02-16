@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: editorData.vertexPathUpToDate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3403050838144294200, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
+      propertyPath: cameraIgnorePath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4429985236042711199, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -152,6 +156,10 @@ PrefabInstance:
     - target: {fileID: 4338800629906491683, guid: 9df499ea6c2a12b4fa6ce9e72ccd2628, type: 3}
       propertyPath: m_Name
       value: ClimbStart
+      objectReference: {fileID: 0}
+    - target: {fileID: 4338800629906491864, guid: 9df499ea6c2a12b4fa6ce9e72ccd2628, type: 3}
+      propertyPath: cameraIgnorePath
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4338800629906491865, guid: 9df499ea6c2a12b4fa6ce9e72ccd2628, type: 3}
       propertyPath: editorData.vertexPathUpToDate
@@ -275,6 +283,10 @@ PrefabInstance:
       propertyPath: editorData.vertexPathUpToDate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4384310396359994059, guid: 3b327c5775d330441a7157a87c164e04, type: 3}
+      propertyPath: cameraIgnorePath
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b327c5775d330441a7157a87c164e04, type: 3}
 --- !u!4 &3250037331043349175 stripped
@@ -316,6 +328,10 @@ PrefabInstance:
     - target: {fileID: 1025516299839157476, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1025516299976402432, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
+      propertyPath: cameraIgnorePath
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1025516299976402437, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
       propertyPath: m_SelectedFaces.Array.size
@@ -467,6 +483,10 @@ PrefabInstance:
       propertyPath: editorData.vertexPathUpToDate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3403050838144294200, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
+      propertyPath: cameraIgnorePath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4429985236042711199, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -553,6 +573,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1490188902255930780, guid: 75d87d88099b60441ae74356b625c208, type: 3}
+      propertyPath: cameraShouldRotate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1490188902255930780, guid: 75d87d88099b60441ae74356b625c208, type: 3}
+      propertyPath: cameraIgnorePath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1490188902255930781, guid: 75d87d88099b60441ae74356b625c208, type: 3}
       propertyPath: m_LocalPosition.x
       value: -93
@@ -599,7 +627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1490188902255930783, guid: 75d87d88099b60441ae74356b625c208, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1490188902255930783, guid: 75d87d88099b60441ae74356b625c208, type: 3}
       propertyPath: editorData._bezierPath.points.Array.data[2].x
@@ -633,6 +661,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8196216310085425684, guid: c714dfa710f531c4f820b12fb5d9abbe, type: 3}
       propertyPath: editorData.vertexPathUpToDate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196216310085425685, guid: c714dfa710f531c4f820b12fb5d9abbe, type: 3}
+      propertyPath: cameraIgnorePath
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8196216310085425690, guid: c714dfa710f531c4f820b12fb5d9abbe, type: 3}
@@ -703,6 +735,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2314384804539378515, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
       propertyPath: editorData.vertexPathUpToDate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3403050838144294200, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
+      propertyPath: cameraIgnorePath
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4429985236042711199, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
@@ -780,7 +816,19 @@ PrefabInstance:
       value: RunningModule QTE (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2314384804539378515, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314384804539378515, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
       propertyPath: editorData.vertexPathUpToDate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314384804539378515, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
+      propertyPath: editorData._bezierPath.isClosed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3403050838144294200, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
+      propertyPath: cameraIgnorePath
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4429985236042711199, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
@@ -853,6 +901,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3250037331611529710}
     m_Modifications:
+    - target: {fileID: 6274120523984480722, guid: 4d889d8eb8cd6c744a3a9cdbec84f48d, type: 3}
+      propertyPath: cameraIgnorePath
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6274120523984480732, guid: 4d889d8eb8cd6c744a3a9cdbec84f48d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -123.25
@@ -922,6 +974,14 @@ PrefabInstance:
     - target: {fileID: 2158936215207227130, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
       propertyPath: m_Name
       value: RunningModule QTE (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314384804539378515, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
+      propertyPath: editorData.vertexPathUpToDate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3403050838144294200, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
+      propertyPath: cameraIgnorePath
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4429985236042711199, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
       propertyPath: m_Mesh

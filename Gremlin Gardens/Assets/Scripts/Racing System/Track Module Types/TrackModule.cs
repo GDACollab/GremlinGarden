@@ -51,6 +51,10 @@ public class TrackModule : MonoBehaviour
     /// </summary>
     [HideInInspector]
     public float totalDistance;
+
+    public bool cameraIgnorePath = false;
+    public bool cameraShouldRotate = true;
+
     PathCreator internalCreator;
     
     void Awake()

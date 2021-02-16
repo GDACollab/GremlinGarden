@@ -637,7 +637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gremlinBounds: {x: 10, y: 3, z: 50}
-  cameraOffset: {x: 2, y: 3, z: 0}
+  cameraOffset: {x: 0, y: 3, z: 0}
   lookAtFocus: 1
   cameraFlySpeed: 0.02
   cameraMode: racing
