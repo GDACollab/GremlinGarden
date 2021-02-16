@@ -145,9 +145,13 @@ PrefabInstance:
       propertyPath: cameraIgnorePath
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1580672895505975019, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
+      propertyPath: cameraSkipAhead
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 1930889328112103552, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2820282673810928937, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
       propertyPath: m_Name
@@ -925,7 +929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1930889328112103552, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2820282673810928937, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
       propertyPath: m_Name
