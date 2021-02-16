@@ -639,5 +639,5 @@ MonoBehaviour:
   gremlinBounds: {x: 10, y: 3, z: 50}
   cameraOffset: {x: 2, y: 3, z: 0}
   lookAtFocus: 1
-  cameraFlySpeed: 0.02
+  cameraFlySpeed: 0.05
   cameraMode: racing

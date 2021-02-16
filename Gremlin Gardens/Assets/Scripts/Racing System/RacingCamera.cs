@@ -156,17 +156,17 @@ public class RacingCamera : MonoBehaviour
                     nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress - cameraFlySpeed);
                 }
                 if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath)
-                { //Maybe fix the speed so its consistent?
+                {
                     Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
                     followLine.Normalize();
                     newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
                     nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
                 }
                 if (isSkipping)
-                { //Maybe fix the speed so its consistent?
+                {
                     Vector3 target = (newPos + cameraOffset - originalPos);
                     target.Normalize();
-                    this.transform.position += target / (4000 * cameraFlySpeed);
+                    this.transform.position += target * (cameraFlySpeed);
                     if (Vector3.Distance(this.transform.position, newPos + cameraOffset) < 0.1f)
                     {
                         isSkipping = false;
