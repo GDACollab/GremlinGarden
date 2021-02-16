@@ -147,23 +147,23 @@ public class RacingCamera : MonoBehaviour
                 }
                 currentModule -= 1;
                 cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
-            } else {
+            } else { //The else is for actually moving us on the path.
                 Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
                 Vector3 nextPos = Vector3.zero;
-                if (cameraTrackDirection == 1) { 
+                if (cameraTrackDirection == 1) { //Are we moving on the path regularly?
                     nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress + cameraFlySpeed);
                 } else if (cameraTrackDirection == -1) { 
                     nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress - cameraFlySpeed);
                 }
                 if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath)
-                {
+                { //If not, we're moving from the start point to the end point, so that's reflected here.
                     Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
                     followLine.Normalize();
                     newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
                     nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
                 }
                 if (isSkipping)
-                {
+                { //Okay, but have we skipped over some modules? If so, move to the next module.
                     Vector3 target = (newPos + cameraOffset - originalPos);
                     target.Normalize();
                     this.transform.position += target * (cameraFlySpeed);
@@ -171,7 +171,7 @@ public class RacingCamera : MonoBehaviour
                     {
                         isSkipping = false;
                     }
-                } else {
+                } else { //Otherwise, do all that .Lerping goodness.
                     this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
                     if (cameraTrackDirection == -1)
                     {
@@ -181,7 +181,7 @@ public class RacingCamera : MonoBehaviour
                     }
                 }
                 if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate)
-                {
+                { //Just for updating rotation.
                     Vector3 newRotation = Vector3.zero;
                     if (cameraTrackDirection == 1)
                     {
