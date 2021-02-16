@@ -22,7 +22,7 @@ public class GremlinObject : MonoBehaviour
         gremlin.setStat("Stamina", 1);
         gremlin.setStat("Climbing", 1);
         gremlin.setStat("Happiness", 1);
-        gremlin.setStat("Swiming", 1);
+        gremlin.setStat("Swimming", 1);
         //Adds Necessary Collision Components
         gameObject.AddComponent<SphereCollider>();
         body = gameObject.AddComponent<Rigidbody>();
@@ -32,5 +32,19 @@ public class GremlinObject : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void EatFood(Food food)
+    {
+        Dictionary<string, float> stats = food.getStats();
+        foreach (KeyValuePair<string, float> kvp in stats)
+        {
+            gremlin.incrementStat(kvp.Key, kvp.Value);
+        }
+        Debug.Log($"These are {gremlinName}'s stats:");
+        foreach (KeyValuePair<string, float> kvp in gremlin.getStats())
+        {
+            Debug.Log($"{kvp.Key}: {kvp.Value}");
+        }
     }
 }

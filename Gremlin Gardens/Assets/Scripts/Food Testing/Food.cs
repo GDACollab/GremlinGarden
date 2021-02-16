@@ -9,10 +9,19 @@ public class Food : Object
     // Indices [changed stat(s) & by how much, name, model] 
     public static readonly Dictionary<string, Food> allPossibleFood = new Dictionary<string, Food>() {
         {"Apple", new Food(Resources.Load("Apple") as GameObject, "Apple", new Dictionary<string, float>() {
-            {"strength", 0.25f }, {"speed", 0f}
+            {"Stamina", 1f }, {"Happiness", 1f}
         })},
-        {"Green Apple", new Food(Resources.Load("Green Apple") as GameObject, "Green Apple", new Dictionary<string, float>() {
-            {"strength", 0f }, {"speed", 1000f}
+        {"Cheetah Fruit", new Food(Resources.Load("Cheetah Fruit") as GameObject, "Cheetah Fruit", new Dictionary<string, float>() {
+            {"Running", 1f }, {"Happiness", 1f}
+        })},
+        {"Monkey Fruit", new Food(Resources.Load("Monkey Fruit") as GameObject, "Monkey Fruit", new Dictionary<string, float>() {
+            {"Climbing", 1f }, {"Happiness", 1f}
+        })},
+        {"Dolphin Fruit", new Food(Resources.Load("Dolphin Fruit") as GameObject, "Dolphin Fruit", new Dictionary<string, float>() {
+            {"Swimming", 1f }, {"Happiness", 1f}
+        })},
+        {"Dragon Fruit", new Food(Resources.Load("Dragon Fruit") as GameObject, "Dragon Fruit", new Dictionary<string, float>() {
+            {"Flying", 1f }, {"Happiness", 1f}
         })}
     };
 
