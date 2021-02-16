@@ -12,21 +12,24 @@ public class FoodObject : MonoBehaviour
     private bool eaten;
     // Start is called before the first frame update
     // In start, the empty game object is turned into a Food Object
-    void Start()
+    public void Start()
     {
-        eaten = false;
-        food = Food.allPossibleFood[foodID];
-        //Sets the Model
-        MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
-        MeshFilter objMesh = gameObject.AddComponent<MeshFilter>();
-        objMesh.mesh = food.getModel().GetComponent<MeshFilter>().sharedMesh;
-        //Sets the Material
-        renderer.material = food.getModel().GetComponent<MeshRenderer>().sharedMaterial;
-        //Adds Necessary Collision Components
-        gameObject.AddComponent<SphereCollider>();
-        rgbd = gameObject.AddComponent<Rigidbody>();
-        //Scales Size Down
-        scaleObjectSize(gameObject, size);
+        if (foodID != null && foodID != "")
+        {
+            eaten = false;
+            food = Food.allPossibleFood[foodID];
+            //Sets the Model
+            MeshRenderer renderer = gameObject.AddComponent<MeshRenderer>();
+            MeshFilter objMesh = gameObject.AddComponent<MeshFilter>();
+            objMesh.mesh = food.getModel().GetComponent<MeshFilter>().sharedMesh;
+            //Sets the Material
+            renderer.material = food.getModel().GetComponent<MeshRenderer>().sharedMaterial;
+            //Adds Necessary Collision Components
+            gameObject.AddComponent<SphereCollider>();
+            rgbd = gameObject.AddComponent<Rigidbody>();
+            //Scales Size Down
+            scaleObjectSize(gameObject, size);
+        }
         
 
     }

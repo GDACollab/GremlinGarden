@@ -8,9 +8,10 @@ public class GremlinObject : MonoBehaviour
     // Variables for the in-game gremlins
     [HideInInspector]
     public Gremlin gremlin;
-    Rigidbody body;
+    private Rigidbody body;
     public string gremlinName;
-    
+    public float speedMultiplier;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,14 +25,42 @@ public class GremlinObject : MonoBehaviour
         gremlin.setStat("Happiness", 1);
         gremlin.setStat("Swimming", 1);
         //Adds Necessary Collision Components
-        gameObject.AddComponent<SphereCollider>();
+        gameObject.AddComponent<BoxCollider>();
         body = gameObject.AddComponent<Rigidbody>();
+        body.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    private void FixedUpdate()
+    {
+        FoodObject[] allFoods = FindObjectsOfType<FoodObject>();
+        GameObject nearestFood = null;
+        Vector3 position = transform.position;
+        foreach (FoodObject foodObject in allFoods)
+        {
+            if (nearestFood == null || Vector3.Distance(position, nearestFood.transform.position) >
+                Vector3.Distance(position, foodObject.transform.position))
+            {
+                nearestFood = foodObject.gameObject;
+            }
+        }
+
+        if (nearestFood != null)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(nearestFood.transform.position - this.gameObject.transform.position);
+            Quaternion turnTowards = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 10f);
+            turnTowards = Quaternion.Euler(0, turnTowards.eulerAngles.y, 0);
+            body.MoveRotation(turnTowards);
+
+            body.velocity = transform.forward * (1f + (gremlin.getStat("Running")- 1f) / 2f) * speedMultiplier;
+        } else
+        {
+            body.velocity = Vector3.zero;
+        }
     }
 
     public void EatFood(Food food)
@@ -46,5 +75,7 @@ public class GremlinObject : MonoBehaviour
         {
             Debug.Log($"{kvp.Key}: {kvp.Value}");
         }
+
+        body.velocity = Vector3.zero;
     }
 }
