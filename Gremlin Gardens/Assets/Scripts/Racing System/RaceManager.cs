@@ -109,7 +109,8 @@ public class RaceManager : MonoBehaviour
             track.GetComponent<TrackManager>().RacingGremlin = racingGremlins[i];
             racetracks.Add(track);
         }
-        racingCamera.SetGremlinFocus(racingGremlins[playerIndex], true);
+        //racingCamera.SetGremlinFocus(racingGremlins[playerIndex], true);
+        racingCamera.SetFlyover(racetracks[0].GetComponent<TrackManager>(), 1);
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
         var otherSide = Instantiate(trackSides, this.transform);
         otherSide.transform.position += placementOffset * placementOffsetDimension;

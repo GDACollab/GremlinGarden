@@ -59,6 +59,7 @@ MonoBehaviour:
   GremlinOffset: {x: 0, y: 1, z: 0}
   currentChild: 0
   trackWidth: 2
+  trackID: 0
 --- !u!1001 &1237636216116679381
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -352,7 +353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1025516299976402439, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1025516299976402489, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
       propertyPath: m_Name
@@ -496,6 +497,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4715343805375279622, guid: 72053ba76fa4ce84cbea922cd4f1b4db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715343805850298564, guid: 72053ba76fa4ce84cbea922cd4f1b4db, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[1].x
+      value: 0.9982173
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715343805850298564, guid: 72053ba76fa4ce84cbea922cd4f1b4db, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[1].y
+      value: 0.9960935
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715343805850298564, guid: 72053ba76fa4ce84cbea922cd4f1b4db, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[1].z
+      value: -29.104513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715343805850298564, guid: 72053ba76fa4ce84cbea922cd4f1b4db, type: 3}
+      propertyPath: editorData.vertexPathUpToDate
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4715343805850298565, guid: 72053ba76fa4ce84cbea922cd4f1b4db, type: 3}

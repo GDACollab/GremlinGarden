@@ -26,12 +26,26 @@ public class RacingCamera : MonoBehaviour
     [Tooltip("Should the camera also look at the gremlin?")]
     public bool lookAtFocus = true;
 
+    public float cameraFlySpeed = 5.0f;
+
 
     /// <summary>
-    /// The gremlin the camera is currently focusing on.
+    /// The gremlin the camera is currently focusing on (if at all).
     /// </summary>
-    [Tooltip("The gremlin the camera is currently focusing on.")]
     GameObject gremlinFocus;
+    /// <summary>
+    /// The track the camera is focusing on (if at all).
+    /// </summary>
+    TrackManager trackFocus;
+    /// <summary>
+    /// The module the camera is currently on (used during flyover).
+    /// </summary>
+    int currentModule;
+    /// <>
+    /// How far along the camera is on any given track.
+    /// </summary>
+    float cameraTrackProgress = 0;
+    int cameraTrackDirection = 0;
 
     /// <summary>
     /// Used to switch between the various camera "modes", like previewing a track or following a gremlin.
@@ -57,6 +71,26 @@ public class RacingCamera : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Start the camera flying over the track.
+    /// </summary>
+    /// <param name="trackToFly">The track to fly over.</param>
+    /// <param name="direction">-1 from starting at the end, 1 from starting at the beginning.</param>
+    public void SetFlyover(TrackManager trackToFly, int direction) {
+        trackFocus = trackToFly;
+        cameraMode = "flyover";
+        cameraTrackDirection = direction;
+        if (direction == 1)
+        {
+            cameraTrackProgress = 0;
+            currentModule = 0;
+        }
+        else {
+            currentModule = trackFocus.transform.childCount - 1;
+            cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
+        }
+    }
+
     void Update()
     {
         if (cameraMode == "racing")
@@ -76,6 +110,34 @@ public class RacingCamera : MonoBehaviour
                 this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
             }
             this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
+        }
+        else if (cameraMode == "flyover") {
+            PathCreation.PathCreator flyoverPath = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>();
+            if (cameraTrackDirection == 1)
+            {
+                if (cameraTrackProgress >= flyoverPath.path.length)
+                {
+                    currentModule += 1;
+                    cameraTrackProgress = 0;
+                }
+                else
+                {
+                    this.transform.position = cameraOffset + flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                    cameraTrackProgress += cameraFlySpeed;
+                }
+            } else
+            {
+                if (cameraTrackProgress <= 0)
+                {
+                    currentModule -= 1;
+                    cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
+                }
+                else
+                {
+                    this.transform.position = cameraOffset + flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                    cameraTrackProgress -= cameraFlySpeed;
+                }
+            }
         }
     }
 }
