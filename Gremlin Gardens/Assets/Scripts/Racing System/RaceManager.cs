@@ -12,6 +12,7 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     [Tooltip("The active canvas object to be used by QTE prompts.")]
     public GameObject ActiveUI;
+    [Header("Racetrack Generation")]
     /// <summary>
     /// The player's version of the track (for QTE stuff). The track object requires a TrackManager component.
     /// </summary>
@@ -29,9 +30,15 @@ public class RaceManager : MonoBehaviour
     public GameObject trackSides;
 
     /// <summary>
+    /// Which way on the axes to offset tracks. So (1, 0, 0) for offsetting on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.
+    /// </summary>
+    [Tooltip("Which way on the axes to offset tracks. So (1, 0, 0) for offsetting positively on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.")]
+    public Vector3 placementOffsetDimension = Vector3.left;
+
+    /// <summary>
     /// The current list of racetracks being run.
     /// </summary>
-    [Tooltip("The current list of racetracks being run.")]
+    [HideInInspector]
     public List<GameObject> racetracks;
 
     /// <summary>
@@ -41,11 +48,6 @@ public class RaceManager : MonoBehaviour
     public RacingCamera racingCamera;
 
     /// <summary>
-    /// Which way on the axes to offset tracks. So (1, 0, 0) for offsetting on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.
-    /// </summary>
-    [Tooltip("Which way on the axes to offset tracks. So (1, 0, 0) for offsetting positively on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.")]
-    public Vector3 placementOffsetDimension = Vector3.left;
-    /// <summary>
     /// How much we've actually offset by in constructing the track.
     /// </summary>
     float placementOffset;
@@ -54,8 +56,11 @@ public class RaceManager : MonoBehaviour
     /// <summary>
     /// The resulting times from the races.
     /// </summary>
+    [HideInInspector]
     public float[] raceTimes;
     int[] trackIndices; //Keeps the indices of the tracks for sorting with raceTimes.
+
+    [Header("Results Stuff")]
 
     //Temporary way to render leaderboards. Awaiting a more graphically fancy version. TODO: Make this look better and scalable.
     /// <summary>

@@ -52,6 +52,8 @@ public class TrackModule : MonoBehaviour
     [HideInInspector]
     public float totalDistance;
 
+    [Header("Camera Flyover Settings")]
+
     /// <summary>
     /// When doing a flyover, should the camera instead just go from the start to the end of the path?
     /// </summary>
