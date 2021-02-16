@@ -46,6 +46,8 @@ public class RacingCamera : MonoBehaviour
     /// </summary>
     float cameraTrackProgress = 0;
     int cameraTrackDirection = 0;
+    bool isSkipping = false;
+    Vector3 originalPos;
 
     /// <summary>
     /// Used to switch between the various camera "modes", like previewing a track or following a gremlin.
@@ -84,10 +86,12 @@ public class RacingCamera : MonoBehaviour
         {
             cameraTrackProgress = 0;
             currentModule = 0;
+            this.transform.position = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(0) + cameraOffset;
         }
         else {
             currentModule = trackFocus.transform.childCount - 1;
             cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
+            this.transform.position = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length, PathCreation.EndOfPathInstruction.Stop) + cameraOffset;
         }
     }
 
@@ -111,12 +115,18 @@ public class RacingCamera : MonoBehaviour
             }
             this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
         }
-        else if (cameraMode == "flyover") {
+        else if (cameraMode == "flyover") { //TODO: Add "Skip" to TrackModule for camera flyovers.
             PathCreation.PathCreator flyoverPath = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>();
             if (cameraTrackDirection == 1)
             {
                 if (cameraTrackProgress >= flyoverPath.path.length)
                 {
+                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead > 0)
+                    {
+                        isSkipping = true;
+                        originalPos = this.transform.position;
+                        currentModule += trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead;
+                    }
                     currentModule += 1;
                     cameraTrackProgress = 0;
                 }
@@ -130,8 +140,17 @@ public class RacingCamera : MonoBehaviour
                         newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
                         nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
                     }
-                    this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
-                    cameraTrackProgress += cameraFlySpeed;
+                    if (isSkipping) {
+                        Vector3 target = (newPos + cameraOffset - originalPos);
+                        target.Normalize();
+                        this.transform.position += target / (4000 * cameraFlySpeed); //Speed is arbitrary
+                        if (Vector3.Distance(this.transform.position, newPos + cameraOffset) < 0.1f) {
+                            isSkipping = false;
+                        }
+                    } else {
+                        this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
+                        cameraTrackProgress += cameraFlySpeed;
+                    }
                     if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate) {
                         Vector3 newRotation = nextPos - newPos;
                         this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
@@ -141,6 +160,12 @@ public class RacingCamera : MonoBehaviour
             {
                 if (cameraTrackProgress <= 0)
                 {
+                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead < 0)
+                    {
+                        isSkipping = true;
+                        originalPos = this.transform.position;
+                        currentModule += trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead;
+                    }
                     currentModule -= 1;
                     cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
                 }
@@ -155,11 +180,24 @@ public class RacingCamera : MonoBehaviour
                         newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
                         nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
                     }
-                    this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
-                    cameraTrackProgress -= cameraFlySpeed;
+                    if (isSkipping)
+                    {
+                        Vector3 target = (newPos + cameraOffset - originalPos);
+                        target.Normalize();
+                        this.transform.position += target / (10000 * cameraFlySpeed);
+                        if (Vector3.Distance(this.transform.position, newPos + cameraOffset) < 0.1f)
+                        {
+                            isSkipping = false;
+                        }
+                    }
+                    else
+                    {
+                        this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
+                        cameraTrackProgress -= cameraFlySpeed;
+                    }
                     if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate)
                     {
-                        Vector3 newRotation =  newPos - nextPos;
+                        Vector3 newRotation =   nextPos - newPos;
                         this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
                     }
                 }

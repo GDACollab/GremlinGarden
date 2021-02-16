@@ -52,8 +52,22 @@ public class TrackModule : MonoBehaviour
     [HideInInspector]
     public float totalDistance;
 
+    /// <summary>
+    /// When doing a flyover, should the camera instead just go from the start to the end of the path?
+    /// </summary>
+    [Tooltip("When doing a flyover, should the camera instead just go from the start to the end of the path?")]
     public bool cameraIgnorePath = false;
+    /// <summary>
+    /// When doing a flyover, should the camera rotate with the path?
+    /// </summary>
+    [Tooltip("When doing a flyover, should the camera rotate with the path?")]
     public bool cameraShouldRotate = true;
+
+    /// <summary>
+    /// If a camera is doing a flyover, skip ahead how many modules when this is done? (Can be negative in case the camera is going over the track in reverse)
+    /// </summary>
+    [Tooltip("If a camera is doing a flyover, skip ahead how many modules when this is done? (Can be negative in case the camera is going over the track in reverse)")]
+    public int cameraSkipAhead = 0;
 
     PathCreator internalCreator;
     

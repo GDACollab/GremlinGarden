@@ -732,6 +732,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -1153,6 +1156,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -2405,6 +2411,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 1
+  cameraShouldRotate: 0
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -2513,6 +2522,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -3761,6 +3773,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 1
+  cameraShouldRotate: 0
+  cameraSkipAhead: 6
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -5038,6 +5053,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -5826,6 +5844,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -6247,6 +6268,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -6615,6 +6639,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -6724,6 +6751,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -6972,6 +7002,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -8019,6 +8052,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -8753,6 +8789,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -9175,6 +9214,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -9283,6 +9325,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -9391,6 +9436,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 15
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -10201,6 +10249,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -10309,6 +10360,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -10730,6 +10784,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -10838,6 +10895,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -11259,6 +11319,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -11367,6 +11430,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -11475,6 +11541,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -11583,6 +11652,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -12005,6 +12077,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -24430,6 +24505,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -24538,6 +24616,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -25533,6 +25614,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -26008,6 +26092,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -26416,6 +26503,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -27150,6 +27240,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -27206,6 +27299,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -28856,7 +28952,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -28896,6 +28992,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 1
+  cameraShouldRotate: 0
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -29004,6 +29103,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -29113,6 +29215,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -29817,6 +29922,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -30552,6 +30660,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -30973,6 +31084,9 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 5
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0

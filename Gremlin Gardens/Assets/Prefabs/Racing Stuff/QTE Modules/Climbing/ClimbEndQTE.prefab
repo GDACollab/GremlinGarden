@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8196216310085425684}
   - component: {fileID: 8196216310085425685}
   m_Layer: 0
-  m_Name: ClimbEnd
+  m_Name: ClimbEndQTE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,6 +104,8 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 1
+  cameraShouldRotate: 1
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0

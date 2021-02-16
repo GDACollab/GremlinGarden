@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4338800629906491865}
   - component: {fileID: 4338800629906491864}
   m_Layer: 0
-  m_Name: ClimbStart
+  m_Name: ClimbStartQTE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -391,6 +391,8 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  cameraIgnorePath: 1
+  cameraShouldRotate: 1
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
