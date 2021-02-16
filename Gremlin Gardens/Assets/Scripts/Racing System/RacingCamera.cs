@@ -78,7 +78,8 @@ public class RacingCamera : MonoBehaviour
     /// </summary>
     /// <param name="trackToFly">The track to fly over.</param>
     /// <param name="direction">-1 from starting at the end, 1 from starting at the beginning.</param>
-    public void SetFlyover(TrackManager trackToFly, int direction) {
+    /// <param name="updatePos">Should the camera immediately jump to the track?</param>
+    public void SetFlyover(TrackManager trackToFly, int direction, bool updatePos) {
         trackFocus = trackToFly;
         cameraMode = "flyover";
         cameraTrackDirection = direction;
@@ -86,16 +87,21 @@ public class RacingCamera : MonoBehaviour
         {
             cameraTrackProgress = 0;
             currentModule = 0;
-            this.transform.position = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(0) + cameraOffset;
-            Vector3 next = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(cameraFlySpeed) + cameraOffset - this.transform.position;
-            this.transform.rotation = Quaternion.LookRotation(next, Vector3.up);
-        }
-        else {
+            if (updatePos == true)
+            {
+                this.transform.position = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(0) + cameraOffset;
+                Vector3 next = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(cameraFlySpeed) + cameraOffset - this.transform.position;
+                this.transform.rotation = Quaternion.LookRotation(next, Vector3.up);
+            }
+        } else if (direction == -1){
             currentModule = trackFocus.transform.childCount - 1;
             cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
-            this.transform.position = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length, PathCreation.EndOfPathInstruction.Stop) + cameraOffset;
-            Vector3 next = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length - cameraFlySpeed, PathCreation.EndOfPathInstruction.Stop) + cameraOffset - this.transform.position;
-            this.transform.rotation = Quaternion.LookRotation(next, Vector3.up);
+            if (updatePos == true)
+            {
+                this.transform.position = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length, PathCreation.EndOfPathInstruction.Stop) + cameraOffset;
+                Vector3 next = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.GetPointAtDistance(trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length - cameraFlySpeed, PathCreation.EndOfPathInstruction.Stop) + cameraOffset - this.transform.position;
+                this.transform.rotation = Quaternion.LookRotation(next, Vector3.up);
+            }
         }
     }
 
@@ -118,92 +124,72 @@ public class RacingCamera : MonoBehaviour
                 this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
             }
             this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
-        }
-        else if (cameraMode == "flyover") { //TODO: Add "Skip" to TrackModule for camera flyovers.
+        } else if (cameraMode == "flyover") { //The logic for doing a flyover.
             PathCreation.PathCreator flyoverPath = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>();
-            if (cameraTrackDirection == 1) //Maybe fix it so we don't have this massive if/else statement that reuses code?
+            int skipAhead = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead;
+            if (cameraTrackDirection == 1 && cameraTrackProgress >= flyoverPath.path.length) //This if/else if is just to move along the path if we're doing one direction or the other.
             {
-                if (cameraTrackProgress >= flyoverPath.path.length)
+                if (skipAhead > 0)
                 {
-                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead > 0)
-                    {
-                        isSkipping = true;
-                        originalPos = this.transform.position;
-                        currentModule += trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead;
-                    }
-                    currentModule += 1;
-                    cameraTrackProgress = 0;
+                    isSkipping = true;
+                    originalPos = this.transform.position;
+                    currentModule += skipAhead;
                 }
-                else
+                currentModule += 1;
+                cameraTrackProgress = 0;
+            }
+            else if (cameraTrackDirection == -1 && cameraTrackProgress <= 0) {
+                if (skipAhead < 0)
                 {
-                    Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
-                    Vector3 nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress + cameraFlySpeed);
-                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath) { //Maybe fix the speed so its consistent?
-                        Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
-                        followLine.Normalize();
-                        newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
-                        nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
+                    isSkipping = true;
+                    originalPos = this.transform.position;
+                    currentModule += skipAhead;
+                }
+                currentModule -= 1;
+                cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
+            } else {
+                Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
+                Vector3 nextPos = Vector3.zero;
+                if (cameraTrackDirection == 1) { 
+                    nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress + cameraFlySpeed);
+                } else if (cameraTrackDirection == -1) { 
+                    nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress - cameraFlySpeed);
+                }
+                if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath)
+                { //Maybe fix the speed so its consistent?
+                    Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
+                    followLine.Normalize();
+                    newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
+                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
+                }
+                if (isSkipping)
+                { //Maybe fix the speed so its consistent?
+                    Vector3 target = (newPos + cameraOffset - originalPos);
+                    target.Normalize();
+                    this.transform.position += target / (4000 * cameraFlySpeed);
+                    if (Vector3.Distance(this.transform.position, newPos + cameraOffset) < 0.1f)
+                    {
+                        isSkipping = false;
                     }
-                    if (isSkipping) { //Maybe fix the speed so its consistent?
-                        Vector3 target = (newPos + cameraOffset - originalPos);
-                        target.Normalize();
-                        this.transform.position += target / (4000 * cameraFlySpeed);
-                        if (Vector3.Distance(this.transform.position, newPos + cameraOffset) < 0.1f) {
-                            isSkipping = false;
-                        }
+                } else {
+                    this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
+                    if (cameraTrackDirection == -1)
+                    {
+                        cameraTrackProgress -= cameraFlySpeed;
                     } else {
-                        this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
                         cameraTrackProgress += cameraFlySpeed;
                     }
-                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate) {
-                        Vector3 newRotation = nextPos - newPos;
-                        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
-                    }
                 }
-            } else
-            {
-                if (cameraTrackProgress <= 0)
+                if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate)
                 {
-                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead < 0)
+                    Vector3 newRotation = Vector3.zero;
+                    if (cameraTrackDirection == 1)
                     {
-                        isSkipping = true;
-                        originalPos = this.transform.position;
-                        currentModule += trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead;
+                        newRotation = nextPos - newPos;
+                    } else if (cameraTrackDirection == -1) {
+                        newRotation = newPos - nextPos;
                     }
-                    currentModule -= 1;
-                    cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
-                }
-                else
-                {
-                    Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
-                    Vector3 nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress - cameraFlySpeed);
-                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath)
-                    {
-                        Vector3 followLine =  flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
-                        followLine.Normalize();
-                        newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
-                        nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
-                    }
-                    if (isSkipping)
-                    {
-                        Vector3 target = (newPos + cameraOffset - originalPos);
-                        target.Normalize();
-                        this.transform.position += target / (4000 * cameraFlySpeed);
-                        if (Vector3.Distance(this.transform.position, newPos + cameraOffset) < 0.1f)
-                        {
-                            isSkipping = false;
-                        }
-                    }
-                    else
-                    {
-                        this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
-                        cameraTrackProgress -= cameraFlySpeed;
-                    }
-                    if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate)
-                    {
-                        Vector3 newRotation =   newPos - nextPos;
-                        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
-                    }
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
                 }
             }
         }
