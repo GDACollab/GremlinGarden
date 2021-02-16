@@ -148,8 +148,8 @@ public class RacingCamera : MonoBehaviour
                 currentModule -= 1;
                 cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
             } else { //The else is for actually moving us on the path.
-                Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress);
-                Vector3 nextPos = Vector3.zero;
+                Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress); //this.transform.position's soon to be new value.
+                Vector3 nextPos = Vector3.zero; //nextPos is what's just after newPos (used for updating rotation).
                 if (cameraTrackDirection == 1) { //Are we moving on the path regularly?
                     nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress + cameraFlySpeed);
                 } else if (cameraTrackDirection == -1) { 
@@ -163,7 +163,7 @@ public class RacingCamera : MonoBehaviour
                     nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
                 }
                 if (isSkipping)
-                { //Okay, but have we skipped over some modules? If so, move to the next module.
+                { //Okay, but have we skipped over some modules? If so, start slowly moving over to the next available module.
                     Vector3 target = (newPos + cameraOffset - originalPos);
                     target.Normalize();
                     this.transform.position += target * (cameraFlySpeed);
