@@ -74,7 +74,13 @@ public class RaceManager : MonoBehaviour
     [Tooltip("A UI Prefab to populate the leaderboards with (requires a Text component).")]
     public GameObject leaderboardText;
 
+    [Header("Cool Racerlineup Shot")]
 
+    RenderTexture racerLineup;
+    Camera lineupCam;
+    public GameObject texturePlane;
+    GameObject lineupPlane;
+    bool gremlinLineup = false;
 
     /// <summary>
     /// Gets the track ready for racing.
@@ -115,10 +121,31 @@ public class RaceManager : MonoBehaviour
             racetracks.Add(track);
         }
         //racingCamera.SetGremlinFocus(racingGremlins[playerIndex], true);
-        racingCamera.SetFlyover(racetracks[0].GetComponent<TrackManager>(), 1, true);
+        racingCamera.SetFlyover(racetracks[0].GetComponent<TrackManager>(), 1, true, FlyoverDone);
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
         var otherSide = Instantiate(trackSides, this.transform);
         otherSide.transform.position += placementOffset * placementOffsetDimension;
+    }
+
+    void FlyoverDone() {
+        //Set up cool racer lineup effect:
+        racerLineup = new RenderTexture(Screen.width, Screen.height, 24);
+        lineupCam = GetComponentInChildren<Camera>();
+        lineupCam.targetTexture = racerLineup;
+        lineupCam.transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0); //Temporary way of placement.
+        lineupPlane = Instantiate(texturePlane, ActiveUI.transform);
+        lineupPlane.GetComponent<Image>().material.SetTexture("_MainTex", racerLineup);
+        Vector3 newScale = new Vector3(Screen.width, Screen.height);
+        lineupPlane.transform.localScale = newScale;
+        lineupPlane.transform.position -= new Vector3(Screen.width, 0);
+        gremlinLineup = true;
+    }
+
+    void BeginActualLineup() { 
+        racingCamera.transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0);
+        racingCamera.transform.rotation = lineupCam.transform.rotation;
+        Destroy(lineupPlane);
+        racingCamera.SetLineup();
     }
 
     /// <summary>
@@ -173,6 +200,14 @@ public class RaceManager : MonoBehaviour
         if (timeElapsed >= 0)
         {
             timeElapsed += Time.deltaTime;
+        }
+        if (gremlinLineup == true) {
+            Vector3 target = lineupPlane.transform.position + new Vector3(racingCamera.GetComponent<RacingCamera>().cameraFlySpeed * 50, 0);
+            lineupPlane.transform.position = Vector3.Lerp(target, lineupPlane.transform.position, Time.deltaTime);
+            if (lineupPlane.transform.position.x >= Screen.width/2) {
+                gremlinLineup = false;
+                BeginActualLineup();
+            }
         }
     }
 }

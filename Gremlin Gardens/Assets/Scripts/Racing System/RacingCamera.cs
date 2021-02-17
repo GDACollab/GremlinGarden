@@ -49,6 +49,9 @@ public class RacingCamera : MonoBehaviour
     bool isSkipping = false;
     Vector3 originalPos;
 
+    public delegate void Callback();
+    Callback flyoverFinishedCallback;
+
     /// <summary>
     /// Used to switch between the various camera "modes", like previewing a track or following a gremlin.
     /// </summary>
@@ -79,10 +82,12 @@ public class RacingCamera : MonoBehaviour
     /// <param name="trackToFly">The track to fly over.</param>
     /// <param name="direction">-1 from starting at the end, 1 from starting at the beginning.</param>
     /// <param name="updatePos">Should the camera immediately jump to the track?</param>
-    public void SetFlyover(TrackManager trackToFly, int direction, bool updatePos) {
+    /// <param name="onFinishCallback">The callback to call when the flyover is done.</param>
+    public void SetFlyover(TrackManager trackToFly, int direction, bool updatePos, Callback onFinishCallback) {
         trackFocus = trackToFly;
         cameraMode = "flyover";
         cameraTrackDirection = direction;
+        flyoverFinishedCallback = onFinishCallback;
         if (direction == 1)
         {
             cameraTrackProgress = 0;
@@ -105,6 +110,10 @@ public class RacingCamera : MonoBehaviour
         }
     }
 
+    public void SetLineup() {
+        cameraMode = "lineup";
+    }
+
     void Update()
     {
         if (cameraMode == "racing")
@@ -124,7 +133,9 @@ public class RacingCamera : MonoBehaviour
                 this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
             }
             this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
-        } else if (cameraMode == "flyover") { //The logic for doing a flyover.
+        }
+        else if (cameraMode == "flyover")
+        { //The logic for doing a flyover.
             PathCreation.PathCreator flyoverPath = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>();
             int skipAhead = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead;
             if (cameraTrackDirection == 1 && cameraTrackProgress >= flyoverPath.path.length) //This if/else if is just to move along the path if we're doing one direction or the other.
@@ -137,8 +148,14 @@ public class RacingCamera : MonoBehaviour
                 }
                 currentModule += 1;
                 cameraTrackProgress = 0;
+                if (currentModule == trackFocus.transform.childCount)
+                {
+                    cameraMode = "none";
+                    flyoverFinishedCallback();
+                }
             }
-            else if (cameraTrackDirection == -1 && cameraTrackProgress <= 0) {
+            else if (cameraTrackDirection == -1 && cameraTrackProgress <= 0)
+            {
                 if (skipAhead < 0)
                 {
                     isSkipping = true;
@@ -146,13 +163,23 @@ public class RacingCamera : MonoBehaviour
                     currentModule += skipAhead;
                 }
                 currentModule -= 1;
+                if (currentModule < 0)
+                {
+                    cameraMode = "none";
+                    flyoverFinishedCallback();
+                }
                 cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
-            } else { //The else is for actually moving us on the path.
+            }
+            else
+            { //The else is for actually moving us on the path.
                 Vector3 newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress); //this.transform.position's soon to be new value.
                 Vector3 nextPos = Vector3.zero; //nextPos is what's just after newPos (used for updating rotation).
-                if (cameraTrackDirection == 1) { //Are we moving on the path regularly?
+                if (cameraTrackDirection == 1)
+                { //Are we moving on the path regularly?
                     nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress + cameraFlySpeed);
-                } else if (cameraTrackDirection == -1) { 
+                }
+                else if (cameraTrackDirection == -1)
+                {
                     nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress - cameraFlySpeed);
                 }
                 if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath)
@@ -171,12 +198,16 @@ public class RacingCamera : MonoBehaviour
                     {
                         isSkipping = false;
                     }
-                } else { //Otherwise, do all that .Lerping goodness.
+                }
+                else
+                { //Otherwise, do all that .Lerping goodness.
                     this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
                     if (cameraTrackDirection == -1)
                     {
                         cameraTrackProgress -= cameraFlySpeed;
-                    } else {
+                    }
+                    else
+                    {
                         cameraTrackProgress += cameraFlySpeed;
                     }
                 }
@@ -186,12 +217,17 @@ public class RacingCamera : MonoBehaviour
                     if (cameraTrackDirection == 1)
                     {
                         newRotation = nextPos - newPos;
-                    } else if (cameraTrackDirection == -1) {
+                    }
+                    else if (cameraTrackDirection == -1)
+                    {
                         newRotation = newPos - nextPos;
                     }
                     this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
                 }
             }
+        }
+        else if (cameraMode == "lineup") { 
+            
         }
     }
 }
