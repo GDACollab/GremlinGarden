@@ -638,10 +638,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gremlinBounds: {x: 10, y: 3, z: 50}
-  cameraOffset: {x: 5, y: 6, z: 0}
+  cameraOffset: {x: -10, y: 6, z: 5}
   lookAtFocus: 1
   cameraFlySpeed: 1
   texturePlane: {fileID: 2801156931057065824, guid: 64f45a33a1743984e9d4368e0775c8cd, type: 3}
+  tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   cameraMode: racing
 --- !u!1 &2144793205
 GameObject:

@@ -73,6 +73,8 @@ public class RaceManager : MonoBehaviour
     [Tooltip("A UI Prefab to populate the leaderboards with (requires a Text component).")]
     public GameObject leaderboardText;
 
+    int gremlinPlayerIndex;
+
     /// <summary>
     /// Gets the track ready for racing.
     /// </summary>
@@ -111,7 +113,7 @@ public class RaceManager : MonoBehaviour
             track.GetComponent<TrackManager>().RacingGremlin = racingGremlins[i];
             racetracks.Add(track);
         }
-        //racingCamera.SetGremlinFocus(racingGremlins[playerIndex], true);
+        gremlinPlayerIndex = playerIndex;
         racingCamera.SetFlyover(racetracks[0].GetComponent<TrackManager>(), 1, true, FlyoverDone);
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
         var otherSide = Instantiate(trackSides, this.transform);
@@ -126,16 +128,19 @@ public class RaceManager : MonoBehaviour
 
     void BeginActualLineup() { 
         racingCamera.transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0);
-        racingCamera.SetTween(racetracks[racetracks.Count - 1].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(0, 2), Quaternion.Euler(Vector3.down), 10.0f, CameraReady);
+        racingCamera.SetTween(racetracks[racetracks.Count - 1].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0), racingCamera.transform.rotation, 2.0f, CameraReady);
     }
 
     void CameraReady() {
+        Vector3 targetPos = racetracks[gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin.transform.position + racingCamera.cameraOffset;
+        racingCamera.SetTween(targetPos, Quaternion.LookRotation(racetracks[gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin.transform.position - targetPos, Vector3.up), 2.0f, StartTracks);
     }
 
     /// <summary>
     /// Call after TrackSetup(). Will begin each race.
     /// </summary>
     public void StartTracks() {
+        racingCamera.SetGremlinFocus(racetracks[gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin, false);
         timeElapsed = 0;
         foreach (GameObject track in racetracks) { //Let's hope this won't create any unfair results.
             track.GetComponent<TrackManager>().StartRace(UpdateResults);

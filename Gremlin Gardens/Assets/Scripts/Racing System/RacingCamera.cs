@@ -70,9 +70,11 @@ public class RacingCamera : MonoBehaviour
 
     Vector3 targetPos;
     Vector3 targetRot;
-    bool posTweenDone = false;
-    bool rotTweenDone = false;
-    float tweenSpeed;
+    Vector3 oldPos;
+    Vector3 oldRot;
+    float tweenElapsed;
+    float tweenDuration;
+    public AnimationCurve tweenCurve;
 
     public delegate void Callback();
     /// <summary>
@@ -153,14 +155,15 @@ public class RacingCamera : MonoBehaviour
         wipeSpeed = speed;
     }
 
-    public void SetTween(Vector3 newPos, Quaternion newRot, float speed, Callback callback) {
+    public void SetTween(Vector3 newPos, Quaternion newRot, float time, Callback callback) {
         cameraMode = "tween";
         targetPos = newPos;
         targetRot = newRot.eulerAngles;
-        tweenSpeed = speed;
+        oldPos = this.transform.position;
+        oldRot = this.transform.rotation.eulerAngles;
+        tweenDuration = time;
+        tweenElapsed = 0;
         cameraStuffFinishedCallback = callback;
-        posTweenDone = false;
-        rotTweenDone = false;
     }
 
     void Update()
@@ -292,26 +295,14 @@ public class RacingCamera : MonoBehaviour
             }
         }
         else if (cameraMode == "tween") {
-            Vector3 target = targetPos - this.transform.position;
-            target.Normalize();
-            target *= tweenSpeed;
-            target += this.transform.position;
-            this.transform.position = Vector3.Lerp(this.transform.position, target, Time.deltaTime);
-            if (Vector3.Distance(targetPos, this.transform.position) <= 0.01f) {
-                posTweenDone = true;
-            }
-            Vector3 rotTarget = targetRot - this.transform.rotation.eulerAngles;
-            rotTarget.Normalize();
-            rotTarget *= tweenSpeed;
-            rotTarget += this.transform.rotation.eulerAngles;
-            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(rotTarget), Time.deltaTime);
-            if (Vector3.Distance(targetRot, this.transform.rotation.eulerAngles) <= 0.01f) {
-                rotTweenDone = true;
-            }
-            if (posTweenDone && rotTweenDone) {
+            var percent = tweenCurve.Evaluate(tweenElapsed/tweenDuration);
+            this.transform.position = oldPos + ((targetPos - oldPos) * percent);
+            this.transform.rotation = Quaternion.Euler(oldRot + ((targetRot - oldRot) * percent));
+            if (tweenElapsed >= tweenDuration) {
                 cameraMode = "none";
                 cameraStuffFinishedCallback();
-            }
+            } 
+            tweenElapsed += Time.deltaTime;
         }
     }
 }
