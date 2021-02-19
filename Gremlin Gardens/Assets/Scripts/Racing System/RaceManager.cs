@@ -132,8 +132,10 @@ public class RaceManager : MonoBehaviour
     }
 
     void CameraReady() {
-        Vector3 targetPos = racetracks[gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin.transform.position + racingCamera.cameraOffset;
-        racingCamera.SetTween(targetPos, Quaternion.LookRotation(racetracks[gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin.transform.position - targetPos, Vector3.up), 2.0f, StartTracks);
+        Transform gremlinTransform = racetracks[gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin.transform;
+        racingCamera.cameraOffset = new Vector3(-10, 6, racingCamera.transform.position.z - gremlinTransform.position.z);
+        Vector3 targetPos = gremlinTransform.position + racingCamera.cameraOffset;
+        racingCamera.SetTween(targetPos, Quaternion.LookRotation(gremlinTransform.position - targetPos, Vector3.up), 2.0f, StartTracks);
     }
 
     /// <summary>
