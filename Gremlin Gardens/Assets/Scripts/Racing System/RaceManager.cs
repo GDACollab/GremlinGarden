@@ -121,12 +121,15 @@ public class RaceManager : MonoBehaviour
     void FlyoverDone() {
         //Set up cool racer lineup effect:
         GetComponentInChildren<Camera>().transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0); //Temporary way of placement.
-        racingCamera.SetWipe(GetComponentInChildren<Camera>(), ActiveUI, new Vector3(-Screen.width, Screen.height/2), new Vector3(Screen.width/2, Screen.height/2), BeginActualLineup);
+        racingCamera.SetWipe(GetComponentInChildren<Camera>(), ActiveUI, new Vector3(-Screen.width, Screen.height/2), new Vector3(Screen.width/2, Screen.height/2), 2.0f, BeginActualLineup);
     }
 
     void BeginActualLineup() { 
         racingCamera.transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0);
-        racingCamera.SetLineup();
+        racingCamera.SetTween(racetracks[racetracks.Count - 1].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(0, 2), Quaternion.Euler(Vector3.down), 10.0f, CameraReady);
+    }
+
+    void CameraReady() {
     }
 
     /// <summary>

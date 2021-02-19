@@ -42,7 +42,9 @@ public class RacingCamera : MonoBehaviour
     GameObject planeToWipeWith;
     Vector3 wipeEndPos;
     Transform transferToCamera;
+    float wipeSpeed;
 
+    //Stuff for flyover:
 
     /// <summary>
     /// The gremlin the camera is currently focusing on (if at all).
@@ -63,6 +65,14 @@ public class RacingCamera : MonoBehaviour
     int cameraTrackDirection = 0;
     bool isSkipping = false;
     Vector3 originalPos;
+
+    //Stuff for tweens (Sorry, people aged 14 and older, and kids aged 8 and younger):
+
+    Vector3 targetPos;
+    Vector3 targetRot;
+    bool posTweenDone = false;
+    bool rotTweenDone = false;
+    float tweenSpeed;
 
     public delegate void Callback();
     /// <summary>
@@ -128,7 +138,7 @@ public class RacingCamera : MonoBehaviour
         }
     }
 
-    public void SetWipe(Camera cameraToWipe, GameObject ActiveUI, Vector3 startAt, Vector3 endAt, Callback callback) {
+    public void SetWipe(Camera cameraToWipe, GameObject ActiveUI, Vector3 startAt, Vector3 endAt, float speed, Callback callback) {
         wipeTexture = new RenderTexture(Screen.width, Screen.height, 24);
         planeToWipeWith = Instantiate(texturePlane, ActiveUI.transform);
         cameraToWipe.targetTexture = wipeTexture;
@@ -140,10 +150,17 @@ public class RacingCamera : MonoBehaviour
         cameraMode = "wipe";
         cameraStuffFinishedCallback = callback;
         transferToCamera = cameraToWipe.transform;
+        wipeSpeed = speed;
     }
 
-    public void SetLineup() {
-        cameraMode = "lineup";
+    public void SetTween(Vector3 newPos, Quaternion newRot, float speed, Callback callback) {
+        cameraMode = "tween";
+        targetPos = newPos;
+        targetRot = newRot.eulerAngles;
+        tweenSpeed = speed;
+        cameraStuffFinishedCallback = callback;
+        posTweenDone = false;
+        rotTweenDone = false;
     }
 
     void Update()
@@ -258,10 +275,11 @@ public class RacingCamera : MonoBehaviour
                 }
             }
         }
-        else if (cameraMode == "wipe") {
+        else if (cameraMode == "wipe")
+        {
             Vector3 target = (wipeEndPos - planeToWipeWith.transform.position);
             target.Normalize();
-            target *= cameraFlySpeed * 40; //This actually moves the camera during a wipe, so if you want to change the speed, do it here.
+            target *= wipeSpeed; //This actually moves the camera during a wipe, so if you want to change the speed, do it here.
             target += planeToWipeWith.transform.position;
             planeToWipeWith.transform.position = Vector3.Lerp(target, planeToWipeWith.transform.position, Time.deltaTime);
             if (Vector3.Distance(planeToWipeWith.transform.position, wipeEndPos) <= 1)
@@ -269,6 +287,28 @@ public class RacingCamera : MonoBehaviour
                 Destroy(planeToWipeWith);
                 this.transform.position = transferToCamera.position;
                 this.transform.rotation = transferToCamera.rotation;
+                cameraMode = "none";
+                cameraStuffFinishedCallback();
+            }
+        }
+        else if (cameraMode == "tween") {
+            Vector3 target = targetPos - this.transform.position;
+            target.Normalize();
+            target *= tweenSpeed;
+            target += this.transform.position;
+            this.transform.position = Vector3.Lerp(this.transform.position, target, Time.deltaTime);
+            if (Vector3.Distance(targetPos, this.transform.position) <= 0.01f) {
+                posTweenDone = true;
+            }
+            Vector3 rotTarget = targetRot - this.transform.rotation.eulerAngles;
+            rotTarget.Normalize();
+            rotTarget *= tweenSpeed;
+            rotTarget += this.transform.rotation.eulerAngles;
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.Euler(rotTarget), Time.deltaTime);
+            if (Vector3.Distance(targetRot, this.transform.rotation.eulerAngles) <= 0.01f) {
+                rotTweenDone = true;
+            }
+            if (posTweenDone && rotTweenDone) {
                 cameraMode = "none";
                 cameraStuffFinishedCallback();
             }
