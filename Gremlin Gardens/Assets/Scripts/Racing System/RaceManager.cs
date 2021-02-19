@@ -96,17 +96,17 @@ public class RaceManager : MonoBehaviour
             racingGremlins[i].GetComponent<Rigidbody>().isKinematic = true;
             if (i == playerIndex)
             {
-                track = Instantiate(playerTrack, this.transform);
+                track = Instantiate(playerTrack, placementOffset * placementOffsetDimension, playerTrack.transform.rotation, this.transform);
                 track.GetComponent<TrackManager>().ActiveUI = ActiveUI;
             }
             else {
-                track = Instantiate(aiTrack, this.transform);
+                track = Instantiate(aiTrack, placementOffset * placementOffsetDimension, aiTrack.transform.rotation, this.transform);
             }
             trackIndices[i] = i;
             track.GetComponent<TrackManager>().trackID = i;
             track.transform.position = placementOffset * placementOffsetDimension;
             //Set the Gremlin's position to be the new track's earliest position so we can update the camera.
-            racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.transform.GetChild(0).transform.position;
+            racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.GetComponent<TrackManager>().GremlinOffset;
             placementOffset += track.GetComponent<TrackManager>().trackWidth;
             track.GetComponent<TrackManager>().RacingGremlin = racingGremlins[i];
             racetracks.Add(track);

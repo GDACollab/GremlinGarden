@@ -37,7 +37,7 @@ public class TrackModule : MonoBehaviour
     /// Position where the bezier path for this module starts. Intended to be used when constructing a track procedurally, to connect each point.
     /// Not static because it may be changed by EquationTrackModule.
     /// </summary>
-    [HideInInspector]
+    
     public Vector3 pathStart;
     /// <summary>
     /// Position where the bezier path for this module ends. Intended to be used when constructing a track procedurally, to connect each point.
@@ -77,8 +77,8 @@ public class TrackModule : MonoBehaviour
     {
         totalDistance = 0;
         internalCreator = GetComponent<PathCreator>();
-        pathStart = internalCreator.path.GetPoint(0);
-        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1);
+        pathStart = internalCreator.path.GetPoint(0); //This does not work, because bezier paths are dumb.
+        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1); //This does not work, because bezier paths are dumb.
     }
 
     /// <summary>

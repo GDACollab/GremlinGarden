@@ -41,7 +41,7 @@ public class RacingCamera : MonoBehaviour
     /// </summary>
     GameObject planeToWipeWith;
     Vector3 wipeEndPos;
-    Vector3 transferToPos;
+    Transform transferToCamera;
 
 
     /// <summary>
@@ -139,7 +139,7 @@ public class RacingCamera : MonoBehaviour
         wipeEndPos = endAt;
         cameraMode = "wipe";
         cameraStuffFinishedCallback = callback;
-        transferToPos = cameraToWipe.transform.position;
+        transferToCamera = cameraToWipe.transform;
     }
 
     public void SetLineup() {
@@ -218,9 +218,8 @@ public class RacingCamera : MonoBehaviour
                 { //If not, we're moving from the start point to the end point, so that's reflected here.
                     Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
                     followLine.Normalize();
-                    Debug.Log(followLine);
-                    newPos = flyoverPath.path.GetClosestPointOnPath(this.transform.position) + (cameraTrackProgress * followLine);
-                    nextPos = flyoverPath.path.GetClosestPointOnPath(this.transform.position) + (followLine * (cameraTrackProgress + cameraFlySpeed));
+                    newPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress) + (followLine * cameraFlySpeed);
+                    nextPos = flyoverPath.path.GetPointAtDistance(cameraTrackProgress) + (followLine * (cameraFlySpeed * 2));
                 }
                 if (isSkipping)
                 { //Okay, but have we skipped over some modules? If so, start slowly moving over to the next available module.
@@ -262,13 +261,14 @@ public class RacingCamera : MonoBehaviour
         else if (cameraMode == "wipe") {
             Vector3 target = (wipeEndPos - planeToWipeWith.transform.position);
             target.Normalize();
-            target *= cameraFlySpeed * 50; //This actually moves the camera during a wipe, so if you want to change the speed, do it here.
+            target *= cameraFlySpeed * 40; //This actually moves the camera during a wipe, so if you want to change the speed, do it here.
             target += planeToWipeWith.transform.position;
             planeToWipeWith.transform.position = Vector3.Lerp(target, planeToWipeWith.transform.position, Time.deltaTime);
-            if (Vector3.Distance(planeToWipeWith.transform.position, wipeEndPos) <= 0.5f)
+            if (Vector3.Distance(planeToWipeWith.transform.position, wipeEndPos) <= 1)
             {
-                this.transform.position = transferToPos;
                 Destroy(planeToWipeWith);
+                this.transform.position = transferToCamera.position;
+                this.transform.rotation = transferToCamera.rotation;
                 cameraMode = "none";
                 cameraStuffFinishedCallback();
             }
