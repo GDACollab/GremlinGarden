@@ -290,7 +290,6 @@ MonoBehaviour:
   raceTimes: []
   leaderboardHeader: {fileID: 6814948536976317220, guid: ceeb861aa37e7174ba68b410902075e1, type: 3}
   leaderboardText: {fileID: 1137656264600321813, guid: e3fedfe53e2f2f44196a0ccdbc4aec75, type: 3}
-  texturePlane: {fileID: 2801156931057065824, guid: 64f45a33a1743984e9d4368e0775c8cd, type: 3}
 --- !u!1 &1096559084
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +641,7 @@ MonoBehaviour:
   cameraOffset: {x: 5, y: 6, z: 0}
   lookAtFocus: 1
   cameraFlySpeed: 0.04
+  texturePlane: {fileID: 2801156931057065824, guid: 64f45a33a1743984e9d4368e0775c8cd, type: 3}
   cameraMode: racing
 --- !u!1 &2144793205
 GameObject:

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RaceManager : MonoBehaviour
 {
@@ -74,14 +73,6 @@ public class RaceManager : MonoBehaviour
     [Tooltip("A UI Prefab to populate the leaderboards with (requires a Text component).")]
     public GameObject leaderboardText;
 
-    [Header("Cool Racerlineup Shot")]
-
-    RenderTexture racerLineup;
-    Camera lineupCam;
-    public GameObject texturePlane;
-    GameObject lineupPlane;
-    bool gremlinLineup = false;
-
     /// <summary>
     /// Gets the track ready for racing.
     /// </summary>
@@ -129,22 +120,12 @@ public class RaceManager : MonoBehaviour
 
     void FlyoverDone() {
         //Set up cool racer lineup effect:
-        racerLineup = new RenderTexture(Screen.width, Screen.height, 24);
-        lineupCam = GetComponentInChildren<Camera>();
-        lineupCam.targetTexture = racerLineup;
-        lineupCam.transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0); //Temporary way of placement.
-        lineupPlane = Instantiate(texturePlane, ActiveUI.transform);
-        lineupPlane.GetComponent<Image>().material.SetTexture("_MainTex", racerLineup);
-        Vector3 newScale = new Vector3(Screen.width, Screen.height);
-        lineupPlane.transform.localScale = newScale;
-        lineupPlane.transform.position -= new Vector3(Screen.width, 0);
-        gremlinLineup = true;
+        GetComponentInChildren<Camera>().transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0); //Temporary way of placement.
+        racingCamera.SetWipe(GetComponentInChildren<Camera>(), ActiveUI, new Vector3(-Screen.width, Screen.height/2), new Vector3(Screen.width/2, Screen.height/2), BeginActualLineup);
     }
 
     void BeginActualLineup() { 
         racingCamera.transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0);
-        racingCamera.transform.rotation = lineupCam.transform.rotation;
-        Destroy(lineupPlane);
         racingCamera.SetLineup();
     }
 
@@ -186,8 +167,8 @@ public class RaceManager : MonoBehaviour
         for (int i = 0; i < raceTimes.Length; i++) {
             var text = Instantiate(leaderboardText, header.transform);
             var time = Instantiate(leaderboardText, header.transform);
-            text.GetComponent<Text>().text = racetracks[trackIndices[i]].GetComponent<TrackManager>().RacingGremlin.name;
-            time.GetComponent<Text>().text = raceTimes[i].ToString() + " seconds";
+            text.GetComponent<UnityEngine.UI.Text>().text = racetracks[trackIndices[i]].GetComponent<TrackManager>().RacingGremlin.name;
+            time.GetComponent<UnityEngine.UI.Text>().text = raceTimes[i].ToString() + " seconds";
             text.transform.position = new Vector3(-101.6f, heightOffset) + header.transform.position;
             time.transform.position = new Vector3(104.7f, heightOffset) + header.transform.position;
             heightOffset -= 30;
@@ -200,14 +181,6 @@ public class RaceManager : MonoBehaviour
         if (timeElapsed >= 0)
         {
             timeElapsed += Time.deltaTime;
-        }
-        if (gremlinLineup == true) {
-            Vector3 target = lineupPlane.transform.position + new Vector3(racingCamera.GetComponent<RacingCamera>().cameraFlySpeed * 50, 0);
-            lineupPlane.transform.position = Vector3.Lerp(target, lineupPlane.transform.position, Time.deltaTime);
-            if (lineupPlane.transform.position.x >= Screen.width/2) {
-                gremlinLineup = false;
-                BeginActualLineup();
-            }
         }
     }
 }

@@ -28,6 +28,21 @@ public class RacingCamera : MonoBehaviour
 
     public float cameraFlySpeed = 5.0f;
 
+    [Header("Stuff for Camera Wipes")]
+
+    RenderTexture wipeTexture;
+    /// <summary>
+    /// A prefab of the plane to wipe with (will assign a RenderTexture as the main texture).
+    /// </summary>
+    [Tooltip("A prefab of the plane to wipe with (will assign a RenderTexture as the main texture).")]
+    public GameObject texturePlane;
+    /// <summary>
+    /// The actual plane we're going to wipe with.
+    /// </summary>
+    GameObject planeToWipeWith;
+    Vector3 wipeEndPos;
+    Vector3 transferToPos;
+
 
     /// <summary>
     /// The gremlin the camera is currently focusing on (if at all).
@@ -50,7 +65,10 @@ public class RacingCamera : MonoBehaviour
     Vector3 originalPos;
 
     public delegate void Callback();
-    Callback flyoverFinishedCallback;
+    /// <summary>
+    /// Used when a camera is done with a mode. Modes are intended to only be used one at a time, so don't set up multiple camera modes at once.
+    /// </summary>
+    Callback cameraStuffFinishedCallback;
 
     /// <summary>
     /// Used to switch between the various camera "modes", like previewing a track or following a gremlin.
@@ -87,7 +105,7 @@ public class RacingCamera : MonoBehaviour
         trackFocus = trackToFly;
         cameraMode = "flyover";
         cameraTrackDirection = direction;
-        flyoverFinishedCallback = onFinishCallback;
+        cameraStuffFinishedCallback = onFinishCallback;
         if (direction == 1)
         {
             cameraTrackProgress = 0;
@@ -108,6 +126,20 @@ public class RacingCamera : MonoBehaviour
                 this.transform.rotation = Quaternion.LookRotation(next, Vector3.up);
             }
         }
+    }
+
+    public void SetWipe(Camera cameraToWipe, GameObject ActiveUI, Vector3 startAt, Vector3 endAt, Callback callback) {
+        wipeTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        planeToWipeWith = Instantiate(texturePlane, ActiveUI.transform);
+        cameraToWipe.targetTexture = wipeTexture;
+        planeToWipeWith.GetComponent<UnityEngine.UI.Image>().material.SetTexture("_MainTex", wipeTexture);
+        Vector3 newScale = new Vector3(Screen.width, Screen.height);
+        planeToWipeWith.transform.localScale = newScale;
+        planeToWipeWith.transform.position = startAt;
+        wipeEndPos = endAt;
+        cameraMode = "wipe";
+        cameraStuffFinishedCallback = callback;
+        transferToPos = cameraToWipe.transform.position;
     }
 
     public void SetLineup() {
@@ -151,7 +183,7 @@ public class RacingCamera : MonoBehaviour
                 if (currentModule == trackFocus.transform.childCount)
                 {
                     cameraMode = "none";
-                    flyoverFinishedCallback();
+                    cameraStuffFinishedCallback();
                 }
             }
             else if (cameraTrackDirection == -1 && cameraTrackProgress <= 0)
@@ -166,7 +198,7 @@ public class RacingCamera : MonoBehaviour
                 if (currentModule < 0)
                 {
                     cameraMode = "none";
-                    flyoverFinishedCallback();
+                    cameraStuffFinishedCallback();
                 }
                 cameraTrackProgress = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>().path.length;
             }
@@ -186,8 +218,9 @@ public class RacingCamera : MonoBehaviour
                 { //If not, we're moving from the start point to the end point, so that's reflected here.
                     Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
                     followLine.Normalize();
-                    newPos = flyoverPath.path.GetPointAtDistance(0) + (cameraTrackProgress * followLine);
-                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
+                    Debug.Log(followLine);
+                    newPos = flyoverPath.path.GetClosestPointOnPath(this.transform.position) + (cameraTrackProgress * followLine);
+                    nextPos = flyoverPath.path.GetClosestPointOnPath(this.transform.position) + (followLine * (cameraTrackProgress + cameraFlySpeed));
                 }
                 if (isSkipping)
                 { //Okay, but have we skipped over some modules? If so, start slowly moving over to the next available module.
@@ -226,8 +259,19 @@ public class RacingCamera : MonoBehaviour
                 }
             }
         }
-        else if (cameraMode == "lineup") { 
-            
+        else if (cameraMode == "wipe") {
+            Vector3 target = (wipeEndPos - planeToWipeWith.transform.position);
+            target.Normalize();
+            target *= cameraFlySpeed * 50; //This actually moves the camera during a wipe, so if you want to change the speed, do it here.
+            target += planeToWipeWith.transform.position;
+            planeToWipeWith.transform.position = Vector3.Lerp(target, planeToWipeWith.transform.position, Time.deltaTime);
+            if (Vector3.Distance(planeToWipeWith.transform.position, wipeEndPos) <= 0.5f)
+            {
+                this.transform.position = transferToPos;
+                Destroy(planeToWipeWith);
+                cameraMode = "none";
+                cameraStuffFinishedCallback();
+            }
         }
     }
 }
