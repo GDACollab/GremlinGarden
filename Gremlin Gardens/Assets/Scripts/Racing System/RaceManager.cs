@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This is in charge of making multiple tracks populated with gremlins. See RandomGremlinRace.cs for an example of how to use this.
+/// </summary>
 public class RaceManager : MonoBehaviour
 {
 
@@ -27,6 +30,14 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     [Tooltip("The side geometry of the track, to be used on both ends. Try making an empty object and making the geometry children of that object, and experiment to see what works.")]
     public GameObject trackSides;
+
+
+    /// <summary>
+    /// This is a prefab meant to set up all the fancy camera angles and intro to a race before it actually starts. Prefab requires a RaceStart component.
+    /// Check the prefabs folder (search for BasicStart) for examples.
+    /// </summary>
+    [Tooltip("This is a prefab meant to set up all the fancy camera angles and intro to a race before it actually starts. Prefab requires a RaceStart component.")]
+    public GameObject raceStartObject;
 
     /// <summary>
     /// Which way on the axes to offset tracks. So (1, 0, 0) for offsetting on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.
@@ -73,10 +84,14 @@ public class RaceManager : MonoBehaviour
     [Tooltip("A UI Prefab to populate the leaderboards with (requires a Text component).")]
     public GameObject leaderboardText;
 
-    int gremlinPlayerIndex;
+    /// <summary>
+    /// The index where the player's gremlin has been placed in the racetracks list (should be the same as playerIndex provided to TrackSetup, if you have it).
+    /// </summary>
+    [HideInInspector]
+    public int gremlinPlayerIndex;
 
     /// <summary>
-    /// Gets the track ready for racing.
+    /// Gets the track ready for racing. StartTracks() is called by raceStartObject.
     /// </summary>
     /// <param name="racingGremlins">The list of gremlin objects to use in the race. Assigns them a track based on their order. Assumes that the Gremlins in the list already exist as objects in the game world.</param>
     /// <param name="playerIndex">The index that the player Gremlin is stored at (so we can make a different track)</param>
@@ -98,7 +113,7 @@ public class RaceManager : MonoBehaviour
             racingGremlins[i].GetComponent<Rigidbody>().isKinematic = true;
             if (i == playerIndex)
             {
-                track = Instantiate(playerTrack, placementOffset * placementOffsetDimension, playerTrack.transform.rotation, this.transform);
+                track = Instantiate(playerTrack, placementOffset * placementOffsetDimension, playerTrack.transform.rotation, this.transform); //We set the transform on instantiation, otherwise we get the wrong value for .pathStart.
                 track.GetComponent<TrackManager>().ActiveUI = ActiveUI;
             }
             else {
@@ -114,35 +129,17 @@ public class RaceManager : MonoBehaviour
             racetracks.Add(track);
         }
         gremlinPlayerIndex = playerIndex;
-        racingCamera.SetFlyover(racetracks[0].GetComponent<TrackManager>(), 1, true, FlyoverDone);
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
         var otherSide = Instantiate(trackSides, this.transform);
         otherSide.transform.position += placementOffset * placementOffsetDimension;
-    }
-
-    void FlyoverDone() {
-        //Set up cool racer lineup effect:
-        GetComponentInChildren<Camera>().transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0); //Temporary way of placement.
-        racingCamera.SetWipe(GetComponentInChildren<Camera>(), ActiveUI, new Vector3(-Screen.width, Screen.height/2), new Vector3(Screen.width/2, Screen.height/2), 2.0f, BeginActualLineup);
-    }
-
-    void BeginActualLineup() { 
-        racingCamera.transform.position = racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0);
-        racingCamera.SetTween(racetracks[racetracks.Count - 1].GetComponent<TrackManager>().RacingGremlin.transform.position + new Vector3(-20, 3, 0), racingCamera.transform.rotation, 2.0f, CameraReady);
-    }
-
-    void CameraReady() {
-        Transform gremlinTransform = racetracks[gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin.transform;
-        racingCamera.cameraOffset = new Vector3(-10, 6, racingCamera.transform.position.z - gremlinTransform.position.z);
-        Vector3 targetPos = gremlinTransform.position + racingCamera.cameraOffset;
-        racingCamera.SetTween(targetPos, Quaternion.LookRotation(gremlinTransform.position - targetPos, Vector3.up), 2.0f, StartTracks);
+        var starting = Instantiate(raceStartObject, this.transform);
+        starting.GetComponent<RaceStart>().RaceStartSetup(this);
     }
 
     /// <summary>
     /// Call after TrackSetup(). Will begin each race.
     /// </summary>
     public void StartTracks() {
-        racingCamera.SetGremlinFocus(racetracks[gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin, false);
         timeElapsed = 0;
         foreach (GameObject track in racetracks) { //Let's hope this won't create any unfair results.
             track.GetComponent<TrackManager>().StartRace(UpdateResults);

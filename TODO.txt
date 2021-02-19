@@ -1,6 +1,5 @@
 - Fix the bug on the SampleRace where going up the stairs isn't smooth.
 - Fix the bug on the swimming pool that causes the camera to tilt up.
-- Move the custom race intro code somewhere other than racemanager?
 - Add a countdown for the race
 - Add a gate or something that slides down when the race starts.
 - Finish Line + Victory Dance

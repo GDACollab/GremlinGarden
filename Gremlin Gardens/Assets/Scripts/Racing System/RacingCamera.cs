@@ -8,40 +8,56 @@ using UnityEngine;
 public class RacingCamera : MonoBehaviour
 {
     /// <summary>
-    /// How far away a gremlin has to be before the camera can start moving.
+    /// How far away a gremlin has to be before the camera can start moving. Only used in the camera's racing mode.
     /// </summary>
-    [Tooltip("How far away a gremlin has to be before the camera can start moving.")]
+    [Tooltip("How far away a gremlin has to be before the camera can start moving. Only used in the camera's racing mode.")]
     public Vector3 gremlinBounds = new Vector3(50, 50, 50);
 
     /// <summary>
-    /// How far away the camera is from the gremlin.
+    /// How far away the camera is from the gremlin. Set this ahead of time, and then call the relevant functions to change how the camera offsets.
     /// </summary>
     [Tooltip("How far away the camera is from the gremlin.")]
     public Vector3 cameraOffset = new Vector3(0, 1, 1);
 
 
     /// <summary>
-    /// Should the camera also look at the gremlin?
+    /// Should the camera also look at the gremlin? Only used in the camera's racing mode.
     /// </summary>
-    [Tooltip("Should the camera also look at the gremlin?")]
+    [Tooltip("Should the camera also look at the gremlin? Only used in the camera's racing mode.")]
     public bool lookAtFocus = true;
 
+    /// <summary>
+    /// How fast the camera is gonna fly (used ONLY for flyovers)
+    /// </summary>
+    [Tooltip("How fast the camera is gonna fly(used ONLY for flyovers)")]
     public float cameraFlySpeed = 5.0f;
 
     [Header("Stuff for Camera Wipes")]
 
+    ///<summary>
+    /// Used in wipes. We assign a camera to have this RenderTexture, and the camera outputs what it sees to wipeTexture. We then display the texture on a plane.
+    /// </summary>
     RenderTexture wipeTexture;
     /// <summary>
-    /// A prefab of the plane to wipe with (will assign a RenderTexture as the main texture).
+    /// A prefab of the plane to wipe with (will assign a RenderTexture as the main texture). Just search for TexturePlane in prefabs.
     /// </summary>
-    [Tooltip("A prefab of the plane to wipe with (will assign a RenderTexture as the main texture).")]
+    [Tooltip("A prefab of the plane to wipe with (will assign a RenderTexture as the main texture). Just search for TexturePlane in prefabs.")]
     public GameObject texturePlane;
     /// <summary>
     /// The actual plane we're going to wipe with.
     /// </summary>
     GameObject planeToWipeWith;
+    /// <summary>
+    /// Where we want the wipe to end.
+    /// </summary>
     Vector3 wipeEndPos;
+    /// <summary>
+    /// This is the transform of the camera we're wiping to. It's an illusion basically. We just move this camera over to where the other camera is after we've overlayed the plane.
+    /// </summary>
     Transform transferToCamera;
+    /// <summary>
+    /// How fast we're gonna wipe.
+    /// </summary>
     float wipeSpeed;
 
     //Stuff for flyover:
@@ -68,13 +84,31 @@ public class RacingCamera : MonoBehaviour
 
     //Stuff for tweens (Sorry, people aged 14 and older, and kids aged 8 and younger):
 
+    /// <summary>
+    /// Where we're tweening to.
+    /// </summary>
     Vector3 targetPos;
     Vector3 targetRot;
+    /// <summary>
+    /// Where we're tweening from.
+    /// </summary>
     Vector3 oldPos;
     Vector3 oldRot;
+    /// <summary>
+    /// How much time has passed since the start of the tween.
+    /// </summary>
     float tweenElapsed;
+    /// <summary>
+    /// How long the tween is supposed to last.
+    /// </summary>
     float tweenDuration;
-    public AnimationCurve tweenCurve;
+    /// <summary>
+    /// The curve that determines the speed of the tween. Use this to all of its easing goodness. 0 means we're at 0% of what we're tweening towards. 1 is 100% of what we're tweening towards.
+    /// Okay, I tried to get this to be input as a parameter for the SetTween function, but Unity was stubborn about this being provided as an Input.
+    /// So instead, it's going to have to be something you set ahead of time, and then call SetTween for.
+    /// </summary>
+    [Tooltip("The curve that determines the speed of the tween. Use this to all of its easing goodness. 0 means we're at 0% of what we're tweening towards. 1 is 100% of what we're tweening towards.")]
+    public AnimationCurve tweenCurve = AnimationCurve.Linear(0, 0, 1, 1);
 
     public delegate void Callback();
     /// <summary>
@@ -90,7 +124,7 @@ public class RacingCamera : MonoBehaviour
 
 
     /// <summary>
-    /// Sets the gremlin the camera is currently tracking.
+    /// Sets the gremlin the camera is currently tracking. Please do not use multiple SetX() functions at once, it will break the camera.
     /// </summary>
     /// <param name="gremlin">The gremlin to track.</param>
     /// <param name="updatePos">Should the camera immediately jump to this gremlin?</param>
@@ -107,7 +141,7 @@ public class RacingCamera : MonoBehaviour
     }
 
     /// <summary>
-    /// Start the camera flying over the track.
+    /// Start the camera flying over the track. Please do not use multiple SetX() functions at once, it will break the camera.
     /// </summary>
     /// <param name="trackToFly">The track to fly over.</param>
     /// <param name="direction">-1 from starting at the end, 1 from starting at the beginning.</param>
@@ -140,6 +174,15 @@ public class RacingCamera : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Start the camera with a wipe. To use this, make sure you have a suitable prefab for texturePlane. Please do not use multiple SetX() functions at once, it will break the camera.
+    /// </summary>
+    /// <param name="cameraToWipe">The camera we're going to use as a texture for where to wipe to.</param>
+    /// <param name="ActiveUI">The currently active UI (to overlay the other camera's perspective as a "wipe").</param>
+    /// <param name="startAt">Where the wipe texture is going to start on the canvas.</param>
+    /// <param name="endAt">Where the wipe texture is going to move to on the canvas.</param>
+    /// <param name="speed">How fast the wipe is going to move on the canvas.</param>
+    /// <param name="callback">The function to call when the wipe is finished.</param>
     public void SetWipe(Camera cameraToWipe, GameObject ActiveUI, Vector3 startAt, Vector3 endAt, float speed, Callback callback) {
         wipeTexture = new RenderTexture(Screen.width, Screen.height, 24);
         planeToWipeWith = Instantiate(texturePlane, ActiveUI.transform);
@@ -155,6 +198,13 @@ public class RacingCamera : MonoBehaviour
         wipeSpeed = speed;
     }
 
+    /// <summary>
+    /// Sets the camera to tween to a new position. Uses tweenCurve as an easing function. Please do not use multiple SetX() functions at once, it will break the camera.
+    /// </summary>
+    /// <param name="newPos">The new position for the camera to tween to.</param>
+    /// <param name="newRot">The new rotation for the camera to tween to.</param>
+    /// <param name="time">How long the tween should be.</param>
+    /// <param name="callback">The function to call when the tween is finished.</param>
     public void SetTween(Vector3 newPos, Quaternion newRot, float time, Callback callback) {
         cameraMode = "tween";
         targetPos = newPos;

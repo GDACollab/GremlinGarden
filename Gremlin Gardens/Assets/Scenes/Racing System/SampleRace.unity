@@ -150,8 +150,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2079478565}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -171,12 +170,14 @@ MonoBehaviour:
   playerTrack: {fileID: 187331566288000973, guid: d288c52136eca7e459a1238f010e923b, type: 3}
   aiTrack: {fileID: 5864575826065891387, guid: d548f2de69a06ea4ea2c87358dc5ef88, type: 3}
   trackSides: {fileID: 2507957336823102628, guid: 110a037dd07d1284e917fa61b4514b33, type: 3}
+  raceStartObject: {fileID: 659105174856191806, guid: 802aecb7ad60b71458655d305e92fa56, type: 3}
   placementOffsetDimension: {x: 0, y: 0, z: 1}
   racetracks: []
   racingCamera: {fileID: 1473673343}
   raceTimes: []
   leaderboardHeader: {fileID: 6814948536976317220, guid: ceeb861aa37e7174ba68b410902075e1, type: 3}
   leaderboardText: {fileID: 1137656264600321813, guid: e3fedfe53e2f2f44196a0ccdbc4aec75, type: 3}
+  gremlinPlayerIndex: 0
 --- !u!1 &792078197
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,80 +504,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   cameraMode: racing
---- !u!1 &2079478564
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2079478565}
-  - component: {fileID: 2079478566}
-  m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2079478565
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079478564}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 608726827}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!20 &2079478566
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2079478564}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 1
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1 &2096600923
 GameObject:
   m_ObjectHideFlags: 0
