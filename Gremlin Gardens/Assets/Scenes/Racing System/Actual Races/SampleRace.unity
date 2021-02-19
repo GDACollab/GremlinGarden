@@ -170,7 +170,7 @@ MonoBehaviour:
   playerTrack: {fileID: 187331566288000973, guid: d288c52136eca7e459a1238f010e923b, type: 3}
   aiTrack: {fileID: 5864575826065891387, guid: d548f2de69a06ea4ea2c87358dc5ef88, type: 3}
   trackSides: {fileID: 2507957336823102628, guid: 110a037dd07d1284e917fa61b4514b33, type: 3}
-  raceStartObject: {fileID: 659105174856191806, guid: 802aecb7ad60b71458655d305e92fa56, type: 3}
+  raceStartObject: {fileID: 2998953095545000817, guid: b28c5bd3080fe71449edd0af023bae21, type: 3}
   placementOffsetDimension: {x: 0, y: 0, z: 1}
   racetracks: []
   racingCamera: {fileID: 1473673343}

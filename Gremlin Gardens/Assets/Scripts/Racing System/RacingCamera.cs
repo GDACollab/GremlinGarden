@@ -288,8 +288,8 @@ public class RacingCamera : MonoBehaviour
                 { //If not, we're moving from the start point to the end point, so that's reflected here.
                     Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
                     followLine.Normalize();
-                    newPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * cameraFlySpeed);
-                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraFlySpeed * 2));
+                    newPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * cameraTrackProgress);
+                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
                 }
                 if (isSkipping)
                 { //Okay, but have we skipped over some modules? If so, start slowly moving over to the next available module.
