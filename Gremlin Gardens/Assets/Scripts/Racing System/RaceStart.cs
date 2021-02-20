@@ -36,7 +36,7 @@ public class RaceStart : MonoBehaviour
         manager = raceManager;
         racingCamera = raceManager.racingCamera;
         racingCamera.cameraOffset = flyoverOffset;
-        racingCamera.SetFlyover(manager.racetracks[0].GetComponent<TrackManager>(), 1, true, FlyoverDone);
+        racingCamera.SetFlyover(manager.racetracks[Mathf.RoundToInt(manager.racetracks.Count / 2)].GetComponent<TrackManager>(), 1, true, FlyoverDone);
     }
 
     //Could I have made all these callbacks easier to do than just making a function for each one? Sure. But whatever, it works.
@@ -45,13 +45,18 @@ public class RaceStart : MonoBehaviour
     {
         //Set up cool racer lineup effect:
         GetComponentInChildren<Camera>().transform.position = manager.racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + startingLineOffset;
-        racingCamera.SetWipe(GetComponentInChildren<Camera>(), manager.ActiveUI, new Vector3(-Screen.width, Screen.height / 2), new Vector3(Screen.width / 2, Screen.height / 2), 2.0f, BeginActualLineup);
+        racingCamera.SetWipe(GetComponentInChildren<Camera>(), manager.ActiveUI, new Vector3(-Screen.width, Screen.height / 2), new Vector3(Screen.width / 2, Screen.height / 2), 1.0f, BeginActualLineup);
     }
 
     void BeginActualLineup()
     {
         racingCamera.transform.position = manager.racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + startingLineOffset;
-        racingCamera.SetTween(manager.racetracks[manager.racetracks.Count - 1].GetComponent<TrackManager>().RacingGremlin.transform.position + startingLineOffset, racingCamera.transform.rotation, 2.0f, CameraReady);
+        racingCamera.SetTween(manager.racetracks[manager.racetracks.Count - 1].GetComponent<TrackManager>().RacingGremlin.transform.position + startingLineOffset, racingCamera.transform.rotation, 2.0f, LookAtGremlin);
+    }
+
+    void LookAtGremlin() {
+        Transform gremlinTransform = manager.racetracks[manager.gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin.transform;
+        racingCamera.SetTween(racingCamera.transform.position, Quaternion.LookRotation(gremlinTransform.position - racingCamera.transform.position), 1.0f, CameraReady);
     }
 
     void CameraReady()
@@ -59,7 +64,30 @@ public class RaceStart : MonoBehaviour
         Transform gremlinTransform = manager.racetracks[manager.gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin.transform;
         racingCamera.cameraOffset = new Vector3(actualRaceOffset.x, actualRaceOffset.y, racingCamera.transform.position.z - gremlinTransform.position.z + actualRaceOffset.z);
         Vector3 targetPos = gremlinTransform.position + racingCamera.cameraOffset;
-        racingCamera.SetTween(targetPos, Quaternion.LookRotation(gremlinTransform.position - targetPos, Vector3.up), 2.0f, LockGremlinAndStart);
+        racingCamera.SetTween(targetPos, Quaternion.LookRotation(gremlinTransform.position - targetPos, Vector3.up), 2.0f, StartCountdown);
+    }
+
+    float countdownSeconds;
+    public GameObject countdownTextPrefab;
+    GameObject countdownText;
+
+    void StartCountdown() {
+        countdownSeconds = 3;
+        countdownText = Instantiate(countdownTextPrefab, manager.ActiveUI.transform);
+        StartCoroutine("Countdown");
+    }
+
+    IEnumerator Countdown() {
+        while (countdownSeconds > 0)
+        {
+            countdownText.GetComponentInChildren<UnityEngine.UI.Text>().text = countdownSeconds.ToString();
+            countdownSeconds -= 1;
+            yield return new WaitForSeconds(1);
+        }
+        countdownText.GetComponentInChildren<UnityEngine.UI.Text>().text = "GO!";
+        LockGremlinAndStart();
+        yield return new WaitForSeconds(1); //Leave the "GO!" up for a little bit.
+        Destroy(countdownText);
     }
 
     void LockGremlinAndStart() {
