@@ -7,7 +7,7 @@ public class Food : Object
 {
     // Database of all possible food
     // Indices [changed stat(s) & by how much, name, model] 
-    public static readonly Dictionary<string, Food> allPossibleFood = new Dictionary<string, Food>() {
+    /*public static readonly Dictionary<string, Food> allPossibleFood = new Dictionary<string, Food>() {
         {"Apple", new Food(Resources.Load("Apple") as GameObject, "Apple", new Dictionary<string, float>() {
             {"Stamina", 1f }, {"Happiness", 1f}
         })},
@@ -23,7 +23,7 @@ public class Food : Object
         {"Dragon Fruit", new Food(Resources.Load("Dragon Fruit") as GameObject, "Dragon Fruit", new Dictionary<string, float>() {
             {"Flying", 1f }, {"Happiness", 1f}
         })}
-    };
+    };*/
 
     // The stat(s) the food will alter and by how much
     private Dictionary<string, float> alteredStats;
@@ -32,18 +32,22 @@ public class Food : Object
     private string foodName;
 
     // The model used by the food in-game
-    private GameObject model;
+    private Mesh model;
+
+    // The material that is used to color the model
+    private Material material;
 
     // Constructor for a Non-Random Food object
-    public Food(GameObject model, string foodName, Dictionary<string, float> alteredStats)
+    public Food(Mesh model, Material material, string foodName, Dictionary<string, float> alteredStats)
     {
         this.model = model;
+        this.material = material;
         this.foodName = foodName;
         this.alteredStats = alteredStats;
     }
 
     // Constructor for a Random Food object
-    public Food()
+    /*public Food()
     {
         // The index of allPossibleFood from which the stats will be drawn from
         int foodIndex = Random.Range(0,allPossibleFood.Count);
@@ -53,10 +57,10 @@ public class Food : Object
         this.model = reference.model;
         this.foodName = reference.foodName;
         this.alteredStats = reference.alteredStats;
-    }
+    }*/
 
     // Returns the model associated with the food
-    public GameObject getModel()
+    public Mesh getModel()
     {
         return model;
     }
@@ -75,6 +79,11 @@ public class Food : Object
     public Dictionary<string, float> getStats()
     {
         return new Dictionary<string, float>(alteredStats);
+    }
+
+    public Material getMaterial()
+    {
+        return material;
     }
 
     /**

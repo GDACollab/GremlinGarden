@@ -10,7 +10,7 @@ public class GremlinObject : MonoBehaviour
     public Gremlin gremlin;
     private Rigidbody body;
     public string gremlinName;
-    public float speedMultiplier;
+    private float speedMultiplier = 6f;
 
     // Start is called before the first frame update
     void Start()
