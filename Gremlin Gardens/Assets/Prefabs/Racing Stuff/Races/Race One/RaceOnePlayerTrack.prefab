@@ -533,6 +533,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8490175123076168973, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[2].z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490175123076168973, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[3].z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490175123076168973, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[4].z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490175123076168973, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
+      propertyPath: editorData._bezierPath.points.Array.data[2].x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490175123076168973, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
+      propertyPath: editorData.vertexPathUpToDate
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8490175123076168975, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
       propertyPath: m_Mesh
       value: 
