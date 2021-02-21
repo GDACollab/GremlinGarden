@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8681345594557327960, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
+      propertyPath: actualRaceOffset.z
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327961, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: m_Name
-      value: BasicStart
+      value: SampleRace Basic Start
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327963, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: m_LocalPosition.x

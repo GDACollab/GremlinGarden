@@ -142,7 +142,7 @@ public class RaceManager : MonoBehaviour
     public void StartTracks() {
         timeElapsed = 0;
         foreach (GameObject track in racetracks) { //Let's hope this won't create any unfair results.
-            track.GetComponent<TrackManager>().StartRace(UpdateResults);
+            track.GetComponent<TrackManager>().StartRace(UpdateResults, UpdateCamera);
         }
     }
 
@@ -162,6 +162,46 @@ public class RaceManager : MonoBehaviour
         if (raceIsDone) {
             PostResults();
         }
+    }
+
+    [HideInInspector]
+    public bool cameraIsFixed;
+
+    /// <summary>
+    /// If a gremlin has switched onto a new module, call this, and if that gremlin is being tracked by the camera, update the camera if we need to.
+    /// </summary>
+    private void UpdateCamera(TrackManager activeManager, TrackModule activeModule) {
+        if (racingCamera.gremlinFocus == activeManager.RacingGremlin && activeModule.affectCamera)
+        {
+            if (activeModule.optimalCameraOffset != Vector3.zero)
+            {
+                Vector3 newPos = activeModule.optimalCameraOffset + activeModule.transform.position;
+                if (activeModule.multiplyOffsetByNumTracks)
+                {
+                    int trackNumber = racetracks.Count - (activeManager.trackID + 1);
+                    newPos += placementOffsetDimension * trackNumber * activeManager.trackWidth;
+                }
+                cameraIsFixed = activeModule.optimalOffsetIsFixed;
+                if (activeModule.cameraImmediateCut)
+                {
+                    racingCamera.transform.position = newPos;
+                    racingCamera.transform.rotation = Quaternion.LookRotation(activeManager.RacingGremlin.transform.position - newPos);
+                }
+                else
+                {
+                    racingCamera.SetTween(newPos, Quaternion.LookRotation(activeManager.RacingGremlin.transform.position - newPos), activeModule.modifiedSpeed + 1.0f, newVantageCallback);
+                }
+            }
+            else if (cameraIsFixed) { //Re-enable camera movement once we go to the next module.
+                racingCamera.enableMovement = true;
+                cameraIsFixed = false;
+            }
+        }
+    }
+
+    private void newVantageCallback() { //Disable camera movement if the camera is fixed, but still allow us to look at the Gremlin.
+        racingCamera.SetGremlinFocus(racingCamera.gremlinFocus, false);
+        racingCamera.enableMovement = !cameraIsFixed;
     }
 
     /// <summary>

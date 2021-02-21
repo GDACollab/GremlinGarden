@@ -178,6 +178,7 @@ MonoBehaviour:
   leaderboardHeader: {fileID: 6814948536976317220, guid: ceeb861aa37e7174ba68b410902075e1, type: 3}
   leaderboardText: {fileID: 1137656264600321813, guid: e3fedfe53e2f2f44196a0ccdbc4aec75, type: 3}
   gremlinPlayerIndex: 0
+  cameraIsFixed: 0
 --- !u!1 &792078197
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +478,9 @@ MonoBehaviour:
   gremlinBounds: {x: 20, y: 3, z: 50}
   cameraOffset: {x: 0, y: 7, z: 0}
   lookAtFocus: 1
+  enableMovement: 1
+  cameraMode: racing
+  gremlinFocus: {fileID: 0}
   cameraFlySpeed: 0.04
   texturePlane: {fileID: 2801156931057065824, guid: 64f45a33a1743984e9d4368e0775c8cd, type: 3}
   tweenCurve:
@@ -503,7 +507,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  cameraMode: racing
 --- !u!1 &2096600923
 GameObject:
   m_ObjectHideFlags: 0

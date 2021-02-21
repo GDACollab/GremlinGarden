@@ -52,7 +52,40 @@ public class TrackModule : MonoBehaviour
     [HideInInspector]
     public float totalDistance;
 
-    [Header("Camera Flyover Settings")]
+    [Header("Camera Settings")]
+
+
+    ///<summary>
+    /// Should this track module affect the camera while it's racing?
+    /// </summary>
+    public bool affectCamera = true;
+
+    ///<summary>
+    /// Used when the camera is watching a gremlin during a race. If zero, the camera will not use this. Any other value will cause the camera to change position to the new offset (based on the TrackModule's position).
+    /// </summary>
+    [Tooltip("Used when the camera is watching a gremlin during a race. If zero, the camera will not use this. Any other value will cause the camera to change position to the new offset (based on the TrackModule's position).")]
+    public Vector3 optimalCameraOffset;
+
+    /// <summary>
+    /// Should the camera be fixed when the Gremlin is on this Track Module?
+    /// </summary>
+    [Tooltip("Should the camera be fixed when the Gremlin is on this Track Module?")]
+    public bool optimalOffsetIsFixed = false;
+
+    /// <summary>
+    /// Should the camera immediately cut to the offset, or tween?
+    /// </summary>
+    [Tooltip("Should the camera immediately cut to the offset, or tween?")]
+    public bool cameraImmediateCut = false;
+
+    /// <summary>
+    /// Should we offset the camera by the number of the tracks? Basically, if the Tracks are placed along the z-axis, do we want the camera to be stretched along the Z-axis based on however many tracks there are?
+    /// </summary>
+    [Tooltip("Should we offset the camera by the number of the tracks? Basically, if the Tracks are placed along the z-axis, do we want the camera to be stretched along the Z-axis based on however many tracks there are?")]
+    public bool multiplyOffsetByNumTracks = false;
+
+
+    [Header("Camera Flyover")]
 
     /// <summary>
     /// When doing a flyover, should the camera instead just go from the start to the end of the path?

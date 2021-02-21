@@ -692,7 +692,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -732,6 +732,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: -30, y: 30, z: 1}
+  optimalOffsetIsFixed: 1
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 1
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -1156,6 +1161,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -2411,6 +2421,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 1
   cameraShouldRotate: 0
   cameraSkipAhead: 0
@@ -2522,6 +2537,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -3773,6 +3793,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 1
   cameraShouldRotate: 0
   cameraSkipAhead: 6
@@ -5053,6 +5078,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -5844,6 +5874,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -6268,6 +6303,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -6639,6 +6679,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -6751,6 +6796,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -7002,6 +7052,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -8052,6 +8107,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -8789,6 +8849,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -9214,6 +9279,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -9325,6 +9395,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -9436,6 +9511,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 15
@@ -10209,7 +10289,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -10249,6 +10329,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 1
   cameraShouldRotate: 0
   cameraSkipAhead: 0
@@ -10360,6 +10445,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -10784,6 +10874,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -10895,6 +10990,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -11319,6 +11419,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -11430,6 +11535,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -11541,6 +11651,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -11652,6 +11767,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -12077,6 +12197,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -24505,6 +24630,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -24616,6 +24746,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -25614,6 +25749,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -26092,6 +26232,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -26503,6 +26648,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -27240,6 +27390,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -27299,6 +27454,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -28992,6 +29152,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 1
   cameraShouldRotate: 0
   cameraSkipAhead: 0
@@ -29103,6 +29268,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -29215,6 +29385,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -29922,6 +30097,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -30660,6 +30840,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 0
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 0
@@ -31084,6 +31269,11 @@ MonoBehaviour:
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
   cameraSkipAhead: 5

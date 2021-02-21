@@ -1,3 +1,0 @@
-- Add a countdown for the race
-- Add a gate or something that slides down when the race starts.
-- Finish Line + Victory Dance

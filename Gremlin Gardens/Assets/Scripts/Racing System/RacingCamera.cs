@@ -7,6 +7,7 @@ using UnityEngine;
 //Make modules able to tweak the camera's settings based on "optimal" settings?
 public class RacingCamera : MonoBehaviour
 {
+    [Header("Racing Mode Settings")]
     /// <summary>
     /// How far away a gremlin has to be before the camera can start moving. Only used in the camera's racing mode.
     /// </summary>
@@ -27,88 +28,10 @@ public class RacingCamera : MonoBehaviour
     public bool lookAtFocus = true;
 
     /// <summary>
-    /// How fast the camera is gonna fly (used ONLY for flyovers)
+    /// Should the camera move to the gremlin? Only used in the camera's racing mode.
     /// </summary>
-    [Tooltip("How fast the camera is gonna fly(used ONLY for flyovers)")]
-    public float cameraFlySpeed = 5.0f;
-
-    [Header("Stuff for Camera Wipes")]
-
-    ///<summary>
-    /// Used in wipes. We assign a camera to have this RenderTexture, and the camera outputs what it sees to wipeTexture. We then display the texture on a plane.
-    /// </summary>
-    RenderTexture wipeTexture;
-    /// <summary>
-    /// A prefab of the plane to wipe with (will assign a RenderTexture as the main texture). Just search for TexturePlane in prefabs.
-    /// </summary>
-    [Tooltip("A prefab of the plane to wipe with (will assign a RenderTexture as the main texture). Just search for TexturePlane in prefabs.")]
-    public GameObject texturePlane;
-    /// <summary>
-    /// The actual plane we're going to wipe with.
-    /// </summary>
-    GameObject planeToWipeWith;
-    /// <summary>
-    /// Where we want the wipe to end.
-    /// </summary>
-    Vector3 wipeEndPos;
-    /// <summary>
-    /// This is the transform of the camera we're wiping to. It's an illusion basically. We just move this camera over to where the other camera is after we've overlayed the plane.
-    /// </summary>
-    Transform transferToCamera;
-    /// <summary>
-    /// How fast we're gonna wipe.
-    /// </summary>
-    float wipeSpeed;
-
-    //Stuff for flyover:
-
-    /// <summary>
-    /// The gremlin the camera is currently focusing on (if at all).
-    /// </summary>
-    GameObject gremlinFocus;
-    /// <summary>
-    /// The track the camera is focusing on (if at all).
-    /// </summary>
-    TrackManager trackFocus;
-    /// <summary>
-    /// The module the camera is currently on (used during flyover).
-    /// </summary>
-    int currentModule;
-    /// <>
-    /// How far along the camera is on any given track.
-    /// </summary>
-    float cameraTrackProgress = 0;
-    int cameraTrackDirection = 0;
-    bool isSkipping = false;
-    Vector3 originalPos;
-
-    //Stuff for tweens (Sorry, people aged 14 and older, and kids aged 8 and younger):
-
-    /// <summary>
-    /// Where we're tweening to.
-    /// </summary>
-    Vector3 targetPos;
-    Vector3 targetRot;
-    /// <summary>
-    /// Where we're tweening from.
-    /// </summary>
-    Vector3 oldPos;
-    Vector3 oldRot;
-    /// <summary>
-    /// How much time has passed since the start of the tween.
-    /// </summary>
-    float tweenElapsed;
-    /// <summary>
-    /// How long the tween is supposed to last.
-    /// </summary>
-    float tweenDuration;
-    /// <summary>
-    /// The curve that determines the speed of the tween. Use this to all of its easing goodness. 0 means we're at 0% of what we're tweening towards. 1 is 100% of what we're tweening towards.
-    /// Okay, I tried to get this to be input as a parameter for the SetTween function, but Unity was stubborn about this being provided as an Input.
-    /// So instead, it's going to have to be something you set ahead of time, and then call SetTween for.
-    /// </summary>
-    [Tooltip("The curve that determines the speed of the tween. Use this to all of its easing goodness. 0 means we're at 0% of what we're tweening towards. 1 is 100% of what we're tweening towards.")]
-    public AnimationCurve tweenCurve = AnimationCurve.Linear(0, 0, 1, 1);
+    [Tooltip("Should the camera move to the gremlin? Only used in the camera's racing mode.")]
+    public bool enableMovement = true;
 
     public delegate void Callback();
     /// <summary>
@@ -121,6 +44,12 @@ public class RacingCamera : MonoBehaviour
     /// </summary>
     [HideInInspector]
     public string cameraMode = "racing";
+
+    /// <summary>
+    /// The gremlin the camera is currently focusing on (if at all).
+    /// </summary>
+    [HideInInspector]
+    public GameObject gremlinFocus;
 
 
     /// <summary>
@@ -139,6 +68,31 @@ public class RacingCamera : MonoBehaviour
             }
         }
     }
+
+    //Stuff for flyover:
+    /// <summary>
+    /// How fast the camera is gonna fly (used ONLY for flyovers)
+    /// </summary>
+    [Header("Flyover Settings"), Tooltip("How fast the camera is gonna fly (used ONLY for flyovers)")]
+    public float cameraFlySpeed = 5.0f;
+    /// <summary>
+    /// The track the camera is focusing on (if at all).
+    /// </summary>
+    TrackManager trackFocus;
+    /// <summary>
+    /// The module the camera is currently on (used during flyover).
+    /// </summary>
+    int currentModule;
+    /// <summary>
+    /// How far along the camera is on any given track.
+    /// </summary>
+    float cameraTrackProgress = 0;
+    int cameraTrackDirection = 0;
+    bool isSkipping = false;
+    /// <summary>
+    /// Used for skipping over modules in the flyover.
+    /// </summary>
+    Vector3 originalPos;
 
     /// <summary>
     /// Start the camera flying over the track. Please do not use multiple SetX() functions at once, it will break the camera.
@@ -174,6 +128,32 @@ public class RacingCamera : MonoBehaviour
         }
     }
 
+    ///<summary>
+    /// Used in wipes. We assign a camera to have this RenderTexture, and the camera outputs what it sees to wipeTexture. We then display the texture on a plane.
+    /// </summary>
+    RenderTexture wipeTexture;
+    /// <summary>
+    /// A prefab of the plane to wipe with (will assign a RenderTexture as the main texture). Just search for TexturePlane in prefabs.
+    /// </summary>
+    [Header("Stuff for Camera Wipes"), Tooltip("A prefab of the plane to wipe with (will assign a RenderTexture as the main texture). Just search for TexturePlane in prefabs.")]
+    public GameObject texturePlane;
+    /// <summary>
+    /// The actual plane we're going to wipe with.
+    /// </summary>
+    GameObject planeToWipeWith;
+    /// <summary>
+    /// Where we want the wipe to end.
+    /// </summary>
+    Vector3 wipeEndPos;
+    /// <summary>
+    /// This is the transform of the camera we're wiping to. It's an illusion basically. We just move this camera over to where the other camera is after we've overlayed the plane.
+    /// </summary>
+    Transform transferToCamera;
+    /// <summary>
+    /// How fast we're gonna wipe.
+    /// </summary>
+    float wipeSpeed;
+
     /// <summary>
     /// Start the camera with a wipe. To use this, make sure you have a suitable prefab for texturePlane. Please do not use multiple SetX() functions at once, it will break the camera.
     /// </summary>
@@ -183,7 +163,7 @@ public class RacingCamera : MonoBehaviour
     /// <param name="endAt">Where the wipe texture is going to move to on the canvas.</param>
     /// <param name="speed">How fast the wipe is going to move on the canvas.</param>
     /// <param name="callback">The function to call when the wipe is finished.</param>
-    public void SetWipe(Camera cameraToWipe, GameObject ActiveUI, Vector3 startAt, Vector3 endAt, float speed, Callback callback) {
+    public void SetWipe(Camera cameraToWipe, GameObject ActiveUI, Vector3 startAt, Vector3 endAt, float speed, Callback callback = null) {
         wipeTexture = new RenderTexture(Screen.width, Screen.height, 24);
         planeToWipeWith = Instantiate(texturePlane, ActiveUI.transform);
         cameraToWipe.targetTexture = wipeTexture;
@@ -198,6 +178,36 @@ public class RacingCamera : MonoBehaviour
         wipeSpeed = speed;
     }
 
+    //Stuff for tweens (Sorry, people aged 14 and older, and kids aged 8 and younger):
+
+    /// <summary>
+    /// Where we're tweening to.
+    /// </summary>
+    Vector3 targetPos;
+    Vector3 targetRot;
+    float targetOpacity;
+    /// <summary>
+    /// Where we're tweening from.
+    /// </summary>
+    Vector3 oldPos;
+    Vector3 oldRot;
+    float oldOpacity;
+    /// <summary>
+    /// How much time has passed since the start of the tween.
+    /// </summary>
+    float tweenElapsed;
+    /// <summary>
+    /// How long the tween is supposed to last.
+    /// </summary>
+    float tweenDuration;
+    /// <summary>
+    /// The curve that determines the speed of the tween. Use this to all of its easing goodness. 0 means we're at 0% of what we're tweening towards. 1 is 100% of what we're tweening towards.
+    /// Okay, I tried to get this to be input as a parameter for the SetTween function, but Unity was stubborn about this being provided as an Input.
+    /// So instead, it's going to have to be something you set ahead of time, and then call SetTween for.
+    /// </summary>
+    [Header("Tweening Settings"), Tooltip("The curve that determines the speed of the tween. Use this to all of its easing goodness. 0 means we're at 0% of what we're tweening towards. 1 is 100% of what we're tweening towards.")]
+    public AnimationCurve tweenCurve = AnimationCurve.Linear(0, 0, 1, 1);
+
     /// <summary>
     /// Sets the camera to tween to a new position. Uses tweenCurve as an easing function. Please do not use multiple SetX() functions at once, it will break the camera.
     /// </summary>
@@ -205,7 +215,7 @@ public class RacingCamera : MonoBehaviour
     /// <param name="newRot">The new rotation for the camera to tween to.</param>
     /// <param name="time">How long the tween should be.</param>
     /// <param name="callback">The function to call when the tween is finished.</param>
-    public void SetTween(Vector3 newPos, Quaternion newRot, float time, Callback callback) {
+    public void SetTween(Vector3 newPos, Quaternion newRot, float time, Callback callback = null) {
         cameraMode = "tween";
         targetPos = newPos;
         targetRot = newRot.eulerAngles;
@@ -220,21 +230,24 @@ public class RacingCamera : MonoBehaviour
     {
         if (cameraMode == "racing")
         {
-            Vector3 newPos = this.transform.position;
-            for (int i = 0; i < 3; i++)
+            if (enableMovement)
             {
-                if (Mathf.Abs(gremlinFocus.transform.position[i] - this.transform.position[i]) > gremlinBounds[i])
+                Vector3 newPos = this.transform.position;
+                for (int i = 0; i < 3; i++)
                 {
-                    newPos[i] = gremlinFocus.transform.position[i] + cameraOffset[i];
+                    if (Mathf.Abs(gremlinFocus.transform.position[i] - this.transform.position[i]) > gremlinBounds[i])
+                    {
+                        newPos[i] = gremlinFocus.transform.position[i] + cameraOffset[i];
+                    }
                 }
+                this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
             }
-            if (lookAtFocus == true)
+            if (lookAtFocus)
             {
                 //We round so that subtle movements don't impact rotation, causing motion sickness.
                 Vector3 newRotation = new Vector3(Mathf.Round(gremlinFocus.transform.position.x - this.transform.position.x), Mathf.Round(gremlinFocus.transform.position.y - this.transform.position.y), Mathf.Round(gremlinFocus.transform.position.z - this.transform.position.z));
                 this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
             }
-            this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
         }
         else if (cameraMode == "flyover")
         { //The logic for doing a flyover.
