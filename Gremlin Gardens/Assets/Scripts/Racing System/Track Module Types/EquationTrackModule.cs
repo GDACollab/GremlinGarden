@@ -16,7 +16,7 @@ public class EquationTrackModule : TrackModule
     [Tooltip("The global offset of the equation. Uses the position of the attached game object if worldPosOffset = 0,0,0")]
     public Vector3 worldPosOffset = Vector3.zero;
 
-    void Start()
+    void Awake()
     {
         if (worldPosOffset == Vector3.zero) {
             worldPosOffset = this.transform.position;
