@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//The bare basics of what will soon be the ultimate racing camera the world has ever seen.
-//Things to maybe implement in the future:
-//Make modules able to tweak the camera's settings based on "optimal" settings?
+/// <summary>
+/// A camera script designed to be used before, during, and after racing scenes.
+/// </summary>
 public class RacingCamera : MonoBehaviour
 {
     [Header("Racing Mode Settings")]
@@ -87,7 +87,13 @@ public class RacingCamera : MonoBehaviour
     /// How far along the camera is on any given track.
     /// </summary>
     float cameraTrackProgress = 0;
+    /// <summary>
+    /// What direction the camera is travelling during a flyover.
+    /// </summary>
     int cameraTrackDirection = 0;
+    /// <summary>
+    /// If the camera is currently skipping over a module during a flyover.
+    /// </summary>
     bool isSkipping = false;
     /// <summary>
     /// Used for skipping over modules in the flyover.
@@ -185,13 +191,11 @@ public class RacingCamera : MonoBehaviour
     /// </summary>
     Vector3 targetPos;
     Vector3 targetRot;
-    float targetOpacity;
     /// <summary>
     /// Where we're tweening from.
     /// </summary>
     Vector3 oldPos;
     Vector3 oldRot;
-    float oldOpacity;
     /// <summary>
     /// How much time has passed since the start of the tween.
     /// </summary>

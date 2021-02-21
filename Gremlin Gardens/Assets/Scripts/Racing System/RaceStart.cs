@@ -32,6 +32,10 @@ public class RaceStart : MonoBehaviour
     [Tooltip("The camera's offset when it's viewing a race.The value of the z-axis is completely ignored(So we can view all the racers).")]
     public Vector3 actualRaceOffset = new Vector3(-10, 6, 0);
 
+    /// <summary>
+    /// Called by RaceManager, used to indicate the start of a race setup.
+    /// </summary>
+    /// <param name="raceManager">The raceManager calling this function.</param>
     public virtual void RaceStartSetup(RaceManager raceManager) {
         manager = raceManager;
         racingCamera = raceManager.racingCamera;

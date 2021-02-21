@@ -53,7 +53,7 @@ public class TrackManager : MonoBehaviour
     public float trackWidth;
 
     /// <summary>
-    /// Set by the RaceManager. This identifies the track for the RaceManager to use in calcluations.
+    /// Set by the RaceManager. This identifies the track for the RaceManager to use in calculations.
     /// </summary>
     [HideInInspector]
     public int trackID;

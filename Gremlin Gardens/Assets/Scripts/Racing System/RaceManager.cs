@@ -56,13 +56,19 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     float placementOffset;
 
+    /// <summary>
+    /// How much time has elapsed since the start of the race.
+    /// </summary>
     float timeElapsed = -1;
     /// <summary>
     /// The resulting times from the races.
     /// </summary>
     [HideInInspector]
     public float[] raceTimes;
-    int[] trackIndices; //Keeps the indices of the tracks for sorting with raceTimes.
+    /// <summary>
+    /// Keeps the indices of the tracks for sorting with raceTimes.
+    /// </summary>
+    int[] trackIndices;
 
     [Header("Results Stuff")]
 
@@ -127,7 +133,7 @@ public class RaceManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Call after TrackSetup(). Will begin each race.
+    /// Called after TrackSetup() by raceStartObject. Will begin each race.
     /// </summary>
     public void StartTracks() {
         timeElapsed = 0;
@@ -154,6 +160,9 @@ public class RaceManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// In UpdateCamera, set this to activeModule.optimalOffsetIsFixed.
+    /// </summary>
     [HideInInspector]
     public bool cameraIsFixed;
 
