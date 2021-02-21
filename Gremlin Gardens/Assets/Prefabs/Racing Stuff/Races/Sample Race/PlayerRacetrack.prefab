@@ -733,7 +733,7 @@ MonoBehaviour:
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
   affectCamera: 1
-  optimalCameraOffset: {x: -30, y: 30, z: 1}
+  optimalCameraOffset: {x: -30, y: 30, z: 5}
   optimalOffsetIsFixed: 1
   cameraImmediateCut: 0
   multiplyOffsetByNumTracks: 1
