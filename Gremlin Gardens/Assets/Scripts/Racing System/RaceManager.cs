@@ -25,12 +25,6 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     [Tooltip("The AI's version of the track (for stuff without QTEs). The track object requires a TrackManager component.")]
     public GameObject aiTrack;
-    /// <summary>
-    /// The side geometry of the track, to be used on both ends. Try making an empty object and making the geometry children of that object, and experiment to see what works.
-    /// </summary>
-    [Tooltip("The side geometry of the track, to be used on both ends. Try making an empty object and making the geometry children of that object, and experiment to see what works.")]
-    public GameObject trackSides;
-
 
     /// <summary>
     /// This is a prefab meant to set up all the fancy camera angles and intro to a race before it actually starts. Prefab requires a RaceStart component.
@@ -96,8 +90,6 @@ public class RaceManager : MonoBehaviour
     /// <param name="racingGremlins">The list of gremlin objects to use in the race. Assigns them a track based on their order. Assumes that the Gremlins in the list already exist as objects in the game world.</param>
     /// <param name="playerIndex">The index that the player Gremlin is stored at (so we can make a different track)</param>
     public void TrackSetup(List<GameObject> racingGremlins, int playerIndex) {
-        var side = Instantiate(trackSides, this.transform);
-        side.transform.position = Vector3.zero;
         raceTimes = new float[racingGremlins.Count];
         trackIndices = new int[racingGremlins.Count];
         if (playerIndex == 0)
@@ -130,8 +122,6 @@ public class RaceManager : MonoBehaviour
         }
         gremlinPlayerIndex = playerIndex;
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
-        var otherSide = Instantiate(trackSides, this.transform);
-        otherSide.transform.position += placementOffset * placementOffsetDimension;
         var starting = Instantiate(raceStartObject, this.transform);
         starting.GetComponent<RaceStart>().RaceStartSetup(this);
     }
