@@ -2381,7 +2381,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -2428,7 +2428,7 @@ MonoBehaviour:
   multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 1
   cameraShouldRotate: 0
-  cameraSkipAhead: 0
+  cameraSkipAhead: 3
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -6686,7 +6686,7 @@ MonoBehaviour:
   multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
-  cameraSkipAhead: 0
+  cameraSkipAhead: 2
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -13949,7 +13949,7 @@ MonoBehaviour:
   multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
   cameraShouldRotate: 1
-  cameraSkipAhead: 0
+  cameraSkipAhead: 2
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0
@@ -31229,7 +31229,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
