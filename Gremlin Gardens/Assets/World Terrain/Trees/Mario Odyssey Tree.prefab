@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7704957108177314532}
   - component: {fileID: 4434001009782996692}
-  - component: {fileID: 6002011288959265287}
   - component: {fileID: 169784349305089725}
   m_Layer: 0
   m_Name: Mario Odyssey Tree
@@ -145,22 +144,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8894363957696630370}
   m_Enabled: 1
---- !u!54 &6002011288959265287
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7036400555236259934}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!136 &169784349305089725
 CapsuleCollider:
   m_ObjectHideFlags: 0
