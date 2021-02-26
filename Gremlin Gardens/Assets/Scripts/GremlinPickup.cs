@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GremlinPickup : MonoBehaviour
 {
@@ -11,15 +12,22 @@ public class GremlinPickup : MonoBehaviour
     public GameObject DropIndicator;    //button prompts when carrying gremlin
     public GameObject StatMenu;
     public GameObject Canvas;
+    public GameObject ChargeBar;
+    public Image ChargeFill;
     public bool beingCarried = false;
     public float jumpHeight = 1.0f; //for temporary pet behaviour
     public float petCooldown = 1.0f; //time for petting action to reset
     public float cuddleCooldown = 2.0f; //time for petting action to reset
     public int petIncrease = 1; //how much to increase happiness stat from petting
     public int cuddleIncrease = 2; //how much to increase happiness stat from cuddling
-    public bool enableStatMenu = false;
+    public int tossForce = 5;
+
+    public float speed = 2.0f;
+    public float waitTime = 4.0f;
+
 
     private bool onGremlin;
+    private bool attemptYeet = false;
     private float distanceFromPlayer;
     private bool eClicked = false;
     private double eDownTime = 0;
@@ -28,6 +36,9 @@ public class GremlinPickup : MonoBehaviour
     private bool beingCuddled = false;
     private float petCooldownTimer = 0.0f; //timer for pet cooldown
     private float cuddleCooldownTimer = 0.0f; //timer for pet cooldown
+    private bool enableStatMenu = false;
+    private bool drop = false;
+
 
     private Rigidbody rb;
     //private Gremlin gremlin;
@@ -37,12 +48,20 @@ public class GremlinPickup : MonoBehaviour
 
         player = GameObject.Find("Player");
         Canvas = GameObject.Find("Canvas");
-        StatMenu = Canvas.transform.Find("Stat Menu").gameObject;
-        DropIndicator = Canvas.transform.Find("Gremlin Carry").gameObject;
+        StatMenu = Canvas.transform.GetChild(0).gameObject;
+        DropIndicator = Canvas.transform.GetChild(1).gameObject;
+        PickupIndicator = Canvas.transform.GetChild(2).gameObject;
+        ChargeBar = GameObject.Find("Canvas").transform.GetChild(5).gameObject;
+
+        CarriedGremlin = player.transform.GetChild(1);
+        CarriedFruit = player.transform.GetChild(2);
+
+        /*StatMenu = Canvas.transform.Find("Stat Menu").gameObject;
+        DropIndicator = Canvas.transform.Find("Gremlin Drop").gameObject;
         PickupIndicator = Canvas.transform.Find("Gremlin Pickup").gameObject;
         CarriedGremlin = player.transform.Find("Carried Gremlin");
-        CarriedFruit = player.transform.Find("Carried Fruit");
-
+        CarriedFruit = player.transform.Find("Carried Fruit");*/
+        ChargeBar.SetActive(false);
         PickupIndicator.SetActive(false);
         DropIndicator.SetActive(false);
         StatMenu.SetActive(false);
@@ -61,17 +80,21 @@ public class GremlinPickup : MonoBehaviour
         {
             //PUT DOWN
             if (Input.GetKeyDown("q"))
+                drop = true;
+            if(drop)
             {
                 this.transform.parent = null;
                 //drop object back down. look into teleporting onto ground
-                GetComponent<Rigidbody>().useGravity = true;
+                rb.useGravity = true;
                 beingCarried = false;
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                rb.constraints = RigidbodyConstraints.None;
                 DropIndicator.SetActive(false);
                 GetComponent<Collider>().enabled = true;
                 eDownTime = 0;
                 canPickUp = false;
+                drop = false;
             }
+
 
             //CUDDLE
             if (Input.GetKeyDown("e"))
@@ -87,10 +110,38 @@ public class GremlinPickup : MonoBehaviour
             }
 
             //YEET THAT BITCH
-            /*if(Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButton(0))
             {
+                ChargeBar.SetActive(true);
+                attemptYeet = true;
+                StartCoroutine("StartFill");
+            }
+            if (attemptYeet && Input.GetMouseButtonUp(0))
+            {
+                if (ChargeFill.fillAmount > 0.75)
+                {
+                    CarriedGremlin.GetComponent<Collider>().enabled = false;
+                    rb.useGravity = true;
+                    rb.constraints = RigidbodyConstraints.None;
+                    rb.AddForce(Vector3.up * tossForce);
+                    GetComponent<Collider>().enabled = true;
+                    StartCoroutine("enableCarryCollider");
+                    ChargeBar.SetActive(false);
+                }
+                else
+                {
+                    attemptYeet = false;
+                    drop = true;
+                    ChargeBar.SetActive(false);
+                }
+            }
+            if(!attemptYeet)
+            {
+                StopAllCoroutines();
+                ChargeFill.fillAmount = 0.0f;
+            }
+                
 
-            }*/
         }
 
         //keep track of how long button has been pressed to use for picking up
@@ -182,13 +233,13 @@ public class GremlinPickup : MonoBehaviour
             if (canPickUp && !beingCarried && !beingPet && CarriedGremlin.childCount == 0 && CarriedFruit.childCount == 0)
             {
                 //remove gravity so object isnt spazzing out
-                GetComponent<Rigidbody>().useGravity = false;
+                rb.useGravity = false;
                 this.transform.position = CarriedGremlin.position;
                 this.transform.parent = CarriedGremlin;
                 beingCarried = true;
                 GetComponent<Collider>().enabled = false;
                 PickupIndicator.SetActive(false);
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
             }
 
             //STAT MENU
@@ -222,5 +273,44 @@ public class GremlinPickup : MonoBehaviour
         StatMenu.SetActive(enableStatMenu);
     }
 
+    IEnumerator StartFill()
+    {
+        while (true)
+        {
+            yield return ChangeFill(0.0f, 1.0f, waitTime);
+            yield return ChangeFill(1.0f, 0.0f, waitTime);
+        }
+    }
+
+    IEnumerator ChangeFill(float start, float end, float time)
+    {
+        float i = 0.0f;
+        float rate = (1.0f / time) * speed;
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            ChargeFill.fillAmount = Mathf.Lerp(start, end, i);
+            yield return null;
+        }
+    }
+
+    IEnumerator enableCarryCollider()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CarriedGremlin.GetComponent<Collider>().enabled = true;
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "Carried Gremlin" && attemptYeet)
+        {
+            attemptYeet = false;
+            rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            this.transform.position = CarriedGremlin.position;
+            GetComponent<Collider>().enabled = false;
+        }
+    }
 
 }

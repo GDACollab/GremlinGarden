@@ -72,7 +72,7 @@ public class FruitPickup : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         GameObject other = collision.gameObject;
-        if (other.tag == "Gremlin")
+        if (other.name == "Gremlin")
         {
             Transform newParent = other.transform.GetChild(0).transform;
             this.transform.position = newParent.position;
