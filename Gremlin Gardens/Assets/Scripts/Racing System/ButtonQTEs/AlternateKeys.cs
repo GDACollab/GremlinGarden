@@ -74,6 +74,7 @@ public class AlternateKeys : QTEScript
     // Update is called once per frame
     void Update()
     {
+        speedChange -= speedDecrease;
         if (Input.GetKeyDown(firstKey) && firstKeyDown == false) {
             firstKeyDown = true;
             if (keyToPress == 0)
