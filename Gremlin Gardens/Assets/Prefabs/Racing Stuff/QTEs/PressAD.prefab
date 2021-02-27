@@ -218,7 +218,7 @@ MonoBehaviour:
   firstSprite: {fileID: 21300000, guid: 7f599f16ec74afd4a9b9aedeea06d3d6, type: 3}
   secondSprite: {fileID: 21300000, guid: ca6e9af097125b34c8799d8314a81867, type: 3}
   frameRate: 0.5
-  speedIncrease: 0.05
+  speedIncrease: 0.2
   speedDecrease: 0.1
 --- !u!1 &6083779338225395046
 GameObject:
