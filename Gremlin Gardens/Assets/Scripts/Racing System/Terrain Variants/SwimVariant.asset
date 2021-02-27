@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SwimVariant
   m_EditorClassIdentifier: 
   speedModifier: 1
-  QTEButton: {fileID: 6083779338184274474, guid: 9b134e05afda0ce4793a11da96650bb4, type: 3}
+  QTEButton: {fileID: 0}

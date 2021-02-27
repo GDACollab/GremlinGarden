@@ -47,6 +47,18 @@ public class TrackManager : MonoBehaviour
     RacingCallback racingCallback;
 
     /// <summary>
+    /// The width of the track, used in RaceManager for offsetting.
+    /// </summary>
+    [Tooltip("The width of the track, used in RaceManager for offsetting.")]
+    public float trackWidth;
+
+    /// <summary>
+    /// Set by the RaceManager. This identifies the track for the RaceManager to use in calculations.
+    /// </summary>
+    [HideInInspector]
+    public int trackID;
+
+    /// <summary>
     /// Start racing with the selected Gremlin.
     /// </summary>
     /// <param name="endRaceCallback">A callback function (returns void) that takes TrackManager as a parameter, to be called at the end of the race. Optional.</param>
@@ -72,12 +84,17 @@ public class TrackManager : MonoBehaviour
             module.BeginMove(RacingGremlin.GetComponent<GremlinObject>(), GremlinOffset, Race, ActiveUI); //Keep the Gremlin moving.
             RacingGremlin.GetComponent<Animator>().Play(module.AnimationToPlay); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
             RacingGremlin.GetComponent<Animator>().speed = module.modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
-            racingCallback(this, module);
+            if (racingCallback != null) {
+                racingCallback(this, module);
+            }
             currentChild += 1;
         }
     }
 
     private void EndRace() {
-        toCallback(this);
+        if (toCallback != null)
+        {
+            toCallback(this);
+        }
     }
 }
