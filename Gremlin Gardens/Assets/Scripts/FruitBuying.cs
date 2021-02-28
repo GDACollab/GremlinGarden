@@ -38,27 +38,24 @@ public class FruitBuying : MonoBehaviour
     {
         if (distanceFromPlayer < 20 && inShop)
         {
-            GetComponent<Outline>().OutlineWidth = 5;
             ItemPurchaseIndicator.SetActive(true);
             //freeze camera if input Purchase?
-            if(Input.GetKeyDown("U")) {
+            if(Input.GetKeyDown("u")) {
             	purchaseIntent = true;
             	ConfirmPurchaseIndicator.SetActive(true);
             	CancelPurchaseIndicator.SetActive(true);
             }
             if(purchaseIntent) {
-            	if(Input.GetKeyDown("I")) {
+            	if(Input.GetKeyDown("i")) {
             		ConfirmPurchaseIndicator.SetActive(false);
             		CancelPurchaseIndicator.SetActive(false);
             		purchaseIntent = false;
-            		GetComponent<Outline>().OutlineWidth = 0;
             		//unfreeze cam n go to gremstork animation
-            	} else if(Input.GetKeyDown("O")) {
+            	} else if(Input.GetKeyDown("o")) {
             		//unfreeze cam
             		ConfirmPurchaseIndicator.SetActive(false);
             		CancelPurchaseIndicator.SetActive(false);
             		purchaseIntent = false;
-            		GetComponent<Outline>().OutlineWidth = 0;
             	}
             }
         }
@@ -68,7 +65,5 @@ public class FruitBuying : MonoBehaviour
     {
         purchaseIntent = false;
         ItemPurchaseIndicator.SetActive(false);
-
-        GetComponent<Outline>().OutlineWidth = 0;
     }
 }
