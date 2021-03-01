@@ -97,7 +97,7 @@ public class GremlinPickup : MonoBehaviour
                 //remove gravity so object isnt spazzing out
                 GetComponent<Rigidbody>().useGravity = false;
                 this.transform.position = CarriedGremlin.position;
-                this.transform.parent = GameObject.Find("CarriedGremlin").transform;
+                this.transform.parent = GameObject.Find("Carried Gremlin").transform;
                 beingCarried = true;
                 GetComponent<Collider>().enabled = false;
                 PickupIndicator.SetActive(false);

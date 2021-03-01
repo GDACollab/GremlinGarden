@@ -23,7 +23,7 @@ public class FruitPickup : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        Canvas = GameObject.Find("Canvas");
+        Canvas = GameObject.Find("Canvas (Hub UI)");
         DropIndicator = Canvas.transform.Find("Fruit Drop").gameObject;
         PickupIndicator = Canvas.transform.Find("Fruit Pickup").gameObject;
         CarriedGremlin = player.transform.Find("Carried Gremlin");
