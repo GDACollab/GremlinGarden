@@ -672,7 +672,6 @@ GameObject:
   - component: {fileID: 411719432}
   - component: {fileID: 411719435}
   - component: {fileID: 411719434}
-  - component: {fileID: 411719433}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -694,18 +693,6 @@ Transform:
   m_Father: {fileID: 1070046907}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &411719433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 411719431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &411719434
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1633,7 +1620,7 @@ MonoBehaviour:
   playerCamera: {fileID: 411719432}
   mouseSensitivity: 3.5
   lockCursor: 1
-  walkSpeed: 40
+  walkSpeed: 400
   moveSmoothTime: 0.3
 --- !u!4 &1070046907
 Transform:

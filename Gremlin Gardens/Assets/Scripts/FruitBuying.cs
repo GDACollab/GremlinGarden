@@ -11,13 +11,15 @@ public class FruitBuying : MonoBehaviour
 
     private float distanceFromPlayer; //distance (in meters?) from player to fruit
     private bool onFruit; //is mouse currently over the fruit
-    private bool purchaseIntent; //if player has pressed ItemPurchaseIndic key.
+    public bool purchaseIntent; //if player has pressed ItemPurchaseIndic key.
     private bool inShop = true;		//checks whether playeere entered/exited shop.
+    public bool mouseOn;
 	//create a viewdFruit object
 
     // Start is called before the first frame update
     void Start()
     {
+        mouseOn = false;
         ItemPurchaseIndicator.SetActive(false);
         CancelPurchaseIndicator.SetActive(false);
         ConfirmPurchaseIndicator.SetActive(false);
@@ -27,6 +29,34 @@ public class FruitBuying : MonoBehaviour
     void Update()
     {
     	distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
+        if (distanceFromPlayer < 20 && inShop && mouseOn)
+        {
+            ItemPurchaseIndicator.SetActive(true);
+            //freeze camera if input Purchase?
+            if (Input.GetKeyDown("u"))
+            {
+                purchaseIntent = true;
+                ConfirmPurchaseIndicator.SetActive(true);
+                CancelPurchaseIndicator.SetActive(true);
+            }
+            if (purchaseIntent)
+            {
+                if (Input.GetKeyDown("i"))
+                {
+                    ConfirmPurchaseIndicator.SetActive(false);
+                    CancelPurchaseIndicator.SetActive(false);
+                    purchaseIntent = false;
+                    //unfreeze cam n go to gremstork animation
+                }
+                else if (Input.GetKeyDown("o"))
+                {
+                    //unfreeze cam
+                    ConfirmPurchaseIndicator.SetActive(false);
+                    CancelPurchaseIndicator.SetActive(false);
+                    purchaseIntent = false;
+                }
+            }
+        }
     }
 
     /* void FixedUpdate() {
@@ -36,34 +66,15 @@ public class FruitBuying : MonoBehaviour
     // used for shopping as well
     private void OnMouseEnter()
     {
-        if (distanceFromPlayer < 20 && inShop)
-        {
-            ItemPurchaseIndicator.SetActive(true);
-            //freeze camera if input Purchase?
-            if(Input.GetKeyDown("u")) {
-            	purchaseIntent = true;
-            	ConfirmPurchaseIndicator.SetActive(true);
-            	CancelPurchaseIndicator.SetActive(true);
-            }
-            if(purchaseIntent) {
-            	if(Input.GetKeyDown("i")) {
-            		ConfirmPurchaseIndicator.SetActive(false);
-            		CancelPurchaseIndicator.SetActive(false);
-            		purchaseIntent = false;
-            		//unfreeze cam n go to gremstork animation
-            	} else if(Input.GetKeyDown("o")) {
-            		//unfreeze cam
-            		ConfirmPurchaseIndicator.SetActive(false);
-            		CancelPurchaseIndicator.SetActive(false);
-            		purchaseIntent = false;
-            	}
-            }
-        }
+        mouseOn = true;
     }
 
     private void OnMouseExit()
     {
+        mouseOn = false;
         purchaseIntent = false;
         ItemPurchaseIndicator.SetActive(false);
+        ConfirmPurchaseIndicator.SetActive(false);
+        CancelPurchaseIndicator.SetActive(false);
     }
 }
