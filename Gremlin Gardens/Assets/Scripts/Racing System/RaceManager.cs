@@ -235,7 +235,7 @@ public class RaceManager : MonoBehaviour
             time.transform.position = new Vector3(104.7f, heightOffset) + header.transform.position;
             heightOffset -= 30;
         }
-        sceneLoader.FadeOutLoad("Hub World", 0.5f);
+        sceneLoader.FadeOutLoad("Hub World", 0.3f);
     }
 
     // Update is called once per frame
