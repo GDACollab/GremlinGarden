@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 353739022}
   - component: {fileID: 353739025}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Apple 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -628,10 +628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb09f48e654a439a8f17cc2659e99c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemPurchaseIndicator: {fileID: 1109136724}
-  ConfirmPurchaseIndicator: {fileID: 473811728}
-  CancelPurchaseIndicator: {fileID: 1769546482}
+  PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
+  name: Jim
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &389929027
@@ -1032,7 +1031,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 473811728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1206,7 +1205,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621769985}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1453,7 +1452,7 @@ GameObject:
   - component: {fileID: 929693591}
   - component: {fileID: 929693594}
   m_Layer: 0
-  m_Name: Sphere (3)
+  m_Name: iMac
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1547,10 +1546,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb09f48e654a439a8f17cc2659e99c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemPurchaseIndicator: {fileID: 621769985}
-  ConfirmPurchaseIndicator: {fileID: 473811728}
-  CancelPurchaseIndicator: {fileID: 1769546482}
+  PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
+  name: Jeff
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &956313323
@@ -1719,7 +1717,7 @@ GameObject:
   - component: {fileID: 1048380846}
   - component: {fileID: 1048380849}
   m_Layer: 0
-  m_Name: Sphere (1)
+  m_Name: Apple 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1813,10 +1811,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb09f48e654a439a8f17cc2659e99c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemPurchaseIndicator: {fileID: 621769985}
-  ConfirmPurchaseIndicator: {fileID: 473811728}
-  CancelPurchaseIndicator: {fileID: 1769546482}
+  PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
+  name: Steve
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &1070046904
@@ -1899,7 +1896,7 @@ GameObject:
   - component: {fileID: 1109136726}
   - component: {fileID: 1109136725}
   m_Layer: 0
-  m_Name: Buy Me
+  m_Name: Purchase Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1913,7 +1910,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109136724}
-  m_Text: Buy Me
+  m_Text: Click To Buy
   m_OffsetZ: 0
   m_CharacterSize: 0.09
   m_LineSpacing: 1
@@ -1976,7 +1973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1109136724}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -21.27, y: 13.9, z: 20.52}
+  m_LocalPosition: {x: -21.27, y: 13.695, z: 20.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2268,7 +2265,7 @@ GameObject:
   - component: {fileID: 1275281981}
   - component: {fileID: 1275281984}
   m_Layer: 0
-  m_Name: Sphere (5)
+  m_Name: Watermelon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2362,10 +2359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb09f48e654a439a8f17cc2659e99c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemPurchaseIndicator: {fileID: 621769985}
-  ConfirmPurchaseIndicator: {fileID: 473811728}
-  CancelPurchaseIndicator: {fileID: 1769546482}
+  PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
+  name: Kris
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &1288108953
@@ -2474,7 +2470,7 @@ GameObject:
   - component: {fileID: 1290747973}
   - component: {fileID: 1290747976}
   m_Layer: 0
-  m_Name: Sphere (2)
+  m_Name: Macintosh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2568,10 +2564,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb09f48e654a439a8f17cc2659e99c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemPurchaseIndicator: {fileID: 621769985}
-  ConfirmPurchaseIndicator: {fileID: 473811728}
-  CancelPurchaseIndicator: {fileID: 1769546482}
+  PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
+  name: Jesse
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &1526357381
@@ -2707,7 +2702,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769546482}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2777,7 +2772,7 @@ GameObject:
   - component: {fileID: 1949272181}
   - component: {fileID: 1949272184}
   m_Layer: 0
-  m_Name: Sphere (4)
+  m_Name: MacBook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2871,10 +2866,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bb09f48e654a439a8f17cc2659e99c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemPurchaseIndicator: {fileID: 621769985}
-  ConfirmPurchaseIndicator: {fileID: 473811728}
-  CancelPurchaseIndicator: {fileID: 1769546482}
+  PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
+  name: Geoff
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &2042885734
