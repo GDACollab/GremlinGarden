@@ -57,13 +57,15 @@ public class FadeManager : MonoBehaviour
     private void Awake()
     {
         fadeImage = Instantiate(fadeImagePrefab, ActiveUI.transform);
-        fadeImage.transform.localScale = new Vector2(Screen.width, Screen.height);
         if (fadeInOnAwake == false)
         {
             fadeImage.GetComponent<Image>().color = new Color(0, 0, 0, 0);
             fadeOpacity = 0;
+            //So we don't mess with existing buttons.
+            fadeImage.SetActive(false);
         }
         else {
+            fadeImage.SetActive(true);
             fadeImage.GetComponent<Image>().color = new Color(0, 0, 0, 1);
             fadeOpacity = 1;
             StartFade(1, true);
@@ -76,6 +78,7 @@ public class FadeManager : MonoBehaviour
     /// <param name="speed">The speed you want the fade to fade at.</param>
     /// <param name="shouldFadeIn">Are we fading in? true for fade in, false for fade out.</param>
     public void StartFade(float speed, bool shouldFadeIn) {
+        fadeImage.SetActive(true);
         fadeIn = shouldFadeIn;
         fadeSpeed = speed;
         StartCoroutine("Fade");
@@ -101,6 +104,7 @@ public class FadeManager : MonoBehaviour
                 fadeImage.GetComponent<Image>().color = new Color(0, 0, 0, fadeOpacity);
                 yield return new WaitForEndOfFrame();
             }
+            fadeImage.SetActive(false);
             onFadeComplete.Invoke();
             //Just so the callbacks don't get called again if !fadeIn.
             onFadeComplete.RemoveAllListeners();

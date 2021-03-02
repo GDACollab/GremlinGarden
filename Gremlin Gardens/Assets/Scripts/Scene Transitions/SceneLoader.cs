@@ -9,6 +9,15 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public FadeManager fadeManager;
+
+    /// <summary>
+    /// Quick hack for buttons that can't do floats.
+    /// </summary>
+    /// <param name="sceneName">Name of the scene to load.</param>
+    public void QuickFadeOutLoad(string sceneName) {
+        FadeOutLoad(sceneName, 1.0f);
+    }
+
     public void FadeOutLoad(string sceneName, float speed)
     {
         LoadingData.sceneToLoad = sceneName;
