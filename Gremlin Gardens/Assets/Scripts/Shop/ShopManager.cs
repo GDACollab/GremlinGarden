@@ -22,16 +22,12 @@ public class ShopManager : MonoBehaviour
     public GameObject player;
 
     /// <summary>
-    /// The starting position where the ShopManager should place the items (uses an empty game object's position)
+    /// The starting position where the ShopManager should place the items (use an empty game object's position and .position.right (the red arrow) for placement direction)
     /// </summary>
-    [Tooltip("The starting position where the ShopManager should place the items (use an empty game object's position)")]
+    [Tooltip("The starting position where the ShopManager should place the items (use an empty game object's position and .position.right (the red arrow) for placement direction)")]
     public GameObject itemStartingPos;
 
-    /// <summary>
-    /// How much to offset the items by (uses local position)
-    /// </summary>
-    [Tooltip("How much to offset the items by (uses local position)")]
-    public Vector3 offsetDistance;
+    public float offsetDistance = 2.0f;
 
     /// <summary>
     /// The PurchaseText object to use for purchasing text.
@@ -62,7 +58,7 @@ public class ShopManager : MonoBehaviour
         var newItem = Instantiate(prefab, this.transform);
         newItem.transform.position = this.transform.position + itemStartingPos.transform.position + shopItemOffset;
         shopItems.Add(newItem.GetComponent<ShopItem>());
-        shopItemOffset += offsetDistance;
+        shopItemOffset += itemStartingPos.transform.right * offsetDistance;
         return newItem;
     }
 
