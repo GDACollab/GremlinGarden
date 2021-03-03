@@ -83,6 +83,7 @@ public class FruitBuying : MonoBehaviour
     // Centers PurchaseText over this
     private void centerText()
     {
+        PurchaseText.GetComponent<TextMesh>().text = "Click To Buy " + name;
         PurchaseText.transform.position = TextPositions[this.name];
     }
 
