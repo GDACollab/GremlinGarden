@@ -100,7 +100,7 @@ public class FruitBuying : MonoBehaviour
     private void OnMouseEnter()
     {
 
-        Debug.Log(name);
+        //Debug.Log(name);
         PurchaseText.GetComponent<TextMesh>().text = "Click To Buy " + name;
         centerText();
         mouseOn = true;
