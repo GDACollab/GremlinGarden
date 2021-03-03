@@ -5,27 +5,28 @@ using UnityEngine.UI;
 
 public class GremlinPickup : MonoBehaviour
 {
-    public Transform CarriedGremlin;  //transform in front of player where Gremlin stays
-    public GameObject player;     //used to determine distance
-    public Transform CarriedFruit;
-    public GameObject PickupIndicator;  //button prompts when gremlin is on the ground
-    public GameObject DropIndicator;    //button prompts when carrying gremlin
-    public GameObject StatMenu;
-    public GameObject Canvas;
-    public GameObject ChargeBar;
-    public Image ChargeFill;
-    public bool beingCarried = false;
+    private Image ChargeFill;
+    private bool beingCarried = false;
     public float jumpHeight = 1.0f; //for temporary pet behaviour
     public float petCooldown = 1.0f; //time for petting action to reset
     public float cuddleCooldown = 2.0f; //time for petting action to reset
-    public int petIncrease = 1; //how much to increase happiness stat from petting
-    public int cuddleIncrease = 2; //how much to increase happiness stat from cuddling
-    public int tossForce = 5;
+    public float petIncrease = 1.0f; //how much to increase happiness stat from petting
+    public float cuddleIncrease = 2.0f; //how much to increase happiness stat from cuddling
+    public float yeetIncrease = 3.0f;
+    public int tossForce = 300;
 
-    public float speed = 2.0f;
-    public float waitTime = 4.0f;
+    public float speed = 2.0f; //Speed of charge bar fill
+    public float waitTime = 4.0f; //Total Time to fill charge bar
+    public float maxStatVal = 10.0f;
 
-
+    private Transform CarriedGremlin;  //transform in front of player where Gremlin stays
+    private GameObject player;     //used to determine distance
+    private Transform CarriedFruit;
+    private GameObject PickupIndicator;  //button prompts when gremlin is on the ground
+    private GameObject DropIndicator;    //button prompts when carrying gremlin
+    private GameObject StatMenu;
+    private GameObject Canvas;
+    private GameObject ChargeBar;
     private bool onGremlin;
     private bool attemptYeet = false;
     private float distanceFromPlayer;
@@ -38,10 +39,11 @@ public class GremlinPickup : MonoBehaviour
     private float cuddleCooldownTimer = 0.0f; //timer for pet cooldown
     private bool enableStatMenu = false;
     private bool drop = false;
+    private float statChange = 0.0f;
 
 
     private Rigidbody rb;
-    //private Gremlin gremlin;
+    public Gremlin gremlin;
 
     public void Start()
     {
@@ -52,7 +54,7 @@ public class GremlinPickup : MonoBehaviour
         DropIndicator = Canvas.transform.GetChild(1).gameObject;
         PickupIndicator = Canvas.transform.GetChild(2).gameObject;
         ChargeBar = GameObject.Find("Canvas").transform.GetChild(5).gameObject;
-
+        ChargeFill = ChargeBar.transform.GetChild(1).GetComponent<Image>();
         CarriedGremlin = player.transform.GetChild(1);
         CarriedFruit = player.transform.GetChild(2);
 
@@ -67,7 +69,8 @@ public class GremlinPickup : MonoBehaviour
         StatMenu.SetActive(false);
         rb = GetComponent<Rigidbody>();
         GetComponent<Outline>().OutlineWidth = 0;
-        //gremlin = GetComponent<Gremlin>();   
+
+        gremlin = this.GetComponent<GremlinObject>().gremlin;
     }
 
     public void Update()
@@ -81,7 +84,7 @@ public class GremlinPickup : MonoBehaviour
             //PUT DOWN
             if (Input.GetKeyDown("q"))
                 drop = true;
-            if(drop)
+            if (drop)
             {
                 this.transform.parent = null;
                 //drop object back down. look into teleporting onto ground
@@ -95,7 +98,6 @@ public class GremlinPickup : MonoBehaviour
                 drop = false;
             }
 
-
             //CUDDLE
             if (Input.GetKeyDown("e"))
             {
@@ -106,7 +108,12 @@ public class GremlinPickup : MonoBehaviour
                 var temp = this.GetComponent<Renderer>();
                 temp.material.SetColor("_Color", Color.cyan);
 
-                //gremlin.setStat("Happiness", cuddleIncrease + getStat("Happiness"));
+                //what should the cap on stats be???
+                statChange = cuddleIncrease + gremlin.getStat("Happiness");
+                if (statChange > maxStatVal)
+                    statChange = maxStatVal;
+                gremlin.setStat("Happiness", statChange);
+
             }
 
             //YEET THAT BITCH
@@ -127,21 +134,30 @@ public class GremlinPickup : MonoBehaviour
                     GetComponent<Collider>().enabled = true;
                     StartCoroutine("enableCarryCollider");
                     ChargeBar.SetActive(false);
+
+                    statChange = yeetIncrease + gremlin.getStat("Happiness");
+                    if (statChange > maxStatVal)
+                        statChange = maxStatVal;
+                    gremlin.setStat("Happiness", statChange);
                 }
                 else
                 {
                     attemptYeet = false;
                     drop = true;
                     ChargeBar.SetActive(false);
+
+                    //can stats become negative???
+                    statChange = gremlin.getStat("Happiness") - yeetIncrease;
+                    if (statChange < 0)
+                        statChange = 0;
+                    gremlin.setStat("Happiness", statChange);
                 }
             }
-            if(!attemptYeet)
+            if (!attemptYeet)
             {
                 StopAllCoroutines();
                 ChargeFill.fillAmount = 0.0f;
             }
-                
-
         }
 
         //keep track of how long button has been pressed to use for picking up
@@ -217,7 +233,10 @@ public class GremlinPickup : MonoBehaviour
                 petCooldownTimer = 0.0f;
 
                 //actually pet
-                //gremlin.setStat("Happiness", petIncrease + getStat("Happiness"));
+                statChange = petIncrease + gremlin.getStat("Happiness");
+                if (statChange > maxStatVal)
+                    statChange = maxStatVal;
+                gremlin.setStat("Happiness", statChange);
 
                 //jumps happily as temp behaviour until we get animations
                 rb.AddForce(Vector3.up * jumpHeight * 100);
@@ -247,6 +266,13 @@ public class GremlinPickup : MonoBehaviour
             {
                 enableStatMenu = !enableStatMenu;
                 StatMenu.SetActive(enableStatMenu);
+                StatMenu.transform.GetChild(0).GetComponent<Text>().text = gremlin.getName();
+                StatMenu.transform.GetChild(1).GetComponent<Text>().text = "Stamina: " + gremlin.getStat("Stamina");
+                StatMenu.transform.GetChild(2).GetComponent<Text>().text = "Happiness: " + gremlin.getStat("Happiness");
+                StatMenu.transform.GetChild(3).GetComponent<Text>().text = "Running: " + gremlin.getStat("Running");
+                StatMenu.transform.GetChild(4).GetComponent<Text>().text = "Climbing: " + gremlin.getStat("Climbing");
+                StatMenu.transform.GetChild(5).GetComponent<Text>().text = "Swimming: " + gremlin.getStat("Swimming");
+                StatMenu.transform.GetChild(6).GetComponent<Text>().text = "Flying: " + gremlin.getStat("Flying");
             }
 
 
