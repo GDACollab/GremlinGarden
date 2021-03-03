@@ -8,7 +8,11 @@ using UnityEngine;
 /// </summary>
 public class RaceManager : MonoBehaviour
 {
-
+    /// <summary>
+    /// The SceneLoader script in the scene to use to transition after the race has ended. Called in PostResults().
+    /// </summary>
+    [Tooltip("The SceneLoader script in the scene to use to transition after the race has ended. Called in PostResults().")]
+    public SceneLoader sceneLoader;
     /// <summary>
     /// The active canvas object to be used by QTE prompts.
     /// </summary>
@@ -32,6 +36,11 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     [Tooltip("This is a prefab meant to set up all the fancy camera angles and intro to a race before it actually starts. Prefab requires a RaceStart component.")]
     public GameObject raceStartObject;
+
+    /// <summary>
+    /// The actual object used to start the race.
+    /// </summary>
+    GameObject raceStart;
 
     /// <summary>
     /// Which way on the axes to offset tracks. So (1, 0, 0) for offsetting on the x-axis, (0, -1, 0) for offsetting down on the y-axis, that sort of thing.
@@ -128,8 +137,15 @@ public class RaceManager : MonoBehaviour
         }
         gremlinPlayerIndex = playerIndex;
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
-        var starting = Instantiate(raceStartObject, this.transform);
-        starting.GetComponent<RaceStart>().RaceStartSetup(this);
+        raceStart = Instantiate(raceStartObject, this.transform);
+        raceStart.GetComponent<RaceStart>().RaceStartSetup(this);
+    }
+
+    /// <summary>
+    /// Meant to be called by FadeManager when the 
+    /// </summary>
+    public void SetFadeComplete() {
+        raceStart.GetComponent<RaceStart>().OnFadeoutComplete();
     }
 
     /// <summary>
@@ -219,6 +235,7 @@ public class RaceManager : MonoBehaviour
             time.transform.position = new Vector3(104.7f, heightOffset) + header.transform.position;
             heightOffset -= 30;
         }
+        sceneLoader.FadeOutLoad("Hub World", 0.3f);
     }
 
     // Update is called once per frame

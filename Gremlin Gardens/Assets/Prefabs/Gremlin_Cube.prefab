@@ -45,8 +45,9 @@ GameObject:
   - component: {fileID: 5497726379860427167}
   - component: {fileID: 5497726379860427164}
   - component: {fileID: 5497726379860427170}
+  - component: {fileID: 2556388117511409713}
   m_Layer: 0
-  m_Name: Gremlin
+  m_Name: Gremlin_Cube
   m_TagString: Gremlin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 2
+  outlineWidth: 0
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -159,17 +160,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdee1f75d47f564999c115c791cb736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarriedGremlin: {fileID: 0}
-  player: {fileID: 0}
-  CarriedFruit: {fileID: 0}
-  PickupIndicator: {fileID: 0}
-  DropIndicator: {fileID: 0}
-  beingCarried: 0
   jumpHeight: 1
   petCooldown: 1.5
   cuddleCooldown: 2
   petIncrease: 1
   cuddleIncrease: 2
+  yeetIncrease: 3
+  tossForce: 300
+  speed: 2
+  waitTime: 4
+  gremlin: {fileID: 0}
 --- !u!54 &5497726379860427170
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,3 +186,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2556388117511409713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5497726379860427165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bfcac9262d1488b9f73a1b05682d84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gremlin: {fileID: 0}
+  gremlinName: 

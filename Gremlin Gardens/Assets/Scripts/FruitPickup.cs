@@ -11,12 +11,16 @@ public class FruitPickup : MonoBehaviour
     public GameObject PickupIndicator;  //button prompt to pick up 
     public GameObject DropIndicator;    //button prompt to drop down
     public GameObject Canvas;
-    public float shrinkRate = 0.005f;
+    public float shrinkRate = 0.01f;
 
     private float distanceFromPlayer; //distance (in meters?) from player to fruit
     private bool onFruit; //is mouse currently over the fruit
     private bool beingEaten = false; //true if a gremlin is eating the fruit
-    private GameObject currentGremlin; //gremlin that is looked at
+    //private GameObject currentGremlin; //gremlin that is looked at
+
+    public Gremlin gremlin;
+    public float maxStatVal;
+    public FoodObject fruit;
 
 
     // Start is called before the first frame update
@@ -28,6 +32,7 @@ public class FruitPickup : MonoBehaviour
         PickupIndicator = Canvas.transform.Find("Fruit Pickup").gameObject;
         CarriedGremlin = player.transform.Find("Carried Gremlin");
         CarriedFruit = player.transform.Find("Carried Fruit");
+        fruit = this.GetComponent<FoodObject>();
 
         PickupIndicator.SetActive(false);
         DropIndicator.SetActive(false);
@@ -50,9 +55,10 @@ public class FruitPickup : MonoBehaviour
                 beingCarried = false;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 GetComponent<Collider>().enabled = true;
-                DropIndicator.SetActive(false);
             }
         }
+        else
+            DropIndicator.SetActive(false);
 
         //replace behavior with animations later
         if (beingEaten)
@@ -60,10 +66,20 @@ public class FruitPickup : MonoBehaviour
             //shrink food object     
             Vector3 scaleChange = new Vector3(shrinkRate, shrinkRate, shrinkRate);
             this.gameObject.transform.localScale -= scaleChange * Time.deltaTime;
+
+            //delete object after it shrinks
+            if (this.gameObject.transform.localScale.y < 0.003f)
+            {
+                maxStatVal = gremlin.maxStatVal;
+                string stat = determineStat(fruit.foodName);
+                float statChange = gremlin.getStat(stat) + fruit.food.getStatAlteration(stat);
+                if (statChange > maxStatVal)
+                    statChange = maxStatVal;
+                gremlin.setStat(stat, statChange);
+                gremlin.setStat("Happiness", 1 + gremlin.getStat("Happiness"));
+                Destroy(gameObject);
+            }
         }
-        //delete object after it shrinks
-        if (this.gameObject.transform.localScale.y < 0.1f)
-            Destroy(gameObject);
 
         //distance between particular fruit and the player
         distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
@@ -72,11 +88,12 @@ public class FruitPickup : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         GameObject other = collision.gameObject;
-        if (other.name == "Gremlin")
+        if (other.tag == "Gremlin" && beingCarried)
         {
             Transform newParent = other.transform.GetChild(0).transform;
             this.transform.position = newParent.position;
             this.transform.parent = newParent;
+            gremlin = other.GetComponent<GremlinObject>().gremlin;
             beingCarried = false;
             beingEaten = true;
         }
@@ -114,5 +131,31 @@ public class FruitPickup : MonoBehaviour
         PickupIndicator.SetActive(false);
         DropIndicator.SetActive(false);
         GetComponent<Outline>().OutlineWidth = 0;
+    }
+
+    private string determineStat(string food)
+    {
+        string stat = "";
+        switch(food)
+        {
+            case "Apple":
+                stat = "Stamina";
+                break;
+            case "Cheetah Fruit":
+                stat = "Running";
+                break;
+            case "Monkey Fruit":
+                stat = "Climbing";
+                break;
+            case "Dolphin Fruit":
+                stat = "Swimming";
+                break;
+            case "Dragon Fruit":
+                stat = "Flying";
+                break;
+            default:
+                break;
+        }
+        return stat;
     }
 }

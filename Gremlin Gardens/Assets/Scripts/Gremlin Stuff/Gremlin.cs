@@ -5,6 +5,8 @@ using UnityEngine;
 // Class that defines and alters each Gremlin's stats
 public class Gremlin : Object
 {
+    public float maxStatVal = 10.0f;
+
     //Name of the gremlin
     private string gremlinName;
 
@@ -60,5 +62,21 @@ public class Gremlin : Object
     public float getStat(string stat)
     {
         return gremlinStats[stat];
+    }
+
+    /*
+     * Increments a given stat by a certain amount
+     * 
+     * @param stat - The name of the stat 
+     * @param amount - The amount to increase the stat by
+     */
+    public void incrementStat(string stat, float amount)
+    {
+        gremlinStats[stat] = gremlinStats[stat] + amount;
+    }
+
+    public Dictionary<string, float> getStats()
+    {
+        return new Dictionary<string, float>(gremlinStats);
     }
 }
