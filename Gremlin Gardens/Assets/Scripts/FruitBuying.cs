@@ -11,8 +11,15 @@ public class FruitBuying : MonoBehaviour
     public GameObject CancelPurchaseIndicator;    //button prompt to drop down*/
     public GameObject PurchaseText; // Text that appears above the fruit
     public GameObject player;
+    
+    [SerializeField]
+    [Tooltip("How far above the center of the food the text will appear")]
+    private float YTextOffset = 0.4f;
+    [SerializeField]
+    [Tooltip("How far above the center of the food the text will appear")]
+    private 
 
-    public string name;
+    private Food thisFood; // The Food object correlating to the on-counter item
     private float distanceFromPlayer; //distance (in meters?) from player to fruit
     private bool onFruit; //is mouse currently over the fruit
     public bool purchaseIntent; //if player has pressed ItemPurchaseIndic key.
@@ -23,7 +30,7 @@ public class FruitBuying : MonoBehaviour
     void Awake()
     {
         Vector3 selfPosition = this.transform.position;
-        TextPositions.Add(name, new Vector3(selfPosition.x, selfPosition.y + 0.4f, selfPosition.z + 0.3f));
+        TextPositions.Add(name, new Vector3(selfPosition.x, selfPosition.y + YTextOffset, selfPosition.z));
     }
 
     // Start is called before the first frame update
@@ -46,7 +53,7 @@ public class FruitBuying : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == false)
             {
                 purchaseIntent = true;
-                PurchaseText.GetComponent<TextMesh>().text = "Confirm buy " + this.name + "?";
+                PurchaseText.GetComponent<TextMesh>().text = "Confirm: Buy " + this.name + "?";
             } else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true) {
                 PurchaseText.SetActive(false);
                 PurchaseText.GetComponent<TextMesh>().text = "Click To Buy " + name;
