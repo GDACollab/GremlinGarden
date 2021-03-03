@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 353739022}
   - component: {fileID: 353739025}
   m_Layer: 0
-  m_Name: Apple 1
+  m_Name: Placeholder Food 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,7 +563,7 @@ SphereCollider:
   m_GameObject: {fileID: 353739020}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -574,7 +574,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353739020}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1452,7 +1452,7 @@ GameObject:
   - component: {fileID: 929693591}
   - component: {fileID: 929693594}
   m_Layer: 0
-  m_Name: iMac
+  m_Name: Dragon Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1717,7 +1717,7 @@ GameObject:
   - component: {fileID: 1048380846}
   - component: {fileID: 1048380849}
   m_Layer: 0
-  m_Name: Apple 2
+  m_Name: Cheetah Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2265,7 +2265,7 @@ GameObject:
   - component: {fileID: 1275281981}
   - component: {fileID: 1275281984}
   m_Layer: 0
-  m_Name: Watermelon
+  m_Name: Placeholder Food 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2294,7 +2294,7 @@ SphereCollider:
   m_GameObject: {fileID: 1275281979}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -2305,7 +2305,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275281979}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2470,7 +2470,7 @@ GameObject:
   - component: {fileID: 1290747973}
   - component: {fileID: 1290747976}
   m_Layer: 0
-  m_Name: Macintosh
+  m_Name: Dolphin Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2772,7 +2772,7 @@ GameObject:
   - component: {fileID: 1949272181}
   - component: {fileID: 1949272184}
   m_Layer: 0
-  m_Name: MacBook
+  m_Name: Monkey Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
