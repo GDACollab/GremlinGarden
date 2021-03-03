@@ -36,10 +36,15 @@ public class RaceStart : MonoBehaviour
     /// Called by RaceManager, used to indicate the start of a race setup.
     /// </summary>
     /// <param name="raceManager">The raceManager calling this function.</param>
-    public virtual void RaceStartSetup(RaceManager raceManager) {
+    public virtual void RaceStartSetup(RaceManager raceManager)
+    {
         manager = raceManager;
         racingCamera = raceManager.racingCamera;
         racingCamera.cameraOffset = flyoverOffset;
+        racingCamera.transform.position = manager.racetracks[Mathf.RoundToInt(manager.racetracks.Count / 2)].transform.GetChild(0).GetComponent<TrackModule>().pathStart + flyoverOffset;
+    }
+
+    public virtual void OnFadeoutComplete() {
         racingCamera.SetFlyover(manager.racetracks[Mathf.RoundToInt(manager.racetracks.Count / 2)].GetComponent<TrackManager>(), 1, true, FlyoverDone);
     }
 

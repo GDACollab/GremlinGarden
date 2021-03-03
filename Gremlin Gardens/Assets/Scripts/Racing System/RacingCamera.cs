@@ -43,13 +43,13 @@ public class RacingCamera : MonoBehaviour
     /// Used to switch between the various camera "modes", like previewing a track or following a gremlin.
     /// </summary>
     [HideInInspector]
-    public string cameraMode = "racing";
+    public string cameraMode = "none";
 
     /// <summary>
     /// The gremlin the camera is currently focusing on (if at all).
     /// </summary>
     [HideInInspector]
-    public GameObject gremlinFocus;
+    public GameObject gremlinFocus = null;
 
 
     /// <summary>
