@@ -52,9 +52,11 @@ public class FruitBuying : MonoBehaviour
                 purchaseIntent = true;
                 PurchaseText.GetComponent<TextMesh>().text = "Confirm: Buy " + this.name + "?";
             } else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true) {
+                Debug.Log("hello");
                 PurchaseText.SetActive(false);
                 PurchaseText.GetComponent<TextMesh>().text = "Click To Buy " + name;
                 purchaseIntent = false;
+                SpawnFruit(name);
             }
             /*ItemPurchaseIndicator.SetActive(true);
             //freeze camera if input Purchase?
@@ -97,6 +99,8 @@ public class FruitBuying : MonoBehaviour
     // used for shopping as well
     private void OnMouseEnter()
     {
+
+        Debug.Log(name);
         PurchaseText.GetComponent<TextMesh>().text = "Click To Buy " + name;
         centerText();
         mouseOn = true;
@@ -110,5 +114,12 @@ public class FruitBuying : MonoBehaviour
         /*ItemPurchaseIndicator.SetActive(false);
         ConfirmPurchaseIndicator.SetActive(false);
         CancelPurchaseIndicator.SetActive(false);*/
+    }
+
+    private void SpawnFruit(string foodName)
+    {
+        GameObject fruit = Resources.Load<GameObject>($"Food/Specific/{foodName}");
+        Vector3 pos = new Vector3(Random.Range(-25, -21), 20, Random.Range(17, 21));
+        Instantiate(fruit, pos, fruit.transform.rotation);
     }
 }

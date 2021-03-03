@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 353739022}
   - component: {fileID: 353739025}
   m_Layer: 0
-  m_Name: Placeholder Food 0
+  m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,7 +549,7 @@ Transform:
   m_GameObject: {fileID: 353739020}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.954, y: 13.295, z: 20.371}
-  m_LocalScale: {x: 0.43686, y: 0.43686, z: 0.43686}
+  m_LocalScale: {x: 0.00545, y: 0.00545, z: 0.00545}
   m_Children: []
   m_Father: {fileID: 62803540}
   m_RootOrder: 0
@@ -562,10 +562,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353739020}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 40
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &353739023
 MeshRenderer:
@@ -574,7 +574,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353739020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -586,7 +586,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ec2d18e544a83a74e82525d22bca5742, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -615,7 +615,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 353739020}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -472147775963580301, guid: 999170237f5835343b45ffe7fa6d7336, type: 3}
 --- !u!114 &353739025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
-  name: Jim
+  YTextOffset: 0.4
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &389929027
@@ -1467,7 +1467,7 @@ Transform:
   m_GameObject: {fileID: 929693589}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.954, y: 13.295, z: 16.82}
-  m_LocalScale: {x: 0.43686, y: 0.43686, z: 0.43686}
+  m_LocalScale: {x: 0.00545, y: 0.00545, z: 0.00545}
   m_Children: []
   m_Father: {fileID: 62803540}
   m_RootOrder: 3
@@ -1483,7 +1483,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 40
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &929693592
 MeshRenderer:
@@ -1504,7 +1504,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8b500a04f15ca594d8aa43387b77d344, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1533,7 +1533,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929693589}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -472147775963580301, guid: 999170237f5835343b45ffe7fa6d7336, type: 3}
 --- !u!114 &929693594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
-  name: Jeff
+  YTextOffset: 0.4
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &956313323
@@ -1732,7 +1732,7 @@ Transform:
   m_GameObject: {fileID: 1048380844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.954, y: 13.295, z: 19.298}
-  m_LocalScale: {x: 0.43686, y: 0.43686, z: 0.43686}
+  m_LocalScale: {x: 0.00545, y: 0.00545, z: 0.00545}
   m_Children: []
   m_Father: {fileID: 62803540}
   m_RootOrder: 1
@@ -1748,7 +1748,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 40
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1048380847
 MeshRenderer:
@@ -1769,7 +1769,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 59a03911d140c944db184ad779f562da, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1798,7 +1798,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048380844}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -472147775963580301, guid: 999170237f5835343b45ffe7fa6d7336, type: 3}
 --- !u!114 &1048380849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1813,7 +1813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
-  name: Steve
+  YTextOffset: 0.4
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &1070046904
@@ -2361,7 +2361,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
-  name: Kris
+  YTextOffset: 0.4
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &1288108953
@@ -2485,7 +2485,7 @@ Transform:
   m_GameObject: {fileID: 1290747971}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.954, y: 13.295, z: 18.223}
-  m_LocalScale: {x: 0.43686, y: 0.43686, z: 0.43686}
+  m_LocalScale: {x: 0.00545, y: 0.00545, z: 0.00545}
   m_Children: []
   m_Father: {fileID: 62803540}
   m_RootOrder: 2
@@ -2501,7 +2501,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 40
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1290747974
 MeshRenderer:
@@ -2522,7 +2522,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 73cb22a2b52d19440ae823d8c024e6d9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2551,7 +2551,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1290747971}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -472147775963580301, guid: 999170237f5835343b45ffe7fa6d7336, type: 3}
 --- !u!114 &1290747976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,7 +2566,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
-  name: Jesse
+  YTextOffset: 0.4
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &1526357381
@@ -2787,7 +2787,7 @@ Transform:
   m_GameObject: {fileID: 1949272179}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -20.954, y: 13.295, z: 15.816}
-  m_LocalScale: {x: 0.43686, y: 0.43686, z: 0.43686}
+  m_LocalScale: {x: 0.00545, y: 0.00545, z: 0.00545}
   m_Children: []
   m_Father: {fileID: 62803540}
   m_RootOrder: 4
@@ -2803,7 +2803,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 40
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1949272182
 MeshRenderer:
@@ -2824,7 +2824,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4a496559b0ac24d4399d8efea6742dea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2853,7 +2853,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949272179}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -472147775963580301, guid: 999170237f5835343b45ffe7fa6d7336, type: 3}
 --- !u!114 &1949272184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2868,7 +2868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PurchaseText: {fileID: 1109136724}
   player: {fileID: 1070046904}
-  name: Geoff
+  YTextOffset: 0.4
   purchaseIntent: 0
   mouseOn: 0
 --- !u!1 &2042885734
