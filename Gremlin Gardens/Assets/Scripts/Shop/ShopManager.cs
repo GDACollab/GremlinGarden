@@ -22,10 +22,10 @@ public class ShopManager : MonoBehaviour
     public GameObject player;
 
     /// <summary>
-    /// The starting position where the ShopManager should place the items (uses local position)
+    /// The starting position where the ShopManager should place the items (uses an empty game object's position)
     /// </summary>
-    [Tooltip("The starting position where the ShopManager should place the items (uses local position)")]
-    public Vector3 itemStartingPos;
+    [Tooltip("The starting position where the ShopManager should place the items (use an empty game object's position)")]
+    public GameObject itemStartingPos;
 
     /// <summary>
     /// How much to offset the items by (uses local position)
@@ -60,7 +60,7 @@ public class ShopManager : MonoBehaviour
     /// <returns></returns>
     public GameObject AddItem(GameObject prefab) {
         var newItem = Instantiate(prefab, this.transform);
-        newItem.transform.position = this.transform.position + itemStartingPos + shopItemOffset;
+        newItem.transform.position = this.transform.position + itemStartingPos.transform.position + shopItemOffset;
         shopItems.Add(newItem.GetComponent<ShopItem>());
         shopItemOffset += offsetDistance;
         return newItem;
@@ -71,14 +71,8 @@ public class ShopManager : MonoBehaviour
     /// </summary>
     /// <param name="index">The index of the item.</param>
     public void RemoveItem(int index) {
-        for (int i = 0; i < shopItems.Count; i++)
-        {
-            if (i == index)
-            {
-                shopItems.Remove(shopItems[i]);
-                Destroy(shopItems[i].gameObject);
-            }
-        }
+        shopItems.Remove(shopItems[index]);
+        Destroy(shopItems[index].gameObject);
     }
 
     /// <summary>
