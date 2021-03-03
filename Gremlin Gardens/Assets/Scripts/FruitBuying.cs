@@ -15,9 +15,6 @@ public class FruitBuying : MonoBehaviour
     [SerializeField]
     [Tooltip("How far above the center of the food the text will appear")]
     private float YTextOffset = 0.4f;
-    [SerializeField]
-    [Tooltip("How far above the center of the food the text will appear")]
-    private 
 
     private Food thisFood; // The Food object correlating to the on-counter item
     private float distanceFromPlayer; //distance (in meters?) from player to fruit
