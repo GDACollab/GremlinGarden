@@ -17,7 +17,7 @@ public class GremlinInteraction : MonoBehaviour
 
     public float speed = 2.0f; //Speed of charge bar fill
     public float waitTime = 4.0f; //Total Time to fill charge bar
-    public float maxStatVal = 10.0f;
+    private float maxStatVal;
 
     private Transform CarriedGremlin;  //transform in front of player where Gremlin stays
     private GameObject player;     //used to determine distance
@@ -71,6 +71,7 @@ public class GremlinInteraction : MonoBehaviour
         GetComponent<Outline>().OutlineWidth = 0;
 
         gremlin = this.GetComponent<GremlinObject>().gremlin;
+        maxStatVal = gremlin.maxStatVal;
     }
 
     public void Update()
