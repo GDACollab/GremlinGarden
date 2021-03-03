@@ -32,7 +32,7 @@ public class ShopItem : MonoBehaviour
                 purchaseIntent = false;
                 var bought = Instantiate(itemSpawnOnBuy);
                 //Temporary solution for placement.
-                bought.transform.position = this.transform.position + new Vector3(0, 5, 0);
+                bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
                 manager.SetPurchaseText("Buy " + itemName + "?");
             }
         }

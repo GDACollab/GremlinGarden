@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Dolphin Fruit
-  itemSpawnOnBuy: {fileID: 0}
+  itemSpawnOnBuy: {fileID: 3373043727600244626, guid: f9ceec8dd0e1ff54382c81b6fbbd28f4, type: 3}

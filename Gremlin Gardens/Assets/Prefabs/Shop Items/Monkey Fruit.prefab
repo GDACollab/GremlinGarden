@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Monkey Fruit
-  itemSpawnOnBuy: {fileID: 0}
+  itemSpawnOnBuy: {fileID: 2341960362350322261, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}

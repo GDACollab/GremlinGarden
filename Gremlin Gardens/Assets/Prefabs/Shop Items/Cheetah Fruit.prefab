@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Cheetah Fruit
-  itemSpawnOnBuy: {fileID: 0}
+  itemSpawnOnBuy: {fileID: 4135039111374548693, guid: 0051245518584374c9a949f4f8d1fd97, type: 3}
