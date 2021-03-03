@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GremlinInteraction : MonoBehaviour
 {
@@ -267,13 +268,13 @@ public class GremlinInteraction : MonoBehaviour
             {
                 enableStatMenu = !enableStatMenu;
                 StatMenu.SetActive(enableStatMenu);
-                StatMenu.transform.GetChild(0).GetComponent<Text>().text = gremlin.getName();
-                StatMenu.transform.GetChild(1).GetComponent<Text>().text = "Stamina: " + gremlin.getStat("Stamina");
-                StatMenu.transform.GetChild(2).GetComponent<Text>().text = "Happiness: " + gremlin.getStat("Happiness");
-                StatMenu.transform.GetChild(3).GetComponent<Text>().text = "Running: " + gremlin.getStat("Running");
-                StatMenu.transform.GetChild(4).GetComponent<Text>().text = "Climbing: " + gremlin.getStat("Climbing");
-                StatMenu.transform.GetChild(5).GetComponent<Text>().text = "Swimming: " + gremlin.getStat("Swimming");
-                StatMenu.transform.GetChild(6).GetComponent<Text>().text = "Flying: " + gremlin.getStat("Flying");
+                StatMenu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = gremlin.getName();
+                StatMenu.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Stamina: " + gremlin.getStat("Stamina");
+                StatMenu.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Happiness: " + gremlin.getStat("Happiness");
+                StatMenu.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Running: " + gremlin.getStat("Running");
+                StatMenu.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Climbing: " + gremlin.getStat("Climbing");
+                StatMenu.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Swimming: " + gremlin.getStat("Swimming");
+                StatMenu.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Flying: " + gremlin.getStat("Flying");
             }
 
 
