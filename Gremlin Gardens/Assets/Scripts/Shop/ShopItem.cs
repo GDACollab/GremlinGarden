@@ -5,11 +5,28 @@ using UnityEngine;
 public class ShopItem : MonoBehaviour
 {
 
+    /// <summary>
+    /// The name of the item (to display on text)
+    /// </summary>
+    [Tooltip("The name of the item (to display on text)")]
     public string itemName;
+    /// <summary>
+    /// What object to spawn when the player buys it.
+    /// </summary>
+    [Tooltip("What object to spawn when the player buys it.")]
     public GameObject itemSpawnOnBuy;
-    private bool purchaseIntent; //if player has pressed ItemPurchaseIndic key.
+    /// <summary>
+    /// If the player is intending to purchase the item.
+    /// </summary>
+    private bool purchaseIntent;
+    /// <summary>
+    /// If the mouse is over this current item.
+    /// </summary>
     private bool mouseOn;
 
+    /// <summary>
+    /// The ShopManager that this is the child of.
+    /// </summary>
     private ShopManager manager;
 
     // Start is called before the first frame update
