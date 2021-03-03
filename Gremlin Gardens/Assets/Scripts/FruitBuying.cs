@@ -42,11 +42,15 @@ public class FruitBuying : MonoBehaviour
     	distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
         if (distanceFromPlayer < 20 && inShop && mouseOn)
         {
-            centerText();
             PurchaseText.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == false)
             {
-                Debug.Log($"Purchased {this.name}");
+                purchaseIntent = true;
+                PurchaseText.GetComponent<TextMesh>().text = "Confirm buy " + this.name + "?";
+            } else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true) {
+                PurchaseText.SetActive(false);
+                PurchaseText.GetComponent<TextMesh>().text = "Click To Buy " + name;
+                purchaseIntent = false;
             }
             /*ItemPurchaseIndicator.SetActive(true);
             //freeze camera if input Purchase?
@@ -83,13 +87,14 @@ public class FruitBuying : MonoBehaviour
     // Centers PurchaseText over this
     private void centerText()
     {
-        PurchaseText.GetComponent<TextMesh>().text = "Click To Buy " + name;
         PurchaseText.transform.position = TextPositions[this.name];
     }
 
     // used for shopping as well
     private void OnMouseEnter()
     {
+        PurchaseText.GetComponent<TextMesh>().text = "Click To Buy " + name;
+        centerText();
         mouseOn = true;
     }
 

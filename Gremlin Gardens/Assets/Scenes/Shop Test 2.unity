@@ -1867,7 +1867,7 @@ MonoBehaviour:
   playerCamera: {fileID: 411719432}
   mouseSensitivity: 3.5
   lockCursor: 1
-  walkSpeed: 400
+  walkSpeed: 1000
   moveSmoothTime: 0.3
 --- !u!4 &1070046907
 Transform:
