@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GremlinPickup : MonoBehaviour
+public class GremlinInteraction : MonoBehaviour
 {
     private Image ChargeFill;
     private bool beingCarried = false;
