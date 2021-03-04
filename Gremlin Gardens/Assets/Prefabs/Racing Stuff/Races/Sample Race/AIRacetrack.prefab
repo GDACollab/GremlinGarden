@@ -23362,7 +23362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RacingGremlin: {fileID: 0}
   ActiveUI: {fileID: 0}
-  GremlinOffset: {x: 0, y: 0.4, z: 0}
+  GremlinOffset: {x: 0, y: -0.3, z: 0}
   currentChild: 0
   trackWidth: 10
   trackID: 0

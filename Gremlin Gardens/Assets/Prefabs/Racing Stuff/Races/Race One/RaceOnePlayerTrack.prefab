@@ -56,7 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RacingGremlin: {fileID: 0}
   ActiveUI: {fileID: 0}
-  GremlinOffset: {x: 0, y: 1, z: 0}
+  GremlinOffset: {x: 0, y: 0, z: 0}
   currentChild: 0
   trackWidth: 2
   trackID: 0
