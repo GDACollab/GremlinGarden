@@ -99,10 +99,12 @@ public class RaceManager : MonoBehaviour
     [HideInInspector]
     public int gremlinPlayerIndex;
 
-    private void Awake()
+    private void OnGUI()
     {
-        //Set an FPS cap because things get weird otherwise.
-        Application.targetFrameRate = 60;
+        //Set an FPS cap because things get weird otherwise. We only set this for the editor, because we don't want to mess up the actual settings for the player.
+        if (UnityEditor.EditorApplication.isPlaying) {
+            Application.targetFrameRate = 60;
+        }
     }
 
     /// <summary>
@@ -221,7 +223,7 @@ public class RaceManager : MonoBehaviour
     }
 
     private void newVantageCallback() { //Disable camera movement if the camera is fixed, but still allow us to look at the Gremlin.
-        racingCamera.SetGremlinFocus(racingCamera.gremlinFocus, false);
+        racingCamera.SetGremlinFocus(racingCamera.gremlinFocus, racingCamera.gremlinTrack, false);
         racingCamera.enableMovement = !cameraIsFixed;
     }
 

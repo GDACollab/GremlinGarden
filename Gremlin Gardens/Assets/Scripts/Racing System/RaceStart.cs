@@ -100,7 +100,7 @@ public class RaceStart : MonoBehaviour
     }
 
     void LockGremlinAndStart() {
-        racingCamera.SetGremlinFocus(manager.racetracks[manager.gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin, false);
+        racingCamera.SetGremlinFocus(manager.racetracks[manager.gremlinPlayerIndex].GetComponent<TrackManager>().RacingGremlin, manager.racetracks[manager.gremlinPlayerIndex].GetComponent<TrackManager>(), false);
         manager.StartTracks();
     }
 }
