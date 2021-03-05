@@ -51,6 +51,12 @@ public class RacingCamera : MonoBehaviour
     [HideInInspector]
     public GameObject gremlinFocus = null;
 
+    /// <summary>
+    /// The speed at which to follow a gremlin.
+    /// </summary>
+    [Tooltip("The speed at which to follow a gremlin.")]
+    public float cameraRaceSpeed = .2f;
+
 
     /// <summary>
     /// Sets the gremlin the camera is currently tracking. Please do not use multiple SetX() functions at once, it will break the camera.
@@ -239,12 +245,13 @@ public class RacingCamera : MonoBehaviour
                 Vector3 newPos = this.transform.position;
                 for (int i = 0; i < 3; i++)
                 {
-                    if (Mathf.Abs(gremlinFocus.transform.position[i] - this.transform.position[i]) > gremlinBounds[i])
+                    if (Mathf.Abs(gremlinFocus.transform.position[i] + cameraOffset[i] - this.transform.position[i]) > gremlinBounds[i])
                     {
-                        newPos[i] = gremlinFocus.transform.position[i] + cameraOffset[i];
+                        var direction = Mathf.Sign(gremlinFocus.transform.position[i] + cameraOffset[i] - this.transform.position[i]);
+                        newPos[i] += cameraRaceSpeed * direction;
                     }
                 }
-                this.transform.position = newPos;
+                this.transform.position = Vector3.Lerp(newPos, this.transform.position, Time.deltaTime);
             }
             if (lookAtFocus)
             {
@@ -267,7 +274,7 @@ public class RacingCamera : MonoBehaviour
                 }
                 currentModule += 1;
                 cameraTrackProgress = 0;
-                if (currentModule == trackFocus.transform.childCount)
+                if (currentModule >= trackFocus.transform.childCount)
                 {
                     cameraMode = "none";
                     cameraStuffFinishedCallback();
@@ -314,14 +321,14 @@ public class RacingCamera : MonoBehaviour
                     Vector3 target = (newPos + cameraOffset - originalPos);
                     target.Normalize();
                     this.transform.position += target * (cameraFlySpeed);
-                    if (Vector3.Distance(this.transform.position, newPos + cameraOffset) < 0.1f)
+                    if (Vector3.Distance(this.transform.position, newPos + cameraOffset) < cameraFlySpeed * 2)
                     {
                         isSkipping = false;
                     }
                 }
                 else
                 { //Otherwise, do all that .Lerping goodness.
-                    this.transform.position = cameraOffset + newPos;
+                    this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
                     if (cameraTrackDirection == -1)
                     {
                         cameraTrackProgress -= cameraFlySpeed;
@@ -353,7 +360,7 @@ public class RacingCamera : MonoBehaviour
             target *= wipeSpeed; //This actually moves the camera during a wipe, so if you want to change the speed, do it here.
             target += planeToWipeWith.transform.position;
             planeToWipeWith.transform.position = Vector3.Lerp(target, planeToWipeWith.transform.position, Time.deltaTime);
-            if (Vector3.Distance(planeToWipeWith.transform.position, wipeEndPos) <= 4)
+            if (Vector3.Distance(planeToWipeWith.transform.position, wipeEndPos) <= wipeSpeed * 2)
             {
                 Destroy(planeToWipeWith);
                 this.transform.position = transferToCamera.position;
