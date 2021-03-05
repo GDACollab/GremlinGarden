@@ -45,6 +45,11 @@ public class FoodObject : MonoBehaviour
             transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
             transform.gameObject.SetActive(true);
             transform.position = oldPos;
+            Outline outline = GetComponent<Outline>();
+            if (outline != null)
+            {
+                outline.enabled = true;
+            }
         }
 
         stats = new Dictionary<string, float>();

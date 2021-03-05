@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 6631969135685365291}
   - component: {fileID: 6631969135685365290}
   - component: {fileID: 6631969135685365289}
+  - component: {fileID: -8229290026996975573}
   m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
@@ -197,5 +198,20 @@ MonoBehaviour:
   - Happiness
   _values:
   - 1
+  multipleMeshes: 0
   foodName: Food
   size: 0.25
+--- !u!114 &-8229290026996975573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631969135685365288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b897b9011634e54584ce857a9d9ec72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkRate: 3.64
+  maxStatVal: 0

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3373043727600244626}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0109, y: 0.0109, z: 0.0109}
+  m_LocalScale: {x: 0.002743734, y: 0.002743734, z: 0.002743734}
   m_Children:
   - {fileID: 6464868618084562702}
   m_Father: {fileID: 0}
@@ -104,6 +104,7 @@ MonoBehaviour:
   _values:
   - 1
   - 1
+  multipleMeshes: 0
   foodName: Dolphin Fruit
   size: 0.25
 --- !u!114 &6242926245410694870

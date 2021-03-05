@@ -431,6 +431,8 @@ GameObject:
   - component: {fileID: 9158041989433110276}
   - component: {fileID: 9158041989433110277}
   - component: {fileID: 9158041989433110299}
+  - component: {fileID: 2032802872142689883}
+  - component: {fileID: -5423023813837071074}
   m_Layer: 0
   m_Name: Dragon Fruit
   m_TagString: Untagged
@@ -529,6 +531,38 @@ MonoBehaviour:
   multipleMeshes: 1
   foodName: Dragon Fruit
   size: 0.25
+--- !u!114 &2032802872142689883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347016717390090824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b897b9011634e54584ce857a9d9ec72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkRate: 3.64
+  maxStatVal: 0
+--- !u!114 &-5423023813837071074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347016717390090824}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8986156354197193149
 GameObject:
   m_ObjectHideFlags: 0

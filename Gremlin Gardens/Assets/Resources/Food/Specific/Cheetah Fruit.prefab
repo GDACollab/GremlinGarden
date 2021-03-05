@@ -200,6 +200,7 @@ MonoBehaviour:
   _values:
   - 1
   - 1
+  multipleMeshes: 0
   foodName: Cheetah Fruit
   size: 0.25
 --- !u!114 &-3579286724301838491
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b897b9011634e54584ce857a9d9ec72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkRate: 0.005
+  shrinkRate: 3.64
   maxStatVal: 0
 --- !u!114 &-8993662474815636037
 MonoBehaviour:

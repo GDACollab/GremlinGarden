@@ -61,6 +61,7 @@ public class ShopItem : MonoBehaviour
         mouseOn = true;
         manager.ItemHover(this);
         manager.SetPurchaseText("Buy " + itemName + "?");
+        Debug.Log("e");
     }
 
     private void OnMouseExit()
