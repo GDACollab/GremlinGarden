@@ -248,6 +248,7 @@ public class RacingCamera : MonoBehaviour
                     if (Mathf.Abs(gremlinFocus.transform.position[i] + cameraOffset[i] - this.transform.position[i]) > gremlinBounds[i])
                     {
                         var direction = Mathf.Sign(gremlinFocus.transform.position[i] + cameraOffset[i] - this.transform.position[i]);
+                        //TODO: Change this to reflect the gremlin's actual speed.
                         newPos[i] += cameraRaceSpeed * direction;
                     }
                 }
