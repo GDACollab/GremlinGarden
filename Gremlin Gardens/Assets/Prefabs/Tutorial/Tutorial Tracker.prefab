@@ -108,7 +108,7 @@ RectTransform:
   m_GameObject: {fileID: 1353759022011335672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6652807, y: 0.6652807, z: 0.6652807}
   m_Children:
   - {fileID: 7070191331752495496}
   m_Father: {fileID: 0}
@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1930007257894114811, guid: bff67f930fdab4d4e8e78b9718f66fa1, type: 3}
       propertyPath: m_fontSize
-      value: 9.4
+      value: 9.3
       objectReference: {fileID: 0}
     - target: {fileID: 4094106839424660369, guid: bff67f930fdab4d4e8e78b9718f66fa1, type: 3}
       propertyPath: m_Name
