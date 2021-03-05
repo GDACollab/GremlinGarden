@@ -56,7 +56,7 @@ public class FoodObject : MonoBehaviour
         food = new Food(this.gameObject.GetComponent<MeshFilter>().sharedMesh, this.gameObject.GetComponent<MeshRenderer>().material,
             foodName, stats);
         //Adds Necessary Collision Components
-        gameObject.AddComponent<CapsuleCollider>();
+        gameObject.AddComponent<BoxCollider>();
         rgbd = gameObject.AddComponent<Rigidbody>();    
         //Scales Size Down
         scaleObjectSize(gameObject, size);

@@ -102,7 +102,7 @@ public class RaceManager : MonoBehaviour
     private void OnGUI()
     {
         //Set an FPS cap because things get weird otherwise. We only set this for the editor, because we don't want to mess up the actual settings for the player.
-        if (UnityEditor.EditorApplication.isPlaying) {
+        if (Application.isEditor) {
             Application.targetFrameRate = 60;
         }
     }
