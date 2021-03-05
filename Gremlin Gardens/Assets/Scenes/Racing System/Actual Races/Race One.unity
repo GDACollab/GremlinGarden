@@ -193,7 +193,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1782050189082712871, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: cameraFlySpeed
-      value: 0.08
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: gremlinCount
@@ -259,6 +259,10 @@ PrefabInstance:
       propertyPath: playerTrack
       value: 
       objectReference: {fileID: 3250037331611529709, guid: 79101deceb269b74aa42feaffa1b44ea, type: 3}
+    - target: {fileID: 8107204635384313881, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
 --- !u!1 &1757222821

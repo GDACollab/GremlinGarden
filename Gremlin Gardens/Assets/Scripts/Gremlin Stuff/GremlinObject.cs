@@ -23,9 +23,6 @@ public class GremlinObject : MonoBehaviour
         gremlin.setStat("Climbing", 1);
         gremlin.setStat("Happiness", 1);
         gremlin.setStat("Swimming", 1);
-        //Adds Necessary Collision Components
-        gameObject.AddComponent<SphereCollider>();
-        body = gameObject.AddComponent<Rigidbody>();
     }
 
     // Update is called once per frame
