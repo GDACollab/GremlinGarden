@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2998953095545000817, guid: b28c5bd3080fe71449edd0af023bae21, type: 3}
       propertyPath: m_Name
-      value: BasicStart
+      value: Race One Basic Start
       objectReference: {fileID: 0}
     - target: {fileID: 2998953095545000819, guid: b28c5bd3080fe71449edd0af023bae21, type: 3}
       propertyPath: m_LocalPosition.x

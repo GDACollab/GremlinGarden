@@ -244,7 +244,7 @@ public class RacingCamera : MonoBehaviour
                         newPos[i] = gremlinFocus.transform.position[i] + cameraOffset[i];
                     }
                 }
-                this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
+                this.transform.position = newPos;
             }
             if (lookAtFocus)
             {

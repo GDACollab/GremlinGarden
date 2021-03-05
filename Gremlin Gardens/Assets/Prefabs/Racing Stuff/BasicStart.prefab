@@ -120,5 +120,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingLineOffset: {x: -20, y: 3, z: 0}
   flyoverOffset: {x: 2, y: 6, z: 0}
-  actualRaceOffset: {x: -10, y: 6, z: 0}
+  actualRaceOffset: {x: 20, y: 6, z: 0}
   countdownTextPrefab: {fileID: 7383557762932217182, guid: a56a58ee1820d2841b52d5c9e80fcfac, type: 3}
