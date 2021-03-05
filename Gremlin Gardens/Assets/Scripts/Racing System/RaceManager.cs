@@ -99,6 +99,12 @@ public class RaceManager : MonoBehaviour
     [HideInInspector]
     public int gremlinPlayerIndex;
 
+    private void Awake()
+    {
+        //Set an FPS cap because things get weird otherwise.
+        Application.targetFrameRate = 60;
+    }
+
     /// <summary>
     /// Gets the track ready for racing. StartTracks() is called by raceStartObject.
     /// </summary>

@@ -303,10 +303,11 @@ public class RacingCamera : MonoBehaviour
                 }
                 if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraIgnorePath)
                 { //If not, we're moving from the start point to the end point, so that's reflected here.
-                    Vector3 followLine = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop) - flyoverPath.path.GetPointAtDistance(0);
-                    followLine.Normalize();
-                    newPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * cameraTrackProgress);
-                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed));
+                    Vector3 start = flyoverPath.path.GetPointAtDistance(0);
+                    Vector3 end = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop);
+                    Vector3 followLine = end - start;
+                    newPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress/Vector3.Distance(start, end)));
+                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed/flyoverPath.path.length));
                 }
                 if (isSkipping)
                 { //Okay, but have we skipped over some modules? If so, start slowly moving over to the next available module.
@@ -320,7 +321,7 @@ public class RacingCamera : MonoBehaviour
                 }
                 else
                 { //Otherwise, do all that .Lerping goodness.
-                    this.transform.position = Vector3.Lerp(cameraOffset + newPos, this.transform.position, Time.deltaTime);
+                    this.transform.position = cameraOffset + newPos;
                     if (cameraTrackDirection == -1)
                     {
                         cameraTrackProgress -= cameraFlySpeed;
@@ -352,7 +353,7 @@ public class RacingCamera : MonoBehaviour
             target *= wipeSpeed; //This actually moves the camera during a wipe, so if you want to change the speed, do it here.
             target += planeToWipeWith.transform.position;
             planeToWipeWith.transform.position = Vector3.Lerp(target, planeToWipeWith.transform.position, Time.deltaTime);
-            if (Vector3.Distance(planeToWipeWith.transform.position, wipeEndPos) <= 1)
+            if (Vector3.Distance(planeToWipeWith.transform.position, wipeEndPos) <= 4)
             {
                 Destroy(planeToWipeWith);
                 this.transform.position = transferToCamera.position;
