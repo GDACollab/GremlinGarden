@@ -9,6 +9,7 @@ public class FoodObject : MonoBehaviour
     public List<string> _stats;
     public List<float> _values;
     public Dictionary<string, float> stats;
+    public bool multipleMeshes;
 
 
     public string foodName;
@@ -23,6 +24,29 @@ public class FoodObject : MonoBehaviour
     // In start, the empty game object is turned into a Food Object
     public void Start()
     {
+        // If there are multiple Meshes, combines them
+        if (multipleMeshes)
+        {
+            Vector3 oldPos = transform.position;
+            transform.position = Vector3.zero;
+            MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
+            CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+
+            int i = 0;
+            while (i < meshFilters.Length)
+            {
+                combine[i].mesh = meshFilters[i].sharedMesh;
+                combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+                meshFilters[i].gameObject.SetActive(false);
+
+                i++;
+            }
+            transform.GetComponent<MeshFilter>().mesh = new Mesh();
+            transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+            transform.gameObject.SetActive(true);
+            transform.position = oldPos;
+        }
+
         stats = new Dictionary<string, float>();
         for (int i = 0; i < Mathf.Min(_stats.Count, _values.Count); i++)
         {
@@ -32,8 +56,8 @@ public class FoodObject : MonoBehaviour
         food = new Food(this.gameObject.GetComponent<MeshFilter>().sharedMesh, this.gameObject.GetComponent<MeshRenderer>().material,
             foodName, stats);
         //Adds Necessary Collision Components
-        gameObject.AddComponent<SphereCollider>();
-        rgbd = gameObject.AddComponent<Rigidbody>();
+        gameObject.AddComponent<CapsuleCollider>();
+        rgbd = gameObject.AddComponent<Rigidbody>();    
         //Scales Size Down
         scaleObjectSize(gameObject, size);
 
