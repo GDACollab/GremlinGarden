@@ -9,6 +9,8 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public FadeManager fadeManager;
+    
+    private string sceneName;
 
     /// <summary>
     /// Quick hack for buttons that can't do floats.
@@ -20,6 +22,7 @@ public class SceneLoader : MonoBehaviour
 
     public void FadeOutLoad(string sceneName, float speed)
     {
+        this.sceneName = sceneName;
         LoadingData.sceneToLoad = sceneName;
         fadeManager.onFadeComplete.AddListener(StartLoadScene);
         fadeManager.StartFade(speed, false);
@@ -29,11 +32,12 @@ public class SceneLoader : MonoBehaviour
     /// Meant to be used as a callback when the fade function is finished.
     /// </summary>
     void StartLoadScene() {
-        SceneManager.LoadScene("Loading");
+        SceneManager.LoadScene(sceneName);
     }
 
     public void Load(string sceneName) {
         LoadingData.sceneToLoad = sceneName;
-        StartLoadScene(); //Just using this because it's easier than typing out the whole thing.
+        SceneManager.LoadScene(sceneName); // async does not work well with web builds
+        // StartLoadScene(); //Just using this because it's easier than typing out the whole thing.
     }
 }
