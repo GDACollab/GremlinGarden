@@ -738,7 +738,7 @@ MonoBehaviour:
   cameraImmediateCut: 0
   multiplyOffsetByNumTracks: 1
   cameraIgnorePath: 0
-  cameraShouldRotate: 1
+  cameraShouldRotate: 0
   cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
@@ -2381,7 +2381,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -5084,7 +5084,7 @@ MonoBehaviour:
   cameraImmediateCut: 0
   multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
-  cameraShouldRotate: 1
+  cameraShouldRotate: 0
   cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
@@ -6944,7 +6944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RacingGremlin: {fileID: 0}
   ActiveUI: {fileID: 0}
-  GremlinOffset: {x: 0, y: -0.3, z: 0}
+  GremlinOffset: {x: 0, y: -0.2, z: 0}
   currentChild: 0
   trackWidth: 10
   trackID: 0
@@ -9285,7 +9285,7 @@ MonoBehaviour:
   cameraImmediateCut: 0
   multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
-  cameraShouldRotate: 1
+  cameraShouldRotate: 0
   cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
@@ -9517,7 +9517,7 @@ MonoBehaviour:
   cameraImmediateCut: 0
   multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
-  cameraShouldRotate: 1
+  cameraShouldRotate: 0
   cameraSkipAhead: 15
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
@@ -10451,7 +10451,7 @@ MonoBehaviour:
   cameraImmediateCut: 0
   multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
-  cameraShouldRotate: 1
+  cameraShouldRotate: 0
   cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
@@ -17584,7 +17584,7 @@ MonoBehaviour:
   cameraImmediateCut: 0
   multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 0
-  cameraShouldRotate: 1
+  cameraShouldRotate: 0
   cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}

@@ -397,6 +397,10 @@ PrefabInstance:
       propertyPath: editorData._bezierPath.points.Array.data[2].x
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 3456656787443222082, guid: ce47557f519531747ab7e8ced4f33361, type: 3}
+      propertyPath: editorData.vertexPathUpToDate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4483373563772392554, guid: ce47557f519531747ab7e8ced4f33361, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -933,7 +937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1930889328112103552, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2820282673810928937, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
       propertyPath: m_Name

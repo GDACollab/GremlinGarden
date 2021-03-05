@@ -102,7 +102,7 @@ MonoBehaviour:
   enableMovement: 1
   cameraMode: none
   gremlinFocus: {fileID: 0}
-  cameraFlySpeed: 0.2
+  cameraFlySpeed: 1
   texturePlane: {fileID: 2801156931057065824, guid: 64f45a33a1743984e9d4368e0775c8cd, type: 3}
   tweenCurve:
     serializedVersion: 2

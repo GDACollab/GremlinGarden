@@ -54,7 +54,7 @@ public class RaceStart : MonoBehaviour
     {
         //Set up cool racer lineup effect:
         GetComponentInChildren<Camera>().transform.position = manager.racetracks[0].GetComponent<TrackManager>().RacingGremlin.transform.position + startingLineOffset;
-        racingCamera.SetWipe(GetComponentInChildren<Camera>(), manager.ActiveUI, new Vector3(-Screen.width, Screen.height / 2), new Vector3(Screen.width / 2, Screen.height / 2), 1.0f, BeginActualLineup);
+        racingCamera.SetWipe(GetComponentInChildren<Camera>(), manager.ActiveUI, new Vector3(-Screen.width, Screen.height / 2), new Vector3(Screen.width / 2, Screen.height / 2), 10.0f, BeginActualLineup);
     }
 
     void BeginActualLineup()

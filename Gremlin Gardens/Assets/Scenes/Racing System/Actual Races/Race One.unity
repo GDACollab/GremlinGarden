@@ -193,6 +193,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1782050189082712871, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: cameraFlySpeed
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782050189082712871, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
+      propertyPath: cameraRaceSpeed
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}

@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class FruitPickup : MonoBehaviour
 {
-    public bool beingCarried = false;
-    public Transform CarriedFruit;  //transform in front of player where fruit stays
-    public Transform CarriedGremlin;
-    public GameObject player;     //used to determine distance
-    public GameObject PickupIndicator;  //button prompt to pick up 
-    public GameObject DropIndicator;    //button prompt to drop down
-    public GameObject Canvas;
-    public float shrinkRate = 0.01f;
 
+    public float shrinkRate = 0.01f;
+    public float maxStatVal;
+
+    private Gremlin gremlin;
+    private FoodObject fruit;
     private float distanceFromPlayer; //distance (in meters?) from player to fruit
     private bool onFruit; //is mouse currently over the fruit
     private bool beingEaten = false; //true if a gremlin is eating the fruit
-    //private GameObject currentGremlin; //gremlin that is looked at
+    private bool beingCarried = false;
+    private Transform CarriedFruit;  //transform in front of player where fruit stays
+    private Transform CarriedGremlin;
+    private GameObject player;     //used to determine distance
+    private GameObject PickupIndicator;  //button prompt to pick up 
+    private GameObject DropIndicator;    //button prompt to drop down
+    private GameObject Canvas;
 
-    public Gremlin gremlin;
-    public float maxStatVal;
-    public FoodObject fruit;
+
 
 
     // Start is called before the first frame update
@@ -50,7 +51,6 @@ public class FruitPickup : MonoBehaviour
             if (Input.GetKeyDown("q"))
             {
                 this.transform.parent = null;
-                //drop object back down. look into teleporting onto ground
                 GetComponent<Rigidbody>().useGravity = true;
                 beingCarried = false;
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
@@ -68,7 +68,7 @@ public class FruitPickup : MonoBehaviour
             this.gameObject.transform.localScale -= scaleChange * Time.deltaTime;
 
             //delete object after it shrinks
-            if (this.gameObject.transform.localScale.y < 0.003f)
+            if (this.gameObject.transform.localScale.y < 0.0005f)
             {
                 maxStatVal = gremlin.maxStatVal;
                 string stat = determineStat(fruit.foodName);
@@ -90,7 +90,7 @@ public class FruitPickup : MonoBehaviour
         GameObject other = collision.gameObject;
         if (other.tag == "Gremlin" && beingCarried)
         {
-            Transform newParent = other.transform.GetChild(0).transform;
+            Transform newParent = other.transform.GetChild(1).transform;
             this.transform.position = newParent.position;
             this.transform.parent = newParent;
             gremlin = other.GetComponent<GremlinObject>().gremlin;
@@ -136,7 +136,7 @@ public class FruitPickup : MonoBehaviour
     private string determineStat(string food)
     {
         string stat = "";
-        switch(food)
+        switch (food)
         {
             case "Apple":
                 stat = "Stamina";

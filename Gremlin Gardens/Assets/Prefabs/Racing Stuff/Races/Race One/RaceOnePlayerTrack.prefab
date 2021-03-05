@@ -307,7 +307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2314384804539378515, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3403050838144294200, guid: 31ae850edabbe104190df0d535bd5242, type: 3}
       propertyPath: cameraIgnorePath
@@ -551,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8490175123076168973, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8490175123076168975, guid: 71ba95604fe70d8498598d9d81d20b0c, type: 3}
       propertyPath: m_Mesh
