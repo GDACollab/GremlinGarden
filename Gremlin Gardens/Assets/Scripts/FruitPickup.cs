@@ -98,6 +98,8 @@ public class FruitPickup : MonoBehaviour
             gremlin = other.GetComponent<GremlinObject>().gremlin;
             beingCarried = false;
             beingEaten = true;
+            AudioSource gremlinSound = other.gameObject.GetComponent<AudioSource>();
+            gremlinSound.Play();
         }
     }
 
