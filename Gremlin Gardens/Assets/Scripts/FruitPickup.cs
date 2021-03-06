@@ -43,6 +43,15 @@ public class FruitPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var playerMove = player.GetComponent<PlayerMovement>();
+        if (playerMove.centeredObject == this.gameObject)
+        {
+            IsCentered();
+        }
+        else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew)
+        {
+            IsExited();
+        }
         if (beingCarried)
         {
             PickupIndicator.SetActive(false);
@@ -101,7 +110,7 @@ public class FruitPickup : MonoBehaviour
         }
     }
 
-    private void OnMouseOver()
+    private void IsCentered()
     {
         if (distanceFromPlayer < pickupDistance && !beingEaten)
         {
@@ -127,7 +136,7 @@ public class FruitPickup : MonoBehaviour
         }
     }
 
-    private void OnMouseExit()
+    private void IsExited()
     {
         onFruit = false;
         PickupIndicator.SetActive(false);

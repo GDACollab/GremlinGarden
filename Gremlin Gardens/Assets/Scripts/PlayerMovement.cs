@@ -16,6 +16,16 @@ public class PlayerMovement : MonoBehaviour
     Vector2 currentDir = Vector2.zero;
     Vector2 currentDirVelocity = Vector2.zero;
 
+    /// <summary>
+    /// Object that the player is looking at.
+    /// </summary>
+    [HideInInspector]
+    public GameObject centeredObject = null;
+    [HideInInspector]
+    public GameObject previousObject = null;
+    [HideInInspector]
+    public bool hitObjectIsNew = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,9 +42,27 @@ public class PlayerMovement : MonoBehaviour
     {
         UpdateMovement();
     }
-    void Update() 
+    void Update()
     {
+        //Get the object we're looking at
+        if (Physics.Raycast(this.transform.position, this.transform.GetChild(0).transform.forward, out RaycastHit objectHit))
+        {
+            centeredObject = objectHit.transform.gameObject;
+            if (centeredObject != previousObject)
+            {
+                hitObjectIsNew = true;
+            }
+            else
+            {
+                hitObjectIsNew = false;
+            }
+        }
         UpdateMouseLook();
+    }
+
+    private void LateUpdate()
+    {
+        previousObject = centeredObject;
     }
 
     void UpdateMouseLook()
@@ -45,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
         cameraPitch = Mathf.Clamp(cameraPitch, -90.0f, 90.0f);
         playerCamera.localEulerAngles = Vector3.right * cameraPitch;
         transform.Rotate(Vector3.up * mouseDelta.x * mouseSensitivity);
-
     }
 
     void UpdateMovement()
