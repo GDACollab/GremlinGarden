@@ -14862,6 +14862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480340643}
   - component: {fileID: 1480340644}
+  - component: {fileID: 1480340645}
   m_Layer: 0
   m_Name: Hub World Sound
   m_TagString: Untagged
@@ -14979,6 +14980,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1480340645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480340642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e92b94d7263c46f0b63026926b2da54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ambientSounds:
+  - {fileID: 8300000, guid: 061e43340d764463ca9949807a93b0ab, type: 3}
+  - {fileID: 8300000, guid: 8168ea7cae6724aba84a6463638732e6, type: 3}
+  baseVolume: 0.25
+  minPlayCooldown: 5
+  maxPlayCooldown: 20
+  minClipDuration: 15
+  maxClipDuration: 30
+  fadeDuration: 5
 --- !u!43 &1534121321
 Mesh:
   m_ObjectHideFlags: 0
