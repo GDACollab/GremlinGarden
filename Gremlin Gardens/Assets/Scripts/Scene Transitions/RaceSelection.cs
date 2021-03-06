@@ -40,6 +40,9 @@ public class RaceSelection : MonoBehaviour
         if (playerMove.centeredObject == this.gameObject)
         {
             IsCentered();
+            if (Input.GetMouseButtonDown(0)) {
+                MouseDown();
+            }
         }
         else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew)
         {
@@ -59,7 +62,7 @@ public class RaceSelection : MonoBehaviour
         GetComponent<Outline>().OutlineWidth = 0;
     }
 
-    private void OnMouseDown()
+    private void MouseDown()
     {
         if (Vector3.Distance(this.transform.position, player.transform.position) < selectionDistance)
         {
