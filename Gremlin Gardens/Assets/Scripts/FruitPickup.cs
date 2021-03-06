@@ -7,6 +7,7 @@ public class FruitPickup : MonoBehaviour
 
     public float shrinkRate = 0.01f;
     public float maxStatVal;
+    public float pickupDistance = 6f;
 
     private Gremlin gremlin;
     private FoodObject fruit;
@@ -102,7 +103,7 @@ public class FruitPickup : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (distanceFromPlayer < 3 && !beingEaten)
+        if (distanceFromPlayer < pickupDistance && !beingEaten)
         {
             onFruit = true;
             GetComponent<Outline>().OutlineWidth = 10;
