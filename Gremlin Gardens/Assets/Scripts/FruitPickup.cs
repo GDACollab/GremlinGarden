@@ -76,7 +76,7 @@ public class FruitPickup : MonoBehaviour
             //shrink food object     
             Vector3 scaleChange = new Vector3(shrinkRate, shrinkRate, shrinkRate);
             this.gameObject.transform.localScale -= scaleChange * Time.deltaTime;
-            Debug.Log(this.gameObject.transform.localScale);
+            //Debug.Log(this.gameObject.transform.localScale);
 
             //delete object after it shrinks
             if (this.gameObject.transform.localScale.y < 0.0005f)
