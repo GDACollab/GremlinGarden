@@ -87,6 +87,15 @@ public class GremlinInteraction : MonoBehaviour
         //distance between particular Gremlin and the player
         distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
 
+        var playerMove = player.GetComponent<PlayerMovement>();
+        if (playerMove.centeredObject == this.gameObject)
+        {
+            IsCentered();
+        }
+        else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew) {
+            IsExited();
+        }
+
         //interactions when carrying gremlin
         if (beingCarried && !beingCuddled)
         {
@@ -202,7 +211,7 @@ public class GremlinInteraction : MonoBehaviour
 
     }
 
-    private void OnMouseOver()
+    private void IsCentered()
     {
         //close enough to player but not too far away
         //idk how this will scale
@@ -221,7 +230,7 @@ public class GremlinInteraction : MonoBehaviour
                 StatIndicator.SetActive(true);
             }
 
-
+            
             //PET
             if (!canPickUp && !beingCarried && Input.GetKeyUp("e") && !beingPet)
             {
@@ -241,6 +250,7 @@ public class GremlinInteraction : MonoBehaviour
                 eDownTime = 0;
 
             }
+
             //PICKUP
             if (canPickUp && !beingCarried && !beingPet && CarriedGremlin.childCount == 0 && CarriedFruit.childCount == 0)
             {
@@ -281,7 +291,7 @@ public class GremlinInteraction : MonoBehaviour
             StatMenu.SetActive(enableStatMenu);
         }
     }
-    private void OnMouseExit()
+    private void IsExited()
     {
         onGremlin = false;
         PickupIndicator.SetActive(false);

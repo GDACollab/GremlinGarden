@@ -43,6 +43,16 @@ public class ShopItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        var playerMove = manager.player.GetComponent<PlayerMovement>();
+        if (playerMove.centeredObject == this.gameObject && playerMove.hitObjectIsNew)
+        {
+            IsCentered();
+        }
+        else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew && playerMove.previousObject == this.gameObject)
+        {
+            IsExited();
+        }
+
         if (Vector3.Distance(manager.player.transform.position, this.transform.position) < buyDistance && mouseOn)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == false)
@@ -60,15 +70,14 @@ public class ShopItem : MonoBehaviour
     }
 
     // used for shopping as well
-    private void OnMouseEnter()
+    private void IsCentered()
     {
         mouseOn = true;
         manager.ItemHover(this);
         manager.SetPurchaseText("Buy " + itemName + "?");
-        Debug.Log("e");
     }
 
-    private void OnMouseExit()
+    private void IsExited()
     {
         manager.ItemExit();
         mouseOn = false;

@@ -36,17 +36,25 @@ public class RaceSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var playerMove = player.GetComponent<PlayerMovement>();
+        if (playerMove.centeredObject == this.gameObject)
+        {
+            IsCentered();
+        }
+        else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew)
+        {
+            IsExited();
+        }
     }
 
-    private void OnMouseOver()
+    private void IsCentered()
     {
         if (Vector3.Distance(this.transform.position, player.transform.position) < selectionDistance) {
             GetComponent<Outline>().OutlineWidth = 10;
         }
     }
 
-    private void OnMouseExit()
+    private void IsExited()
     {
         GetComponent<Outline>().OutlineWidth = 0;
     }
