@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: 20334150}
   - component: {fileID: 20334149}
   - component: {fileID: 20334148}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   - component: {fileID: 78396403}
   - component: {fileID: 78396402}
   - component: {fileID: 78396401}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1182,7 @@ GameObject:
   - component: {fileID: 258804201}
   - component: {fileID: 258804200}
   - component: {fileID: 258804199}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1282,7 +1282,7 @@ GameObject:
   - component: {fileID: 262970652}
   - component: {fileID: 262970651}
   - component: {fileID: 262970650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1377,7 +1377,7 @@ GameObject:
   - component: {fileID: 263977023}
   - component: {fileID: 263977022}
   - component: {fileID: 263977021}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1789,7 +1789,7 @@ GameObject:
   - component: {fileID: 344139818}
   - component: {fileID: 344139817}
   - component: {fileID: 344139816}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6190,7 +6190,7 @@ GameObject:
   - component: {fileID: 799845503}
   - component: {fileID: 799845502}
   - component: {fileID: 799845501}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9608,7 +9608,7 @@ GameObject:
   - component: {fileID: 987935192}
   - component: {fileID: 987935191}
   - component: {fileID: 987935190}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -9683,7 +9683,7 @@ GameObject:
   - component: {fileID: 992259320}
   - component: {fileID: 992259322}
   - component: {fileID: 992259319}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -9793,7 +9793,7 @@ GameObject:
   - component: {fileID: 1076091790}
   - component: {fileID: 1076091789}
   - component: {fileID: 1076091788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15278,7 +15278,7 @@ GameObject:
   - component: {fileID: 1202904367}
   - component: {fileID: 1202904366}
   - component: {fileID: 1202904365}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15738,7 +15738,7 @@ GameObject:
   - component: {fileID: 1410551664}
   - component: {fileID: 1410551663}
   - component: {fileID: 1410551662}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15896,7 +15896,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1449055879}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Carried Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16240,7 +16240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622549909}
   - component: {fileID: 1622549910}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Carried Gremlin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17121,6 +17121,55 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!195 &1795579412
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795579410}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 11
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1795579413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795579410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a5521e1bdf1134ba76bd230d33b8a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 1795579412}
+  player: {fileID: 987935192}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 0
+  timeBetweenAttacks: 0
+  sightRange: 0
+  attackRange: 0
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!1 &1839573458
 GameObject:
   m_ObjectHideFlags: 0
@@ -17228,7 +17277,7 @@ GameObject:
   - component: {fileID: 1839836291}
   - component: {fileID: 1839836290}
   - component: {fileID: 1839836289}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17311,6 +17360,40 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839836287}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1895373872 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8610070648859255051, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+  m_PrefabInstance: {fileID: 1795579409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1895373874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895373872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: 74e96c7a3c96cfd448b8d44ba1f631fa, type: 2}
 --- !u!1 &1931199247
 GameObject:
   m_ObjectHideFlags: 0
@@ -17770,7 +17853,7 @@ GameObject:
   - component: {fileID: 2078156867}
   - component: {fileID: 2078156866}
   - component: {fileID: 2078156865}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17865,7 +17948,7 @@ GameObject:
   - component: {fileID: 2093650446}
   - component: {fileID: 2093650445}
   - component: {fileID: 2093650444}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17960,7 +18043,7 @@ GameObject:
   - component: {fileID: 2096676888}
   - component: {fileID: 2096676887}
   - component: {fileID: 2096676886}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Invisible Wall (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
