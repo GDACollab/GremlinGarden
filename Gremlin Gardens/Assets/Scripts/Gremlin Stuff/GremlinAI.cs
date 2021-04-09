@@ -4,14 +4,19 @@ using UnityEngine;
 public class GremlinAI : MonoBehaviour
 {
     public NavMeshAgent agent;
-
     public Transform player;
-
     public LayerMask whatIsGround, whatIsPlayer;
-
+    public Rigidbody rb;
     public Vector3 walkPoint;
     bool walkPointSet; 
     public float walkPointRange; 
+    public float startTime;
+    public Vector3 startPos;
+
+    void Awake(){
+        agent.updatePosition = false;
+        agent.updateRotation = false;
+    }
 
     private void Update(){
         Patrolling();
@@ -28,6 +33,8 @@ public class GremlinAI : MonoBehaviour
         print("THIS IS walkPoint");
         print(walkPoint);
         if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)){
+            startTime = Time.time;
+            startPos = transform.position;
             walkPointSet = true;
         }
 
@@ -39,7 +46,7 @@ public class GremlinAI : MonoBehaviour
             SearchWalkPoint();
         }
         if (walkPointSet){
-            agent.SetDestination(walkPoint);
+            transform.position = Vector3.Lerp(startPos, walkPoint, (Time.time - startTime) * 0.5f);
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -49,4 +56,13 @@ public class GremlinAI : MonoBehaviour
             walkPointSet = false;
         }
     }
+
+    void OnCollisionEnter(Collision collisionInfo){
+        if (collisionInfo.collider.name == "Shop Building" || collisionInfo.collider.name == "House"){
+            SearchWalkPoint();
+        }
+    }
+
+
+
 }
