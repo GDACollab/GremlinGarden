@@ -92,7 +92,8 @@ public class GremlinInteraction : MonoBehaviour
         {
             IsCentered();
         }
-        else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew) {
+        else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew)
+        {
             IsExited();
         }
 
@@ -102,6 +103,7 @@ public class GremlinInteraction : MonoBehaviour
             //PUT DOWN
             if (Input.GetKeyDown("q") && !attemptYeet)
                 DropGremlin();
+                
 
             //CUDDLE
             if (Input.GetKeyDown("e") && !attemptYeet)
@@ -116,7 +118,7 @@ public class GremlinInteraction : MonoBehaviour
                 UpdateStats();
             }
 
-            //YEET THAT BITCH
+            //TOSS
             if (Input.GetMouseButton(0))
             {
                 TossIndicator.SetActive(false);
@@ -135,8 +137,8 @@ public class GremlinInteraction : MonoBehaviour
                 if (ChargeFill.fillAmount > 0.75)
                 {
                     CarriedGremlin.GetComponent<Collider>().enabled = false;
-                    rb.useGravity = true;
                     rb.constraints = RigidbodyConstraints.None;
+                    rb.useGravity = true;
                     rb.AddForce(Vector3.up * tossForce);
                     GetComponent<Collider>().enabled = true;
                     StartCoroutine("enableCarryCollider");
@@ -207,7 +209,7 @@ public class GremlinInteraction : MonoBehaviour
             CuddleIndicator.SetActive(true);
         }
 
-
+        
 
     }
 
@@ -230,7 +232,7 @@ public class GremlinInteraction : MonoBehaviour
                 StatIndicator.SetActive(true);
             }
 
-            
+
             //PET
             if (!canPickUp && !beingCarried && Input.GetKeyUp("e") && !beingPet)
             {
@@ -258,6 +260,7 @@ public class GremlinInteraction : MonoBehaviour
                 rb.useGravity = false;
                 this.transform.position = CarriedGremlin.position;
                 this.transform.parent = CarriedGremlin;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
                 beingCarried = true;
                 GetComponent<Collider>().enabled = false;
                 PickupIndicator.SetActive(false);
@@ -266,7 +269,6 @@ public class GremlinInteraction : MonoBehaviour
                 DropIndicator.SetActive(true);
                 TossIndicator.SetActive(true);
                 CuddleIndicator.SetActive(true);
-                rb.constraints = RigidbodyConstraints.FreezeAll;
             }
 
             //STAT MENU
