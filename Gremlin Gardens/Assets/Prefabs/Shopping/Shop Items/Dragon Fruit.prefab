@@ -109,4 +109,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Dragon Fruit
-  itemSpawnOnBuy: {fileID: 5811778938363625971, guid: 8da2edbe0c0356746b1a45d2814b2281, type: 3}
+  itemSpawnOnBuy: {fileID: 8347016717390090824, guid: 8da2edbe0c0356746b1a45d2814b2281, type: 3}

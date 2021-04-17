@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShopItem : MonoBehaviour
 {
-
     /// <summary>
     /// The name of the item (to display on text)
     /// </summary>
@@ -29,6 +28,11 @@ public class ShopItem : MonoBehaviour
     /// </summary>
     private ShopManager manager;
 
+    /// <summary>
+    /// The distance between the player and the shop item to show the buy text.
+    /// </summary>
+    public int buyDistance = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +43,17 @@ public class ShopItem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(manager.player.transform.position, this.transform.position) < 10 && mouseOn)
+        var playerMove = manager.player.GetComponent<PlayerMovement>();
+        if (playerMove.centeredObject == this.gameObject && playerMove.hitObjectIsNew)
+        {
+            IsCentered();
+        }
+        else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew && playerMove.previousObject == this.gameObject)
+        {
+            IsExited();
+        }
+
+        if (Vector3.Distance(manager.player.transform.position, this.transform.position) < buyDistance && mouseOn)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == false)
             {
@@ -56,14 +70,14 @@ public class ShopItem : MonoBehaviour
     }
 
     // used for shopping as well
-    private void OnMouseEnter()
+    private void IsCentered()
     {
         mouseOn = true;
         manager.ItemHover(this);
         manager.SetPurchaseText("Buy " + itemName + "?");
     }
 
-    private void OnMouseExit()
+    private void IsExited()
     {
         manager.ItemExit();
         mouseOn = false;

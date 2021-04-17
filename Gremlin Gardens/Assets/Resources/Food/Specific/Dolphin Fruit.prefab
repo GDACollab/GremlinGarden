@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 5719998274655070961}
   - component: {fileID: 2961279790951240369}
   - component: {fileID: 554848016083512177}
+  - component: {fileID: 6242926245410694870}
+  - component: {fileID: -6305483294240047407}
   m_Layer: 0
   m_Name: Dolphin Fruit
   m_TagString: Untagged
@@ -28,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3373043727600244626}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.0109, y: 0.0109, z: 0.0109}
+  m_LocalScale: {x: 0.002743734, y: 0.002743734, z: 0.002743734}
   m_Children:
   - {fileID: 6464868618084562702}
   m_Father: {fileID: 0}
@@ -95,14 +97,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc72aa2252090d145b78d2abadfe86f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  food: {fileID: 0}
   _stats:
   - Happiness
   - Swimming
   _values:
   - 1
   - 1
+  multipleMeshes: 0
   foodName: Dolphin Fruit
   size: 0.25
+--- !u!114 &6242926245410694870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3373043727600244626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b897b9011634e54584ce857a9d9ec72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkRate: 0.005
+  maxStatVal: 0
+--- !u!114 &-6305483294240047407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3373043727600244626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &6464868618084562703
 GameObject:
   m_ObjectHideFlags: 0

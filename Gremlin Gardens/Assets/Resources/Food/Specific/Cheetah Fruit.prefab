@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2707729822644187614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9, y: 63.7, z: 12.3}
+  m_LocalPosition: {x: 0, y: 0.146, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4135039111374548697}
@@ -83,7 +83,7 @@ TextMesh:
   m_GameObject: {fileID: 2707729822644187614}
   m_Text: Cheetah Fruit
   m_OffsetZ: 0
-  m_CharacterSize: 14.26
+  m_CharacterSize: 0.03
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
@@ -107,6 +107,8 @@ GameObject:
   - component: {fileID: 4135039111374548694}
   - component: {fileID: 4135039111374548695}
   - component: {fileID: 4135039111374548692}
+  - component: {fileID: -3579286724301838491}
+  - component: {fileID: -8993662474815636037}
   m_Layer: 0
   m_Name: Cheetah Fruit
   m_TagString: Untagged
@@ -123,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 4135039111374548693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8, y: 2, z: 2.7}
-  m_LocalScale: {x: 0.0109, y: 0.0109, z: 0.0109}
+  m_LocalScale: {x: 1.960448, y: 1.960448, z: 1.960448}
   m_Children:
   - {fileID: 2707729822644187615}
   m_Father: {fileID: 0}
@@ -136,7 +138,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4135039111374548693}
-  m_Mesh: {fileID: -472147775963580301, guid: 999170237f5835343b45ffe7fa6d7336, type: 3}
+  m_Mesh: {fileID: 4840523186696433479, guid: aa2c1d583b343f34992a8d049bc5bafa, type: 3}
 --- !u!23 &4135039111374548695
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -156,7 +158,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 59a03911d140c944db184ad779f562da, type: 2}
+  - {fileID: -4805960633032447699, guid: aa2c1d583b343f34992a8d049bc5bafa, type: 3}
+  - {fileID: -4115644850735578124, guid: aa2c1d583b343f34992a8d049bc5bafa, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -190,11 +193,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc72aa2252090d145b78d2abadfe86f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  food: {fileID: 0}
   _stats:
   - Happiness
   - Running
   _values:
   - 1
   - 1
+  multipleMeshes: 0
   foodName: Cheetah Fruit
   size: 0.25
+--- !u!114 &-3579286724301838491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135039111374548693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b897b9011634e54584ce857a9d9ec72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkRate: 3.64
+  maxStatVal: 0
+--- !u!114 &-8993662474815636037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135039111374548693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
