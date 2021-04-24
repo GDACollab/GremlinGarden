@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Simple script used to load racing scenes.
@@ -27,9 +28,27 @@ public class RaceSelection : MonoBehaviour
     /// </summary>
     [Tooltip("The scene we're transitioning to next.")]
     public string sceneName;
+
+    /// <summary>
+    /// The UI object to select the gremlins with.
+    /// </summary>
+    [Tooltip("The UI object to select gremlins with.")]
+    public GameObject gremlinPicker;
+
+    /// <summary>
+    /// The button prefab for selecting gremlins.
+    /// </summary>
+    [Tooltip("The button prefab for selecting gremlins.")]
+    public GameObject gremlinPickerButton;
+
+    /// <summary>
+    /// Is the selection UI up?
+    /// </summary>
+    bool selectionUI = false;
     // Start is called before the first frame update
     void Start()
     {
+        gremlinPicker.SetActive(false);
         GetComponent<Outline>().OutlineWidth = 0;
     }
 
@@ -64,9 +83,34 @@ public class RaceSelection : MonoBehaviour
 
     private void MouseDown()
     {
-        if (Vector3.Distance(this.transform.position, player.transform.position) < selectionDistance)
+        if (Vector3.Distance(this.transform.position, player.transform.position) < selectionDistance && selectionUI == false)
         {
-            sceneLoader.FadeOutLoad(sceneName, 1);
+            selectionUI = true;
+            // Quick hack for getting a gremlin selector before the race. 
+            foreach (KeyValuePair<string, GameObject> savedGremlin in LoadingData.playerGremlins) {
+                var button = Instantiate(gremlinPickerButton);
+                button.transform.parent = gremlinPicker.transform;
+                button.GetComponentInChildren<Text>().text = savedGremlin.Key;
+                button.GetComponent<Button>().onClick.AddListener(delegate { GremlinSelected(savedGremlin.Key);  });
+            }
+            gremlinPicker.SetActive(true);
+            // Bring up the gremlin selection UI.
+            player.GetComponent<PlayerMovement>().enableMovement = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
         }
+    }
+
+    public void GremlinSelected(string gremlinName) {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        // Destroy the buttons to select gremlins just in case this somehow gets called twice:
+        for (int i = 0; i < gremlinPicker.transform.childCount; i++)
+        {
+            Destroy(gremlinPicker.transform.GetChild(i));
+        }
+        gremlinPicker.SetActive(false);
+        sceneLoader.FadeOutLoad(sceneName, 1);
+        selectionUI = false;
     }
 }
