@@ -61,10 +61,18 @@ public class ShopItem : MonoBehaviour
                 manager.SetPurchaseText("Confirm Buy " + itemName + "?");
             } else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true) {
                 purchaseIntent = false;
-                var bought = Instantiate(itemSpawnOnBuy);
+                
+
+                if (manager.player.GetComponent<PlayerMovement>().UpdateMoney(-150))
+                {
+                    var bought = Instantiate(itemSpawnOnBuy);
+                    bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
+                    manager.SetPurchaseText("Buy " + itemName + "?");
+                } else
+                {
+                    manager.SetPurchaseText($"Sorry player, you need {150 - manager.player.GetComponent<PlayerMovement>().GetMoney()} more money");
+                }
                 //Temporary solution for placement.
-                bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
-                manager.SetPurchaseText("Buy " + itemName + "?");
             }
         }
     }
