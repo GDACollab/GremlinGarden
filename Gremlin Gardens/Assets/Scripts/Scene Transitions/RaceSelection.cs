@@ -107,7 +107,8 @@ public class RaceSelection : MonoBehaviour
         // Destroy the buttons to select gremlins just in case this somehow gets called twice:
         for (int i = 0; i < gremlinPicker.transform.childCount; i++)
         {
-            Destroy(gremlinPicker.transform.GetChild(i));
+            var child = gremlinPicker.transform.GetChild(i);
+            Destroy(child.gameObject);
         }
         gremlinPicker.SetActive(false);
         LoadingData.gremlinToRace = gremlinName;

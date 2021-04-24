@@ -25,7 +25,7 @@ public class GremlinSpawner : MonoBehaviour
             {
                 var gremlinToSave = Instantiate(gremlin);
                 LoadingData.playerGremlins[gremlin.GetComponent<GremlinObject>().gremlinName] = gremlinToSave.GetComponent<GremlinObject>();
-                Debug.Log("Started game with: " + gremlin.name);
+                Debug.Log("Started game with: " + gremlin.GetComponent<GremlinObject>().gremlinName);
             }
         }
         else {
