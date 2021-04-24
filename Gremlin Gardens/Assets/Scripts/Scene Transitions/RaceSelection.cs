@@ -87,7 +87,7 @@ public class RaceSelection : MonoBehaviour
         {
             selectionUI = true;
             // Quick hack for getting a gremlin selector before the race. 
-            foreach (KeyValuePair<string, GameObject> savedGremlin in LoadingData.playerGremlins) {
+            foreach (KeyValuePair<string, GremlinObject> savedGremlin in LoadingData.playerGremlins) {
                 var button = Instantiate(gremlinPickerButton);
                 button.transform.parent = gremlinPicker.transform;
                 button.GetComponentInChildren<Text>().text = savedGremlin.Key;
@@ -110,6 +110,7 @@ public class RaceSelection : MonoBehaviour
             Destroy(gremlinPicker.transform.GetChild(i));
         }
         gremlinPicker.SetActive(false);
+        LoadingData.gremlinToRace = gremlinName;
         sceneLoader.FadeOutLoad(sceneName, 1);
         selectionUI = false;
     }

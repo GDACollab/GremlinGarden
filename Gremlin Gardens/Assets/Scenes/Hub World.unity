@@ -17663,7 +17663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingGremlins:
   - {fileID: 4192549391255675202, guid: 5d7f5b6f387128745b363282e3511855, type: 3}
-  - {fileID: 2105177654468541589, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+  - {fileID: 3379661256397902900, guid: 68686872acc7a9544ab4b6169fa86707, type: 3}
 --- !u!1001 &2056194803
 PrefabInstance:
   m_ObjectHideFlags: 0
