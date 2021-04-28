@@ -39,16 +39,28 @@ public class ShopItem : MonoBehaviour
     public int cost = 150;
 
     /// <summary>
-    /// A reference to the Hub World for UI Hover Sound
+    /// A reference to the UI Hover Sound
     /// </summary>
     public AudioSource hoverSound;
+
+    /// <summary>
+    /// A reference to the UI Shop Purchase Sound
+    /// </summary>
+    public AudioSource purchaseSound;
+
+    /// <summary>
+    /// A reference to the UI Shop Confirm Sound
+    /// </summary>
+    public AudioSource confirmSound;
 
     // Start is called before the first frame update
     void Start()
     {
         mouseOn = false;
         manager = this.GetComponentInParent<ShopManager>();
-        hoverSound = GameObject.Find("Hub World Sound").GetComponents<AudioSource>()[1];
+        hoverSound = GameObject.Find("UI Sounds").GetComponents<AudioSource>()[0];
+        purchaseSound = GameObject.Find("UI Sounds").GetComponents<AudioSource>()[1];
+        confirmSound = GameObject.Find("UI Sounds").GetComponents<AudioSource>()[2];
     }
 
     // Update is called once per frame
@@ -70,6 +82,7 @@ public class ShopItem : MonoBehaviour
             {
                 purchaseIntent = true;
                 manager.SetPurchaseText("Confirm Buy " + itemName + "?");
+                confirmSound.Play();
             } else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true) {
                 purchaseIntent = false;
                 
@@ -79,6 +92,7 @@ public class ShopItem : MonoBehaviour
                     var bought = Instantiate(itemSpawnOnBuy);
                     bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
                     manager.SetPurchaseText("Buy " + itemName + "?");
+                    purchaseSound.Play();
                 } else
                 {
                     manager.SetPurchaseText($"Sorry player, you need {150 - manager.player.GetComponent<PlayerMovement>().GetMoney()} more money");
