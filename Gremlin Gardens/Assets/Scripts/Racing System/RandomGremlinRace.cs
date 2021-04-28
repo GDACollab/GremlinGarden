@@ -36,32 +36,30 @@ public class RandomGremlinRace : MonoBehaviour
         int playerGremlin = Random.Range(0, gremlinCount);
         for (int i = 0; i < gremlinCount; i++)
         {
-            var gremlin = Instantiate(gremlinObject);
-            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Running", Random.Range(0.5f, 1f));
-            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Flying", Random.Range(0.5f, 1f));
-            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Stamina", Random.Range(0.5f, 1f));
-            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Climbing", Random.Range(0.5f, 1f));
-            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Happiness", Random.Range(0.5f, 1f));
-            gremlin.GetComponent<GremlinObject>().gremlin.setStat("Swimming", Random.Range(0.5f, 1f));
-            
+            GameObject gremlin;
             if (i == playerGremlin)
             {
-                gremlin.GetComponent<MeshRenderer>().material.SetColor("_Color", Color.red);
+                var gremlinToLoad = LoadingData.playerGremlins[LoadingData.gremlinToRace];
+                // Instead of making a random gremlin, load the player gremlin.
+                gremlin = Instantiate(gremlinObject);
+                gremlin.GetComponent<GremlinObject>().CopyGremlinData(gremlinToLoad);
                 Instantiate(playerIndicator, gremlin.transform);
                 gremlin.name = "Player";
             }
             else {
+                gremlin = Instantiate(gremlinObject);
+                Gremlin gremlinClass = gremlin.GetComponent<GremlinObject>().gremlin;
+                gremlinClass.setStat("Running", Random.Range(0.5f, 1f));
+                gremlinClass.setStat("Flying", Random.Range(0.5f, 1f));
+                gremlinClass.setStat("Stamina", Random.Range(0.5f, 1f));
+                gremlinClass.setStat("Climbing", Random.Range(0.5f, 1f));
+                gremlinClass.setStat("Happiness", Random.Range(0.5f, 1f));
+                gremlinClass.setStat("Swimming", Random.Range(0.5f, 1f));
                 gremlin.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
                 gremlin.name = GremlinNames[Random.Range(0, GremlinNames.Length)];
             }
             gremlinList.Add(gremlin);
         }
         raceManager.TrackSetup(gremlinList, playerGremlin);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

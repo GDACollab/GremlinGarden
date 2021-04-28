@@ -25,9 +25,14 @@ public class GremlinObject : MonoBehaviour
         gremlin.setStat("Swimming", 1);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    /// <summary>
+    /// Used for transferring gremlins across scenes.
+    /// </summary>
+    /// <param name="srcGremlin">The source gremlin from which to copy.</param>
+    public void CopyGremlinData(GremlinObject srcGremlin) {
+        gremlinName = srcGremlin.gremlinName;
+        foreach (KeyValuePair<string, float> statistic in gremlin.getStats()) {
+            gremlin.setStat(statistic.Key, srcGremlin.gremlin.getStat(statistic.Key));
+        }
     }
 }

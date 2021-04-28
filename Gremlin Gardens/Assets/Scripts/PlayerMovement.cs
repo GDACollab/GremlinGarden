@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
     public GameObject previousObject = null;
     [HideInInspector]
     public bool hitObjectIsNew = true;
+    /// <summary>
+    /// Allow the player to move?
+    /// </summary>
+    public bool enableMovement = true;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        UpdateMovement();
+        if (enableMovement)
+        {
+            UpdateMovement();
+        }
     }
     void Update()
     {
@@ -57,7 +64,10 @@ public class PlayerMovement : MonoBehaviour
                 hitObjectIsNew = false;
             }
         }
-        UpdateMouseLook();
+        if (enableMovement)
+        {
+            UpdateMouseLook();
+        }
     }
 
     private void LateUpdate()
