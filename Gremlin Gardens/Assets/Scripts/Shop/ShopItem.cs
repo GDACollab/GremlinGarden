@@ -33,6 +33,11 @@ public class ShopItem : MonoBehaviour
     /// </summary>
     public int buyDistance = 20;
 
+    /// <summary>
+    /// The distance between the player and the shop item to show the buy text.
+    /// </summary>
+    public int cost = 150;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +87,7 @@ public class ShopItem : MonoBehaviour
     {
         mouseOn = true;
         manager.ItemHover(this);
-        manager.SetPurchaseText("Buy " + itemName + "?");
+        manager.SetPurchaseText("Buy " + itemName + "?\nCost: " + cost);
     }
 
     private void IsExited()

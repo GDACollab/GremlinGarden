@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     float cameraPitch = 0.0f;
     CharacterController controller = null;
-    private int money = 1000;
+    private static int money = 1000;
     public Text moneyText;
 
     Vector2 currentDir = Vector2.zero;
