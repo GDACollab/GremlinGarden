@@ -38,11 +38,17 @@ public class ShopItem : MonoBehaviour
     /// </summary>
     public int cost = 150;
 
+    /// <summary>
+    /// A reference to the Hub World for UI Hover Sound
+    /// </summary>
+    public AudioSource hoverSound;
+
     // Start is called before the first frame update
     void Start()
     {
         mouseOn = false;
         manager = this.GetComponentInParent<ShopManager>();
+        hoverSound = GameObject.Find("Hub World Sound").GetComponents<AudioSource>()[1];
     }
 
     // Update is called once per frame
@@ -88,6 +94,8 @@ public class ShopItem : MonoBehaviour
         mouseOn = true;
         manager.ItemHover(this);
         manager.SetPurchaseText("Buy " + itemName + "?\nCost: " + cost);
+        hoverSound.Play();
+
     }
 
     private void IsExited()
