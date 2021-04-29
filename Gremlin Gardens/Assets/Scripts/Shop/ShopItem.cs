@@ -61,9 +61,15 @@ public class ShopItem : MonoBehaviour
                 manager.SetPurchaseText("Confirm Buy " + itemName + "?");
             } else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true) {
                 purchaseIntent = false;
-                var bought = Instantiate(itemSpawnOnBuy);
-                //Temporary solution for placement.
-                bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
+                // Quick hack to detect whether or not we're spawning a gremlin.
+                if (itemSpawnOnBuy.TryGetComponent<GremlinObject>(out GremlinObject gremlin)){
+                    // Quick hack to find the GameManager:
+                    GameObject.Find("GameManager").GetComponent<GremlinSpawner>().CreateGremlin(manager.player.transform.position + manager.player.transform.forward);
+                } else {
+                    var bought = Instantiate(itemSpawnOnBuy);
+                    //Temporary solution for placement.
+                    bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
+                }
                 manager.SetPurchaseText("Buy " + itemName + "?");
             }
         }
