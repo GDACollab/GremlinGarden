@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 // Class attatched to each Gremlin gameObject
@@ -10,11 +11,13 @@ public class GremlinObject : MonoBehaviour
     public Gremlin gremlin;
     Rigidbody body;
     public string gremlinName;
+
     /// <summary>
     /// We store this so the GremlinSpawner can place the gremlin back where it was. Used by RaceSelection before loading a new scene (see MouseDown in RaceSelection.cs)
     /// </summary>
     [HideInInspector]
     public Vector3 currentPosition;
+
     
     //Use Awake instead of Start so that we get the stats ASAP. Useful for preventing bugs where the Gremlin is spawned in immediately but does not have stats yet.
     void Awake()

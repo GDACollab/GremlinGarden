@@ -49,6 +49,13 @@ public class GremlinInteraction : MonoBehaviour
     private Rigidbody rb;
     public Gremlin gremlin;
 
+    [Header("Aesthetic Stuff")]
+    /// <summary>
+    /// The text the gremlin is displaying.
+    /// </summary>
+    [Tooltip("The text object for the gremlin to display.")]
+    public TMP_Text nameText;
+
     public void Start()
     {
 
@@ -65,7 +72,6 @@ public class GremlinInteraction : MonoBehaviour
         ChargeFill = ChargeBar.transform.GetChild(1).GetComponent<Image>();
         CarriedGremlin = player.transform.GetChild(1);
         CarriedFruit = player.transform.GetChild(2);
-
 
         ChargeBar.SetActive(false);
         PickupIndicator.SetActive(false);
@@ -84,6 +90,9 @@ public class GremlinInteraction : MonoBehaviour
 
     public void Update()
     {
+        // Set the name text to face the player.
+        nameText.transform.rotation = Quaternion.LookRotation(this.transform.position - player.transform.position, player.transform.up);
+
         //distance between particular Gremlin and the player
         distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
 

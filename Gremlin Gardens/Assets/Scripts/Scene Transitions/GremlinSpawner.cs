@@ -51,6 +51,7 @@ public class GremlinSpawner : MonoBehaviour
         gremlin.name = gremlinData.gremlinName;
         gremlin.transform.position = gremlinData.currentPosition;
         gremlin.GetComponent<GremlinObject>().CopyGremlinData(gremlinData);
+        gremlin.GetComponent<GremlinInteraction>().nameText.text = gremlinData.gremlinName;
         Debug.Log("Loaded data for: " + gremlinData.gremlinName);
     }
 
@@ -78,6 +79,7 @@ public class GremlinSpawner : MonoBehaviour
     public void GetGremlinName(string name) {
         newGremlin.GetComponent<GremlinObject>().gremlinName = name;
         newGremlin.name = name;
+        newGremlin.GetComponent<GremlinInteraction>().nameText.text = name;
         LoadingData.playerGremlins[name] = newGremlin.GetComponent<GremlinObject>();
         Debug.Log("Created: " + name);
     }
