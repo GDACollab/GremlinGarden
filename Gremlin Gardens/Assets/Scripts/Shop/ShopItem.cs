@@ -33,11 +33,34 @@ public class ShopItem : MonoBehaviour
     /// </summary>
     public int buyDistance = 20;
 
+    /// <summary>
+    /// The distance between the player and the shop item to show the buy text.
+    /// </summary>
+    public int cost = 150;
+
+    /// <summary>
+    /// A reference to the UI Hover Sound
+    /// </summary>
+    public AudioSource hoverSound;
+
+    /// <summary>
+    /// A reference to the UI Shop Purchase Sound
+    /// </summary>
+    public AudioSource purchaseSound;
+
+    /// <summary>
+    /// A reference to the UI Shop Confirm Sound
+    /// </summary>
+    public AudioSource confirmSound;
+
     // Start is called before the first frame update
     void Start()
     {
         mouseOn = false;
         manager = this.GetComponentInParent<ShopManager>();
+        hoverSound = GameObject.Find("UI Sounds").GetComponents<AudioSource>()[0];
+        purchaseSound = GameObject.Find("UI Sounds").GetComponents<AudioSource>()[1];
+        confirmSound = GameObject.Find("UI Sounds").GetComponents<AudioSource>()[2];
     }
 
     // Update is called once per frame
@@ -59,12 +82,22 @@ public class ShopItem : MonoBehaviour
             {
                 purchaseIntent = true;
                 manager.SetPurchaseText("Confirm Buy " + itemName + "?");
+                confirmSound.Play();
             } else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true) {
                 purchaseIntent = false;
-                var bought = Instantiate(itemSpawnOnBuy);
+                
+
+                if (manager.player.GetComponent<PlayerMovement>().UpdateMoney(-150))
+                {
+                    var bought = Instantiate(itemSpawnOnBuy);
+                    bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
+                    manager.SetPurchaseText("Buy " + itemName + "?");
+                    purchaseSound.Play();
+                } else
+                {
+                    manager.SetPurchaseText($"Sorry player, you need {150 - manager.player.GetComponent<PlayerMovement>().GetMoney()} more money");
+                }
                 //Temporary solution for placement.
-                bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
-                manager.SetPurchaseText("Buy " + itemName + "?");
             }
         }
     }
@@ -74,7 +107,9 @@ public class ShopItem : MonoBehaviour
     {
         mouseOn = true;
         manager.ItemHover(this);
-        manager.SetPurchaseText("Buy " + itemName + "?");
+        manager.SetPurchaseText("Buy " + itemName + "?\nCost: " + cost);
+        hoverSound.Play();
+
     }
 
     private void IsExited()
