@@ -131,15 +131,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdee1f75d47f564999c115c791cb736, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 1
   petCooldown: 1.5
   cuddleCooldown: 2
-  petIncrease: 1
-  cuddleIncrease: 2
-  yeetIncrease: 3
+  petIncrease: 0.05
+  cuddleIncrease: 0.05
+  yeetIncrease: 0.1
   tossForce: 300
   speed: 2
   waitTime: 4
+  maxStatVal: 1000
+  maxHappinessVal: 1
+  minHappinessVal: -1
   gremlin: {fileID: 0}
 --- !u!114 &8216487242387156281
 MonoBehaviour:

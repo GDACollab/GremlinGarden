@@ -5,7 +5,7 @@ using UnityEngine;
 // Class that defines and alters each Gremlin's stats
 public class Gremlin : Object
 {
-    public float maxStatVal = 10.0f;
+    public float maxStatVal = 1000.0f;
 
     //Name of the gremlin
     private string gremlinName;

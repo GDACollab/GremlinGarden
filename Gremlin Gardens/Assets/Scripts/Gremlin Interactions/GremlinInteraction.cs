@@ -6,19 +6,18 @@ using TMPro;
 
 public class GremlinInteraction : MonoBehaviour
 {
-    private Image ChargeFill;
-    private bool beingCarried = false;
-    public float jumpHeight = 1.0f; //for temporary pet behaviour
+
+    public float happinessDecayTime = 45.0f;
+    public float happinessDecayAmount = 0.5f;
     public float petCooldown = 1.0f; //time for petting action to reset
     public float cuddleCooldown = 2.0f; //time for petting action to reset
-    public float petIncrease = 1.0f; //how much to increase happiness stat from petting
-    public float cuddleIncrease = 2.0f; //how much to increase happiness stat from cuddling
-    public float yeetIncrease = 3.0f;
+    public float petIncrease = 0.05f; //how much to increase happiness stat from petting
+    public float cuddleIncrease = 0.05f; //how much to increase happiness stat from cuddling
+    public float yeetIncrease = 0.1f;
     public int tossForce = 300;
-
-    public float speed = 2.0f; //Speed of charge bar fill
+    public float fillSpeed = 2.0f; //Speed of charge bar fill
     public float waitTime = 4.0f; //Total Time to fill charge bar
-    private float maxStatVal;
+    public float maxHappinessVal = 1.0f;
 
     private Transform CarriedGremlin;  //transform in front of player where Gremlin stays
     private GameObject player;     //used to determine distance
@@ -32,6 +31,7 @@ public class GremlinInteraction : MonoBehaviour
     private GameObject StatMenu;
     private GameObject Canvas;
     private GameObject ChargeBar;
+    private Image ChargeFill;
     private bool onGremlin;
     private bool attemptYeet = false;
     private float distanceFromPlayer;
@@ -40,10 +40,11 @@ public class GremlinInteraction : MonoBehaviour
     private bool canPickUp = false; //turns true when e has been held long enough over the gremlin
     private bool beingPet = false;
     private bool beingCuddled = false;
+    private bool beingCarried = false;
     private float petCooldownTimer = 0.0f; //timer for pet cooldown
     private float cuddleCooldownTimer = 0.0f; //timer for pet cooldown
+    private float happinessDecayTimer = 0.0f;
     private bool enableStatMenu = false;
-    private float statChange = 0.0f;
 
 
     private Rigidbody rb;
@@ -79,7 +80,6 @@ public class GremlinInteraction : MonoBehaviour
         GetComponent<Outline>().OutlineWidth = 0;
 
         gremlin = this.GetComponent<GremlinObject>().gremlin;
-        maxStatVal = gremlin.maxStatVal;
     }
 
     public void Update()
@@ -89,13 +89,9 @@ public class GremlinInteraction : MonoBehaviour
 
         var playerMove = player.GetComponent<PlayerMovement>();
         if (playerMove.centeredObject == this.gameObject)
-        {
             IsCentered();
-        }
         else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew)
-        {
             IsExited();
-        }
 
         //interactions when carrying gremlin
         if (beingCarried && !beingCuddled)
@@ -103,7 +99,6 @@ public class GremlinInteraction : MonoBehaviour
             //PUT DOWN
             if (Input.GetKeyDown("q") && !attemptYeet)
                 DropGremlin();
-                
 
             //CUDDLE
             if (Input.GetKeyDown("e") && !attemptYeet)
@@ -111,14 +106,11 @@ public class GremlinInteraction : MonoBehaviour
                 beingCuddled = true;
                 cuddleCooldownTimer = 0.0f;
                 CuddleIndicator.SetActive(false);
-                statChange = cuddleIncrease + gremlin.getStat("Happiness");
-                if (statChange > maxStatVal)
-                    statChange = maxStatVal;
-                gremlin.setStat("Happiness", statChange);
-                UpdateStats();
+                UpdateStats("Happiness", cuddleIncrease, maxHappinessVal);
             }
 
             //TOSS
+            //start charge bar for tossing
             if (Input.GetMouseButton(0))
             {
                 TossIndicator.SetActive(false);
@@ -128,14 +120,19 @@ public class GremlinInteraction : MonoBehaviour
                 attemptYeet = true;
                 StartCoroutine("StartFill");
             }
+            //attempt to toss gremlin
             if (attemptYeet && Input.GetMouseButtonUp(0))
             {
                 TossIndicator.SetActive(true);
                 DropIndicator.SetActive(true);
                 CuddleIndicator.SetActive(true);
 
+                //successful toss and catch
                 if (ChargeFill.fillAmount > 0.75)
                 {
+                    // With the current toss implementation, the carriedGremlin collider is
+                    // used as a trigger to know when to 'catch' the gremlin, but it can't
+                    // be enabled when first tossing
                     CarriedGremlin.GetComponent<Collider>().enabled = false;
                     rb.constraints = RigidbodyConstraints.None;
                     rb.useGravity = true;
@@ -144,25 +141,16 @@ public class GremlinInteraction : MonoBehaviour
                     StartCoroutine("enableCarryCollider");
                     ChargeBar.SetActive(false);
 
-
-                    statChange = yeetIncrease + gremlin.getStat("Happiness");
-                    if (statChange > maxStatVal)
-                        statChange = maxStatVal;
-                    gremlin.setStat("Happiness", statChange);
-                    UpdateStats();
+                    UpdateStats("Happiness", yeetIncrease, maxHappinessVal);
                 }
+                //failed toss, drop gremlin
                 else
                 {
                     attemptYeet = false;
                     DropGremlin();
                     ChargeBar.SetActive(false);
 
-                    //can stats become negative???
-                    statChange = gremlin.getStat("Happiness") - yeetIncrease;
-                    if (statChange < 0)
-                        statChange = 0;
-                    gremlin.setStat("Happiness", statChange);
-                    UpdateStats();
+                    UpdateStats("Happiness", -yeetIncrease, maxHappinessVal);
                 }
             }
             if (!attemptYeet)
@@ -172,7 +160,7 @@ public class GremlinInteraction : MonoBehaviour
             }
         }
 
-        //keep track of how long button has been pressed to use for picking up
+        //pick up gremlin timer
         //first click
         if (Input.GetKeyDown("e") && onGremlin)
         {
@@ -209,8 +197,28 @@ public class GremlinInteraction : MonoBehaviour
             CuddleIndicator.SetActive(true);
         }
 
-        
+        //happiness decay timer
+        if (!beingCarried && !beingPet)
+        {
+            happinessDecayTimer += Time.deltaTime;
+        }
+        else
+            happinessDecayTimer = 0.0f;
+        if (happinessDecayTimer >= happinessDecayTime)
+        {
+            UpdateStats("Happiness", -happinessDecayAmount, maxHappinessVal);
+            happinessDecayTimer = 0.0f;
+        }
 
+    }
+
+    private void UpdateStats(string stat, float changeAmount, float maxVal)
+    {
+        float statChange = gremlin.getStat(stat) + changeAmount;
+        if (Mathf.Abs(statChange) > maxVal)
+            statChange = maxVal;
+        gremlin.setStat(stat, statChange);
+        UpdateStatsMenu();
     }
 
     private void IsCentered()
@@ -232,25 +240,18 @@ public class GremlinInteraction : MonoBehaviour
                 StatIndicator.SetActive(true);
             }
 
-
             //PET
             if (!canPickUp && !beingCarried && Input.GetKeyUp("e") && !beingPet)
             {
                 beingPet = true;
                 petCooldownTimer = 0.0f;
                 PetIndicator.SetActive(false);
-                //actually pet
-                statChange = petIncrease + gremlin.getStat("Happiness");
-                if (statChange > maxStatVal)
-                    statChange = maxStatVal;
-                gremlin.setStat("Happiness", statChange);
-                UpdateStats();
+                UpdateStats("Happiness", petIncrease, maxHappinessVal);
                 //lock player in place?
 
                 //cancel holding
                 eClicked = false;
                 eDownTime = 0;
-
             }
 
             //PICKUP
@@ -276,7 +277,7 @@ public class GremlinInteraction : MonoBehaviour
             {
                 enableStatMenu = !enableStatMenu;
                 StatMenu.SetActive(enableStatMenu);
-                UpdateStats();
+                UpdateStatsMenu();
             }
 
 
@@ -307,7 +308,7 @@ public class GremlinInteraction : MonoBehaviour
         StatMenu.SetActive(enableStatMenu);
     }
 
-    private void UpdateStats()
+    private void UpdateStatsMenu()
     {
         StatMenu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = gremlin.getName();
         StatMenu.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Stamina: " + gremlin.getStat("Stamina");
@@ -332,6 +333,7 @@ public class GremlinInteraction : MonoBehaviour
         canPickUp = false;
     }
 
+    /// Starts the fill/drain process for the charge bar
     IEnumerator StartFill()
     {
         while (true)
@@ -340,11 +342,11 @@ public class GremlinInteraction : MonoBehaviour
             yield return ChangeFill(1.0f, 0.0f, waitTime);
         }
     }
-
+    /// Changes the fill amount for the charghe bar
     IEnumerator ChangeFill(float start, float end, float time)
     {
         float i = 0.0f;
-        float rate = (1.0f / time) * speed;
+        float rate = (1.0f / time) * fillSpeed;
         while (i < 1.0f)
         {
             i += Time.deltaTime * rate;
@@ -353,6 +355,7 @@ public class GremlinInteraction : MonoBehaviour
         }
     }
 
+    /// Temporarily keeps carriedGremlin collider disabled for toss mechanic
     IEnumerator enableCarryCollider()
     {
         yield return new WaitForSeconds(0.5f);

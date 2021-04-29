@@ -21,7 +21,7 @@ public class GremlinObject : MonoBehaviour
         gremlin.setStat("Flying", 1);
         gremlin.setStat("Stamina", 1);
         gremlin.setStat("Climbing", 1);
-        gremlin.setStat("Happiness", 1);
+        gremlin.setStat("Happiness", 0);
         gremlin.setStat("Swimming", 1);
     }
 
