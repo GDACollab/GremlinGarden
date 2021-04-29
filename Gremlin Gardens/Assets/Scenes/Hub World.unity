@@ -600,13 +600,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monkey Fruit
       objectReference: {fileID: 0}
+    - target: {fileID: 2341960362350322261, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
+      propertyPath: m_TagString
+      value: Fruit
+      objectReference: {fileID: 0}
     - target: {fileID: 2341960362350322265, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.707535
       objectReference: {fileID: 0}
     - target: {fileID: 2341960362350322265, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.335915
+      value: 35.33
       objectReference: {fileID: 0}
     - target: {fileID: 2341960362350322265, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6278,6 +6282,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2341960362350322265, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
   m_PrefabInstance: {fileID: 1984659653}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &853749528 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2341960362350322261, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
+  m_PrefabInstance: {fileID: 64596360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &853749535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853749528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a5f14ee2f4b9a43baf951571a49010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkRate: 0.01
+  maxStatVal: 0
 --- !u!1 &865446467
 GameObject:
   m_ObjectHideFlags: 0
