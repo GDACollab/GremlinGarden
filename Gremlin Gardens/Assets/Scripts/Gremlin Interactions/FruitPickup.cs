@@ -21,6 +21,7 @@ public class FruitPickup : MonoBehaviour
     private GameObject PickupIndicator;  //button prompt to pick up 
     private GameObject DropIndicator;    //button prompt to drop down
     private GameObject Canvas;
+    private AudioSource pickUpSound;
 
 
 
@@ -35,6 +36,7 @@ public class FruitPickup : MonoBehaviour
         CarriedGremlin = player.transform.Find("Carried Gremlin");
         CarriedFruit = player.transform.Find("Carried Fruit");
         fruit = this.GetComponent<FoodObject>();
+        pickUpSound = this.GetComponent<AudioSource>();
 
         PickupIndicator.SetActive(false);
         DropIndicator.SetActive(false);
@@ -132,6 +134,7 @@ public class FruitPickup : MonoBehaviour
                 beingCarried = true;
                 PickupIndicator.SetActive(false);
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                pickUpSound.Play();
                 //GetComponent<Collider>().enabled = false;
             }
         }
