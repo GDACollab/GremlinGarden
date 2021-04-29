@@ -141,6 +141,15 @@ public class GremlinInteraction : MonoBehaviour
                     StartCoroutine("enableCarryCollider");
                     ChargeBar.SetActive(false);
 
+                    //choose a throw sound to play
+                    int sound = Random.Range(0,100);
+                    if(sound < 45)
+                        this.GetComponents<AudioSource>()[1].Play();
+                    else if(sound < 90)
+                        this.GetComponents<AudioSource>()[2].Play();
+                    else
+                        this.GetComponents<AudioSource>()[3].Play();
+
                     UpdateStats("Happiness", yeetIncrease, maxHappinessVal);
                 }
                 //failed toss, drop gremlin

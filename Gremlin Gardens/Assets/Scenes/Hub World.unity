@@ -10054,6 +10054,7 @@ MonoBehaviour:
   centeredObject: {fileID: 0}
   previousObject: {fileID: 0}
   hitObjectIsNew: 1
+  enableMovement: 1
 --- !u!4 &987935192
 Transform:
   m_ObjectHideFlags: 0
@@ -17762,6 +17763,14 @@ PrefabInstance:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 2052173399}
+    - target: {fileID: 334532990059765915, guid: e0e8d6a077bc5443eb266f6a28d59b1f, type: 3}
+      propertyPath: gremlinPicker
+      value: 
+      objectReference: {fileID: 6524624032114621342, guid: 43f795d08277ab94eaf2ebf66c19db0f, type: 3}
+    - target: {fileID: 334532990059765915, guid: e0e8d6a077bc5443eb266f6a28d59b1f, type: 3}
+      propertyPath: gremlinPickerButton
+      value: 
+      objectReference: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
     - target: {fileID: 1268065192467266011, guid: e0e8d6a077bc5443eb266f6a28d59b1f, type: 3}
       propertyPath: m_Name
       value: Races Sign
@@ -17857,6 +17866,8 @@ MonoBehaviour:
   sceneLoader: {fileID: 2052173399}
   selectionDistance: 10
   sceneName: Race One
+  gremlinPicker: {fileID: 6524624032114621342, guid: 43f795d08277ab94eaf2ebf66c19db0f, type: 3}
+  gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
 --- !u!114 &2016830654
 MonoBehaviour:
   m_ObjectHideFlags: 0
