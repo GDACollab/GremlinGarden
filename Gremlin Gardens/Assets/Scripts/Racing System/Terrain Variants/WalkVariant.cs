@@ -6,7 +6,7 @@ using UnityEngine;
 public class WalkVariant : TerrainVariant
 {
     public override float relativeSpeed(GremlinObject gremlin, TrackModule activeModule) {
-        return gremlin.gremlin.getStat("Running") * speedModifier;
+        return (1 + gremlin.gremlin.getStat("Running")) * speedModifier;
     }
 
     public override Vector3 positionFunction(float time, TrackModule activeModule) {
