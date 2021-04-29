@@ -83,7 +83,7 @@ public class FruitPickup : MonoBehaviour
             {
                 maxStatVal = gremlin.maxStatVal;
                 string stat = determineStat(fruit.foodName);
-                float statChange = gremlin.getStat(stat) + fruit.food.getStatAlteration(stat);
+                float statChange = gremlin.getStat(stat) + (15 * (gremlin.getStat("Happiness") + 1)); //Old formula: + fruit.food.getStatAlteration(stat);
                 if (statChange > maxStatVal)
                     statChange = maxStatVal;
                 gremlin.setStat(stat, statChange);
