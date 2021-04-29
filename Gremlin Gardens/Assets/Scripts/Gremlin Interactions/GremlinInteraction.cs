@@ -141,14 +141,15 @@ public class GremlinInteraction : MonoBehaviour
                     StartCoroutine("enableCarryCollider");
                     ChargeBar.SetActive(false);
 
-                    //choose a throw sound to play
+                    //choose a throw sound to play, first two have
+                    //45% chance to be played, third 'yeet' sound has 10% chance
                     int sound = Random.Range(0,100);
                     if(sound < 45)
-                        this.GetComponents<AudioSource>()[1].Play();
+                        this.GetComponents<AudioSource>()[0].Play();
                     else if(sound < 90)
-                        this.GetComponents<AudioSource>()[2].Play();
+                        this.GetComponents<AudioSource>()[1].Play();
                     else
-                        this.GetComponents<AudioSource>()[3].Play();
+                        this.GetComponents<AudioSource>()[2].Play();
 
                     UpdateStats("Happiness", yeetIncrease, maxHappinessVal);
                 }
@@ -256,7 +257,10 @@ public class GremlinInteraction : MonoBehaviour
                 petCooldownTimer = 0.0f;
                 PetIndicator.SetActive(false);
                 UpdateStats("Happiness", petIncrease, maxHappinessVal);
-                //lock player in place?
+
+                //randomly choose which sound to play
+                int sound = Random.Range(3, 5);
+                this.GetComponents<AudioSource>()[sound].Play();
 
                 //cancel holding
                 eClicked = false;
