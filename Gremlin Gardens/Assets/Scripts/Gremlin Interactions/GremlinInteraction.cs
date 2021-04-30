@@ -294,6 +294,10 @@ public class GremlinInteraction : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 beingCarried = true;
                 GetComponent<Collider>().enabled = false;
+
+                //have gremlin face the player
+                transform.rotation = Quaternion.LookRotation(player.transform.position - this.transform.position, player.transform.up);
+
                 PickupIndicator.SetActive(false);
                 PetIndicator.SetActive(false);
                 StatIndicator.SetActive(false);
