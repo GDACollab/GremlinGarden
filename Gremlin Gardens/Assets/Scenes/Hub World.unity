@@ -1066,13 +1066,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
+      propertyPath: itemsToInstantiate.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 987935189}
     - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
       propertyPath: offsetDistance
-      value: 1.8
+      value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
+      propertyPath: itemsToInstantiate.Array.data[3]
+      value: 
+      objectReference: {fileID: 2668702404376599858, guid: cb2fb833f2712d64ea39a0ee23fa8cb7, type: 3}
+    - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
+      propertyPath: itemsToInstantiate.Array.data[4]
+      value: 
+      objectReference: {fileID: 8942667219043238413, guid: 377b78d89b14e334582f833bcce59412, type: 3}
     - target: {fileID: 4715081812155858067, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -18600,10 +18612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449d66af68c452d498710469e925b27e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingGremlins:
-  - {fileID: 4192549391255675202, guid: 5d7f5b6f387128745b363282e3511855, type: 3}
-  - {fileID: 3379661256397902900, guid: 68686872acc7a9544ab4b6169fa86707, type: 3}
-  gremlinPrefab: {fileID: 0}
+  gremlinPrefab: {fileID: 2105177654468541589, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+  gremlinNamingPrefab: {fileID: 7173117214049395689, guid: 45acb897a1a582244b3e82df80a19e05, type: 3}
+  UI: {fileID: 1628305761}
 --- !u!1001 &2056194803
 PrefabInstance:
   m_ObjectHideFlags: 0
