@@ -1066,13 +1066,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
+      propertyPath: itemsToInstantiate.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 987935189}
     - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
       propertyPath: offsetDistance
-      value: 1.8
+      value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
+      propertyPath: itemsToInstantiate.Array.data[3]
+      value: 
+      objectReference: {fileID: 2668702404376599858, guid: cb2fb833f2712d64ea39a0ee23fa8cb7, type: 3}
+    - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
+      propertyPath: itemsToInstantiate.Array.data[4]
+      value: 
+      objectReference: {fileID: 8942667219043238413, guid: 377b78d89b14e334582f833bcce59412, type: 3}
     - target: {fileID: 4715081812155858067, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
