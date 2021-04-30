@@ -32,6 +32,7 @@ public class GremlinInteraction : MonoBehaviour
     private GameObject Canvas;
     private GameObject ChargeBar;
     private Image ChargeFill;
+    private AudioSource[] sounds;
     private bool onGremlin;
     private bool attemptYeet = false;
     private float distanceFromPlayer;
@@ -80,6 +81,7 @@ public class GremlinInteraction : MonoBehaviour
         GetComponent<Outline>().OutlineWidth = 0;
 
         gremlin = this.GetComponent<GremlinObject>().gremlin;
+        sounds = this.GetComponents<AudioSource>();
     }
 
     public void Update()
@@ -141,12 +143,16 @@ public class GremlinInteraction : MonoBehaviour
                     StartCoroutine("enableCarryCollider");
                     ChargeBar.SetActive(false);
 
+                    //stop all other audio clips    
+                    for (int i = 0; i < sounds.Length; i++)
+                        sounds[i].Stop();
+                    
                     //choose a throw sound to play, first two have
                     //45% chance to be played, third 'yeet' sound has 10% chance
-                    int sound = Random.Range(0,100);
-                    if(sound < 45)
+                    int sound = Random.Range(0, 100);
+                    if (sound < 45)
                         this.GetComponents<AudioSource>()[0].Play();
-                    else if(sound < 90)
+                    else if (sound < 90)
                         this.GetComponents<AudioSource>()[1].Play();
                     else
                         this.GetComponents<AudioSource>()[2].Play();
@@ -258,6 +264,9 @@ public class GremlinInteraction : MonoBehaviour
                 PetIndicator.SetActive(false);
                 UpdateStats("Happiness", petIncrease, maxHappinessVal);
 
+                for (int i = 0; i < sounds.Length; i++)
+                    sounds[i].Stop();
+                
                 //randomly choose which sound to play
                 int sound = Random.Range(3, 5);
                 this.GetComponents<AudioSource>()[sound].Play();
