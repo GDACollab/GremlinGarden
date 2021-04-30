@@ -16,6 +16,9 @@ public class GremlinAI : MonoBehaviour
     void Awake(){
         agent.updatePosition = false;
         agent.updateRotation = false;
+        agent = this.GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player").transform;
+        rb = this.GetComponent<Rigidbody>();
     }
 
     private void Update(){
