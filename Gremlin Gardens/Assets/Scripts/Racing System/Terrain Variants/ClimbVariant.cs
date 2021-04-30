@@ -7,6 +7,6 @@ public class ClimbVariant : TerrainVariant
 {
     public override float relativeSpeed(GremlinObject gremlin, TrackModule activeModule)
     {
-        return gremlin.gremlin.getStat("Climbing") * speedModifier;
+        return (1 + gremlin.gremlin.getStat("Climbing")) * speedModifier;
     }
 }
