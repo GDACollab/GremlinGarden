@@ -39,9 +39,9 @@ public class GremlinInteraction : MonoBehaviour
     private bool eClicked = false;
     private double eDownTime = 0;
     private bool canPickUp = false; //turns true when e has been held long enough over the gremlin
-    private bool beingPet = false;
+    [HideInInspector] public bool beingPet = false;
     private bool beingCuddled = false;
-    private bool beingCarried = false;
+    [HideInInspector] public bool beingCarried = false;
     private float petCooldownTimer = 0.0f; //timer for pet cooldown
     private float cuddleCooldownTimer = 0.0f; //timer for pet cooldown
     private float happinessDecayTimer = 0.0f;
@@ -155,7 +155,7 @@ public class GremlinInteraction : MonoBehaviour
                     //stop all other audio clips    
                     for (int i = 0; i < sounds.Length; i++)
                         sounds[i].Stop();
-                    
+
                     //choose a throw sound to play, first two have
                     //45% chance to be played, third 'yeet' sound has 10% chance
                     int sound = Random.Range(0, 100);
@@ -275,7 +275,7 @@ public class GremlinInteraction : MonoBehaviour
 
                 for (int i = 0; i < sounds.Length; i++)
                     sounds[i].Stop();
-                
+
                 //randomly choose which sound to play
                 sounds[Random.Range(3, 5)].Play();
 
@@ -359,6 +359,7 @@ public class GremlinInteraction : MonoBehaviour
         rb.useGravity = true;
         beingCarried = false;
         rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         DropIndicator.SetActive(false);
         TossIndicator.SetActive(false);
         CuddleIndicator.SetActive(false);

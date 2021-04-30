@@ -8,21 +8,25 @@ public class GremlinAI : MonoBehaviour
     public LayerMask whatIsGround, whatIsPlayer;
     public Rigidbody rb;
     public Vector3 walkPoint;
-    bool walkPointSet; 
+    public bool walkPointSet; 
     public float walkPointRange; 
     public float startTime;
     public Vector3 startPos;
 
     void Awake(){
+        agent = this.GetComponent<NavMeshAgent>();
         agent.updatePosition = false;
         agent.updateRotation = false;
-        agent = this.GetComponent<NavMeshAgent>();
+        
         player = GameObject.Find("Player").transform;
         rb = this.GetComponent<Rigidbody>();
     }
 
     private void Update(){
-        Patrolling();
+        if(this.GetComponent<GremlinInteraction>().beingCarried ||  this.GetComponent<GremlinInteraction>().beingPet)
+            walkPointSet = false;
+        else
+            Patrolling();
     }
 
 
@@ -61,7 +65,7 @@ public class GremlinAI : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collisionInfo){
-        if (collisionInfo.collider.name == "Shop Building" || collisionInfo.collider.name == "House"){
+        if (collisionInfo.gameObject.name == "Shop Building" || collisionInfo.gameObject.name == "House"){
             SearchWalkPoint();
         }
     }
