@@ -33,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     public bool enableMovement = true;
 
+    private float footstepTimer = 0.0f;
+    public float timeBetweenSteps = 0.5f;
+    private Vector3 velocity;
+    public float distToGround = 2.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,6 +77,22 @@ public class PlayerMovement : MonoBehaviour
         {
             UpdateMouseLook();
         }
+
+        //timer for playing footsteps
+        //using magnitude > 100 cause using 0 caused footstpes to play when barely moving
+        if (velocity.magnitude > 100)
+        {
+            footstepTimer += Time.deltaTime;
+        }
+        else
+            footstepTimer = 0.0f;
+        if (footstepTimer >= timeBetweenSteps && IsGrounded())
+        {
+            int sound = Random.Range(0, 4);
+            this.GetComponents<AudioSource>()[sound].Play();
+            footstepTimer = 0.0f;
+        }
+
     }
 
     private void LateUpdate()
@@ -97,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
         currentDir = Vector2.SmoothDamp(currentDir, targetDir, ref currentDirVelocity, moveSmoothTime);
 
-        Vector3 velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * walkSpeed;
+        velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * walkSpeed;
         controller.SimpleMove(velocity * Time.deltaTime);
     }
 
@@ -106,7 +127,8 @@ public class PlayerMovement : MonoBehaviour
         if (money + changeAmount < 0)
         {
             return false;
-        } else
+        }
+        else
         {
             money += changeAmount;
             moneyText.text = "Money: " + money;
@@ -118,4 +140,11 @@ public class PlayerMovement : MonoBehaviour
     {
         return money;
     }
+
+    public bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+    }
+
 }
+
