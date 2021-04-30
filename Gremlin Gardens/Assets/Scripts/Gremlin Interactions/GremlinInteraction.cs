@@ -81,7 +81,7 @@ public class GremlinInteraction : MonoBehaviour
         GetComponent<Outline>().OutlineWidth = 0;
 
         gremlin = this.GetComponent<GremlinObject>().gremlin;
-        sounds = this.GetComponents<AudioSource>();
+        sounds = this.GetComponentsInChildren<AudioSource>();
     }
 
     public void Update()
@@ -151,11 +151,11 @@ public class GremlinInteraction : MonoBehaviour
                     //45% chance to be played, third 'yeet' sound has 10% chance
                     int sound = Random.Range(0, 100);
                     if (sound < 45)
-                        this.GetComponents<AudioSource>()[0].Play();
+                        sounds[0].Play();
                     else if (sound < 90)
-                        this.GetComponents<AudioSource>()[1].Play();
+                        sounds[1].Play();
                     else
-                        this.GetComponents<AudioSource>()[2].Play();
+                        sounds[2].Play();
 
                     UpdateStats("Happiness", yeetIncrease, maxHappinessVal);
                 }
@@ -268,8 +268,7 @@ public class GremlinInteraction : MonoBehaviour
                     sounds[i].Stop();
                 
                 //randomly choose which sound to play
-                int sound = Random.Range(3, 5);
-                this.GetComponents<AudioSource>()[sound].Play();
+                sounds[Random.Range(3, 5)].Play();
 
                 //cancel holding
                 eClicked = false;

@@ -109,8 +109,12 @@ public class FruitPickup : MonoBehaviour
             beingCarried = false;
             beingEaten = true;
             
-            int sound = Random.Range(5, 8);
-            other.GetComponents<AudioSource>()[sound].Play();
+            AudioSource[] sounds = other.GetComponentsInChildren<AudioSource>();
+            for (int i = 0; i < sounds.Length; i++)
+                sounds[i].Stop();
+
+            int index = Random.Range(5, 8);
+            sounds[index].Play();
         }
     }
 
