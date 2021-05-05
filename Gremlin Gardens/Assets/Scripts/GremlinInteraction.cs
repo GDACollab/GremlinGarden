@@ -211,6 +211,12 @@ public class GremlinInteraction : MonoBehaviour
 
     }
 
+    public bool beingCarried_
+    {
+        get { return beingCarried; }
+        set { beingCarried = value;  }
+    }
+
     private void IsCentered()
     {
         //close enough to player but not too far away
