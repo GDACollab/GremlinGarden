@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AmbientPlayer : MonoBehaviour
 {
     [Tooltip("Pool of sound clips used for ambient sounds")]
     [SerializeField] private List<AudioClip> ambientSounds;
+    public AudioMixerGroup mixerGroup;
 
     // Dictionary for getting AudioSource of AudioClips
     // Bool is flag for checking if the PlaySource coroutine is running
@@ -34,6 +36,7 @@ public class AmbientPlayer : MonoBehaviour
         {
             var thisSource = gameObject.AddComponent<AudioSource>();
             thisSource.clip = clip;
+            thisSource.outputAudioMixerGroup = mixerGroup;
             thisSource.volume = baseVolume;
             AudioDict.Add(clip, (thisSource, false));
         });
@@ -72,7 +75,7 @@ public class AmbientPlayer : MonoBehaviour
 
     private IEnumerator PlaySource(AudioSource thisSource, float start, float duration)
     {
-        print("play start: " + thisSource.clip.name);
+        //print("play start: " + thisSource.clip.name);
         thisSource.time = start;
         // Fade audio in
         thisSource.volume = 0;
@@ -84,7 +87,7 @@ public class AmbientPlayer : MonoBehaviour
         yield return StartCoroutine(FadeAudio(thisSource, fadeDuration, 0));
         thisSource.Stop();
         AudioDict[thisSource.clip] = (thisSource, false);
-        print("play end: " + thisSource.clip.name);
+        //print("play end: " + thisSource.clip.name);
         yield break;
     }
 
