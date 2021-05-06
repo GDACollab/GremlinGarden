@@ -10289,7 +10289,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 0
+    vertexPathUpToDate: 1
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -17339,7 +17339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseSpeed: 5
-  AnimationToPlay: Walk
+  AnimationToPlay: isRunning
   terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
   gremlinMoving: 0
   pathStart: {x: 0, y: 0, z: 0}

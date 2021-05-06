@@ -123,6 +123,10 @@ PrefabInstance:
       propertyPath: cameraIgnorePath
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8145130592206979582, guid: a86234dc7b953d04abf2cdade025838d, type: 3}
+      propertyPath: AnimationToPlay
+      value: isSwimming
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a86234dc7b953d04abf2cdade025838d, type: 3}
 --- !u!4 &7346758560748756311 stripped
@@ -321,6 +325,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3667841751432075438}
     m_Modifications:
+    - target: {fileID: 530992482585239320, guid: ce47557f519531747ab7e8ced4f33361, type: 3}
+      propertyPath: AnimationToPlay
+      value: isSwimming
+      objectReference: {fileID: 0}
     - target: {fileID: 769003570619631778, guid: ce47557f519531747ab7e8ced4f33361, type: 3}
       propertyPath: m_Name
       value: Swimming Module
@@ -483,6 +491,10 @@ PrefabInstance:
       propertyPath: cameraShouldRotate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 595303875950603433, guid: cc7d51ff9fcd7b14196f41d1c16dfafd, type: 3}
+      propertyPath: AnimationToPlay
+      value: isClimbing
+      objectReference: {fileID: 0}
     - target: {fileID: 595303875950603434, guid: cc7d51ff9fcd7b14196f41d1c16dfafd, type: 3}
       propertyPath: editorData.vertexPathUpToDate
       value: 1
@@ -540,6 +552,10 @@ PrefabInstance:
     - target: {fileID: 8761395591903087012, guid: 69791a64bca70134390b9f525c202604, type: 3}
       propertyPath: cameraIgnorePath
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761395591903087012, guid: 69791a64bca70134390b9f525c202604, type: 3}
+      propertyPath: AnimationToPlay
+      value: isClimbing
       objectReference: {fileID: 0}
     - target: {fileID: 8761395591903087013, guid: 69791a64bca70134390b9f525c202604, type: 3}
       propertyPath: editorData.vertexPathUpToDate
@@ -610,6 +626,10 @@ PrefabInstance:
     - target: {fileID: 5317577634080026234, guid: 348b7d11b1575bf43a8c8d08f6bb3edc, type: 3}
       propertyPath: cameraIgnorePath
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5317577634080026234, guid: 348b7d11b1575bf43a8c8d08f6bb3edc, type: 3}
+      propertyPath: AnimationToPlay
+      value: isClimbing
       objectReference: {fileID: 0}
     - target: {fileID: 5317577634080026235, guid: 348b7d11b1575bf43a8c8d08f6bb3edc, type: 3}
       propertyPath: editorData.vertexPathUpToDate
@@ -701,9 +721,13 @@ PrefabInstance:
       propertyPath: cameraIgnorePath
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1580672895505975019, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
+      propertyPath: AnimationToPlay
+      value: isRunning
+      objectReference: {fileID: 0}
     - target: {fileID: 1930889328112103552, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
       propertyPath: editorData.vertexPathUpToDate
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2820282673810928937, guid: acb517b5af44d3f4c8ff4d2ed5338178, type: 3}
       propertyPath: m_Name
@@ -908,6 +932,10 @@ PrefabInstance:
     - target: {fileID: 8688928778612278782, guid: c4384f459e46f6040a3931ce4848f97f, type: 3}
       propertyPath: cameraIgnorePath
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688928778612278782, guid: c4384f459e46f6040a3931ce4848f97f, type: 3}
+      propertyPath: AnimationToPlay
+      value: isSwimming
       objectReference: {fileID: 0}
     - target: {fileID: 8688928778612278783, guid: c4384f459e46f6040a3931ce4848f97f, type: 3}
       propertyPath: editorData.vertexPathUpToDate
