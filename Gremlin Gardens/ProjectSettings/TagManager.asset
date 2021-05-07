@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Gremlin
   - Ground
+  - Manager
   layers:
   - Default
   - TransparentFX

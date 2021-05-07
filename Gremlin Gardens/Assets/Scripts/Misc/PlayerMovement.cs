@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] Transform playerCamera = null;
-    [SerializeField] float mouseSensitivity = 3.5f;
+    [SerializeField] public float mouseSensitivity = 3.5f;
     [SerializeField] bool lockCursor = true;
     [SerializeField] float walkSpeed = 6.0f;
     [SerializeField] [Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;

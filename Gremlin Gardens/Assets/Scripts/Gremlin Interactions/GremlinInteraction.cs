@@ -32,7 +32,7 @@ public class GremlinInteraction : MonoBehaviour
     private GameObject Canvas;
     private GameObject ChargeBar;
     private Image ChargeFill;
-    private AudioSource[] sounds;
+    private GremlinAudioController audioController;
     private bool onGremlin;
     private bool attemptYeet = false;
     private float distanceFromPlayer;
@@ -64,13 +64,16 @@ public class GremlinInteraction : MonoBehaviour
         player = GameObject.Find("Player");
         Canvas = GameObject.Find("Canvas (Hub UI)");
         StatMenu = Canvas.transform.GetChild(0).gameObject;
-        DropIndicator = Canvas.transform.GetChild(1).gameObject;
-        PickupIndicator = Canvas.transform.GetChild(2).gameObject;
-        PetIndicator = Canvas.transform.GetChild(5).gameObject;
-        StatIndicator = Canvas.transform.GetChild(8).gameObject;
-        CuddleIndicator = Canvas.transform.GetChild(6).gameObject;
-        TossIndicator = Canvas.transform.GetChild(7).gameObject;
-        ChargeBar = Canvas.transform.GetChild(9).gameObject;
+
+        var interactions = Canvas.transform.GetChild(1).gameObject;
+        DropIndicator = interactions.transform.GetChild(0).gameObject;
+        PickupIndicator = interactions.transform.GetChild(1).gameObject;
+        PetIndicator = interactions.transform.GetChild(2).gameObject;
+        CuddleIndicator = interactions.transform.GetChild(3).gameObject;
+        TossIndicator = interactions.transform.GetChild(4).gameObject;
+        StatIndicator = interactions.transform.GetChild(5).gameObject;
+
+        ChargeBar = Canvas.transform.GetChild(2).gameObject;
         ChargeFill = ChargeBar.transform.GetChild(1).GetComponent<Image>();
         CarriedGremlin = player.transform.GetChild(1);
         CarriedFruit = player.transform.GetChild(2);
@@ -87,7 +90,7 @@ public class GremlinInteraction : MonoBehaviour
         GetComponent<Outline>().OutlineWidth = 0;
 
         gremlin = this.GetComponent<GremlinObject>().gremlin;
-        sounds = this.GetComponentsInChildren<AudioSource>();
+        audioController = this.GetComponentInChildren<GremlinAudioController>();
     }
 
     public void Update()
@@ -151,20 +154,8 @@ public class GremlinInteraction : MonoBehaviour
                     GetComponent<Collider>().enabled = true;
                     StartCoroutine("enableCarryCollider");
                     ChargeBar.SetActive(false);
-
-                    //stop all other audio clips    
-                    for (int i = 0; i < sounds.Length; i++)
-                        sounds[i].Stop();
-
-                    //choose a throw sound to play, first two have
-                    //45% chance to be played, third 'yeet' sound has 10% chance
-                    int sound = Random.Range(0, 100);
-                    if (sound < 45)
-                        sounds[0].Play();
-                    else if (sound < 90)
-                        sounds[1].Play();
-                    else
-                        sounds[2].Play();
+ 
+                    audioController.PlayThrow();
 
                     UpdateStats("Happiness", yeetIncrease, maxHappinessVal);
                 }
@@ -273,11 +264,7 @@ public class GremlinInteraction : MonoBehaviour
                 PetIndicator.SetActive(false);
                 UpdateStats("Happiness", petIncrease, maxHappinessVal);
 
-                for (int i = 0; i < sounds.Length; i++)
-                    sounds[i].Stop();
-
-                //randomly choose which sound to play
-                sounds[Random.Range(3, 5)].Play();
+                audioController.PlayPet();
 
                 //cancel holding
                 eClicked = false;

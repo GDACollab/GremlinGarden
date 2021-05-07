@@ -31,8 +31,9 @@ public class FruitPickup : MonoBehaviour
     {
         player = GameObject.Find("Player");
         Canvas = GameObject.Find("Canvas (Hub UI)");
-        DropIndicator = Canvas.transform.Find("Fruit Drop").gameObject;
-        PickupIndicator = Canvas.transform.Find("Fruit Pickup").gameObject;
+        GameObject interactions = Canvas.transform.GetChild(1).gameObject;
+        DropIndicator = interactions.transform.Find("Fruit Drop").gameObject;
+        PickupIndicator = interactions.transform.Find("Fruit Pickup").gameObject;
         CarriedGremlin = player.transform.Find("Carried Gremlin");
         CarriedFruit = player.transform.Find("Carried Fruit");
         fruit = this.GetComponent<FoodObject>();
@@ -109,12 +110,7 @@ public class FruitPickup : MonoBehaviour
             beingCarried = false;
             beingEaten = true;
             
-            AudioSource[] sounds = other.GetComponentsInChildren<AudioSource>();
-            for (int i = 0; i < sounds.Length; i++)
-                sounds[i].Stop();
-
-            int index = Random.Range(5, 8);
-            sounds[index].Play();
+            other.GetComponentInChildren<GremlinAudioController>().PlayEat();
         }
     }
 
