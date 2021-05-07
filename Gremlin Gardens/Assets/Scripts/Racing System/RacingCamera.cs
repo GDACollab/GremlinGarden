@@ -177,6 +177,8 @@ public class RacingCamera : MonoBehaviour
     /// <param name="speed">How fast the wipe is going to move on the canvas.</param>
     /// <param name="callback">The function to call when the wipe is finished.</param>
     public void SetWipe(Camera cameraToWipe, GameObject ActiveUI, Vector3 startAt, Vector3 endAt, float speed, Callback callback = null) {
+        //We create a new RenderTexture because the size of the camera might differ in different platforms. We have a RenderTexture already in place for the camera
+        //because webGL freaks out if there isn't.
         wipeTexture = new RenderTexture(Screen.width, Screen.height, 24);
         planeToWipeWith = Instantiate(texturePlane, ActiveUI.transform);
         cameraToWipe.targetTexture = wipeTexture;

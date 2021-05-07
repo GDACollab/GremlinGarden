@@ -237,7 +237,7 @@ public class RaceManager : MonoBehaviour
         for (int i = 0; i < raceTimes.Length; i++) {
             var text = Instantiate(leaderboardText, header.transform);
             var time = Instantiate(leaderboardText, header.transform);
-            text.GetComponent<UnityEngine.UI.Text>().text = racetracks[trackIndices[i]].GetComponent<TrackManager>().RacingGremlin.name;
+            text.GetComponent<UnityEngine.UI.Text>().text = racetracks[trackIndices[i]].GetComponent<TrackManager>().RacingGremlin.GetComponent<GremlinObject>().gremlinName;
             time.GetComponent<UnityEngine.UI.Text>().text = raceTimes[i].ToString() + " seconds";
             text.transform.position = new Vector3(-101.6f, heightOffset) + header.transform.position;
             time.transform.position = new Vector3(104.7f, heightOffset) + header.transform.position;
