@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2707729822644187615}
   - component: {fileID: 2707729822644187613}
   - component: {fileID: 2707729822644187612}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: -3579286724301838491}
   - component: {fileID: -8993662474815636037}
   - component: {fileID: 4008994138784059442}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cheetah Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

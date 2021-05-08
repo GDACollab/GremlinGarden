@@ -281,6 +281,7 @@ public class GremlinInteraction : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeAll;
                 beingCarried = true;
                 GetComponent<Collider>().enabled = false;
+                GetComponent<GremlinAI>().enabled = false;
 
                 //have gremlin face the player
                 transform.rotation = Quaternion.LookRotation(player.transform.position - this.transform.position, player.transform.up);
@@ -351,6 +352,8 @@ public class GremlinInteraction : MonoBehaviour
         TossIndicator.SetActive(false);
         CuddleIndicator.SetActive(false);
         GetComponent<Collider>().enabled = true;
+        GetComponent<GremlinAI>().enabled = true;
+        GetComponent<GremlinAI>().move = false;
         eDownTime = 0;
         canPickUp = false;
     }

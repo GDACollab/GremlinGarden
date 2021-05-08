@@ -1,75 +1,67 @@
-﻿using UnityEngine.AI;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GremlinAI : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
-    public Rigidbody rb;
-    public Vector3 walkPoint;
-    public bool walkPointSet; 
-    public float walkPointRange; 
-    public float startTime;
-    public Vector3 startPos;
+    public float duration;    //the max time of a walking session (set to ten)
+    [Range(0, 2)]
+    public float speed = 1;
+    private float elapsedTime = 0f; //time since started walk
+    private float wait = 0f; //wait this much time
+    private float waitTime = 0f; //waited this much time
 
-    void Awake(){
-        agent = this.GetComponent<NavMeshAgent>();
-        agent.updatePosition = false;
-        agent.updateRotation = false;
-        
-        player = GameObject.Find("Player").transform;
-        rb = this.GetComponent<Rigidbody>();
+    public Vector3 movementDirection;
+
+    [HideInInspector] public bool move = true; //start moving
+
+    void Start()
+    {
+        movementDirection = new Vector3(Random.Range(-3f, 3f), 0, Random.Range(-3f, 3f));
+        duration = Random.Range(1f, 5f);
     }
 
-    private void Update(){
-        if(this.GetComponent<GremlinInteraction>().beingCarried ||  this.GetComponent<GremlinInteraction>().beingPet)
-            walkPointSet = false;
-        else
-            Patrolling();
+    void Update()
+    {
+        Wander();
     }
 
-
-
-    private void SearchWalkPoint(){
-        //CALCULATE RANDOM POINT IN RANGE
-        float randomZ = Random.Range(-walkPointRange, walkPointRange);
-        float randomX = Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-        print("THIS IS walkPoint");
-        print(walkPoint);
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround)){
-            startTime = Time.time;
-            startPos = transform.position;
-            walkPointSet = true;
+    void Wander()
+    {
+        if (elapsedTime < duration && move)
+        {
+            //move in given direction for duration
+            transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * 10f);
+            elapsedTime += Time.deltaTime;
+        }
+        else if (elapsedTime >= duration)
+        {
+            //stop moving and wait
+            elapsedTime = 0f;
+            move = false;
+            wait = Random.Range(0f, 7f);
+            waitTime = 0f;
         }
 
-    }
-
-
-    private void Patrolling(){
-        if (!walkPointSet){
-            SearchWalkPoint();
-        }
-        if (walkPointSet){
-            transform.position = Vector3.Lerp(startPos, walkPoint, (Time.time - startTime) * 0.5f);
-        }
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        // WALKPOINT REACHED 
-        if (distanceToWalkPoint.magnitude < 1f){
-            walkPointSet = false;
+        if (waitTime < wait && !move)
+            //wait timer
+            waitTime += Time.deltaTime;
+        else if (!move)
+        {
+            //done waiting. Move to these random directions
+            move = true;
+            duration = Random.Range(2f, 5f);
+            movementDirection.x = Random.Range(-3f, 3f);
+            movementDirection.z = Random.Range(-3f, 3f);
         }
     }
 
-    void OnCollisionEnter(Collision collisionInfo){
-        if (collisionInfo.gameObject.name == "Shop Building" || collisionInfo.gameObject.name == "House"){
-            SearchWalkPoint();
+    void OnCollisionEnter(Collision other)
+    {
+
+        while (Physics.Raycast(transform.position, movementDirection, 2f))
+        {
+            movementDirection.x = Random.Range(-3f, 3f);
+            movementDirection.z = Random.Range(-3f, 3f);
         }
     }
-
-
-
 }

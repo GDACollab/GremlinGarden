@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6242926245410694870}
   - component: {fileID: -6305483294240047407}
   - component: {fileID: -9035454860860786733}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Dolphin Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 6464868618084562702}
   - component: {fileID: 6464868618084562688}
   - component: {fileID: 6464868618084562689}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}

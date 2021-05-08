@@ -10,6 +10,7 @@ public class FruitPickup : MonoBehaviour
     public float pickupDistance = 6f;
 
     private Gremlin gremlin;
+    private GameObject gremlinGameObj;
     private FoodObject fruit;
     private float distanceFromPlayer; //distance (in meters?) from player to fruit
     private bool onFruit; //is mouse currently over the fruit
@@ -83,14 +84,17 @@ public class FruitPickup : MonoBehaviour
             //delete object after it shrinks
             if (this.gameObject.transform.localScale.y < 0.0005f)
             {
+                //set stats
                 maxStatVal = gremlin.maxStatVal;
                 string stat = determineStat(fruit.foodName);
                 float statChange = gremlin.getStat(stat) + (15 * (gremlin.getStat("Happiness") + 1)); //Old formula: + fruit.food.getStatAlteration(stat);
                 if (statChange > maxStatVal)
                     statChange = maxStatVal;
                 gremlin.setStat(stat, statChange);
-                //gremlin.setStat("Happiness", 1 + gremlin.getStat("Happiness"));
+
+                //done eating, destroy game object and re-enable ai
                 Destroy(gameObject);
+                gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
             }
         }
 
@@ -101,15 +105,20 @@ public class FruitPickup : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         GameObject other = collision.gameObject;
-        if (other.tag == "Gremlin" && beingCarried)
+        if (other.tag == "Gremlin")
         {
+            //get reference to gremlin holding the food
+            gremlinGameObj = other;
+            //position the food
             Transform newParent = other.transform.GetChild(1).transform;
             this.transform.position = newParent.position;
             this.transform.parent = newParent;
+            //get reference to Gremlin script
             gremlin = other.GetComponent<GremlinObject>().gremlin;
             beingCarried = false;
             beingEaten = true;
-            
+            //disable ai and play eating sound
+            other.GetComponent<GremlinAI>().enabled = false;
             other.GetComponentInChildren<GremlinAudioController>().PlayEat();
         }
     }

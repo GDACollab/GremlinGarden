@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b897b9011634e54584ce857a9d9ec72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shrinkRate: 0.005
+  shrinkRate: 0.0025
   maxStatVal: 0
   pickupDistance: 6
 --- !u!114 &5012989294424013210
