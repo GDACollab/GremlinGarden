@@ -222,6 +222,9 @@ public class RaceManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the camera is done moving from an angle set up by a track piece.
+    /// </summary>
     private void newVantageCallback() { //Disable camera movement if the camera is fixed, but still allow us to look at the Gremlin.
         racingCamera.SetGremlinFocus(racingCamera.gremlinFocus, racingCamera.gremlinTrack, false);
         racingCamera.enableMovement = !cameraIsFixed;

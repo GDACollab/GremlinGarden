@@ -39,12 +39,23 @@ public class RandomGremlinRace : MonoBehaviour
             GameObject gremlin;
             if (i == playerGremlin)
             {
-                var gremlinToLoad = LoadingData.playerGremlins[LoadingData.gremlinToRace];
+                GremlinObject gremlinToLoad;
+                if (LoadingData.playerGremlins.Count != 0)
+                {
+                    gremlinToLoad = LoadingData.playerGremlins[LoadingData.gremlinToRace];
+                }
+                else {
+                    // For testing and debugging, in case someone decides to load the race without going through the hub world:
+                    gremlinToLoad = gameObject.AddComponent<GremlinObject>();
+                    gremlinToLoad.gremlin = new Gremlin("My Spoon is Too Big.");
+                    gremlinToLoad.gremlinName = "My Spoon is Too Big.";
+                    gremlinToLoad.InitializeGremlin();
+                }
                 // Instead of making a random gremlin, load the player gremlin.
                 gremlin = Instantiate(gremlinObject);
                 gremlin.GetComponent<GremlinObject>().CopyGremlinData(gremlinToLoad);
                 Instantiate(playerIndicator, gremlin.transform);
-                gremlin.name = "Player";
+                gremlin.name = gremlinToLoad.gremlinName;
             }
             else {
                 gremlin = Instantiate(gremlinObject);

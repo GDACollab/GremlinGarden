@@ -251,13 +251,13 @@ public class RacingCamera : MonoBehaviour
                     if (Mathf.Abs(gremlinFocus.transform.position[i] + cameraOffset[i] - this.transform.position[i]) > gremlinBounds[i])
                     {
                         var direction = Mathf.Sign(gremlinFocus.transform.position[i] + cameraOffset[i] - this.transform.position[i]);
-                        //TODO: Change this to reflect the gremlin's actual speed.
-                        var track = gremlinTrack.transform.GetChild(gremlinTrack.currentChild).GetComponent<TrackModule>();
+                        // We subtract 1 from .currentChild because TrackManager increments currentChild after calling beginMove during the Race function. So basically .currentChild is the child in the future. Technically.
+                        var track = gremlinTrack.transform.GetChild(gremlinTrack.currentChild - 1).GetComponent<TrackModule>();
                         //I can't use track.modifiedSpeed for... some reason.
-                        newPos[i] += track.terrainVariant.relativeSpeed(gremlinFocus.GetComponent<GremlinObject>(), track) * track.BaseSpeed * direction * Time.deltaTime;
+                        newPos[i] += track.terrainVariant.relativeSpeed(gremlinFocus.GetComponent<GremlinObject>(), track) * track.BaseSpeed * direction;
                     }
                 }
-                this.transform.position = Vector3.Lerp(newPos, this.transform.position, Time.deltaTime);
+                this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
             }
             if (lookAtFocus)
             {
