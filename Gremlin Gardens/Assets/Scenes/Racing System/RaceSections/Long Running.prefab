@@ -326,8 +326,6 @@ GameObject:
   - component: {fileID: 4367917566911691619}
   - component: {fileID: 4367917566911691618}
   - component: {fileID: 4367917566911691617}
-  - component: {fileID: 4367917566911691616}
-  - component: {fileID: 4367917566911691623}
   m_Layer: 0
   m_Name: Gremlin7LongRun
   m_TagString: Untagged
@@ -1542,90 +1540,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4367917566911691616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917566911691621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4367917566911691623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917566911691621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  AnimationToPlay: 
-  terrainVariant: {fileID: 0}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4367917566986690804
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,8 +1553,6 @@ GameObject:
   - component: {fileID: 4367917566986690802}
   - component: {fileID: 4367917566986690801}
   - component: {fileID: 4367917566986690800}
-  - component: {fileID: 4367917566986690807}
-  - component: {fileID: 4367917566986690806}
   m_Layer: 0
   m_Name: Gremlin1LongRun
   m_TagString: Untagged
@@ -2855,90 +2767,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4367917566986690807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917566986690804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4367917566986690806
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917566986690804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  AnimationToPlay: 
-  terrainVariant: {fileID: 0}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4367917567037662405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,8 +2780,6 @@ GameObject:
   - component: {fileID: 4367917567037662403}
   - component: {fileID: 4367917567037662402}
   - component: {fileID: 4367917567037662401}
-  - component: {fileID: 4367917567037662400}
-  - component: {fileID: 4367917567037662407}
   m_Layer: 0
   m_Name: Gremlin5LongRun
   m_TagString: Untagged
@@ -4168,90 +3994,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4367917567037662400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917567037662405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4367917567037662407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917567037662405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  AnimationToPlay: 
-  terrainVariant: {fileID: 0}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4367917567056206268
 GameObject:
   m_ObjectHideFlags: 0
@@ -7395,10 +7137,8 @@ GameObject:
   - component: {fileID: 4367917567688684129}
   - component: {fileID: 4367917567688684128}
   - component: {fileID: 4367917567688684135}
-  - component: {fileID: 4367917567688684134}
-  - component: {fileID: 4367917567688684133}
   m_Layer: 0
-  m_Name: Gremlin3LongRun
+  m_Name: Gremlin2LongRun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7419,7 +7159,7 @@ Transform:
   - {fileID: 4367917566843318400}
   - {fileID: 4367917568470970574}
   m_Father: {fileID: 4367917568186486048}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4367917567688684130
 MonoBehaviour:
@@ -8611,90 +8351,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4367917567688684134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917567688684059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4367917567688684133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917567688684059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  AnimationToPlay: 
-  terrainVariant: {fileID: 0}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4367917567837220533
 GameObject:
   m_ObjectHideFlags: 0
@@ -8708,8 +8364,6 @@ GameObject:
   - component: {fileID: 4367917567837220531}
   - component: {fileID: 4367917567837220530}
   - component: {fileID: 4367917567837220529}
-  - component: {fileID: 4367917567837220528}
-  - component: {fileID: 4367917567837220535}
   m_Layer: 0
   m_Name: Gremlin4LongRun
   m_TagString: Untagged
@@ -9924,90 +9578,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4367917567837220528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917567837220533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4367917567837220535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917567837220533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  AnimationToPlay: 
-  terrainVariant: {fileID: 0}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4367917567936018496
 GameObject:
   m_ObjectHideFlags: 0
@@ -10021,8 +9591,6 @@ GameObject:
   - component: {fileID: 4367917567936018510}
   - component: {fileID: 4367917567936018509}
   - component: {fileID: 4367917567936018508}
-  - component: {fileID: 4367917567936018499}
-  - component: {fileID: 4367917567936018498}
   m_Layer: 0
   m_Name: Gremlin6LongRun
   m_TagString: Untagged
@@ -11237,90 +10805,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4367917567936018499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917567936018496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4367917567936018498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917567936018496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  AnimationToPlay: 
-  terrainVariant: {fileID: 0}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4367917568003909962
 GameObject:
   m_ObjectHideFlags: 0
@@ -11975,8 +11459,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4367917566986690805}
-  - {fileID: 4367917568215567071}
   - {fileID: 4367917567688684132}
+  - {fileID: 4367917568215567071}
   - {fileID: 4367917567837220534}
   - {fileID: 4367917567037662406}
   - {fileID: 4367917567936018497}
@@ -11998,10 +11482,8 @@ GameObject:
   - component: {fileID: 4367917568215566884}
   - component: {fileID: 4367917568215567067}
   - component: {fileID: 4367917568215567066}
-  - component: {fileID: 4367917568215567065}
-  - component: {fileID: 4367917568215567064}
   m_Layer: 0
-  m_Name: Gremlin2LongRun
+  m_Name: Gremlin3LongRun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12022,7 +11504,7 @@ Transform:
   - {fileID: 4367917568551744548}
   - {fileID: 4367917567489740984}
   m_Father: {fileID: 4367917568186486048}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4367917568215566885
 MonoBehaviour:
@@ -13214,90 +12696,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4367917568215567065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917568215567070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4367917568215567064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917568215567070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  AnimationToPlay: 
-  terrainVariant: {fileID: 0}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4367917568216239966
 GameObject:
   m_ObjectHideFlags: 0
@@ -14250,8 +13648,6 @@ GameObject:
   - component: {fileID: 4367917568404500298}
   - component: {fileID: 4367917568404500297}
   - component: {fileID: 4367917568404500296}
-  - component: {fileID: 4367917568404500303}
-  - component: {fileID: 4367917568404500302}
   m_Layer: 0
   m_Name: Gremlin8LongRun
   m_TagString: Untagged
@@ -15466,90 +14862,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4367917568404500303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917568404500300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4367917568404500302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367917568404500300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 3
-  AnimationToPlay: 
-  terrainVariant: {fileID: 0}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4367917568466791127
 GameObject:
   m_ObjectHideFlags: 0
