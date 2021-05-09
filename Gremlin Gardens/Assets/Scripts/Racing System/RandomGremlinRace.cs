@@ -107,13 +107,10 @@ public class RandomGremlinRace : MonoBehaviour
         // TODO: This of course, means that some calculations for the number of dice will get weird. Need a fix.
         int numDice = Mathf.FloorToInt(Mathf.Abs((2 * meanStatValue) - maxValue));
 
-        // average value = (diceFaces / 2) * number of dice.
-        // dieFaces = 2 * (average value / number of dice).
-        // Try this out! If you roll 4d8, the most frequent value will be 16 (multiple dice rolls use a normal distribution curve).
-        // For 5d10s, the most frequent value will be 25.
+        // dice faces = maxValue / number of dice.
         // https://www.redblobgames.com/articles/probability/damage-rolls.html
         // We keep diceFaces as a float because of how rolling works.
-        float diceFaces = 2 * (meanStatValue / numDice);
+        float diceFaces = maxValue / numDice;
 
         // Go through each possible gremlin stat (except for Happiness, that doesn't matter in the races)
         foreach (KeyValuePair<string, float> stat in gremlin.getStats()) {
