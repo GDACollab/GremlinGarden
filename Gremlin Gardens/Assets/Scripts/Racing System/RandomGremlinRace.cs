@@ -41,12 +41,6 @@ public class RandomGremlinRace : MonoBehaviour
     [Tooltip("What the stats for an average gremlin racer should generally be. Used when randomly generating other gremlins' stat values.")]
     public float meanStatValue = 20.0f;
 
-    /// <summary>
-    /// How much the gremlin's stats should deviate from the mean calculated by the random stat generation. Used when randomly generating other gremlins' stat values.
-    /// </summary>
-    [Tooltip("How much the gremlin's stats should deviate from the mean calculated by the random stat generation. Used when randomly generating other gremlins' stat values.")]
-    public float variance = 1.0f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -95,24 +89,32 @@ public class RandomGremlinRace : MonoBehaviour
     public void GenerateStats(Gremlin gremlin) {
         // Make sure no gremlin could possibly beat the winning stat number:
         float maxValue = winningStat - 2.0f;
+
         // Now we need to generate gremlin stats. Normally I'd use a random number generator with no extra steps,
         // but the competition should feel as close as the designers want it to be. So that's why I spend some time
         // calculating how much dice the game should roll (it creates a normal distribution to ensure that the competition is actually close):
 
-        // average value = (highestRoll / 2) * number of dice.
+        // Sum of lowest possible values for dice = minimum value = numDice.
+        //average value = (maximum - minimum)/2 + minimum
+        // average value - maximum/2 = minimum/2
+        // 2 * average value - maximum = minimum
+        int numDice = Mathf.RoundToInt(2 * meanStatValue - maxValue);
+
+        // average value = (diceFaces / 2) * number of dice.
+        // dieFaces = 2 * (average value / number of dice).
         // Try this out! If you roll 4d8, the most frequent value will be 16 (multiple dice rolls use a normal distribution curve).
         // For 5d10s, the most frequent value will be 25.
         // https://www.redblobgames.com/articles/probability/damage-rolls.html
-        int numDice = Mathf.RoundToInt(meanStatValue / (maxValue / 2));
+        int diceFaces = Mathf.RoundToInt(2 * (meanStatValue / numDice));
 
         // Go through each possible gremlin stat (except for Happiness, that doesn't matter in the races)
         foreach (KeyValuePair<string, float> stat in gremlin.getStats()) {
             if (stat.Key != "Happiness") {
                 float diceSum = 0;
                 float[] diceRolls = new float[numDice + 1];
-                float lowestValue = maxValue;
+                float lowestValue = diceFaces;
                 for (int i = 0; i < numDice + 1; i++) {
-                    diceRolls[i] = Random.Range(1.0f, maxValue);
+                    diceRolls[i] = Random.Range(1.0f, diceFaces);
                     diceSum += diceRolls[i];
                     if (diceRolls[i] < lowestValue) {
                         lowestValue = diceRolls[i];
