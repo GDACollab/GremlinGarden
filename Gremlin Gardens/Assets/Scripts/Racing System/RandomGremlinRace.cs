@@ -94,7 +94,7 @@ public class RandomGremlinRace : MonoBehaviour
         // but the competition should feel as close as the designers want it to be. So that's why I spend some time
         // calculating how much dice the game should roll (it creates a normal distribution to ensure that the competition is actually close):
 
-        // Sum of lowest possible values for dice = minimum value = numDice.
+        // Sum of lowest possible values for each die = numDice = minimum value. (For instance, the lowest possible roll for 3d6 is 3).
         //average value = (maximum - minimum)/2 + minimum
         // average value - maximum/2 = minimum/2
         // 2 * average value - maximum = minimum
