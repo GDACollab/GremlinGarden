@@ -111,13 +111,12 @@ public class RandomGremlinRace : MonoBehaviour
         foreach (KeyValuePair<string, float> stat in gremlin.getStats()) {
             if (stat.Key != "Happiness") {
                 float diceSum = 0;
-                float[] diceRolls = new float[numDice + 1];
                 float lowestValue = diceFaces;
                 for (int i = 0; i < numDice + 1; i++) {
-                    diceRolls[i] = Random.Range(1.0f, diceFaces);
-                    diceSum += diceRolls[i];
-                    if (diceRolls[i] < lowestValue) {
-                        lowestValue = diceRolls[i];
+                    float roll = Random.Range(1.0f, diceFaces);
+                    diceSum += roll;
+                    if (roll < lowestValue) {
+                        lowestValue = roll;
                     }
                 }
 
