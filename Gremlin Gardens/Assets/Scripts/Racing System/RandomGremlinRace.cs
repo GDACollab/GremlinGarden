@@ -98,7 +98,7 @@ public class RandomGremlinRace : MonoBehaviour
         //average value = (maximum - minimum)/2 + minimum
         // average value - maximum/2 = minimum/2
         // 2 * average value - maximum = minimum
-        int numDice = Mathf.RoundToInt(2 * meanStatValue - maxValue);
+        int numDice = Mathf.RoundToInt((2 * meanStatValue) - maxValue);
 
         // average value = (diceFaces / 2) * number of dice.
         // dieFaces = 2 * (average value / number of dice).
