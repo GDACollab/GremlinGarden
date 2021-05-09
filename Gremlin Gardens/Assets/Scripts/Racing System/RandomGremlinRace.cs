@@ -29,6 +29,24 @@ public class RandomGremlinRace : MonoBehaviour
     /// </summary>
     public int gremlinCount = 4;
 
+    /// <summary>
+    /// The minimum stat value a gremlin needs to win the race. Used when randomly generating other gremlins' stat values.
+    /// </summary>
+    [Tooltip("The minimum stat value a gremlin needs to win the race. Used when randomly generating other gremlins' stat values.")]
+    public float winningStat = 25.0f;
+
+    /// <summary>
+    /// What the stats for an average gremlin racer should generally be. Used when randomly generating other gremlins' stat values.
+    /// </summary>
+    [Tooltip("What the stats for an average gremlin racer should generally be. Used when randomly generating other gremlins' stat values.")]
+    public float meanStatValue = 20.0f;
+
+    /// <summary>
+    /// How much the gremlin's stats should deviate from the mean calculated by the random stat generation. Used when randomly generating other gremlins' stat values.
+    /// </summary>
+    [Tooltip("How much the gremlin's stats should deviate from the mean calculated by the random stat generation. Used when randomly generating other gremlins' stat values.")]
+    public float variance = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,12 +78,7 @@ public class RandomGremlinRace : MonoBehaviour
             else {
                 gremlin = Instantiate(gremlinObject);
                 Gremlin gremlinClass = gremlin.GetComponent<GremlinObject>().gremlin;
-                gremlinClass.setStat("Running", Random.Range(0.5f, 1f));
-                gremlinClass.setStat("Flying", Random.Range(0.5f, 1f));
-                gremlinClass.setStat("Stamina", Random.Range(0.5f, 1f));
-                gremlinClass.setStat("Climbing", Random.Range(0.5f, 1f));
-                gremlinClass.setStat("Happiness", Random.Range(0.5f, 1f));
-                gremlinClass.setStat("Swimming", Random.Range(0.5f, 1f));
+                GenerateStats(gremlinClass);
                 gremlin.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
                 gremlin.name = GremlinNames[Random.Range(0, GremlinNames.Length)];
                 gremlin.GetComponent<GremlinObject>().gremlinName = gremlin.name;
@@ -73,5 +86,45 @@ public class RandomGremlinRace : MonoBehaviour
             gremlinList.Add(gremlin);
         }
         raceManager.TrackSetup(gremlinList, playerGremlin);
+    }
+
+    /// <summary>
+    /// Generates random stats for a gremlin based on what stats the game thinks the player needs to win.
+    /// </summary>
+    /// <param name="gremlin">The gremlin to assign random stats to.</param>
+    public void GenerateStats(Gremlin gremlin) {
+        // Make sure no gremlin could possibly beat the winning stat number:
+        float maxValue = winningStat - 2.0f;
+        // Now we need to generate gremlin stats. Normally I'd use a random number generator with no extra steps,
+        // but the competition should feel as close as the designers want it to be. So that's why I spend some time
+        // calculating how much dice the game should roll (it creates a normal distribution to ensure that the competition is actually close):
+
+        // average value = (highestRoll / 2) * number of dice.
+        // Try this out! If you roll 4d8, the most frequent value will be 16 (multiple dice rolls use a normal distribution curve).
+        // For 5d10s, the most frequent value will be 25.
+        // https://www.redblobgames.com/articles/probability/damage-rolls.html
+        int numDice = Mathf.RoundToInt(meanStatValue / (maxValue / 2));
+
+        // Go through each possible gremlin stat (except for Happiness, that doesn't matter in the races)
+        foreach (KeyValuePair<string, float> stat in gremlin.getStats()) {
+            if (stat.Key != "Happiness") {
+                float diceSum = 0;
+                float[] diceRolls = new float[numDice + 1];
+                float lowestValue = maxValue;
+                for (int i = 0; i < numDice + 1; i++) {
+                    diceRolls[i] = Random.Range(1.0f, maxValue);
+                    diceSum += diceRolls[i];
+                    if (diceRolls[i] < lowestValue) {
+                        lowestValue = diceRolls[i];
+                    }
+                }
+
+                // While having Gremlins with low stats might be fun, we want to reduce the chances of that happening, so we drop the lowest value from the dice rolls,
+                // increasing the odds of having gremlins who are better at racing. It's a trick used in D&D:
+                diceSum -= lowestValue;
+
+                gremlin.setStat(stat.Key, diceSum);
+            }
+        }
     }
 }
