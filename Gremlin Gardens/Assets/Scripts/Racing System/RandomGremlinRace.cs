@@ -102,14 +102,14 @@ public class RandomGremlinRace : MonoBehaviour
         // A mean value of 10 and a max value of 25 will result in a min value of -5. While that is correct, it's not actually
         // helpful in telling us the number of dice we need.
         // TODO: This of course, means that some calculations for the number of dice will get weird. Need a fix.
-        int numDice = Mathf.RoundToInt(Mathf.Abs((2 * meanStatValue) - maxValue));
+        int numDice = Mathf.FloorToInt(Mathf.Abs((2 * meanStatValue) - maxValue));
 
         // average value = (diceFaces / 2) * number of dice.
         // dieFaces = 2 * (average value / number of dice).
         // Try this out! If you roll 4d8, the most frequent value will be 16 (multiple dice rolls use a normal distribution curve).
         // For 5d10s, the most frequent value will be 25.
         // https://www.redblobgames.com/articles/probability/damage-rolls.html
-        int diceFaces = Mathf.RoundToInt(2 * (meanStatValue / numDice));
+        int diceFaces = Mathf.FloorToInt(2 * (meanStatValue / numDice));
 
         // Go through each possible gremlin stat (except for Happiness, that doesn't matter in the races)
         foreach (KeyValuePair<string, float> stat in gremlin.getStats()) {
