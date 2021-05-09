@@ -98,7 +98,11 @@ public class RandomGremlinRace : MonoBehaviour
         //average value = (maximum - minimum)/2 + minimum
         // average value - maximum/2 = minimum/2
         // 2 * average value - maximum = minimum
-        int numDice = Mathf.RoundToInt((2 * meanStatValue) - maxValue);
+        // We get the absolute value in case we get a negative value, which we don't want.
+        // A mean value of 10 and a max value of 25 will result in a min value of -5. While that is correct, it's not actually
+        // helpful in telling us the number of dice we need.
+        // TODO: This of course, means that some calculations for the number of dice will get weird. Need a fix.
+        int numDice = Mathf.RoundToInt(Mathf.Abs((2 * meanStatValue) - maxValue));
 
         // average value = (diceFaces / 2) * number of dice.
         // dieFaces = 2 * (average value / number of dice).
