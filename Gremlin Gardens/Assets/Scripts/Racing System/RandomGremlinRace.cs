@@ -30,16 +30,16 @@ public class RandomGremlinRace : MonoBehaviour
     public int gremlinCount = 4;
 
     /// <summary>
-    /// The minimum stat value a gremlin needs to win the race. Used when randomly generating other gremlins' stat values.
+    /// The minimum stat value a gremlin needs to win the race. Any maximum possible randomly generated stat will be below this value.
     /// </summary>
-    [Tooltip("The minimum stat value a gremlin needs to win the race. Used when randomly generating other gremlins' stat values.")]
+    [Tooltip("The minimum stat value a gremlin needs to win the race. The maximum possible randomly generated will be below this value.")]
     public float winningStat = 25.0f;
 
     /// <summary>
-    /// What the stats for an average gremlin racer should generally be. Used when randomly generating other gremlins' stat values.
+    /// The lowest value a randomly generated statistic can possibly have.
     /// </summary>
-    [Tooltip("What the stats for an average gremlin racer should generally be. Used when randomly generating other gremlins' stat values.")]
-    public float meanStatValue = 10.0f;
+    [Tooltip("The lowest value a randomly generated statistic can possibly have.")]
+    public float minStatValue = 5.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -98,18 +98,12 @@ public class RandomGremlinRace : MonoBehaviour
         // calculating how much dice the game should roll (it creates a normal distribution to ensure that the competition is actually close):
 
         // Sum of lowest possible values for each die = numDice = minimum value. (For instance, the lowest possible roll for 3d6 is 3).
-        //average value = (maximum - minimum)/2 + minimum
-        // average value - maximum/2 = minimum/2
-        // 2 * average value - maximum = minimum
-        // We get the absolute value in case we get a negative value, which we don't want.
-        // A mean value of 10 and a max value of 25 will result in a min value of -5. While that is correct, it's not actually
-        // helpful in telling us the number of dice we need.
-        // TODO: This of course, means that some calculations for the number of dice will get weird. Need a fix.
-        int numDice = Mathf.FloorToInt(Mathf.Abs((2 * meanStatValue) - maxValue));
+        int numDice = Mathf.FloorToInt(minStatValue);
 
         // dice faces = maxValue / number of dice.
         // https://www.redblobgames.com/articles/probability/damage-rolls.html
-        // We keep diceFaces as a float because of how rolling works.
+        // We keep diceFaces as a float because Random.Range can return a random float in between 1.0f and dieFaces, meaning our
+        // "dice rolls" can be a little more accurate.
         float diceFaces = maxValue / numDice;
 
         // Go through each possible gremlin stat (except for Happiness, that doesn't matter in the races)
@@ -118,7 +112,6 @@ public class RandomGremlinRace : MonoBehaviour
                 float diceSum = 0;
                 float lowestValue = diceFaces;
                 for (int i = 0; i < numDice + 1; i++) {
-                    // We also have a more advanced dice roller, which allows us to go in BETWEEN integers, which is nice.
                     float roll = Random.Range(1.0f, diceFaces);
                     diceSum += roll;
                     if (roll < lowestValue) {
