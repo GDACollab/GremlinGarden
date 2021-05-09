@@ -39,7 +39,7 @@ public class RandomGremlinRace : MonoBehaviour
     /// What the stats for an average gremlin racer should generally be. Used when randomly generating other gremlins' stat values.
     /// </summary>
     [Tooltip("What the stats for an average gremlin racer should generally be. Used when randomly generating other gremlins' stat values.")]
-    public float meanStatValue = 20.0f;
+    public float meanStatValue = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +87,9 @@ public class RandomGremlinRace : MonoBehaviour
     /// </summary>
     /// <param name="gremlin">The gremlin to assign random stats to.</param>
     public void GenerateStats(Gremlin gremlin) {
+        // TODO: Yeah, I need to double check my math at a point where I'm not very tired.
+        // There are a lot of errors here.
+
         // Make sure no gremlin could possibly beat the winning stat number:
         float maxValue = winningStat - 2.0f;
 
@@ -109,7 +112,8 @@ public class RandomGremlinRace : MonoBehaviour
         // Try this out! If you roll 4d8, the most frequent value will be 16 (multiple dice rolls use a normal distribution curve).
         // For 5d10s, the most frequent value will be 25.
         // https://www.redblobgames.com/articles/probability/damage-rolls.html
-        int diceFaces = Mathf.FloorToInt(2 * (meanStatValue / numDice));
+        // We keep diceFaces as a float because of how rolling works.
+        float diceFaces = 2 * (meanStatValue / numDice);
 
         // Go through each possible gremlin stat (except for Happiness, that doesn't matter in the races)
         foreach (KeyValuePair<string, float> stat in gremlin.getStats()) {
@@ -117,6 +121,7 @@ public class RandomGremlinRace : MonoBehaviour
                 float diceSum = 0;
                 float lowestValue = diceFaces;
                 for (int i = 0; i < numDice + 1; i++) {
+                    // We also have a more advanced dice roller, which allows us to go in BETWEEN integers, which is nice.
                     float roll = Random.Range(1.0f, diceFaces);
                     diceSum += roll;
                     if (roll < lowestValue) {
