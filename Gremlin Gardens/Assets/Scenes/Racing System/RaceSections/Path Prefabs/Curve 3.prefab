@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 1675690464571235220}
   - component: {fileID: 7152946628670144032}
   - component: {fileID: 942772020529612709}
-  - component: {fileID: 1884149471638465964}
-  - component: {fileID: 2180349949051318712}
   m_Layer: 0
   m_Name: Arch3
   m_TagString: Untagged
@@ -29,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2322390243416799707}
-  m_LocalRotation: {x: -0.7071067, y: -0, z: -0, w: 0.70710695}
+  m_LocalRotation: {x: -0.70710665, y: -0, z: -0.000000059604638, w: 0.70710695}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2595,13 +2593,46 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1884149471638465964
+--- !u!1 &6756473078490676403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2845973703085152416}
+  - component: {fileID: 5103796412417900517}
+  - component: {fileID: 4742702202040580161}
+  m_Layer: 0
+  m_Name: Curve 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2845973703085152416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756473078490676403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8164301800950114604}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5103796412417900517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2322390243416799707}
+  m_GameObject: {fileID: 6756473078490676403}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
@@ -2626,13 +2657,13 @@ MonoBehaviour:
   activeGremlin: {fileID: 0}
   timePassed: 0
   gOffset: {x: 0, y: 0, z: 0}
---- !u!114 &2180349949051318712
+--- !u!114 &4742702202040580161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2322390243416799707}
+  m_GameObject: {fileID: 6756473078490676403}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
@@ -2641,10 +2672,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: -0.5117148, y: 0.00000017881389, z: 0.9992522}
-      - {x: -0.5253066, y: 4.5793304, z: 0.9992511}
-      - {x: -4.3325186, y: 7.568755, z: 0.99726367}
-      - {x: -7.904524, y: 7.5092306, z: 0.99726367}
+      - {x: -0.51171494, y: 1.0209455, z: 0.037036836}
+      - {x: -0.5740657, y: 1.0295506, z: -4.961894}
+      - {x: -4.451232, y: 1.086936, z: -7.494071}
+      - {x: -8.023237, y: 1.0274115, z: -7.494071}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -2654,11 +2685,11 @@ MonoBehaviour:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
       perAnchorNormalsAngle:
-      - 0
-      - 0
+      - 180
+      - 180
       globalNormalsAngle: 270
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -2679,34 +2710,3 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
---- !u!1 &6756473078490676403
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2845973703085152416}
-  m_Layer: 0
-  m_Name: Curve 3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2845973703085152416
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6756473078490676403}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 8164301800950114604}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
