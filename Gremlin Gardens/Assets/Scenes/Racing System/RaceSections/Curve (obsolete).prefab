@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7152946628670144032}
   - component: {fileID: 942772020529612709}
   - component: {fileID: 1884149471638465964}
-  - component: {fileID: 2180349949051318712}
   m_Layer: 0
   m_Name: Arch3
   m_TagString: Untagged
@@ -2626,59 +2625,6 @@ MonoBehaviour:
   activeGremlin: {fileID: 0}
   timePassed: 0
   gOffset: {x: 0, y: 0, z: 0}
---- !u!114 &2180349949051318712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2322390243416799707}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.5117148, y: 0.00000017881389, z: 0.9992522}
-      - {x: -0.5253066, y: 4.5793304, z: 0.9992511}
-      - {x: -4.3325186, y: 7.568755, z: 0.99726367}
-      - {x: -7.904524, y: 7.5092306, z: 0.99726367}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!1 &2379693212874001188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2693,7 +2639,6 @@ GameObject:
   - component: {fileID: 759614441241395259}
   - component: {fileID: 4584327595126640763}
   - component: {fileID: 8176091011448837477}
-  - component: {fileID: 5613268624735183105}
   m_Layer: 0
   m_Name: Arch6
   m_TagString: Untagged
@@ -5305,59 +5250,6 @@ MonoBehaviour:
   activeGremlin: {fileID: 0}
   timePassed: 0
   gOffset: {x: 0, y: 0, z: 0}
---- !u!114 &5613268624735183105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379693212874001188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.50000036, y: -0.00000011920926, z: 0.9999999}
-      - {x: -0.50014055, y: 5.468839, z: 0.9615271}
-      - {x: -5.193438, y: 10.503358, z: 1.0485351}
-      - {x: -10.999997, y: 10.50001, z: 1.0000007}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 2, y: 0.14433756, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0
-    vertexPathMinVertexSpacing: 0
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 1
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 1
-    showVertexPathOptions: 0
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!1 &3715554140395711069
 GameObject:
   m_ObjectHideFlags: 0
@@ -5371,8 +5263,6 @@ GameObject:
   - component: {fileID: 1025361865340719729}
   - component: {fileID: 131213265000063810}
   - component: {fileID: 3048628538274592418}
-  - component: {fileID: 4860854114211851727}
-  - component: {fileID: 4879785961747814665}
   m_Layer: 0
   m_Name: Arch2
   m_TagString: Untagged
@@ -7953,90 +7843,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &4860854114211851727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3715554140395711069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.5212058, y: 0.00000023841852, z: 1.0007209}
-      - {x: -0.49898136, y: 2.8857496, z: 1.0847733}
-      - {x: -2.7560952, y: 6.2902293, z: 1.0019214}
-      - {x: -6.9743295, y: 6.5187907, z: 1.0019214}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 0
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
---- !u!114 &4879785961747814665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3715554140395711069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 0.5
-  AnimationToPlay: isRunning
-  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &3980502699486870688
 GameObject:
   m_ObjectHideFlags: 0
@@ -8051,7 +7857,6 @@ GameObject:
   - component: {fileID: 3956603387303835055}
   - component: {fileID: 3633992333913295149}
   - component: {fileID: 5805332015732432453}
-  - component: {fileID: 2162173286910712746}
   m_Layer: 0
   m_Name: Arch1
   m_TagString: Untagged
@@ -10663,59 +10468,6 @@ MonoBehaviour:
   activeGremlin: {fileID: 0}
   timePassed: 0
   gOffset: {x: 0, y: 0, z: 0}
---- !u!114 &2162173286910712746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3980502699486870688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.50990283, y: 0.010006187, z: 1.0015754}
-      - {x: -0.50819385, y: 4.1947403, z: 1.0015743}
-      - {x: -4.5721884, y: 5.6503177, z: 1.1193607}
-      - {x: -5.963038, y: 5.4950247, z: 0.98658633}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!1 &6756473078490676403
 GameObject:
   m_ObjectHideFlags: 0
@@ -10726,7 +10478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2845973703085152416}
   m_Layer: 0
-  m_Name: Curve
+  m_Name: Curve (obsolete)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10768,7 +10520,6 @@ GameObject:
   - component: {fileID: 1884985977242390221}
   - component: {fileID: 1102251002659405368}
   - component: {fileID: 3938007963761687327}
-  - component: {fileID: 4209842364753400088}
   m_Layer: 0
   m_Name: Arch5
   m_TagString: Untagged
@@ -13380,59 +13131,6 @@ MonoBehaviour:
   activeGremlin: {fileID: 0}
   timePassed: 0
   gOffset: {x: 0, y: 0, z: 0}
---- !u!114 &4209842364753400088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6916811252827014360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.49947727, y: -0.040187586, z: 1.0041922}
-      - {x: -0.51657856, y: 6.2872577, z: 1.0487621}
-      - {x: -6.843653, y: 9.848304, z: 1.1530397}
-      - {x: -9.979612, y: 9.515334, z: 1.003679}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!1 &7986166146585098421
 GameObject:
   m_ObjectHideFlags: 0
@@ -13446,7 +13144,6 @@ GameObject:
   - component: {fileID: 5629672010377719138}
   - component: {fileID: 450275340348592210}
   - component: {fileID: 1879171923723237429}
-  - component: {fileID: 3307997690721952186}
   - component: {fileID: 8566656040741789747}
   m_Layer: 0
   m_Name: Arch7
@@ -16028,59 +15725,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &3307997690721952186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7986166146585098421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.49999988, y: -0.00000011920926, z: 0.9999999}
-      - {x: -0.49999988, y: 5.750001, z: 1.0000007}
-      - {x: -4.999999, y: 11.500017, z: 1.0000007}
-      - {x: -11.999997, y: 11.500008, z: 1.0000007}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 1
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!114 &8566656040741789747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16126,7 +15770,6 @@ GameObject:
   - component: {fileID: 8841788629024148501}
   - component: {fileID: 3955703136167130862}
   - component: {fileID: 7333111124006368028}
-  - component: {fileID: 3678036257922346057}
   m_Layer: 0
   m_Name: Arch8
   m_TagString: Untagged
@@ -18738,59 +18381,6 @@ MonoBehaviour:
   activeGremlin: {fileID: 0}
   timePassed: 0
   gOffset: {x: 0, y: 0, z: 0}
---- !u!114 &3678036257922346057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8229613545843286526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.49999988, y: -0.00000011920926, z: 0.9999999}
-      - {x: -0.49999988, y: 7.250001, z: 1.0000017}
-      - {x: -6.749998, y: 12.5000305, z: 1.0000017}
-      - {x: -12.999997, y: 12.500015, z: 1.0000017}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!1 &8452006448106350304
 GameObject:
   m_ObjectHideFlags: 0
@@ -18804,7 +18394,6 @@ GameObject:
   - component: {fileID: 8376416388391856099}
   - component: {fileID: 975852995382706168}
   - component: {fileID: 750070238484054585}
-  - component: {fileID: 3735254100777748205}
   - component: {fileID: 3624956077019466914}
   m_Layer: 0
   m_Name: Arch4
@@ -21386,59 +20975,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &3735254100777748205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8452006448106350304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.50325763, y: 0.00000023841852, z: 1.003826}
-      - {x: -0.5687674, y: 4.62035, z: 1.0373256}
-      - {x: -4.181693, y: 8.493293, z: 1.01877}
-      - {x: -8.975855, y: 8.497481, z: 1.0109994}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 0, y: 0, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!114 &3624956077019466914
 MonoBehaviour:
   m_ObjectHideFlags: 0
