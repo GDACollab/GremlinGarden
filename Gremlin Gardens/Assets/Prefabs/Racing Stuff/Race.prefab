@@ -102,6 +102,7 @@ MonoBehaviour:
   enableMovement: 1
   cameraMode: none
   gremlinFocus: {fileID: 0}
+  gremlinTrack: {fileID: 0}
   cameraFlySpeed: 1
   texturePlane: {fileID: 2801156931057065824, guid: 64f45a33a1743984e9d4368e0775c8cd, type: 3}
   tweenCurve:
@@ -172,9 +173,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raceManager: {fileID: 1782050191020346484}
-  gremlinObject: {fileID: 5497726379860427165, guid: dc654f9bff595fa47830149a9113cb07, type: 3}
+  gremlinObject: {fileID: 2469493495100546389, guid: 00d45d72ad496604b868340e9b2cc452, type: 3}
   playerIndicator: {fileID: 6632329707035478812, guid: 170c6480db1903a47aa5fb75af8571f2, type: 3}
-  gremlinCount: 4
+  gremlinCount: 8
+  winningStat: 25
+  minStatValue: 5
 --- !u!1 &1782050189495125584
 GameObject:
   m_ObjectHideFlags: 0

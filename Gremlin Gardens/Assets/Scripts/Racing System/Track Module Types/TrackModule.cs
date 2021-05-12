@@ -110,8 +110,8 @@ public class TrackModule : MonoBehaviour
     {
         totalDistance = 0;
         internalCreator = GetComponent<PathCreator>();
-        pathStart = internalCreator.path.GetPoint(0); //This does not work, because bezier paths are dumb.
-        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1); //This does not work, because bezier paths are dumb.
+        pathStart = internalCreator.path.GetPoint(0);
+        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1);
     }
 
     /// <summary>

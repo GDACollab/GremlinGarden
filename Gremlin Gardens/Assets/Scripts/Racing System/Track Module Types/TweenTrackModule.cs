@@ -7,6 +7,13 @@ using UnityEngine;
 /// </summary>
 public class TweenTrackModule : TrackModule
 {
+    private void Awake()
+    {
+        totalDistance = 0;
+        var index = this.transform.GetSiblingIndex();
+        pathStart = this.transform.parent.GetChild(index - 1).GetComponent<TrackModule>().pathEnd;
+        pathEnd = this.transform.parent.GetChild(index + 1).GetComponent<TrackModule>().pathStart;
+    }
     private void Update()
     {
         if (gremlinMoving)
