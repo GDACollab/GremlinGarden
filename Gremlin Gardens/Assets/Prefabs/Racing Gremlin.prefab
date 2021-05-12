@@ -1,34 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!95 &8855926684277043632
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5497726379860427165}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 11db339fd0c2314488658086daef55de, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!1001 &5871795544041454856
+--- !u!1001 &4571840626449244608
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2061895644239712848, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105177654468541588, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2105177654468541589, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
       propertyPath: m_Name
-      value: RacingGremlin
+      value: Racing Gremlin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105177654468541591, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
       propertyPath: m_LocalPosition.x
@@ -74,24 +67,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8950566776152112049, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.7071068
+    - target: {fileID: 3654205498376032974, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8950566776152112049, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 8950566776152112049, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+    - target: {fileID: 7405063350749224677, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
+    - {fileID: 2565090705442512326, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
+    - {fileID: 2724397374971682136, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
     - {fileID: 2105177654468541588, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
     - {fileID: 2105177654468541591, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
---- !u!1 &5497726379860427165 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2105177654468541589, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-  m_PrefabInstance: {fileID: 5871795544041454856}
-  m_PrefabAsset: {fileID: 0}
