@@ -78,10 +78,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: 0.5049782, y: 0.0053100586, z: 4.993454}
-      - {x: 0.5529728, y: -0.015472412, z: 5.252655}
-      - {x: 0.50496674, y: -0.034366608, z: 0.09445572}
-      - {x: 0.50061417, y: -0.0014228821, z: 0.015266418}
+      - {x: 0.5, y: 0, z: 5}
+      - {x: 0.5, y: 0, z: 0}
+      - {x: 0.5, y: 0, z: 5}
+      - {x: 0.5, y: 0, z: 0}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 0
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1

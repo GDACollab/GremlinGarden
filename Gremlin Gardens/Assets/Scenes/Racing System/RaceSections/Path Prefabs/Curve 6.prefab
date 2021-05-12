@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 2533985090994051505}
   - component: {fileID: 759614441241395259}
   - component: {fileID: 4584327595126640763}
-  - component: {fileID: 8176091011448837477}
-  - component: {fileID: 5613268624735183105}
   m_Layer: 0
   m_Name: Arch6
   m_TagString: Untagged
@@ -2595,90 +2593,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &8176091011448837477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379693212874001188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BaseSpeed: 0.5
-  AnimationToPlay: isRunning
-  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
-  gremlinMoving: 0
-  pathStart: {x: 0, y: 0, z: 0}
-  pathEnd: {x: 0, y: 0, z: 0}
-  totalDistance: 0
-  affectCamera: 1
-  optimalCameraOffset: {x: 0, y: 0, z: 0}
-  optimalOffsetIsFixed: 0
-  cameraImmediateCut: 0
-  multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
-  cameraShouldRotate: 1
-  cameraSkipAhead: 0
-  modifiedSpeed: 0
-  activeGremlin: {fileID: 0}
-  timePassed: 0
-  gOffset: {x: 0, y: 0, z: 0}
---- !u!114 &5613268624735183105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379693212874001188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -0.50000036, y: -0.00000011920926, z: 0.9999999}
-      - {x: -0.50014055, y: 5.468839, z: 0.9615271}
-      - {x: -5.193438, y: 10.503358, z: 1.0485351}
-      - {x: -10.999997, y: 10.50001, z: 1.0000007}
-      isClosed: 0
-      space: 0
-      controlMode: 0
-      autoControlLength: 0.3
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: 0, y: 0, z: 0}
-        m_Extent: {x: 2, y: 0.14433756, z: 0}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 270
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0
-    vertexPathMinVertexSpacing: 0
-    showTransformTool: 1
-    showPathBounds: 0
-    showPerSegmentBounds: 0
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 0
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 1
-    showDisplayOptions: 0
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 1
-    showVertexPathOptions: 0
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!1 &6756473078490676403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2688,6 +2602,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2845973703085152416}
+  - component: {fileID: 4579394152273374427}
+  - component: {fileID: 1018063237076229489}
   m_Layer: 0
   m_Name: Curve 6
   m_TagString: Untagged
@@ -2710,3 +2626,87 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4579394152273374427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756473078490676403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  editorData:
+    _bezierPath:
+      points:
+      - {x: -0.5, y: 1, z: 0}
+      - {x: -0.5, y: 1, z: -6}
+      - {x: -5.5, y: 1, z: -10.5}
+      - {x: -10.999997, y: 1, z: -10.5}
+      isClosed: 0
+      space: 0
+      controlMode: 0
+      autoControlLength: 0.3
+      boundsUpToDate: 0
+      bounds:
+        m_Center: {x: 0, y: 0, z: 0}
+        m_Extent: {x: 2, y: 0.14433756, z: 0}
+      perAnchorNormalsAngle:
+      - 0
+      - 0
+      globalNormalsAngle: 90
+      flipNormals: 0
+    vertexPathUpToDate: 0
+    vertexPathMaxAngleError: 0
+    vertexPathMinVertexSpacing: 0
+    showTransformTool: 1
+    showPathBounds: 0
+    showPerSegmentBounds: 0
+    displayAnchorPoints: 1
+    displayControlPoints: 1
+    bezierHandleScale: 1
+    globalDisplaySettingsFoldout: 0
+    keepConstantHandleSize: 0
+    showNormalsInVertexMode: 0
+    showBezierPathInVertexMode: 1
+    showDisplayOptions: 0
+    showPathOptions: 1
+    showVertexPathDisplayOptions: 1
+    showVertexPathOptions: 0
+    showNormals: 1
+    showNormalsHelpInfo: 0
+    tabIndex: 0
+  initialized: 1
+--- !u!114 &1018063237076229489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756473078490676403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ea07329ff618e4abd3f1fd96cfbfe4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseSpeed: 3
+  AnimationToPlay: isRunning
+  terrainVariant: {fileID: 11400000, guid: a09a8236314bf4f49ae8190456729831, type: 2}
+  gremlinMoving: 0
+  pathStart: {x: 0, y: 0, z: 0}
+  pathEnd: {x: 0, y: 0, z: 0}
+  totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
+  cameraIgnorePath: 0
+  cameraShouldRotate: 1
+  cameraSkipAhead: 0
+  modifiedSpeed: 0
+  activeGremlin: {fileID: 0}
+  timePassed: 0
+  gOffset: {x: 0, y: 0, z: 0}
