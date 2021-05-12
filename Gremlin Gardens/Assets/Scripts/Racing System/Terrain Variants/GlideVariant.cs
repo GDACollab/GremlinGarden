@@ -12,6 +12,6 @@ public class GlideVariant : TerrainVariant
     public override Vector3 positionFunction(float time, TrackModule activeModule)
     {
         //Use speed things to affect the shape of the curve.
-        return new Vector3(time * (1 + activeModule.activeGremlin.gremlin.getStat("Flying")), -Mathf.Pow(time, 2)/(100 * 1/(activeModule.activeGremlin.gremlin.getStat("Flying") + 1)) + 20, 0);
+        return new Vector3(time * Mathf.Log(2 + activeModule.activeGremlin.gremlin.getStat("Flying"), 100), -Mathf.Pow(time, 2)/(100 * 1/Mathf.Log(activeModule.activeGremlin.gremlin.getStat("Flying") + 2, 100)) + 20, 0);
     }
 }
