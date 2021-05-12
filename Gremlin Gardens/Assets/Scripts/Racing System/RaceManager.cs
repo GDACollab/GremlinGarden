@@ -146,7 +146,6 @@ public class RaceManager : MonoBehaviour
         track.trackID = i;
         racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.GremlinOffset;
         track.RacingGremlin = racingGremlins[i];
-        racetracks.Add(racetracks[i]);
     }
 
     /// <summary>
