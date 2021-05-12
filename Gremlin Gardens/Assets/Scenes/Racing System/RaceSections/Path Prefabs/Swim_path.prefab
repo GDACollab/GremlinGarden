@@ -56,7 +56,7 @@ MonoBehaviour:
   optimalOffsetIsFixed: 0
   cameraImmediateCut: 0
   multiplyOffsetByNumTracks: 0
-  cameraIgnorePath: 0
+  cameraIgnorePath: 1
   cameraShouldRotate: 1
   cameraSkipAhead: 0
   modifiedSpeed: 0
