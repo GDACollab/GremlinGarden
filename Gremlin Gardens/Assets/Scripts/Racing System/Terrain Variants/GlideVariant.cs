@@ -18,6 +18,7 @@ public class GlideVariant : TerrainVariant
         if (gremlin != null) {
             flyingStat = gremlin.gremlin.getStat("Flying");
         }
-        return new Vector3(time * Mathf.Log(2 + flyingStat, 100), -Mathf.Pow(time, 2)/(100 * 1/Mathf.Log(flyingStat + 2, 100)) + 20, 0);
+        // We set it so that the gremlin can travel along the x or z axis if it needs to. Will be clamped by EquationTrackModule.
+        return (new Vector3(1, 0, 1) * time * Mathf.Log(2 + flyingStat, 100)) + new Vector3(0, -Mathf.Pow(time, 2)/(100 * 1/Mathf.Log(flyingStat + 2, 100)) + 20, 0);
     }
 }
