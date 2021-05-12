@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3292683411409679055}
   - component: {fileID: 3292683411409679053}
   - component: {fileID: 3292683411409679054}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,8 +108,9 @@ GameObject:
   - component: {fileID: 6631969135685365290}
   - component: {fileID: 6631969135685365289}
   - component: {fileID: -8229290026996975573}
+  - component: {fileID: -5223148985794143022}
   - component: {fileID: -8684290217179133175}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Apple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,6 +218,24 @@ MonoBehaviour:
   shrinkRate: 3.64
   maxStatVal: 0
   pickupDistance: 6
+--- !u!114 &-5223148985794143022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631969135685365288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 0, g: 1, b: 0.004989147, a: 1}
+  outlineWidth: 0
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!82 &-8684290217179133175
 AudioSource:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6914019935463576873}
   - component: {fileID: 6914019935463576879}
   - component: {fileID: 6914019935463576872}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Name Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2032802872142689883}
   - component: {fileID: -5423023813837071074}
   - component: {fileID: -8929593428995302294}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: Dragon Fruit
   m_TagString: Untagged
   m_Icon: {fileID: 0}

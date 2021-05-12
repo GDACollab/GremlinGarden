@@ -14,7 +14,7 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioMixerGroup audioMixerGroup;
 
-    public GameObject uiSounds;
+    public AudioSource[] uiSounds;
     public PlayerMovement player;
     public bool paused = false;
     private bool toggleOptions = false;
@@ -35,11 +35,12 @@ public class SettingsMenu : MonoBehaviour
     public Toggle windowedToggle;
     public Toggle fullscreenToggle;
 
+    public GameObject settingsMenu;
+
     public void Awake()
     {
-        uiSounds = GameObject.Find("UI Sounds");
+        uiSounds = GameObject.Find("UI Sounds").GetComponents<AudioSource>();
         player = GameObject.Find("Player").GetComponent<PlayerMovement>();
-
     }
 
     public void SetVolume(float volume)
@@ -106,36 +107,49 @@ public class SettingsMenu : MonoBehaviour
         if (paused)
         {
             // Pause
-            Time.timeScale = 0;
-            ToggleMovement();
+            PauseGame(true);
             this.transform.GetChild(1).gameObject.SetActive(true);
+            uiSounds[4].Play();
         }
         else
         {
             // Unpause
-            Time.timeScale = 1;
-            ToggleMovement();
+            PauseGame(false);
             this.transform.GetChild(1).gameObject.SetActive(false);
+            uiSounds[3].Play();
         }
 
     }
 
-    public void ToggleMovement()
+    public void PauseGame(bool pause)
+    {
+        if (pause)
+        {
+            Time.timeScale = 0;
+            ToggleMovement(false);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            ToggleMovement(true);
+        }
+    }
+
+    public void ToggleMovement(bool canMove)
     {
         if (player != null)
-        {
             player.enableMovement = !player.enableMovement;
-            if (player.enableMovement)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
-            }
+        if (canMove)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+
     }
 
     public void ToggleOptionsMenu()
@@ -160,15 +174,13 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    public void playButtonConfirm()
     {
-        // Sound Effect
-        uiSounds.GetComponent<AudioSource>().Play();
+        uiSounds[2].Play();
     }
 
-    private void OnDisable()
+    public void playButtonBack()
     {
-        // Sound Effect
-        uiSounds.GetComponent<AudioSource>().Play();
+        uiSounds[5].Play();
     }
 }
