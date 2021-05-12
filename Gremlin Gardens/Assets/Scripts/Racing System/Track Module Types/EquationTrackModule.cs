@@ -24,8 +24,11 @@ public class EquationTrackModule : TrackModule
 
     void Awake()
     {
-        if (worldPosOffset == Vector3.zero) {
-            worldPosOffset = this.transform.position;
+        for (int i = 0; i < 3; i++) {
+            if (worldPosOffset[i] == 0)
+            {
+                worldPosOffset[i] = this.transform.position[i];
+            }
         }
         totalDistance = 0;
         pathStart = terrainVariant.positionFunction(terrainVariant.domain.x, this) + worldPosOffset; //Position Function can now be used for actual positions!
