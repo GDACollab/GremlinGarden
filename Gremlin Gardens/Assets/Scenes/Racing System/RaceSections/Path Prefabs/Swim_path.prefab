@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 3
   AnimationToPlay: isSwimming
-  terrainVariant: {fileID: 11400000, guid: b53bca9aeb535f3448a6b3001dce004b, type: 2}
+  terrainVariant: {fileID: 11400000, guid: b3f367c56ae5c20439cac2673880ad41, type: 2}
   gremlinMoving: 0
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}

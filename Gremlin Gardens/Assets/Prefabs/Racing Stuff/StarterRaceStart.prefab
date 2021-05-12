@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327960, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: actualRaceOffset.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327960, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: startingLineOffset.x
