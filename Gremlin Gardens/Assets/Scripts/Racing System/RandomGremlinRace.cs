@@ -10,16 +10,19 @@ public class RandomGremlinRace : MonoBehaviour
     /// <summary>
     /// Manager to start the race with.
     /// </summary>
+    [Tooltip("Manager to start the race with.")]
     public RaceManager raceManager;
 
     /// <summary>
-    /// The gremlins to populate the race with.
+    /// The gremlin prefab to populate the race with.
     /// </summary>
+    [Tooltip("Gremlins to populate the race with.")]
     public GameObject gremlinObject;
 
     /// <summary>
     /// What to attach to the player's gremlin to differentiate them from the others.
     /// </summary>
+    [Tooltip("What to attach to the player's gremlin to differentiate them.")]
     public GameObject playerIndicator;
 
     string[] GremlinNames = {"Happy", "Grumpy", "Doc", "Sleepy", "Bashful", "Sneezy", "Dopey", "Shrek", "Donkey", "Gremstork", "Dave"};
@@ -27,6 +30,7 @@ public class RandomGremlinRace : MonoBehaviour
     /// <summary>
     /// Number of gremlins to populate the race with.
     /// </summary>
+    [Tooltip("Number of gremlins to populate the race with.")]
     public int gremlinCount = 4;
 
     // Start is called before the first frame update
