@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327960, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: startingLineOffset.z
-      value: 10
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327960, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: flyoverOffset.x
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327963, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.70710576
+      value: -0.7071059
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327963, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: m_LocalRotation.z
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327963, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071079
+      value: 0.7071078
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327963, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: m_RootOrder
@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327963, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8681345594557327963, guid: 5dd3a5480940abe44ad44e3c5ec8d8ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

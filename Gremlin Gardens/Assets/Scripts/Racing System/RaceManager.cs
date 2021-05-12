@@ -202,7 +202,7 @@ public class RaceManager : MonoBehaviour
     /// <param name="activeManager">The TrackManager that called this function.</param>
     private void UpdateResults(TrackManager activeManager) { //A race has ended, so add it to the results.
         raceTimes[activeManager.trackID] = timeElapsed;
-        activeManager.RacingGremlin.GetComponent<Animator>().Play("Victory"); //Play the Victory Dance!
+        //activeManager.RacingGremlin.GetComponentInChildren<Animator>().Play("Victory"); //Play the Victory Dance!
         var raceIsDone = true;
         for (int i = 0; i < raceTimes.Length; i++) {
             if (!(raceTimes[i] > 0)) {

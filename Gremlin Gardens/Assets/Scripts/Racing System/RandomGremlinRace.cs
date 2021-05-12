@@ -66,6 +66,7 @@ public class RandomGremlinRace : MonoBehaviour
                     gremlinToLoad.gremlin = new Gremlin("My Spoon is Too Big.");
                     gremlinToLoad.gremlinName = "My Spoon is Too Big.";
                     gremlinToLoad.InitializeGremlin();
+                    GenerateStats(gremlinToLoad.gremlin);
                 }
                 // Instead of making a random gremlin, load the player gremlin.
                 gremlin = Instantiate(gremlinObject);
