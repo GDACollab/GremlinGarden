@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseSpeed: 3
   AnimationToPlay: isClimbing
-  terrainVariant: {fileID: 11400000, guid: 71a9d79b29d9f1a449a26176f6b64689, type: 2}
+  terrainVariant: {fileID: 11400000, guid: 6c7ff2ededbe47b4e9ac120d4877883f, type: 2}
   gremlinMoving: 0
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}

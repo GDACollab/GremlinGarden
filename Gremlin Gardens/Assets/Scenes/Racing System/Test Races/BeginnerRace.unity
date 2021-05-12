@@ -19794,11 +19794,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1782050189082712871, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: gremlinBounds.x
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1782050189082712871, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: gremlinBounds.z
-      value: 1
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782050189082712871, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
+      propertyPath: gremlinBounds.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: gremlinObject

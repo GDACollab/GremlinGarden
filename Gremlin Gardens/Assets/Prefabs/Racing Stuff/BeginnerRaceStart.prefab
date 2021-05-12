@@ -21,19 +21,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3089288462010290644, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3089288462010290644, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.7071059
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3089288462010290644, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3089288462010290644, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071078
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 3089288462010290644, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
       propertyPath: m_RootOrder
@@ -45,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3089288462010290644, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3089288462010290644, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -62,6 +62,18 @@ PrefabInstance:
     - target: {fileID: 3089288462010290647, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
       propertyPath: flyoverOffset.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089288462010290647, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
+      propertyPath: startingLineOffset.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089288462010290647, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
+      propertyPath: startingLineOffset.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089288462010290647, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
+      propertyPath: startingLineOffset.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ef6677b5dc155e4aa7e128c6f5c15a7, type: 3}
