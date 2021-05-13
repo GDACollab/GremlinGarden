@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue
+  m_Name: GremlinShader
   m_Shader: {fileID: 4800000, guid: 3bd585348663b254e8173cb6b3fbb73a, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: a55369d4630d98249b6b96faf1b5a9d2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -61,14 +61,14 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 31.77
+    - _Glossiness: 23.6
     - _GlossyReflections: 1
     - _Metallic: 0.15
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimAmount: 0.67
-    - _RimThreshold: 0.29
+    - _RimThreshold: 0.24
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -76,8 +76,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AmbientColor: {r: 0.4809096, g: 0.6955871, b: 0.9528302, a: 1}
-    - _Color: {r: 0.5165094, g: 0.5683455, b: 0.6886792, a: 1}
+    - _Color: {r: 0.29214135, g: 0.6132076, b: 0.31579885, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 0.13397168, g: 0.13397168, b: 0.13397168, a: 1}
   m_BuildTextureStacks: []

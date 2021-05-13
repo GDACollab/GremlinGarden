@@ -15,6 +15,7 @@ public class FruitPickup : MonoBehaviour
     private float distanceFromPlayer; //distance (in meters?) from player to fruit
     private bool onFruit; //is mouse currently over the fruit
     private bool beingEaten = false; //true if a gremlin is eating the fruit
+    private bool isEating = false; //true if the gremlin is currently eating, used for the animator
     private bool beingCarried = false;
     private Transform CarriedFruit;  //transform in front of player where fruit stays
     private Transform CarriedGremlin;
@@ -80,10 +81,13 @@ public class FruitPickup : MonoBehaviour
             //shrink food object     
             Vector3 scaleChange = new Vector3(shrinkRate, shrinkRate, shrinkRate);
             this.gameObject.transform.localScale -= scaleChange * Time.deltaTime;
+            Debug.Log("shrinking fruit");
+            Debug.Log(this.transform.localScale);
 
             //delete object after it shrinks
-            if (this.gameObject.transform.localScale.y < 0.0005f)
+            if (this.transform.localScale.y < 0.0005f)
             {
+                Debug.Log("made it here");
                 //set stats
                 maxStatVal = gremlin.maxStatVal;
                 string stat = determineStat(fruit.foodName);
@@ -94,6 +98,7 @@ public class FruitPickup : MonoBehaviour
 
                 //done eating, destroy game object and re-enable ai
                 Destroy(gameObject);
+                Debug.Log("Fruit deleted");
                 gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
             }
         }
@@ -110,16 +115,22 @@ public class FruitPickup : MonoBehaviour
             //get reference to gremlin holding the food
             gremlinGameObj = other;
             //position the food
-            Transform newParent = other.transform.GetChild(1).transform;
+            Transform newParent = other.GetComponent<GremlinHand>().hand.transform;
+            //Transform newParent = other.transform.GetChild(1).transform;
+
             this.transform.position = newParent.position;
+            Debug.Log(this.transform.localScale);
+            //this.transform.localScale = Vector3.Scale(this.transform.localScale, new Vector3(10, 10, 10)); //TODO: temp fix for blender ecport issue
             this.transform.parent = newParent;
             //get reference to Gremlin script
             gremlin = other.GetComponent<GremlinObject>().gremlin;
             beingCarried = false;
             beingEaten = true;
-            //disable ai and play eating sound
+            //disable ai and collision box (collision was causing gremlins to slide around), play eating sound, and play eating animation
+            GetComponent<BoxCollider>().enabled = false;
             other.GetComponent<GremlinAI>().enabled = false;
             other.GetComponentInChildren<GremlinAudioController>().PlayEat();
+            other.transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger("isEating");
         }
     }
 

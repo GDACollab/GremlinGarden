@@ -8,6 +8,7 @@ public class GremlinAI : MonoBehaviour
     private float elapsedTime = 0f; //time since started walk
     private float wait = 0f; //wait this much time
     private float waitTime = 0f; //waited this much time
+    private bool isMoving = false; //flage to check if the gremlin is already moving, used for the animator
 
     public Vector3 movementDirection;
 
@@ -28,6 +29,13 @@ public class GremlinAI : MonoBehaviour
     {
         if (elapsedTime < duration && move)
         {
+            //Set the gremlin animation to running
+            if(!isMoving)
+            {
+                transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger("isRunning");
+                isMoving = true;
+            }
+
             //move in given direction for duration
             transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movementDirection), Time.deltaTime * 10f);
@@ -35,6 +43,10 @@ public class GremlinAI : MonoBehaviour
         }
         else if (elapsedTime >= duration)
         {
+            //Set the gremlin animation to idle
+            transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger("isIdle");
+            isMoving = false;
+
             //stop moving and wait
             elapsedTime = 0f;
             move = false;

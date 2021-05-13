@@ -46,6 +46,7 @@ public class GremlinInteraction : MonoBehaviour
     private float cuddleCooldownTimer = 0.0f; //timer for pet cooldown
     private float happinessDecayTimer = 0.0f;
     private bool enableStatMenu = false;
+    private bool idleEntered = false; //flag to check if the idle state has been entered, used with the animator
 
 
     private Rigidbody rb;
@@ -106,6 +107,14 @@ public class GremlinInteraction : MonoBehaviour
             IsCentered();
         else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew)
             IsExited();
+
+        if(beingCarried && !idleEntered) //switch the gremlin to idle if it is picked up
+        {
+            transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger("isIdle");
+            idleEntered = true;
+        }
+        if(!beingCarried) //switching the flag back if we put the gremlin down
+            idleEntered = false;
 
         //interactions when carrying gremlin
         if (beingCarried && !beingCuddled)
