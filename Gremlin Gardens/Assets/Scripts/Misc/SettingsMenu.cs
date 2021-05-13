@@ -36,7 +36,7 @@ public class SettingsMenu : MonoBehaviour
     public Toggle fullscreenToggle;
 
     public GameObject settingsMenu;
-    public bool temp = false;
+    public GameObject Canvas;
 
     public void Awake()
     {
@@ -103,12 +103,17 @@ public class SettingsMenu : MonoBehaviour
 
         // Show or hide the menu
         gameObject.SetActive(paused);
+        GameObject gremlinNamer = null;
+        if(Canvas.transform.Find("Gremlin Namer(Clone)") != null)
+            gremlinNamer = Canvas.transform.Find("Gremlin Namer(Clone)").gameObject;
 
         // Pause/Unpause physics
         if (paused)
         {
             // Pause
             PauseGame(true);
+            if(gremlinNamer != null)
+                gremlinNamer.SetActive(false);
             this.transform.GetChild(1).gameObject.SetActive(true);
             uiSounds[4].Play();
         }
@@ -116,6 +121,11 @@ public class SettingsMenu : MonoBehaviour
         {
             // Unpause
             PauseGame(false);
+            if(gremlinNamer != null){
+                gremlinNamer.SetActive(true);
+                ToggleMovement(false);
+            }
+                
             this.transform.GetChild(1).gameObject.SetActive(false);
             uiSounds[3].Play();
         }
@@ -139,7 +149,7 @@ public class SettingsMenu : MonoBehaviour
     public void ToggleMovement(bool canMove)
     {
         if (player != null)
-            player.enableMovement = !player.enableMovement;
+            player.enableMovement = canMove;
         if (canMove)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -147,7 +157,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
 
