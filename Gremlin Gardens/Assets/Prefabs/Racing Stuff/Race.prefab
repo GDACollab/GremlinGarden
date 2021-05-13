@@ -400,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1782050191020346483}
   - component: {fileID: 1782050191020346484}
+  - component: {fileID: 7932636434618135389}
   m_Layer: 0
   m_Name: RaceManager
   m_TagString: Untagged
@@ -447,6 +448,20 @@ MonoBehaviour:
   settings: {fileID: 6221186563017164387}
   gremlinPlayerIndex: 0
   cameraIsFixed: 0
+--- !u!114 &7932636434618135389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782050191020346482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3041a044335dc1419c2da7df58806a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settingsMenu: {fileID: 6221186563017164387}
+  paused: 0
 --- !u!1 &8685084108162052622
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,37 +684,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsMenu
       objectReference: {fileID: 0}
-    - target: {fileID: 3100836095548622349, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 2489657751822423480, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3100836095548622349, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.4994995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3100836095548622349, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3452189681234994883, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5578080160256811077, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5833333
       objectReference: {fileID: 0}
     - target: {fileID: 5578080160256811077, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5681766166632952810, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 5681766166632952810, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.4994995
       objectReference: {fileID: 0}
     - target: {fileID: 5681766166632952810, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6063162886216364076, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -715,15 +734,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6446266294945679596, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.5833333
       objectReference: {fileID: 0}
     - target: {fileID: 6446266294945679596, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5833333
       objectReference: {fileID: 0}
     - target: {fileID: 6446266294945679596, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7745168801823617269, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
