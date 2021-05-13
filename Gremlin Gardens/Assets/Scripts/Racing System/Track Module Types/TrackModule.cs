@@ -9,6 +9,10 @@ using PathCreation;
 /// </summary>
 public class TrackModule : MonoBehaviour
 {
+    // TODO: Reverse indexing option? I can't believe I've never realized this before.
+    // Basically, the problem is that sometimes the PathCreator will sometimes put the gremlins in reverse of how the designer intends the path to be layed out.
+    // If I ever have to fix a problem like this again, just make an option in TrackModule to reverse the index it has for the path, or something like that.
+
     /// <summary>
     /// How fast the Gremlin moves in units per frame. Does NOT affect animation speed (see TerrainVariant instead).
     /// </summary>
@@ -110,8 +114,8 @@ public class TrackModule : MonoBehaviour
     {
         totalDistance = 0;
         internalCreator = GetComponent<PathCreator>();
-        pathStart = internalCreator.path.GetPoint(0); //This does not work, because bezier paths are dumb.
-        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1); //This does not work, because bezier paths are dumb.
+        pathStart = internalCreator.path.GetPoint(0);
+        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1);
     }
 
     /// <summary>

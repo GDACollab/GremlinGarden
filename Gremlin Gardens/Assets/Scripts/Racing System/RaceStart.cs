@@ -41,11 +41,11 @@ public class RaceStart : MonoBehaviour
         manager = raceManager;
         racingCamera = raceManager.racingCamera;
         racingCamera.cameraOffset = flyoverOffset;
-        racingCamera.transform.position = manager.racetracks[Mathf.RoundToInt(manager.racetracks.Count / 2)].transform.GetChild(0).GetComponent<TrackModule>().pathStart + flyoverOffset;
+        racingCamera.transform.position = manager.racetracks[Mathf.RoundToInt(manager.racetracks.Count / 2) - 1].transform.GetChild(0).GetComponent<TrackModule>().pathStart + flyoverOffset;
     }
 
     public virtual void OnFadeoutComplete() {
-        racingCamera.SetFlyover(manager.racetracks[Mathf.RoundToInt(manager.racetracks.Count / 2)].GetComponent<TrackManager>(), 1, true, FlyoverDone);
+        racingCamera.SetFlyover(manager.racetracks[Mathf.RoundToInt(manager.racetracks.Count / 2) - 1].GetComponent<TrackManager>(), 1, true, FlyoverDone);
     }
 
     //Could I have made all these callbacks easier to do than just making a function for each one? Sure. But whatever, it works.

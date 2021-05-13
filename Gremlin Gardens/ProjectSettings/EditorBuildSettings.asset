@@ -9,15 +9,27 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 5bc126b880116ea4ea2c833074fa1897
   - enabled: 1
-    path: Assets/Scenes/Racing System/Actual Races/SampleRace.unity
-    guid: c482dc464c7fb314491b631c4fc3aff8
-  - enabled: 1
-    path: Assets/Scenes/Racing System/Actual Races/Race One.unity
-    guid: 5983fce35b0ba194fad333156ae68182
-  - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: f17977274174171479a63508700221d7
   - enabled: 1
     path: Assets/Scenes/Hub World.unity
     guid: f29af05d375df43b685ce1141d9a58a3
+  - enabled: 1
+    path: Assets/Scenes/Racing System/Test Races/BeginnerRace.unity
+    guid: 100f009437190d74fb74a4a756b94994
+  - enabled: 1
+    path: Assets/Scenes/Racing System/Test Races/ExpertRace.unity
+    guid: d819a1750931b8e4f85abb2d5aa649fb
+  - enabled: 1
+    path: Assets/Scenes/Racing System/Test Races/IntermediateRace.unity
+    guid: cb85f0af04ccc4b4480ef4590b0fcdb7
+  - enabled: 1
+    path: Assets/Scenes/Racing System/Test Races/StarterRace.unity
+    guid: 8b006b7bd0628754a965d7a5e8a01ee6
+  - enabled: 0
+    path: Assets/Scenes/Racing System/Demo Races/Race One.unity
+    guid: 5983fce35b0ba194fad333156ae68182
+  - enabled: 0
+    path: Assets/Scenes/Racing System/Demo Races/SampleRace.unity
+    guid: c482dc464c7fb314491b631c4fc3aff8
   m_configObjects: {}

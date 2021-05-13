@@ -10,6 +10,6 @@ public class AccelerateVariant : TerrainVariant
     public float scale = 2.0f;
     public override float relativeSpeed(GremlinObject gremlin, TrackModule activeModule) //relativeSpeed serves as dPos/dt, so I created a velocity curve.
     {
-        return Mathf.Abs(-scale * Mathf.Pow(activeModule.timePassed - Mathf.Pow((speedModifier + (gremlin.gremlin.getStat("Running") + 1)), 1/exponent), exponent) + ((speedModifier + (gremlin.gremlin.getStat("Running") + 1)) * scale));
+        return Mathf.Abs(-scale * Mathf.Pow(activeModule.timePassed - Mathf.Pow(Mathf.Log(speedModifier + (gremlin.gremlin.getStat("Running") + 2), 100), 1/exponent), exponent) + ((speedModifier + (gremlin.gremlin.getStat("Running") + 1)) * scale));
     }
 }

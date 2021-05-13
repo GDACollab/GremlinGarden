@@ -49,9 +49,9 @@ public class RaceManager : MonoBehaviour
     public Vector3 placementOffsetDimension = Vector3.left;
 
     /// <summary>
-    /// The current list of racetracks being run.
+    /// The current list of racetracks being run. Set this ahead of time to use pre-made racetracks.
     /// </summary>
-    [HideInInspector]
+    [Header("The current list of racetracks being run. Set this ahead of time to use pre-made racetracks.")]
     public List<GameObject> racetracks;
 
     /// <summary>
@@ -108,6 +108,47 @@ public class RaceManager : MonoBehaviour
     }
 
     /// <summary>
+    /// Called by TrackSetup to create a new track, instead of using a pre-existing one.
+    /// </summary>
+    /// <param name="i">The current index in racingGremlins.</param>
+    /// <param name="racingGremlins">The gremlins we're currently using to race.</param>
+    /// <param name="playerIndex">The index of the player gremlin.</param>
+    private void CreateTrack(int i, List<GameObject> racingGremlins, int playerIndex) {
+        TrackManager track;
+        GameObject trackObj;
+        if (i == playerIndex)
+        {
+            trackObj = Instantiate(playerTrack, placementOffset * placementOffsetDimension, playerTrack.transform.rotation, this.transform); //We set the transform on instantiation, otherwise we get the wrong value for .pathStart.
+            track = trackObj.GetComponent<TrackManager>();
+            track.ActiveUI = ActiveUI;
+        }
+        else
+        {
+            trackObj = Instantiate(aiTrack, placementOffset * placementOffsetDimension, aiTrack.transform.rotation, this.transform);
+            track = trackObj.GetComponent<TrackManager>();
+        }
+        trackIndices[i] = i;
+        track.trackID = i;
+        track.transform.position = placementOffset * placementOffsetDimension;
+        //Set the Gremlin's position to be the new track's earliest position so we can update the camera.
+        racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.GremlinOffset;
+        placementOffset += track.GetComponent<TrackManager>().trackWidth;
+        track.RacingGremlin = racingGremlins[i];
+        racetracks.Add(trackObj);
+    }
+
+    private void PlaceGremlin(int i, List<GameObject> racingGremlins, int playerIndex) {
+        TrackManager track = racetracks[i].GetComponent<TrackManager>();
+        if (i == playerIndex) {
+            track.ActiveUI = ActiveUI;
+        }
+        trackIndices[i] = i;
+        track.trackID = i;
+        racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.GremlinOffset;
+        track.RacingGremlin = racingGremlins[i];
+    }
+
+    /// <summary>
     /// Gets the track ready for racing. StartTracks() is called by raceStartObject.
     /// </summary>
     /// <param name="racingGremlins">The list of gremlin objects to use in the race. Assigns them a track based on their order. Assumes that the Gremlins in the list already exist as objects in the game world.</param>
@@ -115,6 +156,7 @@ public class RaceManager : MonoBehaviour
     public void TrackSetup(List<GameObject> racingGremlins, int playerIndex) {
         raceTimes = new float[racingGremlins.Count];
         trackIndices = new int[racingGremlins.Count];
+        bool isPremade = (racetracks.Count > 0);
         if (playerIndex == 0)
         {
             placementOffset = playerTrack.GetComponent<TrackManager>().trackWidth;
@@ -123,25 +165,13 @@ public class RaceManager : MonoBehaviour
             placementOffset = aiTrack.GetComponent<TrackManager>().trackWidth;
         }
         for (int i = 0; i < racingGremlins.Count; i++) {
-            GameObject track;
             //Disable Gremlin Rigidbodies so nothing weird happens.
             racingGremlins[i].GetComponent<Rigidbody>().isKinematic = true;
-            if (i == playerIndex)
-            {
-                track = Instantiate(playerTrack, placementOffset * placementOffsetDimension, playerTrack.transform.rotation, this.transform); //We set the transform on instantiation, otherwise we get the wrong value for .pathStart.
-                track.GetComponent<TrackManager>().ActiveUI = ActiveUI;
+            if (isPremade) {
+                PlaceGremlin(i, racingGremlins, playerIndex);
+            } else {
+                CreateTrack(i, racingGremlins, playerIndex);
             }
-            else {
-                track = Instantiate(aiTrack, placementOffset * placementOffsetDimension, aiTrack.transform.rotation, this.transform);
-            }
-            trackIndices[i] = i;
-            track.GetComponent<TrackManager>().trackID = i;
-            track.transform.position = placementOffset * placementOffsetDimension;
-            //Set the Gremlin's position to be the new track's earliest position so we can update the camera.
-            racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.GetComponent<TrackManager>().GremlinOffset;
-            placementOffset += track.GetComponent<TrackManager>().trackWidth;
-            track.GetComponent<TrackManager>().RacingGremlin = racingGremlins[i];
-            racetracks.Add(track);
         }
         gremlinPlayerIndex = playerIndex;
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
@@ -172,7 +202,7 @@ public class RaceManager : MonoBehaviour
     /// <param name="activeManager">The TrackManager that called this function.</param>
     private void UpdateResults(TrackManager activeManager) { //A race has ended, so add it to the results.
         raceTimes[activeManager.trackID] = timeElapsed;
-        activeManager.RacingGremlin.GetComponent<Animator>().Play("Victory"); //Play the Victory Dance!
+        //activeManager.RacingGremlin.GetComponentInChildren<Animator>().Play("Victory"); //Play the Victory Dance!
         var raceIsDone = true;
         for (int i = 0; i < raceTimes.Length; i++) {
             if (!(raceTimes[i] > 0)) {
@@ -222,6 +252,9 @@ public class RaceManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Called when the camera is done moving from an angle set up by a track piece.
+    /// </summary>
     private void newVantageCallback() { //Disable camera movement if the camera is fixed, but still allow us to look at the Gremlin.
         racingCamera.SetGremlinFocus(racingCamera.gremlinFocus, racingCamera.gremlinTrack, false);
         racingCamera.enableMovement = !cameraIsFixed;
