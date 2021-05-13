@@ -19807,7 +19807,7 @@ PrefabInstance:
     - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: gremlinObject
       value: 
-      objectReference: {fileID: 2469493495100546389, guid: 00d45d72ad496604b868340e9b2cc452, type: 3}
+      objectReference: {fileID: 5497726379860427165, guid: 00d45d72ad496604b868340e9b2cc452, type: 3}
     - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: gremlinCount
       value: 8

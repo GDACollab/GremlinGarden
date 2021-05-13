@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GremlinAudioController : MonoBehaviour
 {
-    private PauseController pauseController;
+    public PauseController pauseController;
     private AudioSource[] sounds;
 
     public int chanceToPlay = 100;

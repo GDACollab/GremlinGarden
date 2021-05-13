@@ -78,7 +78,7 @@ public class RandomGremlinRace : MonoBehaviour
                 gremlin = Instantiate(gremlinObject);
                 Gremlin gremlinClass = gremlin.GetComponent<GremlinObject>().gremlin;
                 GenerateStats(gremlinClass);
-                gremlin.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)));
+                gremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0f, 1f, .6f, .8f, .5f, .7f));
                 gremlin.name = GremlinNames[Random.Range(0, GremlinNames.Length)];
                 gremlin.GetComponent<GremlinObject>().gremlinName = gremlin.name;
                 
