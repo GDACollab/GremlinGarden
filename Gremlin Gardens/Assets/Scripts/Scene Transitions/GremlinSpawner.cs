@@ -69,6 +69,7 @@ public class GremlinSpawner : MonoBehaviour
         }
         var name = Instantiate(gremlinNamingPrefab, UI.transform);
         name.GetComponent<GremlinNamer>().BeginScanningInput(GetGremlinName, ValidateGremlinName);
+        newGremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0f, 1f, .6f, .8f, .5f, .7f));
     }
 
     bool ValidateGremlinName(string text) {
