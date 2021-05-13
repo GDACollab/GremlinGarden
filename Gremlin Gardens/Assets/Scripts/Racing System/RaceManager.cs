@@ -147,6 +147,7 @@ public class RaceManager : MonoBehaviour
         trackIndices[i] = i;
         track.trackID = i;
         racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.GremlinOffset;
+        racingGremlins[i].transform.rotation = Quaternion.LookRotation(track.transform.GetChild(0).GetComponent<TrackModule>().pathEnd - racingGremlins[i].transform.position, Vector3.up);
         track.RacingGremlin = racingGremlins[i];
     }
 

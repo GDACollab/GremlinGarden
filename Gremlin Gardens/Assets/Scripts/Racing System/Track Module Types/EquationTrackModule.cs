@@ -62,6 +62,8 @@ public class EquationTrackModule : TrackModule
                     position[i] = position[i] * clampVector[i];
                 }
                 activeGremlin.transform.position = position + gOffset + worldPosOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
+                Vector3 nextPos = terrainVariant.positionFunction(totalDistance + 0.01f, this);
+                activeGremlin.transform.rotation = Quaternion.LookRotation(new Vector3(nextPos.x, activeGremlin.transform.position.y, nextPos.z) - activeGremlin.transform.position, Vector3.up);
                 timePassed += Time.deltaTime;
             }
         }
