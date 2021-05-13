@@ -121,6 +121,7 @@ public class RaceManager : MonoBehaviour
             trackObj = Instantiate(playerTrack, placementOffset * placementOffsetDimension, playerTrack.transform.rotation, this.transform); //We set the transform on instantiation, otherwise we get the wrong value for .pathStart.
             track = trackObj.GetComponent<TrackManager>();
             track.ActiveUI = ActiveUI;
+            track.isPlayerTrack = true;
         }
         else
         {
@@ -141,6 +142,7 @@ public class RaceManager : MonoBehaviour
         TrackManager track = racetracks[i].GetComponent<TrackManager>();
         if (i == playerIndex) {
             track.ActiveUI = ActiveUI;
+            track.isPlayerTrack = true;
         }
         trackIndices[i] = i;
         track.trackID = i;

@@ -152,7 +152,7 @@ public class TrackModule : MonoBehaviour
         timePassed = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
-        if (terrainVariant.QTEButton != null) {
+        if (terrainVariant.QTEButton != null && this.GetComponentInParent<TrackManager>().isPlayerTrack) {
             qteObject = Instantiate(terrainVariant.QTEButton, UI.transform);
             qteObject.GetComponent<QTEScript>().SetActiveModule(this);
         }

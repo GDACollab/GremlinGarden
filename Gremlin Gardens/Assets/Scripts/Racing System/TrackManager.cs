@@ -37,6 +37,12 @@ public class TrackManager : MonoBehaviour
     [HideInInspector]
     public int currentChild;
 
+    /// <summary>
+    /// If the current track is for the player's gremlin. Used for creating QTEs by TrackModule. Set by RaceManager.
+    /// </summary>
+    [HideInInspector]
+    public bool isPlayerTrack = false;
+
     public delegate void Callback(TrackManager activeManager);
     /// <summary>
     /// A callback called at the end of the race. Will pass this current TrackManager in case you need to know anything from the TrackManager.

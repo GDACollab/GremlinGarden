@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: FastMotion
   m_EditorClassIdentifier: 
   speedModifier: 2
-  QTEButton: {fileID: 0}
+  QTEButton: {fileID: 8428923638346549690, guid: b60f65c6d10f7ec42b91d41086b2d253, type: 3}
