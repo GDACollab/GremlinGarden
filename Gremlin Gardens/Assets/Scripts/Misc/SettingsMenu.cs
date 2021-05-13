@@ -36,6 +36,7 @@ public class SettingsMenu : MonoBehaviour
     public Toggle fullscreenToggle;
 
     public GameObject settingsMenu;
+    public bool temp = false;
 
     public void Awake()
     {
@@ -146,7 +147,7 @@ public class SettingsMenu : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
 
@@ -162,7 +163,7 @@ public class SettingsMenu : MonoBehaviour
     public void ToggleScreenMode()
     {
         Screen.fullScreen = !Screen.fullScreen;
-        if (Screen.fullScreen)
+        if (!Screen.fullScreen)
         {
             windowedToggle.isOn = false;
             fullscreenToggle.isOn = true;
@@ -172,6 +173,11 @@ public class SettingsMenu : MonoBehaviour
             windowedToggle.isOn = true;
             fullscreenToggle.isOn = false;
         }
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     public void playButtonConfirm()

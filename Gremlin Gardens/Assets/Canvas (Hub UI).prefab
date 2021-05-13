@@ -2841,6 +2841,70 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 3100836095548622349, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3100836095548622349, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578080160256811077, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5578080160256811077, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681766166632952810, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681766166632952810, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5681766166632952810, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6063162886216364076, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6063162886216364076, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_IsOn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6063162886216364076, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleFullScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446266294945679596, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446266294945679596, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6446266294945679596, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745168801823617269, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745168801823617269, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleWidowed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7745168801823617269, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_IsOn
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
 --- !u!224 &6805449246367516833 stripped

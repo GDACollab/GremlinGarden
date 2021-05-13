@@ -1429,7 +1429,6 @@ MonoBehaviour:
   beingPet: 0
   beingCarried: 0
   gremlin: {fileID: 0}
-  nameText: {fileID: 3654205498376032974}
 --- !u!114 &8216487242387156281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1445,6 +1444,7 @@ MonoBehaviour:
   gremlin: {fileID: 0}
   gremlinName: 
   currentPosition: {x: 0, y: 0, z: 0}
+  nameText: {fileID: 3654205498376032974}
 --- !u!54 &6143168594490065376
 Rigidbody:
   m_ObjectHideFlags: 0

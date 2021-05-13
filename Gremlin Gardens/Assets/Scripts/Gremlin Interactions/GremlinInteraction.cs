@@ -50,14 +50,7 @@ public class GremlinInteraction : MonoBehaviour
 
 
     private Rigidbody rb;
-    public Gremlin gremlin;
-
-    [Header("Aesthetic Stuff")]
-    /// <summary>
-    /// The text the gremlin is displaying.
-    /// </summary>
-    [Tooltip("The text object for the gremlin to display.")]
-    public TMP_Text nameText;
+    public Gremlin gremlin;    
 
     public void Start()
     {
@@ -96,9 +89,6 @@ public class GremlinInteraction : MonoBehaviour
 
     public void Update()
     {
-        // Set the name text to face the player.
-        nameText.transform.rotation = Quaternion.LookRotation(this.transform.position - player.transform.position, player.transform.up);
-
         //distance between particular Gremlin and the player
         distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
 

@@ -39,7 +39,16 @@ public class Gremlin : Object
      */
     public string getName()
     {
+        Debug.Log(gremlinName);
         return gremlinName;
+    }
+
+    /*
+    * Sets gremlinName to a new value
+    */
+    public void setName(string newName)
+    {
+        gremlinName = newName;
     }
 
     /*

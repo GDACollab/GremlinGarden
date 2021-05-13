@@ -26,8 +26,6 @@ public class FruitPickup : MonoBehaviour
     private AudioSource pickUpSound;
 
 
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -81,13 +79,10 @@ public class FruitPickup : MonoBehaviour
             //shrink food object     
             Vector3 scaleChange = new Vector3(shrinkRate, shrinkRate, shrinkRate);
             this.gameObject.transform.localScale -= scaleChange * Time.deltaTime;
-            Debug.Log("shrinking fruit");
-            Debug.Log(this.transform.localScale);
 
             //delete object after it shrinks
             if (this.transform.localScale.y < 0.0005f)
             {
-                Debug.Log("made it here");
                 //set stats
                 maxStatVal = gremlin.maxStatVal;
                 string stat = determineStat(fruit.foodName);
@@ -98,11 +93,10 @@ public class FruitPickup : MonoBehaviour
 
                 //done eating, destroy game object and re-enable ai
                 Destroy(gameObject);
-                Debug.Log("Fruit deleted");
                 gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
             }
         }
-
+            
         //distance between particular fruit and the player
         distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
     }
