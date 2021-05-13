@@ -270,6 +270,7 @@ public class RacingCamera : MonoBehaviour
         { //The logic for doing a flyover.
             PathCreation.PathCreator flyoverPath = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>();
             int skipAhead = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead;
+            Vector3 previousPosition = this.transform.position; // Used for rotation.
             if (cameraTrackDirection == 1 && cameraTrackProgress >= flyoverPath.path.length) //This if/else if is just to move along the path if we're doing one direction or the other.
             {
                 if (skipAhead > 0)
@@ -344,18 +345,19 @@ public class RacingCamera : MonoBehaviour
                         cameraTrackProgress += cameraFlySpeed;
                     }
                 }
-                if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate)
+                // We make sure we don't rotate if it's not necessary. So if the track allows for rotation, and we've spent a little time on the track, then we can rotate.
+                if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate && cameraTrackProgress > 0.5f)
                 { //Just for updating rotation.
                     Vector3 newRotation = Vector3.zero;
                     if (cameraTrackDirection == 1)
                     {
-                        newRotation = nextPos - newPos;
+                        newRotation = this.transform.position - previousPosition;
                     }
                     else if (cameraTrackDirection == -1)
                     {
-                        newRotation = newPos - nextPos;
+                        newRotation = this.transform.position - previousPosition;
                     }
-                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), cameraFlySpeed * 0.5f);
                 }
             }
         }
