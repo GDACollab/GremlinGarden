@@ -9453,6 +9453,7 @@ MonoBehaviour:
   isPlayerTrack: 0
   trackWidth: 0
   trackID: 0
+  settings: {fileID: 0}
 --- !u!1001 &346557336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10658,6 +10659,7 @@ MonoBehaviour:
   isPlayerTrack: 0
   trackWidth: 0
   trackID: 0
+  settings: {fileID: 0}
 --- !u!4 &401522494 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2551177780044146359, guid: 9a8a7d0f69bc1fc428bbc825b3dde580, type: 3}
@@ -24878,6 +24880,7 @@ MonoBehaviour:
   isPlayerTrack: 0
   trackWidth: 0
   trackID: 0
+  settings: {fileID: 0}
 --- !u!4 &820598804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3487749227324009402, guid: 13f6b80a022f9d54dac51339083bea7b, type: 3}
@@ -37284,6 +37287,7 @@ MonoBehaviour:
   isPlayerTrack: 0
   trackWidth: 0
   trackID: 0
+  settings: {fileID: 0}
 --- !u!43 &1140885241
 Mesh:
   m_ObjectHideFlags: 0
@@ -44402,6 +44406,7 @@ MonoBehaviour:
   isPlayerTrack: 0
   trackWidth: 0
   trackID: 0
+  settings: {fileID: 0}
 --- !u!1001 &1373932633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48300,6 +48305,7 @@ MonoBehaviour:
   isPlayerTrack: 0
   trackWidth: 0
   trackID: 0
+  settings: {fileID: 0}
 --- !u!1001 &1485677505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59915,6 +59921,7 @@ MonoBehaviour:
   isPlayerTrack: 0
   trackWidth: 0
   trackID: 0
+  settings: {fileID: 0}
 --- !u!1001 &1897856423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65205,6 +65212,7 @@ MonoBehaviour:
   isPlayerTrack: 0
   trackWidth: 0
   trackID: 0
+  settings: {fileID: 0}
 --- !u!43 &2060055732
 Mesh:
   m_ObjectHideFlags: 0

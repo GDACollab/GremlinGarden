@@ -56,6 +56,8 @@ public class RacingCamera : MonoBehaviour
     [HideInInspector]
     public TrackManager gremlinTrack = null;
 
+    public SettingsMenu settings;
+
 
     /// <summary>
     /// Sets the gremlin the camera is currently tracking. Please do not use multiple SetX() functions at once, it will break the camera.
@@ -241,6 +243,11 @@ public class RacingCamera : MonoBehaviour
 
     void Update()
     {
+        if (!settings.paused) {
+            UpdateCamera();
+        }
+    }
+    private void UpdateCamera() {
         if (cameraMode == "racing")
         {
             if (enableMovement)
@@ -320,8 +327,8 @@ public class RacingCamera : MonoBehaviour
                     Vector3 start = flyoverPath.path.GetPointAtDistance(0);
                     Vector3 end = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop);
                     Vector3 followLine = end - start;
-                    newPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress/Vector3.Distance(start, end)));
-                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed/flyoverPath.path.length));
+                    newPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress / Vector3.Distance(start, end)));
+                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed / flyoverPath.path.length));
                 }
                 if (isSkipping)
                 { //Okay, but have we skipped over some modules? If so, start slowly moving over to the next available module.
@@ -377,14 +384,16 @@ public class RacingCamera : MonoBehaviour
                 cameraStuffFinishedCallback();
             }
         }
-        else if (cameraMode == "tween") {
-            var percent = tweenCurve.Evaluate(tweenElapsed/tweenDuration);
+        else if (cameraMode == "tween")
+        {
+            var percent = tweenCurve.Evaluate(tweenElapsed / tweenDuration);
             this.transform.position = oldPos + ((targetPos - oldPos) * percent);
             this.transform.rotation = Quaternion.Euler(oldRot + ((targetRot - oldRot) * percent));
-            if (tweenElapsed >= tweenDuration) {
+            if (tweenElapsed >= tweenDuration)
+            {
                 cameraMode = "none";
                 cameraStuffFinishedCallback();
-            } 
+            }
             tweenElapsed += Time.deltaTime;
         }
     }

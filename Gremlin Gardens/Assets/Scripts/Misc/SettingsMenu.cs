@@ -41,7 +41,10 @@ public class SettingsMenu : MonoBehaviour
     public void Awake()
     {
         uiSounds = GameObject.Find("UI Sounds").GetComponents<AudioSource>();
-        player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        if (GameObject.Find("Player")) // This is so it doesn't break races.
+        {
+            player = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        }
     }
 
     public void SetVolume(float volume)

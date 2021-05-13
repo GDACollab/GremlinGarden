@@ -66,6 +66,8 @@ public class TrackManager : MonoBehaviour
     [HideInInspector]
     public int trackID;
 
+    public SettingsMenu settings;
+
     /// <summary>
     /// Start racing with the selected Gremlin.
     /// </summary>
@@ -89,7 +91,7 @@ public class TrackManager : MonoBehaviour
         else
         {
             TrackModule module = transform.GetChild(currentChild).GetComponent<TrackModule>();
-            module.BeginMove(RacingGremlin.GetComponent<GremlinObject>(), GremlinOffset, Race, ActiveUI); //Keep the Gremlin moving.
+            module.BeginMove(RacingGremlin.GetComponent<GremlinObject>(), GremlinOffset, Race, ActiveUI, settings); //Keep the Gremlin moving.
             RacingGremlin.transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger(module.AnimationToPlay); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
             RacingGremlin.transform.Find("gremlinModel").GetComponent<Animator>().speed = module.modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
             if (racingCallback != null) {

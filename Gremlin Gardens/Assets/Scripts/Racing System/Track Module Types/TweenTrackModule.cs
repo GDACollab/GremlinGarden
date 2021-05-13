@@ -16,7 +16,7 @@ public class TweenTrackModule : TrackModule
     }
     private void Update()
     {
-        if (gremlinMoving)
+        if (gremlinMoving && !settings.paused)
         { //Move the Gremlin around.
             totalDistance += modifiedSpeed * BaseSpeed * Time.deltaTime; //Keeping track of how far along the Gremlin is in this module.
             //Hacky work-around for TweenTrackModule not given the previous and next children:

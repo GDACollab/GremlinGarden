@@ -39,7 +39,7 @@ public class EquationTrackModule : TrackModule
 
     private void Update()
     {
-        if (gremlinMoving)
+        if (gremlinMoving && !settings.paused)
         { //Move the Gremlin around.
             totalDistance += modifiedSpeed * BaseSpeed * Time.deltaTime; //Keeping track of how far along the Gremlin is in this module.
             var isStopping = true;

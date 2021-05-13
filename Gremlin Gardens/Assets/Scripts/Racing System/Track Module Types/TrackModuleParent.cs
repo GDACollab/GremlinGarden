@@ -38,7 +38,7 @@ public class TrackModuleParent : TrackModule
         trackChild = 0;
         toCallback = callbackFunc;
         ui = UI;
-        trackModuleChildren[trackChild].BeginMove(gremlin, gremlinOffset, NextTrackModule, UI);
+        trackModuleChildren[trackChild].BeginMove(gremlin, gremlinOffset, NextTrackModule, UI, settings);
     }
 
     void NextTrackModule()
@@ -46,7 +46,7 @@ public class TrackModuleParent : TrackModule
         trackChild += 1;
         if (trackChild < trackModuleChildren.Count)
         {
-            trackModuleChildren[trackChild].BeginMove(activeGremlin, gOffset, NextTrackModule, ui);
+            trackModuleChildren[trackChild].BeginMove(activeGremlin, gOffset, NextTrackModule, ui, settings);
         } else {
             toCallback();
         }

@@ -138,13 +138,15 @@ public class TrackModule : MonoBehaviour
     /// A callback called at the end of the move.
     /// </summary>
     Callback toCallback;
+
+    public SettingsMenu settings;
     /// <summary>
     /// Start moving the Gremlin across the track module.
     /// </summary>
     /// <param name="gremlin">The Gremlin that's being moved.</param>
     /// <param name="gremlinOffset">The offset of the gremlin (see: TrackManager.GremlinOffset).</param>
     /// <param name="callbackFunc">The function that TrackManager will pass to callback to later.</param>
-    public void BeginMove(GremlinObject gremlin, Vector3 gremlinOffset, Callback callbackFunc, GameObject UI) {
+    public void BeginMove(GremlinObject gremlin, Vector3 gremlinOffset, Callback callbackFunc, GameObject UI, SettingsMenu s_menu) {
         gremlinMoving = true;
         activeGremlin = gremlin;
         gOffset = gremlinOffset;
@@ -156,6 +158,7 @@ public class TrackModule : MonoBehaviour
             qteObject = Instantiate(terrainVariant.QTEButton, UI.transform);
             qteObject.GetComponent<QTEScript>().SetActiveModule(this);
         }
+        settings = s_menu;
     }
 
     public void EndMove() {
@@ -179,7 +182,7 @@ public class TrackModule : MonoBehaviour
 
     void Update()
     {
-        if (gremlinMoving) { //Move the Gremlin around.
+        if (gremlinMoving && !settings.paused) { //Move the Gremlin around.
             totalDistance += modifiedSpeed * BaseSpeed * Time.deltaTime; //Keeping track of how far along the Gremlin is in this module.
             if (totalDistance >= internalCreator.path.length)
             {

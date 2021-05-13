@@ -94,6 +94,12 @@ public class RaceManager : MonoBehaviour
     public GameObject leaderboardText;
 
     /// <summary>
+    /// The settings menu to use.
+    /// </summary>
+    [Tooltip("The settings menu to use.")]
+    public SettingsMenu settings;
+
+    /// <summary>
     /// The index where the player's gremlin has been placed in the racetracks list (should be the same as playerIndex provided to TrackSetup, if you have it).
     /// </summary>
     [HideInInspector]
@@ -131,6 +137,7 @@ public class RaceManager : MonoBehaviour
         trackIndices[i] = i;
         track.trackID = i;
         track.transform.position = placementOffset * placementOffsetDimension;
+        track.settings = settings;
         //Set the Gremlin's position to be the new track's earliest position so we can update the camera.
         racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.GremlinOffset;
         placementOffset += track.GetComponent<TrackManager>().trackWidth;
@@ -146,6 +153,7 @@ public class RaceManager : MonoBehaviour
         }
         trackIndices[i] = i;
         track.trackID = i;
+        track.settings = settings;
         racingGremlins[i].transform.position = track.transform.GetChild(0).GetComponent<TrackModule>().pathStart + track.GremlinOffset;
         racingGremlins[i].transform.rotation = Quaternion.LookRotation(track.transform.GetChild(0).GetComponent<TrackModule>().pathEnd - racingGremlins[i].transform.position, Vector3.up);
         track.RacingGremlin = racingGremlins[i];
@@ -157,6 +165,7 @@ public class RaceManager : MonoBehaviour
     /// <param name="racingGremlins">The list of gremlin objects to use in the race. Assigns them a track based on their order. Assumes that the Gremlins in the list already exist as objects in the game world.</param>
     /// <param name="playerIndex">The index that the player Gremlin is stored at (so we can make a different track)</param>
     public void TrackSetup(List<GameObject> racingGremlins, int playerIndex) {
+        racingCamera.settings = settings;
         raceTimes = new float[racingGremlins.Count];
         trackIndices = new int[racingGremlins.Count];
         bool isPremade = (racetracks.Count > 0);
