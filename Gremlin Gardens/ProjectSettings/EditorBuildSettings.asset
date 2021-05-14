@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Racing System/Demo Races/SampleRace.unity
     guid: c482dc464c7fb314491b631c4fc3aff8
+  - enabled: 1
+    path: Assets/Scenes/VN Scenes/VioletPreRaceVN.unity
+    guid: 2063c8a4a19604a4789a39fc38e8fa4e
   m_configObjects: {}

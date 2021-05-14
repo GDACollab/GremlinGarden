@@ -12,6 +12,8 @@ public class VN_SharedVariables : MonoBehaviour
     public string testString;
     public int testInt;
 
+    public string gremlinToRace = LoadingData.gremlinToRace;
+
     private FieldInfo[] FieldInfoArray;
     private VN_Manager manager;
 
@@ -19,6 +21,8 @@ public class VN_SharedVariables : MonoBehaviour
     {
         this.manager = manager;
         FieldInfoArray = GetType().GetFields();
+
+        gremlinToRace = LoadingData.gremlinToRace;
     }
 
     public void SetVariable(string varName, string newValString)
