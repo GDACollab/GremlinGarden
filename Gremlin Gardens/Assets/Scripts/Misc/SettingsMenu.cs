@@ -35,8 +35,16 @@ public class SettingsMenu : MonoBehaviour
     public Toggle windowedToggle;
     public Toggle fullscreenToggle;
 
+    [Header("Other UI Stuff")]
     public GameObject settingsMenu;
     public GameObject Canvas;
+    public GameObject SceneMusic;
+    /// <summary>
+    /// How much to reduce the volume of BGM music when the game is paused
+    /// </summary>
+    [Tooltip("How much to reduce the volume of BGM music when the game is paused")]
+    [Range(0.01f, 1.0f)]
+    public float pausedBGMReduction = 0.3f;
 
     public void Awake()
     {
@@ -115,6 +123,7 @@ public class SettingsMenu : MonoBehaviour
         {
             // Pause
             PauseGame(true);
+            SceneMusic.GetComponent<AudioSource>().volume *= pausedBGMReduction;
             if(gremlinNamer != null)
                 gremlinNamer.SetActive(false);
             this.transform.GetChild(1).gameObject.SetActive(true);
@@ -124,6 +133,7 @@ public class SettingsMenu : MonoBehaviour
         {
             // Unpause
             PauseGame(false);
+            SceneMusic.GetComponent<AudioSource>().volume /= pausedBGMReduction;
             if(gremlinNamer != null){
                 gremlinNamer.SetActive(true);
                 ToggleMovement(false);

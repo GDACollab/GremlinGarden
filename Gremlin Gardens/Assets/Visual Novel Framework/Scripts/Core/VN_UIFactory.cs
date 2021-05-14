@@ -92,7 +92,9 @@ public class VN_UIFactory : MonoBehaviour
 			if (manager.transitionSceneOnEnd)
 			{
 				manager.activeLoader.QuickFadeOutLoad(manager.nextScene);
-			}
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
 			else
             {
 				manager.ForceExitVN();

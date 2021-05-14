@@ -751,7 +751,9 @@ MonoBehaviour:
   windowedToggle: {fileID: 7745168801823617269}
   fullscreenToggle: {fileID: 6063162886216364076}
   settingsMenu: {fileID: 2489657751822423480}
-  temp: 0
+  Canvas: {fileID: 0}
+  SceneMusic: {fileID: 0}
+  pausedBGMReduction: 0.3
 --- !u!1 &2639319688789581802
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,7 +875,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2883824078554407961}
   - component: {fileID: 3308000258255969119}
-  - component: {fileID: 4305656394546082696}
   m_Layer: 5
   m_Name: Volume Slider
   m_TagString: Untagged
@@ -949,7 +950,7 @@ MonoBehaviour:
   m_MinValue: 0.001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -965,35 +966,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4305656394546082696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3061433102170241733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d323c809cb95abc4e9d06d499043c354, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioMixer: {fileID: 24100000, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
-  audioMixerGroup: {fileID: 24300002, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
-  uiSounds: []
-  player: {fileID: 0}
-  paused: 0
-  lowIconVol: {fileID: 3244399994545726566}
-  midIconVol: {fileID: 1266334283185507627}
-  highIconVol: {fileID: 835664044641198355}
-  VolumeSlider: {fileID: 3308000258255969119}
-  lowIconSens: {fileID: 0}
-  midIconSens: {fileID: 0}
-  highIconSens: {fileID: 0}
-  SensSlider: {fileID: 0}
-  windowedToggle: {fileID: 0}
-  fullscreenToggle: {fileID: 0}
-  settingsMenu: {fileID: 2489657751822423480}
-  temp: 0
 --- !u!1 &3244399994545726566
 GameObject:
   m_ObjectHideFlags: 0

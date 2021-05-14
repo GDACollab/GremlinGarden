@@ -502,7 +502,7 @@ AudioSource:
   m_GameObject: {fileID: 8685084108162052622}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 3c99fa1c532b1d8459059fb5bc661f3a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -680,6 +680,14 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1286399565528763486, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1286399565528763486, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2489657751822423480, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_Name
       value: SettingsMenu
@@ -760,6 +768,10 @@ PrefabInstance:
       propertyPath: Canvas
       value: 
       objectReference: {fileID: 1782050189495125584}
+    - target: {fileID: 8610988191157778921, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: SceneMusic
+      value: 
+      objectReference: {fileID: 8685084108162052622}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
 --- !u!224 &3462227434812191700 stripped

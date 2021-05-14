@@ -104,8 +104,8 @@ public class RaceSelection : MonoBehaviour
     }
 
     public void GremlinSelected(string gremlinName) {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         // Destroy the buttons to select gremlins just in case this somehow gets called twice:
         for (int i = 0; i < gremlinPicker.transform.childCount; i++)
         {

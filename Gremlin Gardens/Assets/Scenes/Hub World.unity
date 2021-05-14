@@ -2451,6 +2451,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8929593428995302294, guid: 8da2edbe0c0356746b1a45d2814b2281, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8347016717390090824, guid: 8da2edbe0c0356746b1a45d2814b2281, type: 3}
       propertyPath: m_Name
       value: Dragon Fruit
@@ -2508,6 +2512,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4008994138784059442, guid: 0051245518584374c9a949f4f8d1fd97, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4135039111374548692, guid: 0051245518584374c9a949f4f8d1fd97, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -6118,6 +6126,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8684290217179133175, guid: ee3d336c2b8dd2144812eed55a0206ce, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6631969135685365284, guid: ee3d336c2b8dd2144812eed55a0206ce, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.786236
@@ -10199,6 +10211,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4008994138784059442, guid: 0051245518584374c9a949f4f8d1fd97, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4135039111374548693, guid: 0051245518584374c9a949f4f8d1fd97, type: 3}
       propertyPath: m_Name
       value: Cheetah Fruit (1)
@@ -10452,6 +10468,14 @@ PrefabInstance:
       propertyPath: Canvas
       value: 
       objectReference: {fileID: 1628305761}
+    - target: {fileID: 4047475740125068566, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
+      propertyPath: SceneMusic
+      value: 
+      objectReference: {fileID: 1480340642}
+    - target: {fileID: 4047475740125068566, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
+      propertyPath: pausedBGMReduction
+      value: 0.34
+      objectReference: {fileID: 0}
     - target: {fileID: 4661548129228813408, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
       propertyPath: m_TargetGraphic
       value: 
@@ -17260,6 +17284,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9035454860860786733, guid: f9ceec8dd0e1ff54382c81b6fbbd28f4, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3373043727600244626, guid: f9ceec8dd0e1ff54382c81b6fbbd28f4, type: 3}
       propertyPath: m_Name
       value: Dolphin Fruit
@@ -31924,7 +31952,7 @@ MonoBehaviour:
   player: {fileID: 987935189}
   sceneLoader: {fileID: 2052173399}
   selectionDistance: 10
-  sceneName: StarterRace
+  sceneName: VioletPreRaceVN
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
 --- !u!114 &2016830654
