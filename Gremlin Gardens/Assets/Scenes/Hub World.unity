@@ -9907,6 +9907,14 @@ PrefabInstance:
       propertyPath: Canvas
       value: 
       objectReference: {fileID: 1628305761}
+    - target: {fileID: 4047475740125068566, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
+      propertyPath: SceneMusic
+      value: 
+      objectReference: {fileID: 1480340642}
+    - target: {fileID: 4047475740125068566, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
+      propertyPath: pausedBGMReduction
+      value: 0.34
+      objectReference: {fileID: 0}
     - target: {fileID: 4661548129228813408, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
       propertyPath: m_TargetGraphic
       value: 
