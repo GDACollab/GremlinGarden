@@ -163,7 +163,7 @@ public class VN_Manager : MonoBehaviour
     {
 		// Skips the animation of text appearing if the spacebar or primary mouse button is pressed
 		// TODO replace with input system to not hard code input bindings
-		if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0)) SkipSlowText();
+		if (Input.GetKeyDown(KeyCode.Space)) SkipSlowText();
 
 		if (Input.GetKeyDown(KeyCode.F))
 		{
