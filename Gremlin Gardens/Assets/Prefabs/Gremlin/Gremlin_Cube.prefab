@@ -1110,6 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3160e6dbb3ee61d498b728e23397a4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseController: {fileID: 0}
   chanceToPlay: 250
 --- !u!1 &2010832775382250181
 GameObject:
@@ -1350,7 +1351,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3452d2c70610e264f93bd4f2954b6608, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1593,7 +1594,7 @@ PrefabInstance:
     - target: {fileID: -8250206677460074674, guid: c36d5f218fee35943ada13d433f149fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3452d2c70610e264f93bd4f2954b6608, type: 2}
+      objectReference: {fileID: 2100000, guid: 45813d09c7d23164c9eb07f3f2601557, type: 2}
     - target: {fileID: 919132149155446097, guid: c36d5f218fee35943ada13d433f149fc, type: 3}
       propertyPath: m_Name
       value: gremlinModel
