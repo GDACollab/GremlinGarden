@@ -69,24 +69,25 @@ public class RandomGremlinRace : MonoBehaviour
             GameObject gremlin;
             if (i == playerGremlin)
             {
-                GremlinObject gremlinToLoad;
+                Gremlin gremlinToLoad;
                 if (LoadingData.playerGremlins.Count != 0)
                 {
                     gremlinToLoad = LoadingData.playerGremlins[LoadingData.gremlinToRace];
                 }
                 else {
                     // For testing and debugging, in case someone decides to load the race without going through the hub world:
-                    gremlinToLoad = gameObject.AddComponent<GremlinObject>();
-                    gremlinToLoad.gremlin = new Gremlin("My Spoon is Too Big.");
-                    gremlinToLoad.gremlinName = "My Spoon is Too Big.";
+                    gremlinToLoad = new Gremlin("My Spoon is Too Big.");
+                    gremlinToLoad.setName("My Spoon is Too Big.");
                     gremlinToLoad.InitializeGremlin();
-                    GenerateStats(gremlinToLoad.gremlin);
+                    GenerateStats(gremlinToLoad);
                 }
                 // Instead of making a random gremlin, load the player gremlin.
                 gremlin = Instantiate(gremlinObject);
-                gremlin.GetComponent<GremlinObject>().CopyGremlinData(gremlinToLoad);
+                gremlin.GetComponent<GremlinObject>().gremlin = gremlinToLoad;
+                gremlin.GetComponent<GremlinObject>().gremlinName = gremlinToLoad.getName();
                 Instantiate(playerIndicator, gremlin.transform);
-                gremlin.name = gremlinToLoad.gremlinName;
+                gremlin.name = gremlinToLoad.getName();
+                gremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", gremlinToLoad.gremColor);
             }
             else {
                 gremlin = Instantiate(gremlinObject);

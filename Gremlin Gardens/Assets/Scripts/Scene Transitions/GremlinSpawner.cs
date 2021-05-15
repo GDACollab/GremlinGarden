@@ -36,7 +36,7 @@ public class GremlinSpawner : MonoBehaviour
             CreateGremlin(new Vector3(22, 35, 37));
         }
         else {
-            foreach (KeyValuePair<string, GremlinObject> savedGremlin in LoadingData.playerGremlins) {
+            foreach (KeyValuePair<string, Gremlin> savedGremlin in LoadingData.playerGremlins) {
                 SpawnGremlin(savedGremlin.Value);
             }
         }
@@ -46,30 +46,36 @@ public class GremlinSpawner : MonoBehaviour
     /// Used for actually spawning in a gremlin from pre-existing data. Intended to be used when the game loads from LoadingData.
     /// </summary>
     /// <param name="gremlinData">The gremlin data to spawn the gremlin with.</param>
-    public void SpawnGremlin(GremlinObject gremlinData) {
+    public void SpawnGremlin(Gremlin gremlinData) {
+        // TODO: Get this to work somehow with updating gremlin positions.
         var gremlin = Instantiate(gremlinPrefab);
-        gremlin.name = gremlinData.gremlinName;
-        gremlin.transform.position = gremlinData.currentPosition;
-        gremlin.GetComponent<GremlinObject>().CopyGremlinData(gremlinData);
-        gremlin.GetComponent<GremlinObject>().nameText.text = gremlinData.gremlinName;
-        Debug.Log("Loaded data for: " + gremlinData.gremlinName);
+        gremlin.GetComponent<GremlinObject>().gremlin.CopyGremlinData(gremlinData);
+        gremlin.GetComponent<GremlinObject>().nameText.text = gremlinData.getName();
+        gremlin.GetComponent<GremlinInteraction>().gremlin = gremlin.GetComponent<GremlinObject>().gremlin;
+        gremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", gremlin.GetComponent<GremlinObject>().gremlin.gremColor);
+        gremlin.transform.position = gremlin.GetComponent<GremlinObject>().gremlin.currentPosition;
+        gremlin.transform.rotation = gremlin.GetComponent<GremlinObject>().gremlin.currentRotation;
+        Debug.Log(gremlin.transform.position);
+        Debug.Log(gremlinData.currentPosition);
+        Debug.Log("Loaded data for: " + gremlinData.getName());
     }
 
     /// <summary>
     /// For spawning a new Gremlin that will be permanently added to the player's list of gremlins.
     /// </summary>
     /// <param name="gremlinData">The gremlin data to initialize the Gremlin with. Optional.</param>
-    public void CreateGremlin(Vector3 gremlinPosition, GremlinObject gremlinData = null) {
+    public void CreateGremlin(Vector3 gremlinPosition, Gremlin gremlinData = null) {
         newGremlin = Instantiate(gremlinPrefab);
         newGremlin.transform.position = gremlinPosition;
-        newGremlin.GetComponent<GremlinObject>().InitializeGremlin();
+        newGremlin.GetComponent<GremlinObject>().gremlin.InitializeGremlin();
         if (gremlinData != null)
         {
-            newGremlin.GetComponent<GremlinObject>().CopyGremlinData(gremlinData);
+            newGremlin.GetComponent<GremlinObject>().gremlin.CopyGremlinData(gremlinData);
         }
         var name = Instantiate(gremlinNamingPrefab, UI.transform);
         name.GetComponent<GremlinNamer>().BeginScanningInput(GetGremlinName, ValidateGremlinName);
         newGremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0f, 1f, .6f, .8f, .5f, .7f));
+        newGremlin.GetComponent<GremlinObject>().gremlin.gremColor = newGremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.GetColor("_Color");
     }
 
     bool ValidateGremlinName(string text) {
@@ -82,7 +88,7 @@ public class GremlinSpawner : MonoBehaviour
         newGremlin.GetComponent<GremlinObject>().gremlin.setName(name);
         newGremlin.name = name;
         newGremlin.GetComponent<GremlinObject>().nameText.text = name;
-        LoadingData.playerGremlins[name] = newGremlin.GetComponent<GremlinObject>();
+        LoadingData.playerGremlins[name] = newGremlin.GetComponent<GremlinObject>().gremlin;
         Debug.Log("Created: " + name);
     }
 }

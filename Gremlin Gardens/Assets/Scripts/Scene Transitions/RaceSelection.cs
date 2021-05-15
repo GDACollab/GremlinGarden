@@ -87,13 +87,13 @@ public class RaceSelection : MonoBehaviour
         {
             selectionUI = true;
             // Quick hack for getting a gremlin selector before the race. 
-            foreach (KeyValuePair<string, GremlinObject> savedGremlin in LoadingData.playerGremlins) {
+            foreach (KeyValuePair<string, Gremlin> savedGremlin in LoadingData.playerGremlins) {
                 var button = Instantiate(gremlinPickerButton);
                 button.transform.parent = gremlinPicker.transform;
                 button.GetComponentInChildren<Text>().text = savedGremlin.Key;
                 button.GetComponent<Button>().onClick.AddListener(delegate { GremlinSelected(savedGremlin.Key);  });
                 // Make sure we store all the gremlins where they currently are, so they can be spawned back later:
-                LoadingData.playerGremlins[savedGremlin.Key].currentPosition = savedGremlin.Value.transform.position;
+                LoadingData.playerGremlins[savedGremlin.Key].currentPosition = savedGremlin.Value.currentPosition;
             }
             gremlinPicker.SetActive(true);
             // Bring up the gremlin selection UI.

@@ -15,7 +15,7 @@ public static class LoadingData
     /// The data of the gremlins the player owns to transfer between each scene.
     /// Each gremlin is stored by its name.
     /// </summary>
-    public static Dictionary<string, GremlinObject> playerGremlins = new Dictionary<string, GremlinObject>();
+    public static Dictionary<string, Gremlin> playerGremlins = new Dictionary<string, Gremlin>();
     /// <summary>
     /// The name of the gremlin to race.
     /// </summary>

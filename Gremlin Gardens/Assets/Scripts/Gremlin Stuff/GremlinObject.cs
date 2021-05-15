@@ -13,12 +13,6 @@ public class GremlinObject : MonoBehaviour
     public string gremlinName;
 
     private GameObject player; 
-
-    /// <summary>
-    /// We store this so the GremlinSpawner can place the gremlin back where it was. Used by RaceSelection before loading a new scene (see MouseDown in RaceSelection.cs)
-    /// </summary>
-    [HideInInspector]
-    public Vector3 currentPosition;
     
     [Header("Aesthetic Stuff")]
     /// <summary>
@@ -41,31 +35,9 @@ public class GremlinObject : MonoBehaviour
         // Set the name text to face the player.
         if(player != null)
             nameText.transform.rotation = Quaternion.LookRotation(this.transform.position - player.transform.position, player.transform.up);
-    }
 
-    /// <summary>
-    /// Initialize the gremlin's relevant stats. Should be called by GremlinSpawner.
-    /// </summary>
-    public void InitializeGremlin()
-    {
-        gremlin.setStat("Running", 0);
-        gremlin.setStat("Flying", 0);
-        gremlin.setStat("Stamina", 0);
-        gremlin.setStat("Climbing", 0);
-        gremlin.setStat("Happiness", 0);
-        gremlin.setStat("Swimming", 0);
-    }
-
-    /// <summary>
-    /// Used for transferring gremlins across scenes.
-    /// </summary>
-    /// <param name="srcGremlin">The source gremlin from which to copy.</param>
-    public void CopyGremlinData(GremlinObject srcGremlin)
-    {
-        gremlinName = srcGremlin.gremlinName;
-        foreach (KeyValuePair<string, float> statistic in gremlin.getStats())
-        {
-            gremlin.setStat(statistic.Key, srcGremlin.gremlin.getStat(statistic.Key));
-        }
+        // Also make sure to update the gremlin's current position so that the GremlinSpawner can use it later:
+        gremlin.currentPosition = this.transform.position;
+        gremlin.currentRotation = this.transform.rotation;
     }
 }
