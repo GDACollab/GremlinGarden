@@ -40,4 +40,8 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneName); // async does not work well with web builds
         // StartLoadScene(); //Just using this because it's easier than typing out the whole thing.
     }
+
+    public void QuitGame() {
+        Application.Quit();
+    }
 }
