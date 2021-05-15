@@ -50,16 +50,16 @@ public class GremlinInteraction : MonoBehaviour
 
 
     private Rigidbody rb;
-    public Gremlin gremlin;    
+    public Gremlin gremlin;
 
     public void Start()
     {
 
         player = GameObject.Find("Player");
         Canvas = GameObject.Find("Canvas (Hub UI)");
-        StatMenu = Canvas.transform.GetChild(0).gameObject;
+        StatMenu = Canvas.transform.Find("Stat Menu").gameObject;
 
-        var interactions = Canvas.transform.GetChild(1).gameObject;
+        var interactions = Canvas.transform.Find("Interactions").gameObject;
         DropIndicator = interactions.transform.GetChild(0).gameObject;
         PickupIndicator = interactions.transform.GetChild(1).gameObject;
         PetIndicator = interactions.transform.GetChild(2).gameObject;
@@ -67,7 +67,7 @@ public class GremlinInteraction : MonoBehaviour
         TossIndicator = interactions.transform.GetChild(4).gameObject;
         StatIndicator = interactions.transform.GetChild(5).gameObject;
 
-        ChargeBar = Canvas.transform.GetChild(2).gameObject;
+        ChargeBar = Canvas.transform.Find("Charge Bar").gameObject;
         ChargeFill = ChargeBar.transform.GetChild(1).GetComponent<Image>();
         CarriedGremlin = player.transform.GetChild(1);
         CarriedFruit = player.transform.GetChild(2);
@@ -81,7 +81,7 @@ public class GremlinInteraction : MonoBehaviour
         CuddleIndicator.SetActive(false);
         StatMenu.SetActive(false);
         rb = GetComponent<Rigidbody>();
-        GetComponent<Outline>().OutlineWidth = 0;
+        //GetComponent<Outline>().OutlineWidth = 0;
 
         gremlin = this.GetComponent<GremlinObject>().gremlin;
         audioController = this.GetComponentInChildren<GremlinAudioController>();
@@ -98,12 +98,12 @@ public class GremlinInteraction : MonoBehaviour
         else if (playerMove.centeredObject != this.gameObject && playerMove.hitObjectIsNew)
             IsExited();
 
-        if(beingCarried && !idleEntered) //switch the gremlin to idle if it is picked up
+        if (beingCarried && !idleEntered) //switch the gremlin to idle if it is picked up
         {
             transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger("isIdle");
             idleEntered = true;
         }
-        if(!beingCarried) //switching the flag back if we put the gremlin down
+        if (!beingCarried) //switching the flag back if we put the gremlin down
             idleEntered = false;
 
         //interactions when carrying gremlin
@@ -153,7 +153,7 @@ public class GremlinInteraction : MonoBehaviour
                     GetComponent<Collider>().enabled = true;
                     StartCoroutine("enableCarryCollider");
                     ChargeBar.SetActive(false);
- 
+
                     audioController.PlayThrow();
 
                     UpdateStats("Happiness", yeetIncrease, maxHappinessVal);
@@ -245,10 +245,10 @@ public class GremlinInteraction : MonoBehaviour
             onGremlin = true;
             //indicate that gremlin can be picked up
             //highlighting gremlin maybe? ask design
-            GetComponent<Outline>().OutlineWidth = 10;
-            if (CarriedGremlin.childCount != 0 || beingPet || CarriedFruit.childCount != 0)
-                GetComponent<Outline>().OutlineWidth = 0;
-            else
+            //GetComponent<Outline>().OutlineWidth = 10;
+            //if (CarriedGremlin.childCount != 0 || beingPet || CarriedFruit.childCount != 0)
+            //GetComponent<Outline>().OutlineWidth = 0;
+            if (CarriedGremlin.childCount == 0 && !beingPet && CarriedFruit.childCount == 0)
             {
                 PickupIndicator.SetActive(true);
                 PetIndicator.SetActive(true);
@@ -277,9 +277,9 @@ public class GremlinInteraction : MonoBehaviour
                 rb.useGravity = false;
                 this.transform.position = CarriedGremlin.position;
                 this.transform.parent = CarriedGremlin;
-                rb.constraints = RigidbodyConstraints.FreezeAll;
+                //rb.constraints = RigidbodyConstraints.FreezeAll;
                 beingCarried = true;
-                GetComponent<Collider>().enabled = false;
+                //GetComponent<Collider>().enabled = false;
                 GetComponent<GremlinAI>().enabled = false;
 
                 //have gremlin face the player
@@ -310,7 +310,7 @@ public class GremlinInteraction : MonoBehaviour
             PickupIndicator.SetActive(false);
             PetIndicator.SetActive(false);
             StatIndicator.SetActive(false);
-            GetComponent<Outline>().OutlineWidth = 0;
+            //GetComponent<Outline>().OutlineWidth = 0;
             enableStatMenu = false;
             StatMenu.SetActive(enableStatMenu);
         }
@@ -322,7 +322,7 @@ public class GremlinInteraction : MonoBehaviour
         PetIndicator.SetActive(false);
         StatIndicator.SetActive(false);
 
-        GetComponent<Outline>().OutlineWidth = 0;
+        //GetComponent<Outline>().OutlineWidth = 0;
         eDownTime = 0;
         eClicked = false;
         enableStatMenu = false;
@@ -395,8 +395,17 @@ public class GremlinInteraction : MonoBehaviour
             rb.useGravity = false;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             this.transform.position = CarriedGremlin.position;
-            GetComponent<Collider>().enabled = false;
+            //GetComponent<Collider>().enabled = false;
             TossIndicator.SetActive(true);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("Collision");
+        GameObject other = collision.gameObject;
+        if (beingCarried && other.tag != "Gremlin")
+        {
+            DropGremlin();
         }
     }
 

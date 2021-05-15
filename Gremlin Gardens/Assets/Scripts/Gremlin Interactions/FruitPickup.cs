@@ -31,7 +31,7 @@ public class FruitPickup : MonoBehaviour
     {
         player = GameObject.Find("Player");
         Canvas = GameObject.Find("Canvas (Hub UI)");
-        GameObject interactions = Canvas.transform.GetChild(1).gameObject;
+        GameObject interactions = Canvas.transform.Find("Interactions").gameObject;
         DropIndicator = interactions.transform.Find("Fruit Drop").gameObject;
         PickupIndicator = interactions.transform.Find("Fruit Pickup").gameObject;
         CarriedGremlin = player.transform.Find("Carried Gremlin");
@@ -93,7 +93,8 @@ public class FruitPickup : MonoBehaviour
 
                 //done eating, destroy game object and re-enable ai
                 Destroy(gameObject);
-                gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
+                if(!gremlinGameObj.GetComponent<GremlinInteraction>().beingCarried)
+                    gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
             }
         }
             

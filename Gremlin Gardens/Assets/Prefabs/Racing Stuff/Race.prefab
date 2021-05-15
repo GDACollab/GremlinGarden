@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 1782050189495125585}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,7 +401,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1782050191020346483}
   - component: {fileID: 1782050191020346484}
-  - component: {fileID: 7932636434618135389}
   m_Layer: 0
   m_Name: RaceManager
   m_TagString: Untagged
@@ -449,20 +448,6 @@ MonoBehaviour:
   settings: {fileID: 6221186563017164387}
   gremlinPlayerIndex: 0
   cameraIsFixed: 0
---- !u!114 &7932636434618135389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782050191020346482}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3041a044335dc1419c2da7df58806a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingsMenu: {fileID: 6221186563017164387}
-  paused: 0
 --- !u!1 &8685084108162052622
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2489657751822423480, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3100836095548622349, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -753,6 +738,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7553528374784533632, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7745168801823617269, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -773,6 +762,10 @@ PrefabInstance:
       propertyPath: SceneMusic
       value: 
       objectReference: {fileID: 8685084108162052622}
+    - target: {fileID: 8610988191157778921, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
 --- !u!224 &3462227434812191700 stripped
@@ -786,7 +779,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2438268278936223626}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d323c809cb95abc4e9d06d499043c354, type: 3}
   m_Name: 
