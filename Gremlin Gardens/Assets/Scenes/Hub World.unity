@@ -1124,7 +1124,7 @@ PrefabInstance:
     - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
       propertyPath: itemsToInstantiate.Array.data[4]
       value: 
-      objectReference: {fileID: 6631969135685365288, guid: ee3d336c2b8dd2144812eed55a0206ce, type: 3}
+      objectReference: {fileID: 8510577593252244708, guid: bd1fc3a6f4dc7254fb4e92dc62b93bba, type: 3}
     - target: {fileID: 4715081812023587907, guid: 8c124614c6618a942aebe55683a83bd6, type: 3}
       propertyPath: itemsToInstantiate.Array.data[5]
       value: 
