@@ -35,7 +35,6 @@ public class GremlinObject : MonoBehaviour
         // Set the name text to face the player.
         if(player != null)
             nameText.transform.rotation = Quaternion.LookRotation(this.transform.position - player.transform.position, player.transform.up);
-
         // Also make sure to update the gremlin's current position so that the GremlinSpawner can use it later:
         gremlin.currentPosition = this.transform.position;
         gremlin.currentRotation = this.transform.rotation;

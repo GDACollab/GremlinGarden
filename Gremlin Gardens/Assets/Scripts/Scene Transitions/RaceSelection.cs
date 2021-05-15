@@ -92,8 +92,6 @@ public class RaceSelection : MonoBehaviour
                 button.transform.parent = gremlinPicker.transform;
                 button.GetComponentInChildren<Text>().text = savedGremlin.Key;
                 button.GetComponent<Button>().onClick.AddListener(delegate { GremlinSelected(savedGremlin.Key);  });
-                // Make sure we store all the gremlins where they currently are, so they can be spawned back later:
-                LoadingData.playerGremlins[savedGremlin.Key].currentPosition = savedGremlin.Value.currentPosition;
             }
             gremlinPicker.SetActive(true);
             // Bring up the gremlin selection UI.
