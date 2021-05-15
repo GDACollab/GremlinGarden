@@ -5896,7 +5896,7 @@ Transform:
   - {fileID: 942586100}
   - {fileID: 218895218}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &572170779
 PrefabInstance:
@@ -10038,7 +10038,7 @@ Transform:
   - {fileID: 1839573459}
   - {fileID: 84221056}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 20, z: 0}
 --- !u!1001 &924451307
 PrefabInstance:
@@ -10932,7 +10932,7 @@ Transform:
   - {fileID: 1622549909}
   - {fileID: 1449055879}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: -210, z: 0}
 --- !u!82 &987935193
 AudioSource:
@@ -17847,7 +17847,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1449055878
 GameObject:
@@ -17909,7 +17909,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1480340644
 AudioSource:
@@ -18896,71 +18896,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
---- !u!1001 &1789428081
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1077583406993861886, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541589, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_Name
-      value: Gremlin_Cube
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 29.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 32.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 44.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8216487242387156281, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
-      propertyPath: gremlinName
-      value: Gremmy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
 --- !u!1 &1839573458
 GameObject:
   m_ObjectHideFlags: 0
@@ -19394,7 +19329,7 @@ Transform:
   - {fileID: 1165975609}
   - {fileID: 1682135839}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1978411290
 GameObject:
@@ -32205,7 +32140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2052173401
 MonoBehaviour:
