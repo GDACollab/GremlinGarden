@@ -53,7 +53,7 @@ public class GremlinSpawner : MonoBehaviour
         gremlin.GetComponent<GremlinObject>().nameText.text = gremlinData.getName();
         gremlin.GetComponent<GremlinInteraction>().gremlin = gremlin.GetComponent<GremlinObject>().gremlin;
         gremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", gremlin.GetComponent<GremlinObject>().gremlin.gremColor);
-        gremlin.transform.position = gremlin.GetComponent<GremlinObject>().gremlin.currentPosition;
+        gremlin.transform.position = new Vector3(22, 35, 32);
         gremlin.transform.rotation = gremlin.GetComponent<GremlinObject>().gremlin.currentRotation;
         gremlin.name = gremlin.GetComponent<GremlinObject>().gremlin.getName();
         Debug.Log("Loaded data for: " + gremlinData.getName());
