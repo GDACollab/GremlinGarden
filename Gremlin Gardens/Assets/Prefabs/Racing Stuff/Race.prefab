@@ -180,6 +180,7 @@ MonoBehaviour:
   gremlinCount: 8
   winningStat: 25
   minStatValue: 5
+  winAmounts: 
 --- !u!1 &1782050189495125584
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +490,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 3c99fa1c532b1d8459059fb5bc661f3a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 413f12228ea83ab428c9e4d9cfc60ab6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
