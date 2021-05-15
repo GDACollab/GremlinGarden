@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class GremlinAudioController : MonoBehaviour
 {
-    public PauseController pauseController;
+    public SettingsMenu settings;
     private AudioSource[] sounds;
 
     public int chanceToPlay = 100;
 
     private void Awake()
     {
-        pauseController = GameObject.FindWithTag("Manager").GetComponent<PauseController>();
+        settings = GameObject.FindWithTag("UI").transform.Find("SettingsMenu").gameObject.GetComponent<SettingsMenu>();
         sounds = this.GetComponents<AudioSource>();
     }
 
     public void FixedUpdate()
     {
-        if (pauseController.paused)
+        if (settings.paused)
         {
             foreach (var component in this.GetComponents<AudioSource>())
             {

@@ -7,6 +7,7 @@ TagManager:
   - Gremlin
   - Ground
   - Manager
+  - UI
   layers:
   - Default
   - TransparentFX

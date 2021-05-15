@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3160e6dbb3ee61d498b728e23397a4c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseController: {fileID: 0}
+  settings: {fileID: 0}
   chanceToPlay: 250
 --- !u!1 &2010832775382250181
 GameObject:
@@ -1293,7 +1293,6 @@ GameObject:
   - component: {fileID: 2105177654468541608}
   - component: {fileID: 2105177654468541609}
   - component: {fileID: 2061895644239712848}
-  - component: {fileID: 2105177654468541591}
   - component: {fileID: 2105177654468541588}
   - component: {fileID: 8216487242387156281}
   - component: {fileID: 6143168594490065376}
@@ -1386,24 +1385,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.42634732, y: 0.7352276, z: 0.5875039}
   m_Center: {x: -0.047329843, y: 0.36663318, z: 0.004306078}
---- !u!114 &2105177654468541591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2105177654468541589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 0
-  outlineColor: {r: 1, g: 0, b: 0, a: 1}
-  outlineWidth: 0
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
 --- !u!114 &2105177654468541588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,7 +1425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gremlin: {fileID: 0}
   gremlinName: 
-  currentPosition: {x: 0, y: 0, z: 0}
   nameText: {fileID: 3654205498376032974}
 --- !u!54 &6143168594490065376
 Rigidbody:

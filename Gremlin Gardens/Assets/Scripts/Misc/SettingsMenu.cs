@@ -46,6 +46,9 @@ public class SettingsMenu : MonoBehaviour
     [Range(0.01f, 1.0f)]
     public float pausedBGMReduction = 0.3f;
 
+    private GameObject pauseMenu;
+    private GameObject optionsMenu;
+
     public void Awake()
     {
         uiSounds = GameObject.Find("UI Sounds").GetComponents<AudioSource>();
@@ -53,6 +56,14 @@ public class SettingsMenu : MonoBehaviour
         {
             player = GameObject.Find("Player").GetComponent<PlayerMovement>();
         }
+        optionsMenu = gameObject.transform.Find("OptionsMenu").gameObject;
+        pauseMenu = gameObject.transform.Find("PauseMenu").gameObject;
+    }  
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Cancel"))
+            ToggleSettingsMenu();
     }
 
     public void SetVolume(float volume)
@@ -110,12 +121,12 @@ public class SettingsMenu : MonoBehaviour
 
     public void ToggleSettingsMenu()
     {
-        paused = !gameObject.activeSelf;
+        paused = !paused;
 
-        // Show or hide the menu
-        gameObject.SetActive(paused);
+        this.transform.Find("Background").gameObject.SetActive(paused);
+
         GameObject gremlinNamer = null;
-        if(Canvas.transform.Find("Gremlin Namer(Clone)") != null)
+        if (Canvas.transform.Find("Gremlin Namer(Clone)") != null)
             gremlinNamer = Canvas.transform.Find("Gremlin Namer(Clone)").gameObject;
 
         // Pause/Unpause physics
@@ -124,9 +135,9 @@ public class SettingsMenu : MonoBehaviour
             // Pause
             PauseGame(true);
             SceneMusic.GetComponent<AudioSource>().volume *= pausedBGMReduction;
-            if(gremlinNamer != null)
+            if (gremlinNamer != null)
                 gremlinNamer.SetActive(false);
-            this.transform.GetChild(1).gameObject.SetActive(true);
+            pauseMenu.SetActive(true);
             uiSounds[4].Play();
         }
         else
@@ -134,12 +145,13 @@ public class SettingsMenu : MonoBehaviour
             // Unpause
             PauseGame(false);
             SceneMusic.GetComponent<AudioSource>().volume /= pausedBGMReduction;
-            if(gremlinNamer != null){
+            if (gremlinNamer != null)
+            {
                 gremlinNamer.SetActive(true);
                 ToggleMovement(false);
             }
-                
-            this.transform.GetChild(1).gameObject.SetActive(false);
+
+            pauseMenu.SetActive(false);
             uiSounds[3].Play();
         }
 
@@ -179,8 +191,8 @@ public class SettingsMenu : MonoBehaviour
     public void ToggleOptionsMenu()
     {
         toggleOptions = !toggleOptions;
-        this.transform.GetChild(1).gameObject.SetActive(!toggleOptions);
-        this.transform.GetChild(2).gameObject.SetActive(toggleOptions);
+        pauseMenu.SetActive(!toggleOptions);
+        optionsMenu.gameObject.SetActive(toggleOptions);
     }
 
     public void ToggleScreenMode()

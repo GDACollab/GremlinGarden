@@ -65,9 +65,11 @@ public class ShopItem : MonoBehaviour
                 // Quick hack to detect whether or not we're spawning a gremlin.
                 if (itemSpawnOnBuy.TryGetComponent<GremlinObject>(out GremlinObject gremlin)){
                     // Quick hack to find the GameManager:
+                    manager.player.GetComponent<PlayerMovement>().UpdateMoney(-500);
                     GameObject.Find("GameManager").GetComponent<GremlinSpawner>().CreateGremlin(manager.player.transform.position + manager.player.transform.forward);
                 } else {
                     var bought = Instantiate(itemSpawnOnBuy);
+                    manager.player.GetComponent<PlayerMovement>().UpdateMoney(-100);
                     //Temporary solution for placement.
                     bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
                 }
