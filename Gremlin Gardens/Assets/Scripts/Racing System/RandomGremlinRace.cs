@@ -25,7 +25,16 @@ public class RandomGremlinRace : MonoBehaviour
     [Tooltip("What to attach to the player's gremlin to differentiate them.")]
     public GameObject playerIndicator;
 
-    string[] GremlinNames = {"Happy", "Grumpy", "Doc", "Sleepy", "Bashful", "Sneezy", "Dopey", "Shrek", "Donkey", "Gremstork", "Dave"};
+    /// <summary>
+    /// What to name the rival gremlin during the race. Temporary fix.
+    /// </summary>
+    public string rivalName = "Jellybeans";
+
+    string[] GremlinNames = {"Happy", "Grumpy", "Doc", "Sleepy", "Bashful", "Sneezy", "Dopey", "Shrek", "Donkey", "Gremstork", "Dave", "Jellybean 2.0", "Uhhhhh Gremlin",
+    "Jeven", "Jazzercise", "Trapped in a-", "Bingus", "Bingo", "Gus", "Amon", "Chun", "Sportz", "Bigwig", "Blueberry", "Butterbean", "Chaos", "Chipmuck", "Crimson",
+    "Miskit", "Wet Puddle", "Lakestar", "Domino", "Dreambell", "Einstein", "Euclid", "Keter", "Ferrari", "Flip", "Flizzard", "Gigabyte", "Goosebump", "Harmonica",
+    "Bugle", "Hurricane", "Jammin", "Jellybean", "Licorice", "Lunar", "Megabyte", "Noodle", "Nacho", "Shadowfang", "Penguin", "Qwerty", "Sega", "Terabyte", "Tofu",
+    "Tinnitus", "Turbo", "Vegas", "Ziggy", "Juliette", "Bean", "Sanic", "Sephora", "Emberpaw"};
 
     /// <summary>
     /// Number of gremlins to populate the race with.
@@ -50,6 +59,11 @@ public class RandomGremlinRace : MonoBehaviour
     {
         List<GameObject> gremlinList = new List<GameObject>();
         int playerGremlin = Random.Range(0, gremlinCount);
+        // Hacky solution for inserting rivalGremlin:
+        int rivalGremlin = Random.Range(0, playerGremlin);
+        if (rivalGremlin == playerGremlin) {
+            rivalGremlin = gremlinCount;
+        }
         for (int i = 0; i < gremlinCount; i++)
         {
             GameObject gremlin;
@@ -80,6 +94,9 @@ public class RandomGremlinRace : MonoBehaviour
                 GenerateStats(gremlinClass);
                 gremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0f, 1f, .6f, .8f, .5f, .7f));
                 gremlin.name = GremlinNames[Random.Range(0, GremlinNames.Length)];
+                if (i == rivalGremlin) {
+                    gremlin.name = rivalName;
+                }
                 gremlin.GetComponent<GremlinObject>().gremlinName = gremlin.name;
                 
             }
