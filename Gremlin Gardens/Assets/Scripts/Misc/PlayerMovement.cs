@@ -42,7 +42,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadingData.money = startingMoney;
+        if (LoadingData.money == 0)
+        {
+            LoadingData.money = startingMoney;
+        }
         controller = GetComponent<CharacterController>();
         UpdateMoney(0);
         //cursor is locked and in middle of screen

@@ -21,5 +21,5 @@ public static class LoadingData
     /// </summary>
     public static string gremlinToRace;
 
-    public static int money;
+    public static int money = 0;
 }
