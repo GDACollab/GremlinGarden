@@ -19809,6 +19809,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
+      propertyPath: winAmounts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: gremlinObject
       value: 
       objectReference: {fileID: 5497726379860427165, guid: 00d45d72ad496604b868340e9b2cc452, type: 3}
@@ -19823,6 +19827,18 @@ PrefabInstance:
     - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: minStatValue
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
+      propertyPath: winAmounts.Array.data[0]
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
+      propertyPath: winAmounts.Array.data[1]
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 1782050189227508122, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
+      propertyPath: winAmounts.Array.data[2]
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1782050189916761001, guid: cf2aa47f659300a4988f3562c6206214, type: 3}
       propertyPath: m_Name

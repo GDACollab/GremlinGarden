@@ -20,4 +20,6 @@ public static class LoadingData
     /// The name of the gremlin to race.
     /// </summary>
     public static string gremlinToRace;
+
+    public static int money;
 }

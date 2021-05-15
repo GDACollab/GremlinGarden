@@ -54,6 +54,11 @@ public class RandomGremlinRace : MonoBehaviour
     [Tooltip("The lowest value a randomly generated statistic can possibly have.")]
     public float minStatValue = 5.0f;
 
+    /// <summary>
+    /// How much to win in each place. The first thing in the array is the amount of money for first place, the second for second place, that sort of thing.
+    /// </summary>
+    public int[] winAmounts;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,7 +109,7 @@ public class RandomGremlinRace : MonoBehaviour
             gremlin.GetComponent<GremlinObject>().nameText.text = gremlin.name;
             gremlinList.Add(gremlin);
         }
-        raceManager.TrackSetup(gremlinList, playerGremlin);
+        raceManager.TrackSetup(gremlinList, playerGremlin, winAmounts);
     }
 
     /// <summary>

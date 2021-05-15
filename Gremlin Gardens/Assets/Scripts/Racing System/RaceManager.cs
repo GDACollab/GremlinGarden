@@ -79,6 +79,11 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     int[] trackIndices;
 
+    /// <summary>
+    /// The amount of money a player can win by getting each place. Set by RandomGremlinRace.cs
+    /// </summary>
+    int[] winningAmounts;
+
     [Header("Results Stuff")]
 
     //Temporary way to render leaderboards. Awaiting a more graphically fancy version. TODO: Make this look better and scalable.
@@ -164,7 +169,8 @@ public class RaceManager : MonoBehaviour
     /// </summary>
     /// <param name="racingGremlins">The list of gremlin objects to use in the race. Assigns them a track based on their order. Assumes that the Gremlins in the list already exist as objects in the game world.</param>
     /// <param name="playerIndex">The index that the player Gremlin is stored at (so we can make a different track)</param>
-    public void TrackSetup(List<GameObject> racingGremlins, int playerIndex) {
+    /// <param name="wAmounts">The winning amounts that RandomGremlinRace.cs passes.</param>
+    public void TrackSetup(List<GameObject> racingGremlins, int playerIndex, int[] wAmounts) {
         racingCamera.settings = settings;
         raceTimes = new float[racingGremlins.Count];
         trackIndices = new int[racingGremlins.Count];
@@ -185,6 +191,7 @@ public class RaceManager : MonoBehaviour
                 CreateTrack(i, racingGremlins, playerIndex);
             }
         }
+        winningAmounts = wAmounts;
         gremlinPlayerIndex = playerIndex;
         placementOffset -= racetracks[racetracks.Count - 1].GetComponent<TrackManager>().trackWidth/2;
         raceStart = Instantiate(raceStartObject, this.transform);
@@ -288,6 +295,18 @@ public class RaceManager : MonoBehaviour
             time.transform.position = new Vector3(104.7f, heightOffset) + header.transform.position;
             heightOffset -= 30;
         }
+
+        // Now we check what the player wins, if anything:
+        for (int i = 0; i < winningAmounts.Length; i++) {
+            if (trackIndices[i] == gremlinPlayerIndex) {
+                LoadingData.money += winningAmounts[i];
+                // Hack to tell the player what they win:
+                var text = Instantiate(leaderboardText, header.transform);
+                text.GetComponent<UnityEngine.UI.Text>().text = "Your gremlin placed in: " + (i + 1) + ", so you win: " + winningAmounts[i] + ".";
+                text.transform.position = new Vector3(0, heightOffset) + header.transform.position;
+            }
+        }
+        
         sceneLoader.FadeOutLoad("Hub World", 0.3f);
     }
 

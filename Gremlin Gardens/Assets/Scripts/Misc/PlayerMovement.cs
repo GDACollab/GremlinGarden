@@ -13,8 +13,9 @@ public class PlayerMovement : MonoBehaviour
 
     float cameraPitch = 0.0f;
     CharacterController controller = null;
-    private static int money = 1000;
     public Text moneyText;
+
+    public int startingMoney = 1000;
 
     Vector2 currentDir = Vector2.zero;
     Vector2 currentDirVelocity = Vector2.zero;
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LoadingData.money = startingMoney;
         controller = GetComponent<CharacterController>();
         UpdateMoney(0);
         //cursor is locked and in middle of screen
@@ -124,21 +126,21 @@ public class PlayerMovement : MonoBehaviour
 
     public bool UpdateMoney(int changeAmount)
     {
-        if (money + changeAmount < 0)
+        if (LoadingData.money + changeAmount < 0)
         {
             return false;
         }
         else
         {
-            money += changeAmount;
-            moneyText.text = "Money: " + money;
+            LoadingData.money += changeAmount;
+            moneyText.text = "Money: " + LoadingData.money;
             return true;
         }
     }
 
     public int GetMoney()
     {
-        return money;
+        return LoadingData.money;
     }
 
     public bool IsGrounded()
