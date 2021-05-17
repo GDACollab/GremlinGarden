@@ -58,6 +58,8 @@ public class SettingsMenu : MonoBehaviour
         }
         optionsMenu = gameObject.transform.Find("OptionsMenu").gameObject;
         pauseMenu = gameObject.transform.Find("PauseMenu").gameObject;
+        SetSensitivity(SensSlider.value);
+        SetVolume(VolumeSlider.value);
     }  
 
     void Update()
@@ -96,14 +98,14 @@ public class SettingsMenu : MonoBehaviour
     {
         if (player != null)
             player.GetComponent<PlayerMovement>().mouseSensitivity = sens;
-        if (sens < 2.0f)
+        if (sens < SensSlider.maxValue / 3f)
         {
             lowIconSens.SetActive(true);
             midIconSens.SetActive(false);
             highIconSens.SetActive(false);
             SensSlider.handleRect = lowIconSens.GetComponent<RectTransform>();
         }
-        else if (sens < 4.0f)
+        else if (sens < SensSlider.maxValue / 3f * 2f)
         {
             lowIconSens.SetActive(false);
             midIconSens.SetActive(true);
@@ -138,6 +140,7 @@ public class SettingsMenu : MonoBehaviour
             if (gremlinNamer != null)
                 gremlinNamer.SetActive(false);
             pauseMenu.SetActive(true);
+            optionsMenu.SetActive(false);
             uiSounds[4].Play();
         }
         else
@@ -152,6 +155,7 @@ public class SettingsMenu : MonoBehaviour
             }
 
             pauseMenu.SetActive(false);
+            optionsMenu.SetActive(false);
             uiSounds[3].Play();
         }
 

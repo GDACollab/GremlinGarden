@@ -350,11 +350,13 @@ public class GremlinInteraction : MonoBehaviour
         DropIndicator.SetActive(false);
         TossIndicator.SetActive(false);
         CuddleIndicator.SetActive(false);
+        ChargeBar.SetActive(false);
         GetComponent<Collider>().enabled = true;
         GetComponent<GremlinAI>().enabled = true;
         GetComponent<GremlinAI>().move = false;
         eDownTime = 0;
         canPickUp = false;
+        attemptYeet = false;
     }
 
     /// Starts the fill/drain process for the charge bar
