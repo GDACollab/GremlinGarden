@@ -34,8 +34,8 @@ public class FruitPickup : MonoBehaviour
         GameObject interactions = Canvas.transform.Find("Interactions").gameObject;
         DropIndicator = interactions.transform.Find("Fruit Drop").gameObject;
         PickupIndicator = interactions.transform.Find("Fruit Pickup").gameObject;
-        CarriedGremlin = player.transform.Find("Carried Gremlin");
-        CarriedFruit = player.transform.Find("Carried Fruit");
+        CarriedGremlin = player.transform.GetChild(0).transform.Find("Carried Gremlin");
+        CarriedFruit = player.transform.GetChild(0).transform.Find("Carried Fruit");
         fruit = this.GetComponent<FoodObject>();
         pickUpSound = this.GetComponent<AudioSource>();
 

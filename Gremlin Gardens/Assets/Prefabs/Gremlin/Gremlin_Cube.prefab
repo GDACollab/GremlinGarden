@@ -1404,10 +1404,9 @@ MonoBehaviour:
   petIncrease: 0.05
   cuddleIncrease: 0.05
   yeetIncrease: 0.1
-  tossForce: 300
-  fillSpeed: 4
-  waitTime: 4
+  tossForce: 500
   maxHappinessVal: 1
+  attemptYeet: 0
   beingPet: 0
   beingCarried: 0
   gremlin: {fileID: 0}
