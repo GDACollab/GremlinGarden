@@ -50,7 +50,6 @@ public class GremlinSpawner : MonoBehaviour
         // TODO: Get this to work somehow with updating gremlin positions.
         var gremlin = Instantiate(gremlinPrefab);
         gremlin.GetComponent<GremlinObject>().gremlin.CopyGremlinData(gremlinData);
-        gremlin.GetComponent<GremlinObject>().gremlin.gremlinObject = gremlin.GetComponent<GremlinObject>();
         gremlin.GetComponent<GremlinObject>().nameText.text = gremlinData.getName();
         gremlin.GetComponent<GremlinInteraction>().gremlin = gremlin.GetComponent<GremlinObject>().gremlin;
         gremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", gremlin.GetComponent<GremlinObject>().gremlin.gremColor);
@@ -58,6 +57,8 @@ public class GremlinSpawner : MonoBehaviour
         gremlin.transform.rotation = gremlin.GetComponent<GremlinObject>().gremlin.currentRotation;
         gremlin.name = gremlin.GetComponent<GremlinObject>().gremlin.getName();
         // I wonder if I could use a dictionary of pointers or something to make this easier. Oh well, we've reached the phase of the project where we resolve stuff with quick fixes and easy hacks.
+        // Basically, we make sure that when a gremlin is created, the reference data for that gremlin is actually tied to the new data we've created.
+        // This could probably be solved if I got rid of CopyGremlinData and just passed around .gremlin to LoadingData, but whatever.
         LoadingData.playerGremlins[gremlin.name] = gremlin.GetComponent<GremlinObject>().gremlin;
         Debug.Log("Loaded data for: " + gremlinData.getName());
     }
@@ -78,7 +79,6 @@ public class GremlinSpawner : MonoBehaviour
         name.GetComponent<GremlinNamer>().BeginScanningInput(GetGremlinName, ValidateGremlinName);
         newGremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", Random.ColorHSV(0f, 1f, .6f, .8f, .5f, .7f));
         newGremlin.GetComponent<GremlinObject>().gremlin.gremColor = newGremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.GetColor("_Color");
-        newGremlin.GetComponent<GremlinObject>().gremlin.gremlinObject = newGremlin.GetComponent<GremlinObject>();
     }
 
     bool ValidateGremlinName(string text) {

@@ -18,11 +18,6 @@ public class Gremlin : Object
 
     public Quaternion currentRotation;
 
-    /// <summary>
-    /// Does not transfer across LoadingData. Set by GremlinSpawner and used to update LoadingData.playerGremlins (see RaceSelection.cs)
-    /// </summary>
-    public GremlinObject gremlinObject;
-
     // This one is actually used.
     public Color gremColor;
 
