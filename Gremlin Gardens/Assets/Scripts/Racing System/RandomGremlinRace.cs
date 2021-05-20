@@ -67,7 +67,7 @@ public class RandomGremlinRace : MonoBehaviour
         // Hacky solution for inserting rivalGremlin:
         int rivalGremlin = Random.Range(0, playerGremlin);
         if (rivalGremlin == playerGremlin) {
-            rivalGremlin = gremlinCount;
+            rivalGremlin = 0;
         }
         for (int i = 0; i < gremlinCount; i++)
         {
