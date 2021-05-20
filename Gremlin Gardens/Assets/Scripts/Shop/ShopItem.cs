@@ -87,7 +87,7 @@ public class ShopItem : MonoBehaviour
                 playerMovement.UpdateMoney(-cost);
                 manager.SetPurchaseText("Buy " + itemName + "?");
             }
-            else {
+            else if (playerMovement.GetMoney() < cost){
                 manager.SetPurchaseText("Insufficient Funds to Buy " + itemName + ".");
             }
         }
