@@ -548,7 +548,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1286399565528763486, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1286399565528763486, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -650,6 +650,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6623461710892764647, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.3816936
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623461710892764647, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.3816936
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623461710892764647, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.2544625
+      objectReference: {fileID: 0}
     - target: {fileID: 8610988191157778921, guid: 752edf6b65190b64e8902d945ccea8d1, type: 3}
       propertyPath: Canvas
       value: 
@@ -709,7 +721,7 @@ RectTransform:
   m_Children:
   - {fileID: 925836667}
   m_Father: {fileID: 1780345325}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -759,21 +771,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1812796312}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 701343308}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: playButtonBack
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Hub World
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 701343308}
         m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
-        m_MethodName: playButtonBack
+        m_MethodName: ExitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1392,7 +1404,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1416082885}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 701343308}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: playButtonConfirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1416082885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1561,7 +1585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2211764578479874009, guid: 0e572ae5b7177a342ae9caca43c9bbed, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2211764578479874009, guid: 0e572ae5b7177a342ae9caca43c9bbed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1630,12 +1654,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_ReferenceResolution: {x: 1024, y: 768}
+  m_ScreenMatchMode: 1
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1677,9 +1701,9 @@ RectTransform:
   - {fileID: 33200384}
   - {fileID: 1067232900}
   - {fileID: 1416082883}
+  - {fileID: 761888845}
   - {fileID: 1534835392}
   - {fileID: 701343307}
-  - {fileID: 761888845}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
