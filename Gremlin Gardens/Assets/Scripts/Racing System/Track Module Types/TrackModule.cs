@@ -22,7 +22,7 @@ public class TrackModule : MonoBehaviour
     /// <summary>
     /// How much QTEs should be able to affect the gremlin's speed. Private because the way Unity handles prefabs is ridiculously stupid.
     /// </summary>
-    private float QTEWeight = 5.0f;
+    private float QTEWeight = 2.0f;
 
     /// <summary>
     /// The animation name to play from the Animator for this TrackModule.
