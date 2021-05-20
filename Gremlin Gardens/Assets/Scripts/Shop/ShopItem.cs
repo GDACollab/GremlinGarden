@@ -14,6 +14,13 @@ public class ShopItem : MonoBehaviour
     /// </summary>
     [Tooltip("What object to spawn when the player buys it.")]
     public GameObject itemSpawnOnBuy;
+
+    /// <summary>
+    /// How much the item costs.
+    /// </summary>
+    [Tooltip("How much the item costs.")]
+    public int cost = 100;
+
     /// <summary>
     /// If the player is intending to purchase the item.
     /// </summary>
@@ -57,24 +64,31 @@ public class ShopItem : MonoBehaviour
         {
             // enableMovement is to make sure the player is not in a menu or something when clicking
             PlayerMovement playerMovement = manager.player.GetComponent<PlayerMovement>();
-            if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == false && playerMovement.enableMovement && playerMovement.GetMoney() > 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == false && playerMovement.enableMovement && playerMovement.GetMoney() >= cost)
             {
                 purchaseIntent = true;
                 manager.SetPurchaseText("Confirm Buy " + itemName + "?");
-            } else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true && playerMovement.enableMovement) {
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse0) && purchaseIntent == true && playerMovement.enableMovement)
+            {
                 purchaseIntent = false;
                 // Quick hack to detect whether or not we're spawning a gremlin.
-                if (itemSpawnOnBuy.TryGetComponent<GremlinObject>(out GremlinObject gremlin)){
+                if (itemSpawnOnBuy.TryGetComponent<GremlinObject>(out GremlinObject gremlin))
+                {
                     // Quick hack to find the GameManager:
-                    playerMovement.UpdateMoney(-500);
                     GameObject.Find("GameManager").GetComponent<GremlinSpawner>().CreateGremlin(manager.player.transform.position + manager.player.transform.forward);
-                } else {
+                }
+                else
+                {
                     var bought = Instantiate(itemSpawnOnBuy);
-                    playerMovement.UpdateMoney(-100);
                     //Temporary solution for placement.
                     bought.transform.position = manager.player.transform.position + manager.player.transform.forward;
                 }
+                playerMovement.UpdateMoney(-cost);
                 manager.SetPurchaseText("Buy " + itemName + "?");
+            }
+            else {
+                manager.SetPurchaseText("Insufficient Funds to Buy " + itemName + ".");
             }
         }
     }
