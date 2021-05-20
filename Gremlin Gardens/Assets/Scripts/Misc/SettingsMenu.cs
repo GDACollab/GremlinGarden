@@ -68,7 +68,7 @@ public class SettingsMenu : MonoBehaviour
 
     void Update()
     {
-        if (!settingsMenu && Input.GetButtonDown("Cancel"))
+        if (!isMainMenu && Input.GetButtonDown("Cancel"))
             ToggleSettingsMenu();
     }
 
@@ -199,7 +199,7 @@ public class SettingsMenu : MonoBehaviour
     public void ToggleOptionsMenu()
     {
         toggleOptions = !toggleOptions;
-        if (!settingsMenu)
+        if (!isMainMenu)
         {
             pauseMenu.SetActive(!toggleOptions);
         }
