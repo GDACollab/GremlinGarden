@@ -40,6 +40,10 @@ public class SettingsMenu : MonoBehaviour
     public GameObject Canvas;
     public GameObject SceneMusic;
     /// <summary>
+    /// Quick hack to prevent the settings menu from acting weird in the main menu.
+    /// </summary>
+    public bool isMainMenu = false;
+    /// <summary>
     /// How much to reduce the volume of BGM music when the game is paused
     /// </summary>
     [Tooltip("How much to reduce the volume of BGM music when the game is paused")]
@@ -64,7 +68,7 @@ public class SettingsMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (!settingsMenu && Input.GetButtonDown("Cancel"))
             ToggleSettingsMenu();
     }
 
@@ -195,7 +199,10 @@ public class SettingsMenu : MonoBehaviour
     public void ToggleOptionsMenu()
     {
         toggleOptions = !toggleOptions;
-        pauseMenu.SetActive(!toggleOptions);
+        if (!settingsMenu)
+        {
+            pauseMenu.SetActive(!toggleOptions);
+        }
         optionsMenu.gameObject.SetActive(toggleOptions);
     }
 
