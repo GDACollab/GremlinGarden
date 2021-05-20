@@ -20,6 +20,12 @@ public class TrackModule : MonoBehaviour
     public float BaseSpeed = .5f;
 
     /// <summary>
+    /// How much QTEs should be able to affect the gremlin's speed.
+    /// </summary>
+    [Tooltip("How much QTEs should be able to affect the gremlin's speed.")]
+    public float QTEWeight = 0.1f;
+
+    /// <summary>
     /// The animation name to play from the Animator for this TrackModule.
     /// </summary>
     [Tooltip("The animation name to play from the Animator for this TrackModule.")]
@@ -176,7 +182,7 @@ public class TrackModule : MonoBehaviour
     public void SetModifiedSpeed() {
         modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
         if (qteObject != null) {
-            modifiedSpeed += qteObject.GetComponent<QTEScript>().ModifySpeed();
+            modifiedSpeed += modifiedSpeed * QTEWeight * qteObject.GetComponent<QTEScript>().ModifySpeed();
         }
     }
 
