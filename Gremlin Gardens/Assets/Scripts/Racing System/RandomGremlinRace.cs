@@ -75,7 +75,7 @@ public class RandomGremlinRace : MonoBehaviour
             if (i == playerGremlin)
             {
                 Gremlin gremlinToLoad;
-                if (LoadingData.playerGremlins.Count != 0)
+                if (LoadingData.playerGremlins.Count > 0)
                 {
                     gremlinToLoad = LoadingData.playerGremlins[LoadingData.gremlinToRace];
                 }
