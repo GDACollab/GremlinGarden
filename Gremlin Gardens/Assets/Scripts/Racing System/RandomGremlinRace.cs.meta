@@ -3,7 +3,10 @@ guid: 62aff5aa13039ea42a55af4d087c5366
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - raceManager: {instanceID: 0}
+  - gremlinObject: {instanceID: 0}
+  - playerIndicator: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

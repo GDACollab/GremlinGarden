@@ -7,9 +7,16 @@ using UnityEngine;
 /// </summary>
 public class TweenTrackModule : TrackModule
 {
+    private void Awake()
+    {
+        totalDistance = 0;
+        var index = this.transform.GetSiblingIndex();
+        pathStart = this.transform.parent.GetChild(index - 1).GetComponent<TrackModule>().pathEnd;
+        pathEnd = this.transform.parent.GetChild(index + 1).GetComponent<TrackModule>().pathStart;
+    }
     private void Update()
     {
-        if (gremlinMoving)
+        if (gremlinMoving && !settings.paused)
         { //Move the Gremlin around.
             totalDistance += modifiedSpeed * BaseSpeed * Time.deltaTime; //Keeping track of how far along the Gremlin is in this module.
             //Hacky work-around for TweenTrackModule not given the previous and next children:
@@ -23,7 +30,8 @@ public class TweenTrackModule : TrackModule
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
                 SetModifiedSpeed();
                 activeGremlin.transform.position = Vector3.Lerp(prevChild, nextChild, totalDistance) + terrainVariant.positionFunction(timePassed * modifiedSpeed, this) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
-                
+                Vector3 nextPos = nextChild;
+                activeGremlin.transform.rotation = Quaternion.LookRotation(new Vector3(nextPos.x, activeGremlin.transform.position.y, nextPos.z) - activeGremlin.transform.position, Vector3.up);
                 timePassed += Time.deltaTime;
             }
         }

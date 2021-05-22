@@ -16,6 +16,8 @@ public class TrackManager : MonoBehaviour
     /// </summary>
     [Tooltip("The Gremlin that we're going to race with.")]
     public GameObject RacingGremlin;
+    //public GameObject gremlinModel = RacingGremlin.Find("gremlinModel");
+
 
     /// <summary>
     /// The UI to attach QTEs to.
@@ -34,6 +36,12 @@ public class TrackManager : MonoBehaviour
     /// </summary>
     [HideInInspector]
     public int currentChild;
+
+    /// <summary>
+    /// If the current track is for the player's gremlin. Used for creating QTEs by TrackModule. Set by RaceManager.
+    /// </summary>
+    [HideInInspector]
+    public bool isPlayerTrack = false;
 
     public delegate void Callback(TrackManager activeManager);
     /// <summary>
@@ -58,6 +66,8 @@ public class TrackManager : MonoBehaviour
     [HideInInspector]
     public int trackID;
 
+    public SettingsMenu settings;
+
     /// <summary>
     /// Start racing with the selected Gremlin.
     /// </summary>
@@ -81,9 +91,9 @@ public class TrackManager : MonoBehaviour
         else
         {
             TrackModule module = transform.GetChild(currentChild).GetComponent<TrackModule>();
-            module.BeginMove(RacingGremlin.GetComponent<GremlinObject>(), GremlinOffset, Race, ActiveUI); //Keep the Gremlin moving.
-            RacingGremlin.GetComponent<Animator>().Play(module.AnimationToPlay); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
-            RacingGremlin.GetComponent<Animator>().speed = module.modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
+            module.BeginMove(RacingGremlin.GetComponent<GremlinObject>(), GremlinOffset, Race, ActiveUI, settings); //Keep the Gremlin moving.
+            RacingGremlin.transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger(module.AnimationToPlay); //CrossFade to next animation (Instead of playing. Might make things smoother. TODO: Test if this is a good idea).
+            RacingGremlin.transform.Find("gremlinModel").GetComponent<Animator>().speed = module.modifiedSpeed; //Speed or slow the animation based on how fast the Gremlin is going.
             if (racingCallback != null) {
                 racingCallback(this, module);
             }

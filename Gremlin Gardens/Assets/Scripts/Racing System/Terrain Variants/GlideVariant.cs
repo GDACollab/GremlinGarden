@@ -12,6 +12,13 @@ public class GlideVariant : TerrainVariant
     public override Vector3 positionFunction(float time, TrackModule activeModule)
     {
         //Use speed things to affect the shape of the curve.
-        return new Vector3(time * activeModule.activeGremlin.gremlin.getStat("Flying"), -Mathf.Pow(time, 2)/(100 * 1/activeModule.activeGremlin.gremlin.getStat("Flying")) + 20, 0);
+        var gremlin = activeModule.activeGremlin;
+        var flyingStat = 0.0f;
+        // This is for generating something EquationTrackModule tries to pull from positionFunction without an active gremlin:
+        if (gremlin != null) {
+            flyingStat = gremlin.gremlin.getStat("Flying");
+        }
+        // We set it so that the gremlin can travel along the x or z axis if it needs to. Will be clamped by EquationTrackModule.
+        return (new Vector3(1, 0, 1) * time * Mathf.Log(2 + flyingStat, 100)) + new Vector3(0, -Mathf.Pow(time, 2)/(100 * 1/Mathf.Log(flyingStat + 2, 100)) + 20, 0);
     }
 }

@@ -56,6 +56,8 @@ public class RacingCamera : MonoBehaviour
     [HideInInspector]
     public TrackManager gremlinTrack = null;
 
+    public SettingsMenu settings;
+
 
     /// <summary>
     /// Sets the gremlin the camera is currently tracking. Please do not use multiple SetX() functions at once, it will break the camera.
@@ -177,6 +179,8 @@ public class RacingCamera : MonoBehaviour
     /// <param name="speed">How fast the wipe is going to move on the canvas.</param>
     /// <param name="callback">The function to call when the wipe is finished.</param>
     public void SetWipe(Camera cameraToWipe, GameObject ActiveUI, Vector3 startAt, Vector3 endAt, float speed, Callback callback = null) {
+        //We create a new RenderTexture because the size of the camera might differ in different platforms. We have a RenderTexture already in place for the camera
+        //because webGL freaks out if there isn't.
         wipeTexture = new RenderTexture(Screen.width, Screen.height, 24);
         planeToWipeWith = Instantiate(texturePlane, ActiveUI.transform);
         cameraToWipe.targetTexture = wipeTexture;
@@ -239,6 +243,11 @@ public class RacingCamera : MonoBehaviour
 
     void Update()
     {
+        if (!settings.paused) {
+            UpdateCamera();
+        }
+    }
+    private void UpdateCamera() {
         if (cameraMode == "racing")
         {
             if (enableMovement)
@@ -249,13 +258,13 @@ public class RacingCamera : MonoBehaviour
                     if (Mathf.Abs(gremlinFocus.transform.position[i] + cameraOffset[i] - this.transform.position[i]) > gremlinBounds[i])
                     {
                         var direction = Mathf.Sign(gremlinFocus.transform.position[i] + cameraOffset[i] - this.transform.position[i]);
-                        //TODO: Change this to reflect the gremlin's actual speed.
-                        var track = gremlinTrack.transform.GetChild(gremlinTrack.currentChild).GetComponent<TrackModule>();
+                        // We subtract 1 from .currentChild because TrackManager increments currentChild after calling beginMove during the Race function. So basically .currentChild is the child in the future. Technically.
+                        var track = gremlinTrack.transform.GetChild(gremlinTrack.currentChild - 1).GetComponent<TrackModule>();
                         //I can't use track.modifiedSpeed for... some reason.
-                        newPos[i] += track.terrainVariant.relativeSpeed(gremlinFocus.GetComponent<GremlinObject>(), track) * track.BaseSpeed * direction * Time.deltaTime;
+                        newPos[i] += track.terrainVariant.relativeSpeed(gremlinFocus.GetComponent<GremlinObject>(), track) * track.BaseSpeed * direction;
                     }
                 }
-                this.transform.position = Vector3.Lerp(newPos, this.transform.position, Time.deltaTime);
+                this.transform.position = Vector3.Lerp(this.transform.position, newPos, Time.deltaTime);
             }
             if (lookAtFocus)
             {
@@ -268,6 +277,7 @@ public class RacingCamera : MonoBehaviour
         { //The logic for doing a flyover.
             PathCreation.PathCreator flyoverPath = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().GetComponent<PathCreation.PathCreator>();
             int skipAhead = trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraSkipAhead;
+            Vector3 previousPosition = this.transform.position; // Used for rotation.
             if (cameraTrackDirection == 1 && cameraTrackProgress >= flyoverPath.path.length) //This if/else if is just to move along the path if we're doing one direction or the other.
             {
                 if (skipAhead > 0)
@@ -317,8 +327,8 @@ public class RacingCamera : MonoBehaviour
                     Vector3 start = flyoverPath.path.GetPointAtDistance(0);
                     Vector3 end = flyoverPath.path.GetPointAtDistance(flyoverPath.path.length, PathCreation.EndOfPathInstruction.Stop);
                     Vector3 followLine = end - start;
-                    newPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress/Vector3.Distance(start, end)));
-                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed/flyoverPath.path.length));
+                    newPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress / Vector3.Distance(start, end)));
+                    nextPos = flyoverPath.path.GetPointAtDistance(0) + (followLine * (cameraTrackProgress + cameraFlySpeed / flyoverPath.path.length));
                 }
                 if (isSkipping)
                 { //Okay, but have we skipped over some modules? If so, start slowly moving over to the next available module.
@@ -342,18 +352,19 @@ public class RacingCamera : MonoBehaviour
                         cameraTrackProgress += cameraFlySpeed;
                     }
                 }
-                if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate)
+                // We make sure we don't rotate if it's not necessary. So if the track allows for rotation, and we've spent a little time on the track, then we can rotate.
+                if (trackFocus.transform.GetChild(currentModule).GetComponent<TrackModule>().cameraShouldRotate && cameraTrackProgress > 0.5f)
                 { //Just for updating rotation.
                     Vector3 newRotation = Vector3.zero;
                     if (cameraTrackDirection == 1)
                     {
-                        newRotation = nextPos - newPos;
+                        newRotation = this.transform.position - previousPosition;
                     }
                     else if (cameraTrackDirection == -1)
                     {
-                        newRotation = newPos - nextPos;
+                        newRotation = this.transform.position - previousPosition;
                     }
-                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), Time.deltaTime);
+                    this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(newRotation, Vector3.up), cameraFlySpeed * 0.5f);
                 }
             }
         }
@@ -373,14 +384,16 @@ public class RacingCamera : MonoBehaviour
                 cameraStuffFinishedCallback();
             }
         }
-        else if (cameraMode == "tween") {
-            var percent = tweenCurve.Evaluate(tweenElapsed/tweenDuration);
+        else if (cameraMode == "tween")
+        {
+            var percent = tweenCurve.Evaluate(tweenElapsed / tweenDuration);
             this.transform.position = oldPos + ((targetPos - oldPos) * percent);
             this.transform.rotation = Quaternion.Euler(oldRot + ((targetRot - oldRot) * percent));
-            if (tweenElapsed >= tweenDuration) {
+            if (tweenElapsed >= tweenDuration)
+            {
                 cameraMode = "none";
                 cameraStuffFinishedCallback();
-            } 
+            }
             tweenElapsed += Time.deltaTime;
         }
     }
