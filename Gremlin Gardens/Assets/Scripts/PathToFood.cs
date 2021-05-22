@@ -33,15 +33,15 @@ public class PathToFood : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(transform.position, forward, out hit, viewDistance))
+        //Vector3 forward = transform.TransformDirection(Vector3.forward);
+        /*if (Physics.Raycast(transform.position, forward, out hit, viewDistance))
         {
             if (hit.transform.tag == "Fruit")
             {
                 //Debug.Log("fruit");
                 target = hit.transform;
             }
-        }
+        }*/
 
         // Debug test purposes
         //target = GameObject.FindGameObjectsWithTag("Fruit")[0].transform;
