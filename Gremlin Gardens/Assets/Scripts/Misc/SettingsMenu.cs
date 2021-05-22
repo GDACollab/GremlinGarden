@@ -53,6 +53,8 @@ public class SettingsMenu : MonoBehaviour
     private GameObject pauseMenu;
     private GameObject optionsMenu;
 
+    bool pausedGremlinSelect = false;
+
     public void Awake()
     {
         uiSounds = GameObject.Find("UI Sounds").GetComponents<AudioSource>();
@@ -147,8 +149,11 @@ public class SettingsMenu : MonoBehaviour
             SceneMusic.GetComponent<AudioSource>().volume *= pausedBGMReduction;
             if (gremlinNamer != null)
                 gremlinNamer.SetActive(false);
-            else if(gremlinSelect != null)
+            else if (gremlinSelect != null && gremlinSelect.activeInHierarchy == true)
+            {
                 gremlinSelect.SetActive(false);
+                pausedGremlinSelect = true;
+            }
 
             pauseMenu.SetActive(true);
             optionsMenu.SetActive(false);
@@ -164,8 +169,9 @@ public class SettingsMenu : MonoBehaviour
                 gremlinNamer.SetActive(true);
                 ToggleMovement(false);
             }
-            else if(gremlinSelect != null){
+            else if(gremlinSelect != null && pausedGremlinSelect == true){
                 gremlinSelect.SetActive(true);
+                pausedGremlinSelect = false;
                 ToggleMovement(false);
             }
 
