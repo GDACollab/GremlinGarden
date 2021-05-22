@@ -116,7 +116,7 @@ public class GremlinInteraction : MonoBehaviour
             }
 
             //TOSS
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && !attemptYeet)
             {
                 TossIndicator.SetActive(false);
                 DropIndicator.SetActive(false);
@@ -208,7 +208,7 @@ public class GremlinInteraction : MonoBehaviour
             //GetComponent<Outline>().OutlineWidth = 10;
             //if (CarriedGremlin.childCount != 0 || beingPet || CarriedFruit.childCount != 0)
             //GetComponent<Outline>().OutlineWidth = 0;
-            if (CarriedGremlin.childCount == 0 && !beingPet && CarriedFruit.childCount == 0)
+            if (CarriedGremlin.childCount == 0 && !beingPet && CarriedFruit.childCount == 0 && !attemptYeet)
             {
                 PickupIndicator.SetActive(true);
                 PetIndicator.SetActive(true);
@@ -237,7 +237,7 @@ public class GremlinInteraction : MonoBehaviour
                 rb.useGravity = false;
                 this.transform.position = CarriedGremlin.position;
                 this.transform.parent = CarriedGremlin;
-                //rb.constraints = RigidbodyConstraints.FreezeAll;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
                 beingCarried = true;
                 //GetComponent<Collider>().enabled = false;
                 GetComponent<GremlinAI>().enabled = false;
