@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         {
             LoadingData.money = startingMoney;
         }
-        if (LoadingData.playerPosition != Vector3.zero && LoadingData.playerRotation != new Quaternion()) {
+        if (LoadingData.playerPosition != new Vector3() && LoadingData.playerRotation != new Quaternion()) {
             this.transform.position = LoadingData.playerPosition;
             this.transform.rotation = LoadingData.playerRotation;
         }
