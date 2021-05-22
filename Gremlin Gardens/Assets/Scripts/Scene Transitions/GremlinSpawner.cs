@@ -36,8 +36,13 @@ public class GremlinSpawner : MonoBehaviour
             CreateGremlin(new Vector3(22, 35, 37));
         }
         else {
+            List<Gremlin> gremlinsToSpawn = new List<Gremlin>();
+            // Because dictionaries are picky about how you iterate through them, we have this solution.
             foreach (KeyValuePair<string, Gremlin> savedGremlin in LoadingData.playerGremlins) {
-                SpawnGremlin(savedGremlin.Value);
+                gremlinsToSpawn.Add(savedGremlin.Value);
+            }
+            for (int i = 0; i < gremlinsToSpawn.Count; i++) {
+                SpawnGremlin(gremlinsToSpawn[i]);
             }
         }
     }
