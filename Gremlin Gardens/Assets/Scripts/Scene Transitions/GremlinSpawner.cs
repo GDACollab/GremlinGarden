@@ -53,8 +53,9 @@ public class GremlinSpawner : MonoBehaviour
         gremlin.GetComponent<GremlinObject>().nameText.text = gremlinData.getName();
         gremlin.GetComponent<GremlinInteraction>().gremlin = gremlin.GetComponent<GremlinObject>().gremlin;
         gremlin.transform.Find("gremlinModel").transform.Find("gremlin.mesh").GetComponent<SkinnedMeshRenderer>().material.SetColor("_Color", gremlin.GetComponent<GremlinObject>().gremlin.gremColor);
-        gremlin.transform.position = new Vector3(22, 35, 32);
+        gremlin.transform.position = gremlin.GetComponent<GremlinObject>().gremlin.currentPosition;
         gremlin.transform.rotation = gremlin.GetComponent<GremlinObject>().gremlin.currentRotation;
+        gremlin.GetComponent<GremlinObject>().gremlin.transformReference = gremlin.transform;
         gremlin.name = gremlin.GetComponent<GremlinObject>().gremlin.getName();
         // I wonder if I could use a dictionary of pointers or something to make this easier. Oh well, we've reached the phase of the project where we resolve stuff with quick fixes and easy hacks.
         // Basically, we make sure that when a gremlin is created, the reference data for that gremlin is actually tied to the new data we've created.
@@ -71,6 +72,7 @@ public class GremlinSpawner : MonoBehaviour
         newGremlin = Instantiate(gremlinPrefab);
         newGremlin.transform.position = gremlinPosition;
         newGremlin.GetComponent<GremlinObject>().gremlin.InitializeGremlin();
+        newGremlin.GetComponent<GremlinObject>().gremlin.transformReference = newGremlin.transform;
         if (gremlinData != null)
         {
             newGremlin.GetComponent<GremlinObject>().gremlin.CopyGremlinData(gremlinData);

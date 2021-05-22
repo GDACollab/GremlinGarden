@@ -46,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
         {
             LoadingData.money = startingMoney;
         }
+        if (LoadingData.playerPosition != Vector3.zero && LoadingData.playerRotation != new Quaternion()) {
+            this.transform.position = LoadingData.playerPosition;
+            this.transform.rotation = LoadingData.playerRotation;
+        }
         controller = GetComponent<CharacterController>();
         UpdateMoney(0);
         //cursor is locked and in middle of screen

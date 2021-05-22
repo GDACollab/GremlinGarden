@@ -18,6 +18,12 @@ public class Gremlin : Object
 
     public Quaternion currentRotation;
 
+    /// <summary>
+    /// Set when the gremlin is spawned so it can set its currentPosition and currentRotation when we load the next scene.
+    /// DOES NOT TRANSFER ACROSS SCENES.
+    /// </summary>
+    public Transform transformReference;
+
     // This one is actually used.
     public Color gremColor;
 

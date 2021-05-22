@@ -22,4 +22,7 @@ public static class LoadingData
     public static string gremlinToRace;
 
     public static int money = 0;
+
+    public static Vector3 playerPosition = Vector3.zero;
+    public static Quaternion playerRotation = new Quaternion();
 }
