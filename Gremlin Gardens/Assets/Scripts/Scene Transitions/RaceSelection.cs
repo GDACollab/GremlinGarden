@@ -41,6 +41,8 @@ public class RaceSelection : MonoBehaviour
     [Tooltip("The button prefab for selecting gremlins.")]
     public GameObject gremlinPickerButton;
 
+    public SettingsMenu settings;
+
     /// <summary>
     /// Is the selection UI up?
     /// </summary>
@@ -86,7 +88,7 @@ public class RaceSelection : MonoBehaviour
 
     private void MouseDown()
     {
-        if (Vector3.Distance(this.transform.position, player.transform.position) < selectionDistance && selectionUI == false && !GameObject.Find(gremlinPicker.name) && !GameObject.Find(gremlinPicker.name).activeSelf == true)
+        if (!settings.paused && Vector3.Distance(this.transform.position, player.transform.position) < selectionDistance && selectionUI == false && gremlinPicker.activeInHierarchy != true)
         {
             selectionUI = true;
             // Quick hack for getting a gremlin selector before the race. 
