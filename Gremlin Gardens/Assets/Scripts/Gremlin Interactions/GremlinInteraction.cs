@@ -332,12 +332,12 @@ public class GremlinInteraction : MonoBehaviour
     private void UpdateStatsMenu()
     {
         StatMenu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = gremlin.getName();
-        StatMenu.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Stamina: " + gremlin.getStat("Stamina");
-        StatMenu.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Happiness: " + gremlin.getStat("Happiness");
-        StatMenu.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Running: " + gremlin.getStat("Running");
-        StatMenu.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Climbing: " + gremlin.getStat("Climbing");
-        StatMenu.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Swimming: " + gremlin.getStat("Swimming");
-        StatMenu.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Flying: " + gremlin.getStat("Flying");
+        StatMenu.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Stamina: " + Mathf.Floor(gremlin.getStat("Stamina"));
+        StatMenu.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Happiness: " + Mathf.Floor(gremlin.getStat("Happiness"));
+        StatMenu.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Running: " + Mathf.Floor(gremlin.getStat("Running"));
+        StatMenu.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Climbing: " + Mathf.Floor(gremlin.getStat("Climbing"));
+        StatMenu.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Swimming: " + Mathf.Floor(gremlin.getStat("Swimming"));
+        StatMenu.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Flying: " + Mathf.Floor(gremlin.getStat("Flying"));
     }
 
     private void DropGremlin()
