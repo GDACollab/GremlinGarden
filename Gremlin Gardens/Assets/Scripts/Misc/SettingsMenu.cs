@@ -135,6 +135,10 @@ public class SettingsMenu : MonoBehaviour
         if (Canvas.transform.Find("Gremlin Namer(Clone)") != null)
             gremlinNamer = Canvas.transform.Find("Gremlin Namer(Clone)").gameObject;
 
+        GameObject gremlinSelect = null;
+        if (Canvas.transform.Find("Gremlin Select") != null)
+            gremlinSelect = Canvas.transform.Find("Gremlin Select").gameObject;
+
         // Pause/Unpause physics
         if (paused)
         {
@@ -143,6 +147,9 @@ public class SettingsMenu : MonoBehaviour
             SceneMusic.GetComponent<AudioSource>().volume *= pausedBGMReduction;
             if (gremlinNamer != null)
                 gremlinNamer.SetActive(false);
+            else if(gremlinSelect != null)
+                gremlinSelect.SetActive(false);
+
             pauseMenu.SetActive(true);
             optionsMenu.SetActive(false);
             uiSounds[4].Play();
@@ -155,6 +162,10 @@ public class SettingsMenu : MonoBehaviour
             if (gremlinNamer != null)
             {
                 gremlinNamer.SetActive(true);
+                ToggleMovement(false);
+            }
+            else if(gremlinSelect != null){
+                gremlinSelect.SetActive(true);
                 ToggleMovement(false);
             }
 
