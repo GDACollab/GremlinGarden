@@ -69,9 +69,6 @@ public class RaceSelection : MonoBehaviour
         {
             IsExited();
         }
-        /*if (Input.GetButtonDown("Cancel") && selectionUI == true) {
-            DestroyUI();
-        }*/
     }
 
     private void IsCentered()
