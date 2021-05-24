@@ -40,7 +40,6 @@ public class ShopManager : MonoBehaviour
     /// </summary>
     Vector3 shopItemOffset;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +56,6 @@ public class ShopManager : MonoBehaviour
     /// <returns></returns>
     public GameObject AddItem(GameObject prefab) {
         var newItem = Instantiate(prefab, this.transform);
-
         newItem.transform.position = itemStartingPos.transform.position + shopItemOffset;
         shopItems.Add(newItem.GetComponent<ShopItem>());
         shopItemOffset += itemStartingPos.transform.right * offsetDistance;

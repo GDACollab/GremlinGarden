@@ -6,7 +6,7 @@ public class SwimVariant : TerrainVariant
 {
     public override float relativeSpeed(GremlinObject gremlin, TrackModule activeModule)
     {
-        return Mathf.Log(2 + gremlin.gremlin.getStat("Swimming"), 100) * speedModifier;
+        return gremlin.gremlin.getStat("Swimming") * speedModifier;
     }
 
     public override Vector3 positionFunction(float time, TrackModule activeModule)
