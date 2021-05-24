@@ -11,3 +11,5 @@ Acquire Gremlins, feed gremlins, take care of gremlins, hold gremlins,  and make
 ---
 
 Made in Unity 2020.1.6f1. Unity can be downloaded from the [Unity Download Archive](https://unity3d.com/get-unity/download/archive) or through Unity Hub.
+
+To build from source, download the repository, open the project inside of it with Unity 2020.X, and build to your desired platform under File > Build
