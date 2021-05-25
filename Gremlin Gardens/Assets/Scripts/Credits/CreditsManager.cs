@@ -103,6 +103,7 @@ public class CreditsManager : MonoBehaviour
                     else if(colIndex < seperatorIndex) // Check to only store information from the Gremlin Gardens credits
                     {
                         //Debug.Log($"Name: {name}, Header: {colHeaders[colIndex]}, Value: {currentValue}");
+                        //Debug.Log($"Header: {colHeaders[colIndex]}");
                         creditsMap[colHeaders[colIndex]].Add(name, currentValue);
                     }
                     currentValue = "";
@@ -120,9 +121,6 @@ public class CreditsManager : MonoBehaviour
                     currentValue += character;
                 }
             }
-            // Stores last value in dictionary
-            // Debug.Log($"Name: {name}, Header: {colHeaders[colIndex]}, Value: {currentValue}");
-            creditsMap[colHeaders[colIndex]].Add(name, currentValue);
         }
     }
 
