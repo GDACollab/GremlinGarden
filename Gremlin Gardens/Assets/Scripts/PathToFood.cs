@@ -18,6 +18,7 @@ public class PathToFood : MonoBehaviour
     private Transform target;
     private NavMeshPath path;
     private NavMeshAgent agent;
+    private FieldOfView script1;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class PathToFood : MonoBehaviour
         elapsed = 0.0f;
         // agent necessary? Make sure to re-examine
         agent = this.GetComponent<NavMeshAgent>();
+        script1 = this.gameObject.GetComponentInParent<FieldOfView>();
 
         //StartCoroutine(timer());
     }
@@ -45,9 +47,19 @@ public class PathToFood : MonoBehaviour
 
         // Debug test purposes
         //target = GameObject.FindGameObjectsWithTag("Fruit")[0].transform;
+        //Debug.Log(target);
         // 2 problems:
         // Gremlin can go through objects
         // Gremlin can move to object even if it is being carried
+        if (script1.seeFruit == true)
+        {
+            target = script1.target;
+            Debug.Log(target);
+        }
+        else
+        {
+            //target = null;
+        }
 
         elapsed += Time.deltaTime;
         if (elapsed > endtime && target != null)
@@ -65,7 +77,7 @@ public class PathToFood : MonoBehaviour
         // debugging path
         for (int i = 0; i < path.corners.Length - 1; i++)
         {
-            //Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
+            Debug.DrawLine(path.corners[i], path.corners[i + 1], Color.red);
             //Debug.Log(path.corners.Length - 1);
             //list3[i] = path.corners[i];
             //Debug.Log(list3[i]);

@@ -10,8 +10,10 @@ public class FieldOfView : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstructMask;
+    private RaycastHit hit;
 
     public bool seeFruit;
+    public Transform target;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,7 @@ public class FieldOfView : MonoBehaviour
         Collider[] collides = Physics.OverlapSphere(transform.position, radius, targetMask);
         if (collides.Length != 0)
         {
-            Transform target = collides[0].transform;
+            target = collides[0].transform;
             Vector3 directionTarget = (target.position - transform.position).normalized;
 
             if (Vector3.Angle(transform.forward, directionTarget) < angle / 2)
@@ -41,6 +43,7 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, directionTarget, distanceTarget, obstructMask))
                 {
+                    //Debug.Log(target);
                     seeFruit = true;
                     Debug.Log("Can see stuff");
                 }
