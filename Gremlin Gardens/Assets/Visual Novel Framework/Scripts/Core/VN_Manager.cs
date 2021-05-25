@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Ink.Runtime;
+using UnityEngine.Events;
 
 /// <summary>
 /// Creates and manages VN components and flow
@@ -32,6 +33,16 @@ public class VN_Manager : MonoBehaviour
 	public float normalSpeed = 60;
 	[Tooltip("Speed of the text (in characters per second) during a pause. Used at punctuation marks")]
 	public float pauseSpeed = 10;
+
+	// The Options Menu slider used to edit text speed during runtime
+	[Header("Text Speed Slider")]
+	[Tooltip("The Slider object itself")]
+	public Slider textSpeedSlider;
+	[Tooltip("Minumum speed for normal text")]
+	public float minValue;
+	[Tooltip("Maximum speed for normal text")]
+	public float maxValue;
+
 	// Dictionary of the different speeds (Dictionaries are not serializable).
 	private Dictionary<string, float> TextSpeeds;
 	// List of characters the the text will pause at
@@ -61,9 +72,13 @@ public class VN_Manager : MonoBehaviour
 	public Canvas Decor_RTCanvas;
 	public Canvas Decor_LBCanvas;
 
-	// Internal References
+	// Internal References & variables
 	// Keep track of story creation event
 	public static event Action<Story> OnCreateStory;
+	// Invoked when StartStory is called
+	public UnityEvent OnStartStory = new UnityEvent();
+	// Invoked when EndStory button is pressed 
+	public UnityEvent OnEndStory = new UnityEvent();
 	// The content to be displayed
 	private string currentLine = "";
 	// The character who is currently speaking
@@ -71,17 +86,28 @@ public class VN_Manager : MonoBehaviour
 	// The tags in effect on the current text
 	private List<string> currentTags;
 
+	// State of text displaying
+	// Typing: content text is typing out char by char
+	// Idle: text is done displaying and nothing is happening
+	// Busy: VN is processing line, running commands
+	// End: Ink Story has reached an end
+	public enum VN_State { typing, idle, busy, end };
+	[HideInInspector] public VN_State state = VN_State.idle;
+	private UnityEvent OnTextTypeEnd = new UnityEvent();
+
+	public enum MouseState { other, contentBox };
+	[HideInInspector] public MouseState mouseState = MouseState.other;
+
+	private IEnumerator currentTypingCoroutine;
+
 	// Subordinate classes
 	private VN_CommandCall CommandCall;
 	[HideInInspector] public VN_UIFactory UIFactory;
 	[HideInInspector] public VN_TextboxManager textboxManager;
 	[HideInInspector] public VN_CharacterManager characterManager;
 	[HideInInspector] public VN_AudioManager audioManager;
-	[HideInInspector] public VN_SharedVariables sharedVariables; 
-
-	// Flags/states
-	// Whether or not the current text is done from slow text
-	private bool currentTextDone = true;
+	[HideInInspector] public VN_SharedVariables sharedVariables;
+	[HideInInspector] public VN_ScreenManager screenManager; 
 
 	// Get parse results from corountine
 	private string speaker;
@@ -94,13 +120,22 @@ public class VN_Manager : MonoBehaviour
 	// Adds the AddCharacter and SubtractCharacter functions to the AllCommands Dictionary
 	void Awake()
     {
+		VN_Util Helper = new VN_Util(this, DebugEnabled);
+
+		OnTextTypeEnd.AddListener(() =>
+		{
+			state = VN_State.idle;
+		});
+
+		screenManager = GetComponent<VN_ScreenManager>();
+		screenManager.Construct(this);
+
 		sharedVariables = GetComponent<VN_SharedVariables>();
 		sharedVariables.Construct(this);
 
 		audioManager = GetComponent<VN_AudioManager>();
 		audioManager.Construct(this);
 
-		VN_Util Helper = new VN_Util(this, DebugEnabled);
 		// Get CommandCall script in gameobject
 		CommandCall = GetComponent<VN_CommandCall>();
 		CommandCall.Construct(this);
@@ -127,6 +162,14 @@ public class VN_Manager : MonoBehaviour
 			{"Normal", normalSpeed},
 			{"Pause", pauseSpeed}
 		};
+
+		// Setup for the slider
+		if(textSpeedSlider)
+        {
+			textSpeedSlider.value = TextSpeeds["Normal"];
+			textSpeedSlider.minValue = this.minValue;
+			textSpeedSlider.maxValue = this.maxValue;
+		}
 
 		//Check to make sure all assigned text speeds are valid (i.e. speed > 0)
 		foreach(float value in TextSpeeds.Values)
@@ -163,10 +206,28 @@ public class VN_Manager : MonoBehaviour
     {
 		// Skips the animation of text appearing if the spacebar or primary mouse button is pressed
 		// TODO replace with input system to not hard code input bindings
-		if (Input.GetKeyDown(KeyCode.Space)) SkipSlowText();
+
+		if (mouseState == MouseState.contentBox && state == VN_State.idle)
+		{
+
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+            {
+				audioManager.PlayAudio(audioManager.buttonClick);
+                RefreshView();
+            }
+        }
+
+		if (mouseState == MouseState.contentBox && state == VN_State.typing)
+		{
+			if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
+			{
+				SkipSlowText();
+			}
+		}
 
 		if (Input.GetKeyDown(KeyCode.F))
 		{
+			StopAllCoroutines();
 			activeLoader.QuickFadeOutLoad(nextScene);
 		}
 	}
@@ -187,6 +248,7 @@ public class VN_Manager : MonoBehaviour
 			VN_Util.startUpTime = Time.realtimeSinceStartup;
 			VN_Util.VNDebugPrint("Start story: \"" + inkJSONAsset.name + "\"", this);
 		}
+		OnStartStory.Invoke();
 	}
 
 	// Remove all VN text & buttons, then starts displaying the text
@@ -207,6 +269,7 @@ public class VN_Manager : MonoBehaviour
 
 	private IEnumerator Co_DisplaySlowText()
     {
+		state = VN_State.busy;
 		// Get the next line of text
 		string nextLine = Story.Continue();
 
@@ -236,6 +299,7 @@ public class VN_Manager : MonoBehaviour
 			}
             else
             {
+				state = VN_State.end;
 				UIFactory.CreateEndStoryButton();
             }
 			yield break;
@@ -255,17 +319,17 @@ public class VN_Manager : MonoBehaviour
 			VN_Util.storedDebugString = currentLine;
 			VN_Util.VNDebugPrint("Start display text: \"" + VN_Util.storedDebugString + "\"", this);
 		}
-		yield return StartCoroutine(Co_SlowText(contentTextObj));
+		currentTypingCoroutine = Co_SlowText(contentTextObj);
+		yield return StartCoroutine(currentTypingCoroutine);
 
 		// Once done with showing text content, show all choice buttons
 		UIFactory.CreateAllChoiceButtons();
-		currentTextDone = true;
 	}
 
 	// Displays the current text on screen, one char at a time, then creates the choice buttons when it's done
 	private IEnumerator Co_SlowText(Text storyText)
 	{
-		currentTextDone = false;
+		state = VN_State.typing;
 		float TextSpeed;
 
 		yield return StartCoroutine(characterManager.UpdateSpeakerLight(currentSpeaker));
@@ -286,6 +350,7 @@ public class VN_Manager : MonoBehaviour
 		{
 			VN_Util.VNDebugPrint("End display text: \"" + VN_Util.storedDebugString + "\"", this);
 		}
+		OnTextTypeEnd.Invoke();
 	}
 
 	private string FormatText(string text)
@@ -309,10 +374,9 @@ public class VN_Manager : MonoBehaviour
 	// Makes the remaining text appear instantly, then creates the choice buttons
 	private void SkipSlowText()
 	{
-		if (!currentTextDone)
+		if (state == VN_State.typing)
 		{
-			currentTextDone = true;
-			StopAllCoroutines();
+			StopCoroutine(currentTypingCoroutine);
 			contentTextObj.text = currentLine;
 			UIFactory.CreateAllChoiceButtons();
 
@@ -320,6 +384,7 @@ public class VN_Manager : MonoBehaviour
 			{
 				VN_Util.VNDebugPrint("Skip slow text: \"" + VN_Util.storedDebugString + "\"", this);
 			}
+			OnTextTypeEnd.Invoke();
 		}
 	}
 	#endregion
@@ -440,6 +505,35 @@ public class VN_Manager : MonoBehaviour
 		activeState = ActiveState.active;
 		yield return StartCoroutine(data.textboxTransition.Co_EnterScreen(this, this));
 		StartStory();
+	}
+
+	public void ToggleMouseState()
+    {
+		if(mouseState == MouseState.other)
+        {
+			mouseState = MouseState.contentBox;
+		}
+		else
+        {
+			mouseState = MouseState.other;
+		}
+		
+    }
+
+	#endregion
+
+	#region Other
+
+	/**
+	 * Sets the speed of the text.
+	 * Pause speed will be 1/6 normal speed
+	 * 
+	 * @Param speed: the speed of normal text
+	 */
+	public void SetTextSpeed(float speed)
+	{
+		TextSpeeds["Normal"] = speed;
+		TextSpeeds["Pause"] = speed/6;
 	}
 
 	#endregion

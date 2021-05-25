@@ -13,12 +13,16 @@ MonoBehaviour:
   m_Name: Violet
   m_EditorClassIdentifier: 
   scenePosition: 1
-  screenEdgeDistance: 200
+  screenEdgeDistance: 100
   transition: {fileID: 11400000, guid: 3b8c7edcf2ae945a48152c552d124440, type: 2}
   transitionDuration: 0.5
-  characterSpriteScale: 0.45
+  characterSpriteScale: 0.5
   characterBoxScale: 1
-  defaultSprite: {fileID: 21300000, guid: 2fe2645b9daf143569287f12186021d5, type: 3}
+  defaultSprite: {fileID: 21300000, guid: f5f8091d0d2f145e79e64451c6fd9389, type: 3}
   characterBox: {fileID: 0}
   characterSprites:
-  - {fileID: 21300000, guid: 2fe2645b9daf143569287f12186021d5, type: 3}
+  - {fileID: 21300000, guid: a4049db7b29d54a8c8fe225ed9cee6da, type: 3}
+  - {fileID: 21300000, guid: d82b2400a1f204ae8b4bc5215116852c, type: 3}
+  - {fileID: 21300000, guid: f5f8091d0d2f145e79e64451c6fd9389, type: 3}
+  - {fileID: 21300000, guid: 5b7bf3276d5e54d83996b705224abed2, type: 3}
+  - {fileID: 21300000, guid: f4b70050cab4d47648a88bae0692e18e, type: 3}
