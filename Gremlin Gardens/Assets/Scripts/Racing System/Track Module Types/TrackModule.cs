@@ -113,6 +113,8 @@ public class TrackModule : MonoBehaviour
     [Tooltip("If a camera is doing a flyover, skip ahead how many modules when this is done? (Can be negative in case the camera is going over the track in reverse)")]
     public int cameraSkipAhead = 0;
 
+    public const float staminaTimerLength = 60.0f;
+
     PathCreator internalCreator;
     
     void Awake()
@@ -134,6 +136,8 @@ public class TrackModule : MonoBehaviour
     public float timePassed;
     [HideInInspector]
     public Vector3 gOffset;
+
+    private float staminaTimer;
     /// <summary>
     /// The QTE object pulled from terrainVariant.
     /// </summary>
@@ -157,6 +161,7 @@ public class TrackModule : MonoBehaviour
         gOffset = gremlinOffset;
         modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
         timePassed = 0.0f;
+        staminaTimer = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
         if (terrainVariant.QTEButton != null && this.GetComponentInParent<TrackManager>().isPlayerTrack) {
@@ -182,6 +187,15 @@ public class TrackModule : MonoBehaviour
         modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
         if (qteObject != null) {
             modifiedSpeed += modifiedSpeed * QTEWeight * qteObject.GetComponent<QTEScript>().ModifySpeed();
+        }
+        activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") - 1.5f, 0, 1000));
+        if (activeGremlin.gremlin.getStat("Stamina") <= 0) {
+            modifiedSpeed *= 0.75f;
+        }
+        staminaTimer += Time.deltaTime;
+        if (staminaTimer > staminaTimerLength) {
+            staminaTimer = 0;
+            activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") + activeGremlin.maxStamina * 0.25f, 0, 1000));
         }
     }
 

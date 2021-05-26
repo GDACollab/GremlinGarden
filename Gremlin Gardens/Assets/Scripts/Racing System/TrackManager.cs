@@ -77,6 +77,8 @@ public class TrackManager : MonoBehaviour
         currentChild = 0;
         toCallback = endRaceCallback;
         racingCallback = moduleSwitchCallback;
+        // Set maxStamina again, just in case.
+        RacingGremlin.GetComponent<GremlinObject>().maxStamina = RacingGremlin.GetComponent<GremlinObject>().gremlin.getStat("Stamina");
         Race();
     }
 
@@ -102,6 +104,7 @@ public class TrackManager : MonoBehaviour
     }
 
     private void EndRace() {
+        RacingGremlin.GetComponent<GremlinObject>().gremlin.setStat("Stamina", RacingGremlin.GetComponent<GremlinObject>().maxStamina);
         if (toCallback != null)
         {
             toCallback(this);
