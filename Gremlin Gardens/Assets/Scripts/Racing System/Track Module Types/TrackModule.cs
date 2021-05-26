@@ -141,6 +141,7 @@ public class TrackModule : MonoBehaviour
     public Vector3 gOffset;
 
     private float staminaTimer;
+    private float staminaDecreaseTimer;
     /// <summary>
     /// The QTE object pulled from terrainVariant.
     /// </summary>
@@ -165,6 +166,7 @@ public class TrackModule : MonoBehaviour
         modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
         timePassed = 0.0f;
         staminaTimer = 0.0f;
+        staminaDecreaseTimer = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
         if (terrainVariant.QTEButton != null && this.GetComponentInParent<TrackManager>().isPlayerTrack) {
@@ -191,7 +193,13 @@ public class TrackModule : MonoBehaviour
         if (qteObject != null) {
             modifiedSpeed += modifiedSpeed * QTEWeight * qteObject.GetComponent<QTEScript>().ModifySpeed();
         }
-        activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") - 1.5f, 0, 1000));
+
+        staminaDecreaseTimer += Time.deltaTime;
+        if (staminaDecreaseTimer > 1.0f)
+        {
+            staminaDecreaseTimer = 0;
+            activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") - 1.5f, 0, 1000));
+        }
         if (activeGremlin.gremlin.getStat("Stamina") <= 0) {
             modifiedSpeed *= 0.75f;
         }
