@@ -331,13 +331,19 @@ public class GremlinInteraction : MonoBehaviour
 
     private void UpdateStatsMenu()
     {
-        StatMenu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = gremlin.getName();
-        StatMenu.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Stamina: " + Mathf.Floor(gremlin.getStat("Stamina"));
-        StatMenu.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Happiness: " + Mathf.Floor(gremlin.getStat("Happiness"));
-        StatMenu.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Running: " + Mathf.Floor(gremlin.getStat("Running"));
-        StatMenu.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Climbing: " + Mathf.Floor(gremlin.getStat("Climbing"));
-        StatMenu.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Swimming: " + Mathf.Floor(gremlin.getStat("Swimming"));
-        StatMenu.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Flying: " + Mathf.Floor(gremlin.getStat("Flying"));
+        StatMenu.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = gremlin.getName();
+        StatMenu.transform.GetChild(4).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Running") / 1000);
+        StatMenu.transform.GetChild(4).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Running") / 1000), 0);
+        StatMenu.transform.GetChild(6).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Flying") / 1000);
+        StatMenu.transform.GetChild(6).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Flying") / 1000), 0);
+        StatMenu.transform.GetChild(8).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Swimming") / 1000);
+        StatMenu.transform.GetChild(8).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Swimming") / 1000), 0);
+        StatMenu.transform.GetChild(10).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Climbing") / 1000);
+        StatMenu.transform.GetChild(10).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Climbing") / 1000), 0);
+        StatMenu.transform.GetChild(12).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Stamina") / 1000);
+        StatMenu.transform.GetChild(12).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Stamina") / 1000), 0);
+        StatMenu.transform.GetChild(14).GetComponent<Image>().fillAmount = 1 - gremlin.getStat("Happiness") / 1000;
+        StatMenu.transform.GetChild(14).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 4.64f + (91 * gremlin.getStat("Happiness") / 1000));
     }
 
     private void DropGremlin()
