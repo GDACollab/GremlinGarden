@@ -77,7 +77,7 @@ public class RaceManager : MonoBehaviour
     /// <summary>
     /// Keeps the indices of the tracks for sorting with raceTimes.
     /// </summary>
-    int[] trackIndices;
+    public int[] trackIndices;
 
     /// <summary>
     /// The amount of money a player can win by getting each place. Set by RandomGremlinRace.cs
@@ -302,7 +302,7 @@ public class RaceManager : MonoBehaviour
                 LoadingData.money += winningAmounts[i];
                 // Hack to tell the player what they win:
                 var text = Instantiate(leaderboardText, header.transform);
-                text.GetComponent<UnityEngine.UI.Text>().text = ("Your gremlin placed in: " + (i + 1) + ", so you win: " + winningAmounts[i] + ".");
+                text.GetComponent<UnityEngine.UI.Text>().text = ("You win " + winningAmounts[i] + " money!");
                 text.transform.position = new Vector3(0, heightOffset) + header.transform.position;
             }
         }

@@ -12,6 +12,12 @@ public class GremlinObject : MonoBehaviour
     Rigidbody body;
     public string gremlinName;
 
+    /// <summary>
+    /// The maximum amount of stamina a gremlin can have. Used by TrackManager.
+    /// </summary>
+    [HideInInspector]
+    public float maxStamina;
+
     private GameObject player; 
     
     [Header("Aesthetic Stuff")]
@@ -27,6 +33,7 @@ public class GremlinObject : MonoBehaviour
         // Defines the Gremlin
         gremlin = new Gremlin(gremlinName);
         player = GameObject.Find("Player");
+        maxStamina = gremlin.getStat("Stamina");
         nameText.text = gremlinName;
     }
 
@@ -35,8 +42,5 @@ public class GremlinObject : MonoBehaviour
         // Set the name text to face the player.
         if(player != null)
             nameText.transform.rotation = Quaternion.LookRotation(this.transform.position - player.transform.position, player.transform.up);
-        // Also make sure to update the gremlin's current position so that the GremlinSpawner can use it later:
-        gremlin.currentPosition = this.transform.position;
-        gremlin.currentRotation = this.transform.rotation;
     }
 }

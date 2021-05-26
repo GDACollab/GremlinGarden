@@ -47,6 +47,14 @@ public class PlayerMovement : MonoBehaviour
             LoadingData.money = startingMoney;
         }
         controller = GetComponent<CharacterController>();
+        if (LoadingData.playerPosition != new Vector3() && LoadingData.playerRotation != new Quaternion())
+        {
+            // The controller has its own transform position, so we have to disable it to update our player's position.
+            controller.enabled = false;
+            this.transform.position = LoadingData.playerPosition;
+            this.transform.rotation = LoadingData.playerRotation;
+            controller.enabled = true;
+        }
         UpdateMoney(0);
         //cursor is locked and in middle of screen
         if (lockCursor)

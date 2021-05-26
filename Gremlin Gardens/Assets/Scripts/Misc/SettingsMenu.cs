@@ -40,6 +40,10 @@ public class SettingsMenu : MonoBehaviour
     public GameObject Canvas;
     public GameObject SceneMusic;
     /// <summary>
+    /// Quick hack to prevent the settings menu from acting weird in the main menu.
+    /// </summary>
+    public bool isMainMenu = false;
+    /// <summary>
     /// How much to reduce the volume of BGM music when the game is paused
     /// </summary>
     [Tooltip("How much to reduce the volume of BGM music when the game is paused")]
@@ -48,6 +52,8 @@ public class SettingsMenu : MonoBehaviour
 
     private GameObject pauseMenu;
     private GameObject optionsMenu;
+
+    bool pausedGremlinSelect = false;
 
     public void Awake()
     {
@@ -64,7 +70,7 @@ public class SettingsMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
+        if (!isMainMenu && Input.GetButtonDown("Cancel"))
             ToggleSettingsMenu();
     }
 
@@ -131,6 +137,10 @@ public class SettingsMenu : MonoBehaviour
         if (Canvas.transform.Find("Gremlin Namer(Clone)") != null)
             gremlinNamer = Canvas.transform.Find("Gremlin Namer(Clone)").gameObject;
 
+        GameObject gremlinSelect = null;
+        if (Canvas.transform.Find("Gremlin Select") != null)
+            gremlinSelect = Canvas.transform.Find("Gremlin Select").gameObject;
+
         // Pause/Unpause physics
         if (paused)
         {
@@ -139,6 +149,12 @@ public class SettingsMenu : MonoBehaviour
             SceneMusic.GetComponent<AudioSource>().volume *= pausedBGMReduction;
             if (gremlinNamer != null)
                 gremlinNamer.SetActive(false);
+            else if (gremlinSelect != null && gremlinSelect.activeInHierarchy == true)
+            {
+                gremlinSelect.SetActive(false);
+                pausedGremlinSelect = true;
+            }
+
             pauseMenu.SetActive(true);
             optionsMenu.SetActive(false);
             uiSounds[4].Play();
@@ -151,6 +167,11 @@ public class SettingsMenu : MonoBehaviour
             if (gremlinNamer != null)
             {
                 gremlinNamer.SetActive(true);
+                ToggleMovement(false);
+            }
+            else if(gremlinSelect != null && pausedGremlinSelect == true){
+                gremlinSelect.SetActive(true);
+                pausedGremlinSelect = false;
                 ToggleMovement(false);
             }
 
@@ -195,7 +216,10 @@ public class SettingsMenu : MonoBehaviour
     public void ToggleOptionsMenu()
     {
         toggleOptions = !toggleOptions;
-        pauseMenu.SetActive(!toggleOptions);
+        if (!isMainMenu)
+        {
+            pauseMenu.SetActive(!toggleOptions);
+        }
         optionsMenu.gameObject.SetActive(toggleOptions);
     }
 
