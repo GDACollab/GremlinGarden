@@ -1,2 +1,0 @@
->>> TextboxEnter(Default);
-Test ink.

@@ -13,4 +13,3 @@ MonoBehaviour:
   m_Name: SuperSlowMo
   m_EditorClassIdentifier: 
   speedModifier: 0.1
-  QTEButton: {fileID: 0}

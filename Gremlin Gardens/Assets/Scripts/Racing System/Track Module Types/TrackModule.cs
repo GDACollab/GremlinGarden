@@ -9,30 +9,11 @@ using PathCreation;
 /// </summary>
 public class TrackModule : MonoBehaviour
 {
-    // TODO: Reverse indexing option? I can't believe I've never realized this before.
-    // Basically, the problem is that sometimes the PathCreator will sometimes put the gremlins in reverse of how the designer intends the path to be layed out.
-    // If I ever have to fix a problem like this again, just make an option in TrackModule to reverse the index it has for the path, or something like that.
-
     /// <summary>
     /// How fast the Gremlin moves in units per frame. Does NOT affect animation speed (see TerrainVariant instead).
     /// </summary>
     [Tooltip("How fast the Gremlin moves in units per fixed frame count. Does NOT affect animation speed (see TerrainVariant instead).")]
     public float BaseSpeed = .5f;
-
-    /// <summary>
-    /// How much QTEs should be able to affect the gremlin's speed. Public const because the way Unity handles prefabs is ridiculously stupid.
-    /// </summary>
-    private const float QTEWeight = 2.0f;
-
-    /// <summary>
-    /// Same goes for how long the stamina timer is.
-    /// </summary>
-    private const float staminaTimerLength = 60.0f;
-
-    /// <summary>
-    /// How slowly you move with 0 stamina.
-    /// </summary>
-    private const float staminaSpeed = 0.75f;
 
     /// <summary>
     /// The animation name to play from the Animator for this TrackModule.
@@ -129,8 +110,8 @@ public class TrackModule : MonoBehaviour
     {
         totalDistance = 0;
         internalCreator = GetComponent<PathCreator>();
-        pathStart = internalCreator.path.GetPoint(0);
-        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1);
+        pathStart = internalCreator.path.GetPoint(0); //This does not work, because bezier paths are dumb.
+        pathEnd = internalCreator.path.GetPoint(internalCreator.path.NumPoints - 1); //This does not work, because bezier paths are dumb.
     }
 
     /// <summary>
@@ -144,9 +125,6 @@ public class TrackModule : MonoBehaviour
     public float timePassed;
     [HideInInspector]
     public Vector3 gOffset;
-
-    private float staminaTimer;
-    private float staminaDecreaseTimer;
     /// <summary>
     /// The QTE object pulled from terrainVariant.
     /// </summary>
@@ -156,29 +134,24 @@ public class TrackModule : MonoBehaviour
     /// A callback called at the end of the move.
     /// </summary>
     Callback toCallback;
-
-    public SettingsMenu settings;
     /// <summary>
     /// Start moving the Gremlin across the track module.
     /// </summary>
     /// <param name="gremlin">The Gremlin that's being moved.</param>
     /// <param name="gremlinOffset">The offset of the gremlin (see: TrackManager.GremlinOffset).</param>
     /// <param name="callbackFunc">The function that TrackManager will pass to callback to later.</param>
-    public void BeginMove(GremlinObject gremlin, Vector3 gremlinOffset, Callback callbackFunc, GameObject UI, SettingsMenu s_menu) {
+    public void BeginMove(GremlinObject gremlin, Vector3 gremlinOffset, Callback callbackFunc, GameObject UI) {
         gremlinMoving = true;
         activeGremlin = gremlin;
         gOffset = gremlinOffset;
         modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
         timePassed = 0.0f;
-        staminaTimer = 0.0f;
-        staminaDecreaseTimer = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
-        if (terrainVariant.QTEButton != null && this.GetComponentInParent<TrackManager>().isPlayerTrack) {
+        if (terrainVariant.QTEButton != null) {
             qteObject = Instantiate(terrainVariant.QTEButton, UI.transform);
             qteObject.GetComponent<QTEScript>().SetActiveModule(this);
         }
-        settings = s_menu;
     }
 
     public void EndMove() {
@@ -196,28 +169,13 @@ public class TrackModule : MonoBehaviour
     public void SetModifiedSpeed() {
         modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
         if (qteObject != null) {
-            modifiedSpeed += modifiedSpeed * QTEWeight * qteObject.GetComponent<QTEScript>().ModifySpeed();
-        }
-
-        staminaDecreaseTimer += Time.deltaTime;
-        if (staminaDecreaseTimer > 1.0f)
-        {
-            staminaDecreaseTimer = 0;
-            activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") - 1.5f, 0, 1000));
-        }
-        if (activeGremlin.gremlin.getStat("Stamina") <= 0) {
-            modifiedSpeed *= staminaSpeed;
-        }
-        staminaTimer += Time.deltaTime;
-        if (staminaTimer > staminaTimerLength) {
-            staminaTimer = 0;
-            activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") + activeGremlin.maxStamina * 0.25f, 0, 1000));
+            modifiedSpeed += qteObject.GetComponent<QTEScript>().ModifySpeed();
         }
     }
 
     void Update()
     {
-        if (gremlinMoving && !settings.paused) { //Move the Gremlin around.
+        if (gremlinMoving) { //Move the Gremlin around.
             totalDistance += modifiedSpeed * BaseSpeed * Time.deltaTime; //Keeping track of how far along the Gremlin is in this module.
             if (totalDistance >= internalCreator.path.length)
             {
@@ -227,8 +185,6 @@ public class TrackModule : MonoBehaviour
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
                 SetModifiedSpeed(); //Set modifiedSpeed again in case it's somehow changed.
                 activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + terrainVariant.positionFunction(timePassed * modifiedSpeed, this) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
-                Vector3 nextPos = internalCreator.path.GetPointAtDistance(totalDistance + 0.01f, EndOfPathInstruction.Stop);
-                activeGremlin.transform.rotation = Quaternion.LookRotation(new Vector3(nextPos.x, activeGremlin.transform.position.y, nextPos.z) - activeGremlin.transform.position, Vector3.up);
                 timePassed += Time.deltaTime;
             }
         }
