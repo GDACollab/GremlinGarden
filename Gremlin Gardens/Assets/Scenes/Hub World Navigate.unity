@@ -15160,7 +15160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2341960362350322265, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.813
+      value: 19.84
       objectReference: {fileID: 0}
     - target: {fileID: 2341960362350322265, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15168,7 +15168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2341960362350322265, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.69
+      value: 45.77
       objectReference: {fileID: 0}
     - target: {fileID: 2341960362350322265, guid: a0f88ca44d1c468469b65efdb2f1a042, type: 3}
       propertyPath: m_LocalRotation.x
@@ -17187,15 +17187,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.39484
+      value: 22.99
       objectReference: {fileID: 0}
     - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.87858
+      value: 34.9
       objectReference: {fileID: 0}
     - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.918922
+      value: 38.58
       objectReference: {fileID: 0}
     - target: {fileID: 2105177654468541611, guid: cbe5cafb00a20c84f978c55b80de26ce, type: 3}
       propertyPath: m_LocalRotation.x
@@ -17344,7 +17344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05f48b92dfb0a7459faea890ba91a2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 3
+  radius: 5
   angle: 90
   targetMask:
     serializedVersion: 2
@@ -17353,6 +17353,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   seeFruit: 0
+  target: {fileID: 0}
 --- !u!114 &1795579421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17365,7 +17366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73fc606e8d79ff143913622592d47d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 0.13
 --- !u!1 &1839573458
 GameObject:
   m_ObjectHideFlags: 0

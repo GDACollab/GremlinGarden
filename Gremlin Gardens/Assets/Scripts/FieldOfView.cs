@@ -45,7 +45,7 @@ public class FieldOfView : MonoBehaviour
                 {
                     //Debug.Log(target);
                     seeFruit = true;
-                    Debug.Log("Can see stuff");
+                    //Debug.Log("Can see stuff");
                 }
                 else
                 {
@@ -56,6 +56,10 @@ public class FieldOfView : MonoBehaviour
             {
                 seeFruit = false;
             }
+        }
+        else if (seeFruit)
+        {
+            seeFruit = false;
         }
     }
 }

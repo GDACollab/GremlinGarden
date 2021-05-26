@@ -11,8 +11,6 @@ public class EatAmbient : MonoBehaviour
     private Gremlin gremlin;
     private FoodObject fruit;
     private bool beingEaten = false;
-    // is beingCarried needed?
-    //private bool beingCarried = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +21,6 @@ public class EatAmbient : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // needs the eating animation and eating sound
         // add stat changes
         //shrink food object     
         if (beingEaten)
@@ -53,8 +50,6 @@ public class EatAmbient : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         GameObject other = collision.gameObject;
-        //Debug.Log(other.tag);
-        //Debug.Log("hello");
         if (other.tag == "Gremlin")
         {
             beingEaten = true;

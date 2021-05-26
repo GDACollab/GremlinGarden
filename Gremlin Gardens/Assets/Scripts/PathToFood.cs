@@ -8,7 +8,7 @@ public class PathToFood : MonoBehaviour
     // view distance of gremlin for raycast
     public float viewDistance = 50.0f;
     // determines how frequently the gremlin moves (not smooth)
-    public float endtime = 0.3f;
+    public float endtime = 0.1f;
 
     private float elapsed = 0.0f;
     // determines whether to move gremlin or not
@@ -35,30 +35,19 @@ public class PathToFood : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Vector3 forward = transform.TransformDirection(Vector3.forward);
-        /*if (Physics.Raycast(transform.position, forward, out hit, viewDistance))
-        {
-            if (hit.transform.tag == "Fruit")
-            {
-                //Debug.Log("fruit");
-                target = hit.transform;
-            }
-        }*/
-
         // Debug test purposes
         //target = GameObject.FindGameObjectsWithTag("Fruit")[0].transform;
         //Debug.Log(target);
-        // 2 problems:
+
+        // problem:
         // Gremlin can go through objects
-        // Gremlin can move to object even if it is being carried
         if (script1.seeFruit == true)
         {
             target = script1.target;
-            Debug.Log(target);
         }
         else
         {
-            //target = null;
+            target = null;
         }
 
         elapsed += Time.deltaTime;
@@ -95,13 +84,4 @@ public class PathToFood : MonoBehaviour
     {
         get { return move_to; }
     }
-
-    /*IEnumerator timer()
-    {
-        while (true)
-        {
-            //Debug.Log("timer");
-            yield return new WaitForSeconds(time1);
-        }
-    }*/
 }
