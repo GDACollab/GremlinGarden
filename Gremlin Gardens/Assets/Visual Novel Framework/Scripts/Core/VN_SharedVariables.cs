@@ -13,6 +13,8 @@ public class VN_SharedVariables : MonoBehaviour
     public int testInt;
 
     public string gremlinToRace;
+    public string selectedRace;
+    public int showUnique;
 
     private FieldInfo[] FieldInfoArray;
     private VN_Manager manager;
@@ -22,7 +24,12 @@ public class VN_SharedVariables : MonoBehaviour
         this.manager = manager;
         FieldInfoArray = GetType().GetFields();
 
-        //gremlinToRace = LoadingData.gremlinToRace;
+        gremlinToRace = LoadingData.gremlinToRace;
+        selectedRace = LoadingData.currentRace.ToString();
+        showUnique = Convert.ToInt32(LoadingData.RaceHistoryDictionary[LoadingData.currentRace]);
+        showUnique = 1;
+
+        print("selectedRace: " + selectedRace);
     }
 
     public void SetVariable(string varName, string newValString)

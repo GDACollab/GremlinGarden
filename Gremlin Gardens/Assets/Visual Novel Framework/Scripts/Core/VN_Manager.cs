@@ -256,6 +256,7 @@ public class VN_Manager : MonoBehaviour
 	{
 		if(Story.canContinue)
         {
+			if(currentTypingCoroutine != null) StopCoroutine(currentTypingCoroutine);
 			StopCoroutine(Co_DisplaySlowText());
 			ClearContent();
 
@@ -495,10 +496,15 @@ public class VN_Manager : MonoBehaviour
 		StartCoroutine(characterManager.ResetCharacters());
 	}
 
+	public void StartVN()
+	{
+		StartStory();
+	}
+
 	public void StartVN(TextboxData data)
 	{
-		StartCoroutine(Co_StartVN(data));
-	}
+        StartCoroutine(Co_StartVN(data));
+    }
 
 	private IEnumerator Co_StartVN(TextboxData data)
     {

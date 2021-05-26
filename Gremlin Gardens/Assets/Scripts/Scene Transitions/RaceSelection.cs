@@ -24,10 +24,14 @@ public class RaceSelection : MonoBehaviour
     [Tooltip("How close we want the player to be to show the highlight.")]
     public float selectionDistance = 10.0f;
     /// <summary>
-    /// The scene we're transitioning to next.
+    /// The scene name we're transitioning to next.
     /// </summary>
     [Tooltip("The scene we're transitioning to next.")]
     public string sceneName;
+    /// <summary>
+    /// The enum race the player selected
+    /// </summary>
+    public LoadingData.AllRaces selectedRace;
 
     /// <summary>
     /// The UI object to select the gremlins with.
@@ -123,7 +127,10 @@ public class RaceSelection : MonoBehaviour
         LoadingData.playerPosition = player.transform.position;
         LoadingData.playerRotation = player.transform.rotation;
         DestroyUI();
+
         LoadingData.gremlinToRace = gremlinName;
+        LoadingData.currentRace = selectedRace;
+
         sceneLoader.FadeOutLoad(sceneName, 1);
         selectionUI = false;
     }

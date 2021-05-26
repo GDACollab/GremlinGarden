@@ -304,6 +304,21 @@ public class RaceManager : MonoBehaviour
                 var text = Instantiate(leaderboardText, header.transform);
                 text.GetComponent<UnityEngine.UI.Text>().text = ("You win " + winningAmounts[i] + " money!");
                 text.transform.position = new Vector3(0, heightOffset) + header.transform.position;
+
+                LoadingData.ConstructRaceStatuses();
+
+                // Player wins
+                if (i == 0)
+                {
+                    // Move dictionary update to VN_SceneManager to fit unique loss/win conditions
+                    LoadingData.RaceHistoryDictionary[LoadingData.currentRace] = true;
+                    LoadingData.wonCurrentRace = true;
+                }
+                // Player loses
+                else
+                {
+                    LoadingData.wonCurrentRace = false;
+                }
             }
         }
         

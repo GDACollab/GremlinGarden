@@ -2066,6 +2066,7 @@ MonoBehaviour:
   sceneLoader: {fileID: 2052173399}
   selectionDistance: 10
   sceneName: ExpertRace
+  selectedRace: 3
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
   settings: {fileID: 1355701504}
@@ -6752,6 +6753,7 @@ MonoBehaviour:
   sceneLoader: {fileID: 2052173399}
   selectionDistance: 10
   sceneName: IntermediateRace
+  selectedRace: 2
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
   settings: {fileID: 1355701504}
@@ -18257,6 +18259,7 @@ MonoBehaviour:
   sceneLoader: {fileID: 2052173399}
   selectionDistance: 10
   sceneName: BeginnerRace
+  selectedRace: 0
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
   settings: {fileID: 1355701504}
@@ -31834,6 +31837,7 @@ MonoBehaviour:
   sceneLoader: {fileID: 2052173399}
   selectionDistance: 10
   sceneName: VioletPreRaceVN
+  selectedRace: 0
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
   settings: {fileID: 1355701504}
