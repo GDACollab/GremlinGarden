@@ -15,6 +15,7 @@ public class GremlinObject : MonoBehaviour
     /// <summary>
     /// The maximum amount of stamina a gremlin can have. Used by TrackManager.
     /// </summary>
+    [HideInInspector]
     public float maxStamina;
 
     private GameObject player; 
