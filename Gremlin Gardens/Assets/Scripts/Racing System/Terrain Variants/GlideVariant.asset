@@ -13,9 +13,4 @@ MonoBehaviour:
   m_Name: GlideVariant
   m_EditorClassIdentifier: 
   speedModifier: 1
-  domain: {x: 0, y: 0}
-  positionClip: {x: Infinity, y: Infinity, z: Infinity}
-  clipTolerance: 0.1
-  domain: {x: 0, y: Infinity}
-  positionClip: {x: Infinity, y: 0, z: Infinity}
-  clipTolerance: 0.1
+  QTEButton: {fileID: 5794175187822283999, guid: 528342a348933b746a51e811cf49258a, type: 3}

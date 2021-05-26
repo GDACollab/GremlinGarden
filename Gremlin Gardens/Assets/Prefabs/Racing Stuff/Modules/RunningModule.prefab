@@ -328,14 +328,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseSpeed: 5
-  AnimationToPlay: Walk
+  AnimationToPlay: isRunning
   terrainVariant: {fileID: 11400000, guid: c3da8f583ac438647a90824a7398629f, type: 2}
   gremlinMoving: 0
   pathStart: {x: 0, y: 0, z: 0}
   pathEnd: {x: 0, y: 0, z: 0}
   totalDistance: 0
+  affectCamera: 1
+  optimalCameraOffset: {x: 0, y: 0, z: 0}
+  optimalOffsetIsFixed: 0
+  cameraImmediateCut: 0
+  multiplyOffsetByNumTracks: 0
   cameraIgnorePath: 1
   cameraShouldRotate: 0
+  cameraSkipAhead: 0
   modifiedSpeed: 0
   activeGremlin: {fileID: 0}
   timePassed: 0

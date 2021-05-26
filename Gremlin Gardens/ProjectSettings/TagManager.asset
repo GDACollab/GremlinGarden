@@ -5,7 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gremlin
+<<<<<<< HEAD
   - Fruit
+=======
+  - Ground
+  - Manager
+  - UI
+>>>>>>> main
   layers:
   - Default
   - TransparentFX

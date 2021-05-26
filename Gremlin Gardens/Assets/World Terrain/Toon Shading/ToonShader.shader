@@ -11,6 +11,7 @@
 		_Glossiness("Glossiness", Float) = 32
 		_RimColor("Rim Color", Color) = (1, 1, 1, 1)
 		_RimAmount("Rim Amount", Range(0, 1)) = 0.716
+		_RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
 	}
 		SubShader
 	{
@@ -62,6 +63,7 @@
 			float _Glossiness;
 			float4 _RimColor;
 			float _RimAmount;
+			float _RimThreshold;
 
 			float4 frag(v2f i) : SV_Target
 			{
@@ -84,7 +86,7 @@
 				float4 specular = specularIntensitySmooth * _SpecularColor;
 
 				float4 rimDot = 1 - dot(viewDir, normal);
-				float rimIntensity = rimDot * NdotL;
+				float rimIntensity = rimDot * pow(NdotL, _RimThreshold);
 				rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
 				float4 rim = rimIntensity * _RimColor;
 

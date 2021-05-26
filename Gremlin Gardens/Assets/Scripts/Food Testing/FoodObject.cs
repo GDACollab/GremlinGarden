@@ -58,13 +58,16 @@ public class FoodObject : MonoBehaviour
             stats.Add(_stats[i], _values[i]);
         }
 
-        food = new Food(this.gameObject.GetComponent<MeshFilter>().sharedMesh, this.gameObject.GetComponent<MeshRenderer>().material,
+        food = new Food(this.gameObject.transform.GetChild(1).GetComponent<MeshFilter>().sharedMesh, this.gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material,
             foodName, stats);
+        
+        /*
         //Adds Necessary Collision Components
         gameObject.AddComponent<BoxCollider>();
-        rgbd = gameObject.AddComponent<Rigidbody>();    
+        rgbd = gameObject.AddComponent<Rigidbody>();
         //Scales Size Down
         scaleObjectSize(gameObject, size);
+        */
 
     }
 
