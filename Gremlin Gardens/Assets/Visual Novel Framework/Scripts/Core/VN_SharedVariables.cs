@@ -14,7 +14,9 @@ public class VN_SharedVariables : MonoBehaviour
 
     public string gremlinToRace;
     public string selectedRace;
-    public int showUnique;
+    public int seenUnique;
+    public int wonRace;
+    public int hasWonRace;
 
     private FieldInfo[] FieldInfoArray;
     private VN_Manager manager;
@@ -26,10 +28,9 @@ public class VN_SharedVariables : MonoBehaviour
 
         gremlinToRace = LoadingData.gremlinToRace;
         selectedRace = LoadingData.currentRace.ToString();
-        showUnique = Convert.ToInt32(LoadingData.RaceHistoryDictionary[LoadingData.currentRace]);
-        showUnique = 1;
-
-        print("selectedRace: " + selectedRace);
+        wonRace = Convert.ToInt32(LoadingData.wonCurrentRace);
+        hasWonRace = Convert.ToInt32(LoadingData.RaceHistoryDictionary[LoadingData.currentRace].Item1);
+        seenUnique = Convert.ToInt32(LoadingData.RaceHistoryDictionary[LoadingData.currentRace].Item2);
     }
 
     public void SetVariable(string varName, string newValString)

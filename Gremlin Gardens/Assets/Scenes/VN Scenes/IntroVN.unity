@@ -508,12 +508,12 @@ PrefabInstance:
       objectReference: {fileID: 208886299}
     - target: {fileID: 7788690952332685026, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: nextScene
-      value: StarterRace
+      value: Hub World
       objectReference: {fileID: 0}
     - target: {fileID: 7788690952332685026, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: inkJSONAsset
       value: 
-      objectReference: {fileID: 4900000, guid: 648cb2ee7b3da41c88cf5db71649d692, type: 3}
+      objectReference: {fileID: 4900000, guid: 69a7e9ed3795d40f7a4a75ad0497732b, type: 3}
     - target: {fileID: 7788690952332685027, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

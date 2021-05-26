@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d323c809cb95abc4e9d06d499043c354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inVN: 1
   audioMixer: {fileID: 24100000, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
   audioMixerGroup: {fileID: 24300002, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
   uiSounds:
@@ -738,6 +739,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 2489657751822423480}
   Canvas: {fileID: 0}
   SceneMusic: {fileID: 0}
+  isMainMenu: 0
   pausedBGMReduction: 0.3
 --- !u!1 &2639319688789581802
 GameObject:

@@ -1,19 +1,18 @@
 VAR GREMLIN_NAME = "Default"
 VAR SELECTED_RACE = "starter"
-VAR SHOW_UNIQUE = 0
+VAR SEEN_UNIQUE = 0
 
 >>> UpdateInkVar(GREMLIN_NAME, gremlinToRace)
 >>> UpdateInkVar(SELECTED_RACE, selectedRace)
->>> UpdateInkVar(SHOW_UNIQUE, showUnique)
+>>> UpdateInkVar(SEEN_UNIQUE, seenUnique)
 
 >>> TextboxEnter(Default);
 >>> !CharEnter(Sunny); CharEnter(Violet)
 
-{ SHOW_UNIQUE:
-- 0:
-    -> GenericPreRace
+{ SEEN_UNIQUE:
 - 1:
-    your race is {SELECTED_RACE}
+    -> GenericPreRace
+- 0:
     { SELECTED_RACE:
     - "Starter":
         // Race1Pre
@@ -86,19 +85,19 @@ VAR chosenGenericScene = 1
 ~ chosenGenericScene = RANDOM(1, 3)
 { chosenGenericScene:
 - 1:
-// GenericRacePre1
+    // GenericRacePre1
     Sunny: Hi, Violet! Nice day to race, huh? #Sunny_BigSmile
     Violet: Yep! A nice cool breeze like this makes me want to go for a run, too. #Violet_Talking
     Sunny: Yeah! It’s perfect for getting fired up. Let’s go, {GREMLIN_NAME}! #Sunny_Determined
 - 2:
-// GenericRacePre2
+    // GenericRacePre2
     Sunny: Hi, Violet! Hi, Jellybeans! Great too see you again. #Sunny_BigSmile
     Violet: And you too, Sunny. How’s {GREMLIN_NAME} doing? #Violet_Talking
     Sunny: Great! Good enough to bring the fight to Jellybeans! #Sunny_Determined
     Violet: I’d rather you not, he has a lot on his plate already. #Violet_NeutralFrown
     Sunny: Oh, sorry. It’s just a saying. Anyways, let’s race! #Sunny_BigSmile
 - 3:
-// GenericRacePre3
+    // GenericRacePre3
     Violet: Heya, Sunny. We’re running into each other a lot, huh? #Violet_BigSmile
     Sunny: Yeah. I’m starting to really like racing now. #Sunny_Determined
     Violet: I can tell. I don’t really know any other trainer that has as many gremlins racing as you do. #Violet_Neutral

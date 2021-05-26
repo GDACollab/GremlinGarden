@@ -8,6 +8,7 @@ public class SettingsMenu : MonoBehaviour
 {
     [Header("Settings")]
 
+    public bool inVN = false;
 
     [Header("References")]
 
@@ -202,8 +203,11 @@ public class SettingsMenu : MonoBehaviour
             player.enableMovement = canMove;
         if (canMove)
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if(!inVN)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
         }
         else
         {

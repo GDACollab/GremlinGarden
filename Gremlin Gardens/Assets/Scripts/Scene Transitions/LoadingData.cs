@@ -33,9 +33,11 @@ public static class LoadingData
     /// </summary>
     public static bool wonCurrentRace = false;
     /// <summary>
-    /// Dictionary that stores true for races the player has won in, false if they haven't
+    /// Dictionary that stores pair bool, bool where
+    /// First bool is if player has won the race
+    /// Second bool is if player has played the race
     /// </summary>
-    public static Dictionary<AllRaces, bool> RaceHistoryDictionary = new Dictionary<AllRaces, bool>();
+    public static Dictionary<AllRaces, (bool, bool)> RaceHistoryDictionary = new Dictionary<AllRaces, (bool, bool)>();
     /// <summary>
     /// Dictionary that stores the scene name of AllRaces
     /// </summary>
@@ -58,7 +60,7 @@ public static class LoadingData
 
             foreach (int raceIndex in Enum.GetValues(typeof(AllRaces)))
             {
-                RaceHistoryDictionary.Add((AllRaces)raceIndex, false);
+                RaceHistoryDictionary.Add((AllRaces)raceIndex, (false, false));
 
                 RaceSceneDictionary.Add((AllRaces)raceIndex, nameList[raceIndex] + "Race");
             }

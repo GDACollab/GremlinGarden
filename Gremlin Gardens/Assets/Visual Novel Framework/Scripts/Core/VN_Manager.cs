@@ -209,7 +209,6 @@ public class VN_Manager : MonoBehaviour
 
 		if (mouseState == MouseState.contentBox && state == VN_State.idle)
 		{
-
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0))
             {
 				audioManager.PlayAudio(audioManager.buttonClick);
@@ -228,6 +227,7 @@ public class VN_Manager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.F))
 		{
 			StopAllCoroutines();
+			OnEndStory.Invoke();
 			activeLoader.QuickFadeOutLoad(nextScene);
 		}
 	}
