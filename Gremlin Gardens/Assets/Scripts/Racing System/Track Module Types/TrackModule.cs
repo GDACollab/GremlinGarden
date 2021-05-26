@@ -20,9 +20,14 @@ public class TrackModule : MonoBehaviour
     public float BaseSpeed = .5f;
 
     /// <summary>
-    /// How much QTEs should be able to affect the gremlin's speed. Private because the way Unity handles prefabs is ridiculously stupid.
+    /// How much QTEs should be able to affect the gremlin's speed. Public const because the way Unity handles prefabs is ridiculously stupid.
     /// </summary>
-    private float QTEWeight = 2.0f;
+    private const float QTEWeight = 2.0f;
+
+    /// <summary>
+    /// Same goes for how long the stamina timer is.
+    /// </summary>
+    private const float staminaTimerLength = 60.0f;
 
     /// <summary>
     /// The animation name to play from the Animator for this TrackModule.
@@ -112,8 +117,6 @@ public class TrackModule : MonoBehaviour
     /// </summary>
     [Tooltip("If a camera is doing a flyover, skip ahead how many modules when this is done? (Can be negative in case the camera is going over the track in reverse)")]
     public int cameraSkipAhead = 0;
-
-    public const float staminaTimerLength = 60.0f;
 
     PathCreator internalCreator;
     
