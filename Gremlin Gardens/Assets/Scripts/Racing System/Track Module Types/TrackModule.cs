@@ -30,6 +30,11 @@ public class TrackModule : MonoBehaviour
     private const float staminaTimerLength = 60.0f;
 
     /// <summary>
+    /// How slowly you move with 0 stamina.
+    /// </summary>
+    private const float staminaSpeed = 0.75f;
+
+    /// <summary>
     /// The animation name to play from the Animator for this TrackModule.
     /// </summary>
     [Tooltip("The animation name to play from the Animator for this TrackModule.")]
@@ -201,7 +206,7 @@ public class TrackModule : MonoBehaviour
             activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") - 1.5f, 0, 1000));
         }
         if (activeGremlin.gremlin.getStat("Stamina") <= 0) {
-            modifiedSpeed *= 0.75f;
+            modifiedSpeed *= staminaSpeed;
         }
         staminaTimer += Time.deltaTime;
         if (staminaTimer > staminaTimerLength) {
