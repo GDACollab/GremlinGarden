@@ -187,11 +187,15 @@ public class GremlinInteraction : MonoBehaviour
 
     }
 
-    private void UpdateStats(string stat, float changeAmount, float maxVal)
+    public void UpdateStats(string stat, float changeAmount, float maxVal)
     {
         float statChange = gremlin.getStat(stat) + changeAmount;
-        if (Mathf.Abs(statChange) > maxVal)
-            statChange = maxVal;
+        if (Mathf.Abs(statChange) > maxVal){
+            if(statChange > 0)
+                statChange = maxVal;
+            else
+                statChange = -maxVal;
+        }
         gremlin.setStat(stat, statChange);
         UpdateStatsMenu();
     }
@@ -302,8 +306,8 @@ public class GremlinInteraction : MonoBehaviour
         StatMenu.transform.GetChild(10).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Climbing") / 1000), 0);
         StatMenu.transform.GetChild(12).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Stamina") / 1000);
         StatMenu.transform.GetChild(12).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Stamina") / 1000), 0);
-        StatMenu.transform.GetChild(14).GetComponent<Image>().fillAmount = 1 - gremlin.getStat("Happiness") / 1000;
-        StatMenu.transform.GetChild(14).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 4.64f + (91 * gremlin.getStat("Happiness") / 1000));
+        StatMenu.transform.GetChild(14).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Happiness") / 2f + 0.5f);
+        StatMenu.transform.GetChild(14).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 4.64f + (91 * (gremlin.getStat("Happiness") / 2f + 0.5f)));
     }
 
     private void DropGremlin()
@@ -321,14 +325,6 @@ public class GremlinInteraction : MonoBehaviour
         GetComponent<GremlinAI>().move = false;
         eDownTime = 0;
         canPickUp = false;
-    }
-
-    /// Temporarily keeps carriedGremlin collider disabled for toss mechanic
-    IEnumerator enableCarryCollider()
-    {
-        yield return new WaitForSeconds(0.5f);
-        CarriedGremlin.GetComponent<Collider>().enabled = true;
-
     }
 
     private void OnTriggerEnter(Collider other)

@@ -1424,6 +1424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gremlin: {fileID: 0}
   gremlinName: 
+  maxStamina: 0
   nameText: {fileID: 3654205498376032974}
 --- !u!54 &6143168594490065376
 Rigidbody:
