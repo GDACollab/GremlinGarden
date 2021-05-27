@@ -82,6 +82,39 @@ public class CreditsSection : Object
         }
     }
 
+    // Returns the point farthest from the center (x-position of the header text) for the 3 text boxes
+    public float getXExtremity(float center)
+    {
+        float headerExtremity = textBoxes[0].rectTransform.rect.width / 2;
+        float roleExtremity = Mathf.Abs((textBoxes[1].transform.position.x - textBoxes[0].transform.position.x) + textBoxes[1].rectTransform.rect.width);
+        float peopleExtremity = Mathf.Abs((textBoxes[2].transform.position.x - textBoxes[0].transform.position.x) - textBoxes[2].rectTransform.rect.width);
+
+        Debug.Log($"Header: {headerExtremity}\tPeople: {peopleExtremity}\tRoles: {roleExtremity}");
+
+        if(headerExtremity > peopleExtremity)
+        {
+            if(headerExtremity > roleExtremity)
+            {
+                return headerExtremity;
+            }
+            else
+            {
+                return roleExtremity;
+            }
+        }
+        else
+        {
+            if(peopleExtremity > roleExtremity)
+            {
+                return peopleExtremity;
+            }
+            else
+            {
+                return peopleExtremity;
+            }
+        }
+    }
+
     // Returns the height of the 3 text boxes by subtracting the y position of the bottom from the y position of the top
     public float getHeight()
     {

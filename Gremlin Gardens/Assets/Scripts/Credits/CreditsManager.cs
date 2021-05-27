@@ -7,6 +7,31 @@ using TMPro;
 // Manages the content and movement of the credits based on the input CSV file
 public class CreditsManager : MonoBehaviour
 {
+    /*[Header("Scene Transitions")]
+    // The object in charge of changing to a different scene after the credits are finished
+    public SceneLoader sceneLoader;
+    
+    // The scene to transition to after the credits finish
+    public string nextScene;
+
+    // The speed that the scene will fade out at
+    public float transitionSpeed = 0.5f;
+
+    [Header("Audio")]
+    // The component that plays and gets parameters from the playing music
+    private AudioSource audioSource;*/
+    [Header("Background")]
+    // The object for the tan inner rectangle surrounding the credits
+    public RawImage innerBackground;
+    
+    // The object for the green outer rectangle surrounding the credits
+    public RawImage outerBackground;
+
+    // The distance between the edges of the 2 credits backgrounds
+    // The distance between the edge of the inner background and the edge of the text
+    public float backingMargin;
+
+    [Header("General Parameters")]
     // The CSV file inputted as credits.
     // Format: Row = Name, Col = Credits section, Row + Col = Role
     public TextAsset creditsText;
@@ -59,10 +84,12 @@ public class CreditsManager : MonoBehaviour
     // Sets the initial position the text box templates and the header text
     private void setDefaultText()
     {
+        outerBackground.transform.position = new Vector2(startingPosition.x, startingPosition.y);;
+        innerBackground.transform.position = new Vector2(startingPosition.x, startingPosition.y - backingMargin);
         TextMeshProUGUI[] headerText = headerCanvas.GetComponentsInChildren<TextMeshProUGUI>();
         //Debug.Log(startingPosition.x);
-        headerText[0].transform.position = new Vector2(startingPosition.x, startingPosition.y);
-        headerText[1].transform.position = new Vector2(startingPosition.x, startingPosition.y - headerText[0].rectTransform.rect.height);
+        headerText[0].transform.position = new Vector2(startingPosition.x, startingPosition.y - backingMargin * 2);
+        headerText[1].transform.position = new Vector2(startingPosition.x, startingPosition.y - backingMargin * 2 - headerText[0].rectTransform.rect.height);
 
         // Sets a temporary creditsSection object to set up the initial position
         CreditsSection defaultCredits = new CreditsSection(textBoxTemplate.GetComponentsInChildren<TextMeshProUGUI>());
@@ -185,12 +212,12 @@ public class CreditsManager : MonoBehaviour
     // Sets the initial position of all credits text boxes and calculates the speed the credits will travel at
     void Start()
     {
-        float startingYPostion = startingPosition.y - (textBoxMargin * 1.5f);
+        float startingYPostion = startingPosition.y - (backingMargin * 2);
         foreach(TextMeshProUGUI textBox in headerCanvas.GetComponentsInChildren<TextMeshProUGUI>())
         {
             startingYPostion -= textBox.rectTransform.rect.height;
         }
-        startingYPostion -= textBoxMargin;
+        startingYPostion -= textBoxMargin * 2;
 
         Vector2 position = new Vector2(startingPosition.x, startingYPostion);
         foreach(KeyValuePair<string, CreditsSection> creditsSection in credits)
@@ -202,6 +229,27 @@ public class CreditsManager : MonoBehaviour
             //Debug.Log(change);
             position.y -= change + (textBoxMargin * 2);
         }
+
+        innerBackground.rectTransform.sizeDelta = new Vector2(getCreditsWidth() + 4 * backingMargin, getCreditsHeight() + 2 * backingMargin);
+        outerBackground.rectTransform.sizeDelta = new Vector2(getCreditsWidth() + 6 * backingMargin, innerBackground.rectTransform.rect.height + 2 * backingMargin);
+    }
+
+    // Finds the point in the credits that sticks out most from 0 (the center), then returns twice that as the width
+    private float getCreditsWidth()
+    {
+        float widest = 0;
+
+        foreach(KeyValuePair<string, CreditsSection> section in credits)
+        {
+            float sectionWidth = 2 * section.Value.getXExtremity(startingPosition.x);
+            if(widest < sectionWidth)
+            {
+                Debug.Log($"Section: {section.Key}\tWidth: {sectionWidth}");
+                widest = sectionWidth;
+            }
+        }
+
+        return widest;
     }
 
     // Calculates the total height of the credits
@@ -236,7 +284,11 @@ public class CreditsManager : MonoBehaviour
         }
 
         // Calculates the units the credits will move on this refresh cycle
-        float creditsSpeed = ((getCreditsHeight() + Screen.height) / time) * Time.deltaTime;
+        float creditsSpeed = ((outerBackground.rectTransform.rect.height + Screen.height) / time) * Time.deltaTime;
+        
+        // Translates the backing up
+        outerBackground.transform.position = new Vector2(outerBackground.transform.position.x, outerBackground.transform.position.y + creditsSpeed);
+        innerBackground.transform.position = new Vector2(innerBackground.transform.position.x, innerBackground.transform.position.y + creditsSpeed);
         
         // Translates the header up
         foreach(TextMeshProUGUI headerTextBox in headerCanvas.GetComponentsInChildren<TextMeshProUGUI>())
