@@ -17,9 +17,9 @@ public class CreditsManager : MonoBehaviour
     // The speed that the scene will fade out at
     public float transitionSpeed = 0.5f;
 
-    /*[Header("Audio")]
+    [Header("Audio")]
     // The component that plays and gets parameters from the playing music
-    private AudioSource audioSource;*/
+    private AudioSource audioSource;
     [Header("Background")]
     // The object for the tan inner rectangle surrounding the credits
     public RawImage innerBackground;
@@ -46,7 +46,7 @@ public class CreditsManager : MonoBehaviour
     private Dictionary<string, CreditsSection> credits;
 
     // Time it will take for the credits to scroll all the way through, in seconds
-    public float time;
+    private float time;
 
     [Header("UI Text")]
     // Distance set between the text boxes, both vertically and horizontally
@@ -69,6 +69,9 @@ public class CreditsManager : MonoBehaviour
     // Initializes the starting position, parses the CSV file into the Dictionary creditsMap, and writes the credits into text boxes based on the template
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        time = audioSource.clip.length;
+        
         startingPosition = new Vector2(Screen.width/2, startingY);
         //startingPosition = new Vector2(Screen.width/2, Screen.height);
 
