@@ -244,7 +244,6 @@ public class CreditsManager : MonoBehaviour
             float sectionWidth = 2 * section.Value.getXExtremity(startingPosition.x);
             if(widest < sectionWidth)
             {
-                Debug.Log($"Section: {section.Key}\tWidth: {sectionWidth}");
                 widest = sectionWidth;
             }
         }
@@ -275,7 +274,7 @@ public class CreditsManager : MonoBehaviour
     // Scrolls the text up by the designated amount
     void Update()
     {
-        if(headerCanvas.GetComponentsInChildren<TextMeshProUGUI>()[0].transform.position.y > getCreditsHeight() + Screen.height)
+        if(outerBackground.transform.position.y > outerBackground.rectTransform.rect.height + Screen.height)
         {
             Debug.Log($"Expected:{getCreditsHeight() + Screen.height}");
             Debug.Log($"Time: {Time.fixedTime}\tFramerate: {Time.frameCount/Time.fixedTime}");

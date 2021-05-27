@@ -89,8 +89,6 @@ public class CreditsSection : Object
         float roleExtremity = Mathf.Abs((textBoxes[1].transform.position.x - textBoxes[0].transform.position.x) + textBoxes[1].rectTransform.rect.width);
         float peopleExtremity = Mathf.Abs((textBoxes[2].transform.position.x - textBoxes[0].transform.position.x) - textBoxes[2].rectTransform.rect.width);
 
-        Debug.Log($"Header: {headerExtremity}\tPeople: {peopleExtremity}\tRoles: {roleExtremity}");
-
         if(headerExtremity > peopleExtremity)
         {
             if(headerExtremity > roleExtremity)
