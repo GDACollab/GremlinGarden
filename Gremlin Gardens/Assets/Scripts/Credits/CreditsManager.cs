@@ -7,7 +7,7 @@ using TMPro;
 // Manages the content and movement of the credits based on the input CSV file
 public class CreditsManager : MonoBehaviour
 {
-    /*[Header("Scene Transitions")]
+    [Header("Scene Transitions")]
     // The object in charge of changing to a different scene after the credits are finished
     public SceneLoader sceneLoader;
     
@@ -17,7 +17,7 @@ public class CreditsManager : MonoBehaviour
     // The speed that the scene will fade out at
     public float transitionSpeed = 0.5f;
 
-    [Header("Audio")]
+    /*[Header("Audio")]
     // The component that plays and gets parameters from the playing music
     private AudioSource audioSource;*/
     [Header("Background")]
@@ -276,9 +276,7 @@ public class CreditsManager : MonoBehaviour
     {
         if(outerBackground.transform.position.y > outerBackground.rectTransform.rect.height + Screen.height)
         {
-            Debug.Log($"Expected:{getCreditsHeight() + Screen.height}");
-            Debug.Log($"Time: {Time.fixedTime}\tFramerate: {Time.frameCount/Time.fixedTime}");
-            Debug.LogError("End");
+            sceneLoader.FadeOutLoad(nextScene, transitionSpeed);
             return;
         }
 
