@@ -844,7 +844,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16284
+  m_Name: pb_Mesh15834
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2068,7 +2068,7 @@ MonoBehaviour:
   sceneName: ExpertRace
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
-  settings: {fileID: 1355701504}
+  settings: {fileID: 0}
 --- !u!65 &309972965
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5964,15 +5964,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6631969135685365284, guid: ee3d336c2b8dd2144812eed55a0206ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 27.459
+      value: 26.12
       objectReference: {fileID: 0}
     - target: {fileID: 6631969135685365284, guid: ee3d336c2b8dd2144812eed55a0206ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.441
+      value: 34.98
       objectReference: {fileID: 0}
     - target: {fileID: 6631969135685365284, guid: ee3d336c2b8dd2144812eed55a0206ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 37.462
+      value: 37.58
       objectReference: {fileID: 0}
     - target: {fileID: 6631969135685365284, guid: ee3d336c2b8dd2144812eed55a0206ce, type: 3}
       propertyPath: m_LocalRotation.x
@@ -6754,7 +6754,7 @@ MonoBehaviour:
   sceneName: IntermediateRace
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
-  settings: {fileID: 1355701504}
+  settings: {fileID: 0}
 --- !u!65 &780293137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10874,8 +10874,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 992259318}
-  - {fileID: 1622549909}
-  - {fileID: 1449055879}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: -210, z: 0}
@@ -11293,7 +11291,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1622549909}
+  - {fileID: 1449055879}
   m_Father: {fileID: 987935192}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16535,7 +16535,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2744
+  m_Name: pb_Mesh-2110
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16800,7 +16800,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16398
+  m_Name: pb_Mesh15948
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17075,7 +17075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6464868616444052958, guid: f9ceec8dd0e1ff54382c81b6fbbd28f4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.894844
+      value: 25.19
       objectReference: {fileID: 0}
     - target: {fileID: 6464868616444052958, guid: f9ceec8dd0e1ff54382c81b6fbbd28f4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -17083,7 +17083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6464868616444052958, guid: f9ceec8dd0e1ff54382c81b6fbbd28f4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.775272
+      value: 36.19
       objectReference: {fileID: 0}
     - target: {fileID: 6464868616444052958, guid: f9ceec8dd0e1ff54382c81b6fbbd28f4, type: 3}
       propertyPath: m_LocalRotation.x
@@ -17453,17 +17453,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7865236678654087495, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
   m_PrefabInstance: {fileID: 941339274}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1355701504 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4047475740125068566, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
-  m_PrefabInstance: {fileID: 941339274}
+--- !u!1 &1365663856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1355701502}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365663859}
+  - component: {fileID: 1365663858}
+  - component: {fileID: 1365663857}
+  m_Layer: 2
+  m_Name: Falling trigger box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1365663857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365663856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d323c809cb95abc4e9d06d499043c354, type: 3}
+  m_Script: {fileID: 11500000, guid: 0efde1fada6628d4b873f4f60495e88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &1365663858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365663856}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1365663859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365663856}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10.71, z: 0}
+  m_LocalScale: {x: 392.23645, y: 14.556, z: 368.9913}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393237670
 GameObject:
   m_ObjectHideFlags: 0
@@ -17817,12 +17863,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449055878}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 1.25}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.096, z: 1.2499998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 987935192}
-  m_RootOrder: 2
+  m_Father: {fileID: 992259318}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480340642
 GameObject:
@@ -17980,7 +18026,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-2902
+  m_Name: pb_Mesh-2268
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18162,12 +18208,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622549908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.293, z: 1.75}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.29299927, z: 1.750001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 987935192}
-  m_RootOrder: 1
+  m_Father: {fileID: 992259318}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1622549910
 BoxCollider:
@@ -18259,7 +18305,7 @@ MonoBehaviour:
   sceneName: BeginnerRace
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
-  settings: {fileID: 1355701504}
+  settings: {fileID: 0}
 --- !u!65 &1632391988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19038,7 +19084,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16298
+  m_Name: pb_Mesh15848
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -31836,7 +31882,7 @@ MonoBehaviour:
   sceneName: VioletPreRaceVN
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
-  settings: {fileID: 1355701504}
+  settings: {fileID: 0}
 --- !u!114 &2016830654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31861,7 +31907,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh16336
+  m_Name: pb_Mesh15886
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

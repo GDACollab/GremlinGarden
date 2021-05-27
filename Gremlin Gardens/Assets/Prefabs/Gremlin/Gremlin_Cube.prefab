@@ -1404,10 +1404,9 @@ MonoBehaviour:
   petIncrease: 0.05
   cuddleIncrease: 0.05
   yeetIncrease: 0.1
-  tossForce: 300
-  fillSpeed: 4
-  waitTime: 4
+  tossForce: 500
   maxHappinessVal: 1
+  attemptYeet: 0
   beingPet: 0
   beingCarried: 0
   gremlin: {fileID: 0}
@@ -1425,6 +1424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gremlin: {fileID: 0}
   gremlinName: 
+  maxStamina: 0
   nameText: {fileID: 3654205498376032974}
 --- !u!54 &6143168594490065376
 Rigidbody:
@@ -1441,7 +1441,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &3860087015662847079
 MonoBehaviour:
   m_ObjectHideFlags: 0
