@@ -2068,7 +2068,7 @@ MonoBehaviour:
   sceneName: ExpertRace
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
-  settings: {fileID: 0}
+  settings: {fileID: 1355701504}
 --- !u!65 &309972965
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6754,7 +6754,7 @@ MonoBehaviour:
   sceneName: IntermediateRace
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
-  settings: {fileID: 0}
+  settings: {fileID: 1355701504}
 --- !u!65 &780293137
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17453,6 +17453,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7865236678654087495, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
   m_PrefabInstance: {fileID: 941339274}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1355701504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4047475740125068566, guid: 0c263f1ed2cde414b9dccda1b6cda81c, type: 3}
+  m_PrefabInstance: {fileID: 941339274}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355701502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d323c809cb95abc4e9d06d499043c354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1365663856
 GameObject:
   m_ObjectHideFlags: 0
@@ -18305,7 +18316,7 @@ MonoBehaviour:
   sceneName: BeginnerRace
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
-  settings: {fileID: 0}
+  settings: {fileID: 1355701504}
 --- !u!65 &1632391988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31882,7 +31893,7 @@ MonoBehaviour:
   sceneName: VioletPreRaceVN
   gremlinPicker: {fileID: 210107945}
   gremlinPickerButton: {fileID: 3328998271753578424, guid: ba6f6243dd021d44383c8f1b1442b9ed, type: 3}
-  settings: {fileID: 0}
+  settings: {fileID: 1355701504}
 --- !u!114 &2016830654
 MonoBehaviour:
   m_ObjectHideFlags: 0
