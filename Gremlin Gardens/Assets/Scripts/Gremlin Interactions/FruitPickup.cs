@@ -81,13 +81,14 @@ public class FruitPickup : MonoBehaviour
                 //set stats
                 maxStatVal = gremlin.maxStatVal;
                 string stat = determineStat(fruit.foodName);
-                float statChange = gremlin.getStat(stat) + (15 * (gremlin.getStat("Happiness") + 1)); //Old formula: + fruit.food.getStatAlteration(stat);
+                float statChange = (15 * (gremlin.getStat("Happiness") + 1)); //Old formula: + fruit.food.getStatAlteration(stat);
+                
                 gremlinGameObj.GetComponent<GremlinInteraction>().UpdateStats(stat, statChange, maxStatVal);
 
                 //done eating, destroy game object and re-enable ai
                 Destroy(gameObject);
-                if (!gremlinGameObj.GetComponent<GremlinInteraction>().beingCarried)
-                    gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
+                // if (!gremlinGameObj.GetComponent<GremlinInteraction>().beingCarried)
+                //     gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
             }
         }
 
