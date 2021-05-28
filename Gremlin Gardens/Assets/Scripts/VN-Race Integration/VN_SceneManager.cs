@@ -10,8 +10,6 @@ public class VN_SceneManager : MonoBehaviour
 
     private void Awake()
     {
-        LoadingData.ConstructRaceStatuses();
-
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
 

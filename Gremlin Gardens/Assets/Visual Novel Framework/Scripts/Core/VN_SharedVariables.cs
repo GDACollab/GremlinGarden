@@ -26,6 +26,8 @@ public class VN_SharedVariables : MonoBehaviour
         this.manager = manager;
         FieldInfoArray = GetType().GetFields();
 
+        LoadingData.ConstructRaceStatuses();
+
         gremlinToRace = LoadingData.gremlinToRace;
         selectedRace = LoadingData.currentRace.ToString();
         wonRace = Convert.ToInt32(LoadingData.wonCurrentRace);
