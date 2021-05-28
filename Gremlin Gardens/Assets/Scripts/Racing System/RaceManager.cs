@@ -77,7 +77,7 @@ public class RaceManager : MonoBehaviour
     /// <summary>
     /// Keeps the indices of the tracks for sorting with raceTimes.
     /// </summary>
-    int[] trackIndices;
+    public int[] trackIndices;
 
     /// <summary>
     /// The amount of money a player can win by getting each place. Set by RandomGremlinRace.cs
