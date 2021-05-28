@@ -12,6 +12,12 @@ public class GremlinObject : MonoBehaviour
     Rigidbody body;
     public string gremlinName;
 
+    /// <summary>
+    /// The maximum amount of stamina a gremlin can have. Used by TrackManager.
+    /// </summary>
+    [HideInInspector]
+    public float maxStamina;
+
     private GameObject player; 
     
     [Header("Aesthetic Stuff")]
@@ -27,6 +33,7 @@ public class GremlinObject : MonoBehaviour
         // Defines the Gremlin
         gremlin = new Gremlin(gremlinName);
         player = GameObject.Find("Player");
+        maxStamina = gremlin.getStat("Stamina");
         nameText.text = gremlinName;
     }
 

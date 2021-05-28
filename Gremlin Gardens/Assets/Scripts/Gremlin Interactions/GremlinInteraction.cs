@@ -15,8 +15,6 @@ public class GremlinInteraction : MonoBehaviour
     public float cuddleIncrease = 0.05f; //how much to increase happiness stat from cuddling
     public float yeetIncrease = 0.1f;
     public int tossForce = 300;
-    public float fillSpeed = 2.0f; //Speed of charge bar fill
-    public float waitTime = 4.0f; //Total Time to fill charge bar
     public float maxHappinessVal = 1.0f;
 
     private Transform CarriedGremlin;  //transform in front of player where Gremlin stays
@@ -30,11 +28,9 @@ public class GremlinInteraction : MonoBehaviour
     private GameObject StatIndicator;    //button prompts when carrying gremlin
     private GameObject StatMenu;
     private GameObject Canvas;
-    private GameObject ChargeBar;
-    private Image ChargeFill;
     private GremlinAudioController audioController;
     private bool onGremlin;
-    private bool attemptYeet = false;
+    public bool attemptYeet = false;
     private float distanceFromPlayer;
     private bool eClicked = false;
     private double eDownTime = 0;
@@ -67,12 +63,9 @@ public class GremlinInteraction : MonoBehaviour
         TossIndicator = interactions.transform.GetChild(4).gameObject;
         StatIndicator = interactions.transform.GetChild(5).gameObject;
 
-        ChargeBar = Canvas.transform.Find("Charge Bar").gameObject;
-        ChargeFill = ChargeBar.transform.GetChild(1).GetComponent<Image>();
-        CarriedGremlin = player.transform.GetChild(1);
-        CarriedFruit = player.transform.GetChild(2);
+        CarriedGremlin = player.transform.GetChild(0).transform.Find("Carried Gremlin");
+        CarriedFruit = player.transform.GetChild(0).transform.Find("Carried Fruit");
 
-        ChargeBar.SetActive(false);
         PickupIndicator.SetActive(false);
         PetIndicator.SetActive(false);
         StatIndicator.SetActive(false);
@@ -123,55 +116,22 @@ public class GremlinInteraction : MonoBehaviour
             }
 
             //TOSS
-            //start charge bar for tossing
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0) && !attemptYeet)
             {
                 TossIndicator.SetActive(false);
                 DropIndicator.SetActive(false);
                 CuddleIndicator.SetActive(false);
-                ChargeBar.SetActive(true);
+
                 attemptYeet = true;
-                StartCoroutine("StartFill");
-            }
-            //attempt to toss gremlin
-            if (attemptYeet && Input.GetMouseButtonUp(0))
-            {
-                TossIndicator.SetActive(true);
-                DropIndicator.SetActive(true);
-                CuddleIndicator.SetActive(true);
 
-                //successful toss and catch
-                if (ChargeFill.fillAmount > 0.75)
-                {
-                    // With the current toss implementation, the carriedGremlin collider is
-                    // used as a trigger to know when to 'catch' the gremlin, but it can't
-                    // be enabled when first tossing
-                    CarriedGremlin.GetComponent<Collider>().enabled = false;
-                    rb.constraints = RigidbodyConstraints.None;
-                    rb.useGravity = true;
-                    rb.AddForce(Vector3.up * tossForce);
-                    GetComponent<Collider>().enabled = true;
-                    StartCoroutine("enableCarryCollider");
-                    ChargeBar.SetActive(false);
+                audioController.PlayThrow();
 
-                    audioController.PlayThrow();
-
-                    UpdateStats("Happiness", yeetIncrease, maxHappinessVal);
-                }
-                //failed toss, drop gremlin
-                else
-                {
-                    attemptYeet = false;
-                    DropGremlin();
-                    ChargeBar.SetActive(false);
-
-                    UpdateStats("Happiness", -yeetIncrease, maxHappinessVal);
-                }
-            }
-            if (!attemptYeet)
-            {
-                StopAllCoroutines();
-                ChargeFill.fillAmount = 0.0f;
+                CarriedGremlin.GetComponent<Collider>().enabled = true;
+                this.transform.parent = null;
+                rb.constraints = RigidbodyConstraints.None;
+                rb.useGravity = true;
+                rb.AddForce(player.transform.GetChild(0).transform.forward * tossForce);
+                GetComponent<Collider>().enabled = true;
             }
         }
 
@@ -227,11 +187,15 @@ public class GremlinInteraction : MonoBehaviour
 
     }
 
-    private void UpdateStats(string stat, float changeAmount, float maxVal)
+    public void UpdateStats(string stat, float changeAmount, float maxVal)
     {
         float statChange = gremlin.getStat(stat) + changeAmount;
-        if (Mathf.Abs(statChange) > maxVal)
-            statChange = maxVal;
+        if (Mathf.Abs(statChange) > maxVal){
+            if(statChange > 0)
+                statChange = maxVal;
+            else
+                statChange = -maxVal;
+        }
         gremlin.setStat(stat, statChange);
         UpdateStatsMenu();
     }
@@ -248,7 +212,7 @@ public class GremlinInteraction : MonoBehaviour
             //GetComponent<Outline>().OutlineWidth = 10;
             //if (CarriedGremlin.childCount != 0 || beingPet || CarriedFruit.childCount != 0)
             //GetComponent<Outline>().OutlineWidth = 0;
-            if (CarriedGremlin.childCount == 0 && !beingPet && CarriedFruit.childCount == 0)
+            if (CarriedGremlin.childCount == 0 && !beingPet && CarriedFruit.childCount == 0 && !attemptYeet)
             {
                 PickupIndicator.SetActive(true);
                 PetIndicator.SetActive(true);
@@ -277,7 +241,7 @@ public class GremlinInteraction : MonoBehaviour
                 rb.useGravity = false;
                 this.transform.position = CarriedGremlin.position;
                 this.transform.parent = CarriedGremlin;
-                //rb.constraints = RigidbodyConstraints.FreezeAll;
+                rb.constraints = RigidbodyConstraints.FreezeAll;
                 beingCarried = true;
                 //GetComponent<Collider>().enabled = false;
                 GetComponent<GremlinAI>().enabled = false;
@@ -331,13 +295,19 @@ public class GremlinInteraction : MonoBehaviour
 
     private void UpdateStatsMenu()
     {
-        StatMenu.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = gremlin.getName();
-        StatMenu.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "Stamina: " + Mathf.Floor(gremlin.getStat("Stamina"));
-        StatMenu.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "Happiness: " + Mathf.Floor(gremlin.getStat("Happiness"));
-        StatMenu.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = "Running: " + Mathf.Floor(gremlin.getStat("Running"));
-        StatMenu.transform.GetChild(4).GetComponent<TextMeshProUGUI>().text = "Climbing: " + Mathf.Floor(gremlin.getStat("Climbing"));
-        StatMenu.transform.GetChild(5).GetComponent<TextMeshProUGUI>().text = "Swimming: " + Mathf.Floor(gremlin.getStat("Swimming"));
-        StatMenu.transform.GetChild(6).GetComponent<TextMeshProUGUI>().text = "Flying: " + Mathf.Floor(gremlin.getStat("Flying"));
+        StatMenu.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = gremlin.getName();
+        StatMenu.transform.GetChild(4).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Running") / 1000);
+        StatMenu.transform.GetChild(4).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Running") / 1000), 0);
+        StatMenu.transform.GetChild(6).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Flying") / 1000);
+        StatMenu.transform.GetChild(6).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Flying") / 1000), 0);
+        StatMenu.transform.GetChild(8).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Swimming") / 1000);
+        StatMenu.transform.GetChild(8).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Swimming") / 1000), 0);
+        StatMenu.transform.GetChild(10).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Climbing") / 1000);
+        StatMenu.transform.GetChild(10).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Climbing") / 1000), 0);
+        StatMenu.transform.GetChild(12).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Stamina") / 1000);
+        StatMenu.transform.GetChild(12).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(4.64f + (91 * gremlin.getStat("Stamina") / 1000), 0);
+        StatMenu.transform.GetChild(14).GetComponent<Image>().fillAmount = 1 - (gremlin.getStat("Happiness") / 2f + 0.5f);
+        StatMenu.transform.GetChild(14).GetChild(0).GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 4.64f + (91 * (gremlin.getStat("Happiness") / 2f + 0.5f)));
     }
 
     private void DropGremlin()
@@ -350,64 +320,41 @@ public class GremlinInteraction : MonoBehaviour
         DropIndicator.SetActive(false);
         TossIndicator.SetActive(false);
         CuddleIndicator.SetActive(false);
-        ChargeBar.SetActive(false);
         GetComponent<Collider>().enabled = true;
         GetComponent<GremlinAI>().enabled = true;
         GetComponent<GremlinAI>().move = false;
         eDownTime = 0;
         canPickUp = false;
-        attemptYeet = false;
-    }
-
-    /// Starts the fill/drain process for the charge bar
-    IEnumerator StartFill()
-    {
-        while (true)
-        {
-            yield return ChangeFill(0.0f, 1.0f, waitTime);
-            yield return ChangeFill(1.0f, 0.0f, waitTime);
-        }
-    }
-    /// Changes the fill amount for the charghe bar
-    IEnumerator ChangeFill(float start, float end, float time)
-    {
-        float i = 0.0f;
-        float rate = (1.0f / time) * fillSpeed;
-        while (i < 1.0f)
-        {
-            i += Time.deltaTime * rate;
-            ChargeFill.fillAmount = Mathf.Lerp(start, end, i);
-            yield return null;
-        }
-    }
-
-    /// Temporarily keeps carriedGremlin collider disabled for toss mechanic
-    IEnumerator enableCarryCollider()
-    {
-        yield return new WaitForSeconds(0.5f);
-        CarriedGremlin.GetComponent<Collider>().enabled = true;
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.name == "Carried Gremlin" && attemptYeet)
+        if (other.name == "Carried Gremlin" && attemptYeet && rb.velocity.y < 0)
         {
             attemptYeet = false;
             rb.useGravity = false;
             rb.constraints = RigidbodyConstraints.FreezeAll;
             this.transform.position = CarriedGremlin.position;
+            this.transform.parent = CarriedGremlin;
             //GetComponent<Collider>().enabled = false;
             TossIndicator.SetActive(true);
+            DropIndicator.SetActive(true);
+            CuddleIndicator.SetActive(true);
+
+            UpdateStats("Happiness", yeetIncrease, maxHappinessVal);
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision");
         GameObject other = collision.gameObject;
-        if (beingCarried && other.tag != "Gremlin")
+        if (beingCarried)
         {
             DropGremlin();
+        }
+        if (attemptYeet)
+        {
+            attemptYeet = false;
+            UpdateStats("Happiness", -yeetIncrease, maxHappinessVal);
         }
     }
 
