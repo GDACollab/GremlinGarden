@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5894740429888692568}
+  - component: {fileID: 954925083650552909}
   m_Layer: 0
   m_Name: Mushroom
   m_TagString: Untagged
@@ -31,6 +32,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!205 &954925083650552909
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898241642134753509}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: -0.00027185678, y: 0.15195668, z: 0.017004699}
+  m_Size: 0.33605742
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.049767505
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7560698466101795810}
+  - screenRelativeHeight: 0.027343215
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7560698466101795810}
+  - screenRelativeHeight: 0.0073063616
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7560698466101795810}
+  m_Enabled: 1
 --- !u!1001 &9164097998634092390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91,5 +119,10 @@ PrefabInstance:
 --- !u!4 &8694150629008433293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d6eb3ee8174ddc246b9e234f183ab6ff, type: 3}
+  m_PrefabInstance: {fileID: 9164097998634092390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7560698466101795810 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d6eb3ee8174ddc246b9e234f183ab6ff, type: 3}
   m_PrefabInstance: {fileID: 9164097998634092390}
   m_PrefabAsset: {fileID: 0}
