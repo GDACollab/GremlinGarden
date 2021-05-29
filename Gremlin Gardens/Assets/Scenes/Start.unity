@@ -1739,6 +1739,7 @@ GameObject:
   - component: {fileID: 1812796310}
   - component: {fileID: 1812796312}
   - component: {fileID: 1812796311}
+  - component: {fileID: 1812796313}
   m_Layer: 0
   m_Name: SceneLoader
   m_TagString: Untagged
@@ -1791,3 +1792,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeManager: {fileID: 1812796311}
+--- !u!114 &1812796313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812796309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43564aa723a021c4295db8be8984fb52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
