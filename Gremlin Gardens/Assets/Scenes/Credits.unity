@@ -1019,7 +1019,7 @@ MonoBehaviour:
   innerBackground: {fileID: 1421566454}
   outerBackground: {fileID: 326443203}
   backingMargin: 12
-  creditsText: {fileID: 4900000, guid: c71245d85324b4eb5a6b33130d073609, type: 3}
+  creditsText: {fileID: 4900000, guid: 9e3e5dff3699240ada90d9ab8dd31d38, type: 3}
   seperatorIndex: 7
   textBoxMargin: 12
   startingY: 0

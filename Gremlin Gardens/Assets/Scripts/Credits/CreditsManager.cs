@@ -244,10 +244,11 @@ public class CreditsManager : MonoBehaviour
 
         foreach(KeyValuePair<string, CreditsSection> section in credits)
         {
-            float sectionWidth = 2 * section.Value.getXExtremity(startingPosition.x);
+            float sectionWidth = 2 * section.Value.getXExtremity();
             if(widest < sectionWidth)
             {
                 widest = sectionWidth;
+                //Debug.Log(widest / 2);
             }
         }
 

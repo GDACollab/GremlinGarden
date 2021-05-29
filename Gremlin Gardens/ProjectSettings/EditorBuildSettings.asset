@@ -41,4 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/VN Scenes/VioletPostRaceVN.unity
     guid: 47876137a99ad460daa923c682490171
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 68e427c1a391d47f383c616fad7f9c97
   m_configObjects: {}
