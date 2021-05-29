@@ -159,6 +159,8 @@ public class TrackModule : MonoBehaviour
     Callback toCallback;
 
     public SettingsMenu settings;
+
+    public bool flipPath = false;
     /// <summary>
     /// Start moving the Gremlin across the track module.
     /// </summary>
@@ -233,8 +235,14 @@ public class TrackModule : MonoBehaviour
             else
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
                 SetModifiedSpeed(); //Set modifiedSpeed again in case it's somehow changed.
-                activeGremlin.transform.position = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop) + terrainVariant.positionFunction(timePassed * modifiedSpeed, this) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
+                var nextPoint = internalCreator.path.GetPointAtDistance(totalDistance, EndOfPathInstruction.Stop);
+                if (flipPath) {
+                    nextPoint = internalCreator.path.GetPointAtDistance(internalCreator.path.length - totalDistance, EndOfPathInstruction.Stop);
+                }
+                activeGremlin.transform.position = nextPoint + terrainVariant.positionFunction(timePassed * modifiedSpeed, this) + gOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
                 Vector3 nextPos = internalCreator.path.GetPointAtDistance(totalDistance + 0.01f, EndOfPathInstruction.Stop);
+                if (flipPath) { 
+                }
                 activeGremlin.transform.rotation = Quaternion.LookRotation(new Vector3(nextPos.x, activeGremlin.transform.position.y, nextPos.z) - activeGremlin.transform.position, Vector3.up);
                 timePassed += Time.deltaTime;
             }
