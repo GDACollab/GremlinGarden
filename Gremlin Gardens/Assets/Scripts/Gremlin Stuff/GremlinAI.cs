@@ -71,8 +71,8 @@ public class GremlinAI : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-
-        while (Physics.Raycast(transform.position, movementDirection, 2f))
+        for (int raycastCap = 0; Physics.Raycast(transform.position, movementDirection, 2f)
+            && raycastCap < 10; ++raycastCap)
         {
             movementDirection.x = Random.Range(-3f, 3f);
             movementDirection.z = Random.Range(-3f, 3f);
