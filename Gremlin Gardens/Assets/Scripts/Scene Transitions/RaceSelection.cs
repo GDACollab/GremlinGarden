@@ -24,10 +24,14 @@ public class RaceSelection : MonoBehaviour
     [Tooltip("How close we want the player to be to show the highlight.")]
     public float selectionDistance = 10.0f;
     /// <summary>
-    /// The scene we're transitioning to next.
+    /// The scene name we're transitioning to next.
     /// </summary>
     [Tooltip("The scene we're transitioning to next.")]
     public string sceneName;
+    /// <summary>
+    /// The enum race the player selected
+    /// </summary>
+    public LoadingData.AllRaces selectedRace;
 
     /// <summary>
     /// The UI object to select the gremlins with.
@@ -40,6 +44,8 @@ public class RaceSelection : MonoBehaviour
     /// </summary>
     [Tooltip("The button prefab for selecting gremlins.")]
     public GameObject gremlinPickerButton;
+
+    public SettingsMenu settings;
 
     /// <summary>
     /// Is the selection UI up?
@@ -83,11 +89,14 @@ public class RaceSelection : MonoBehaviour
 
     private void MouseDown()
     {
-        if (Vector3.Distance(this.transform.position, player.transform.position) < selectionDistance && selectionUI == false)
+        if (!settings.paused && Vector3.Distance(this.transform.position, player.transform.position) < selectionDistance && selectionUI == false && gremlinPicker.activeInHierarchy != true)
         {
             selectionUI = true;
             // Quick hack for getting a gremlin selector before the race. 
             foreach (KeyValuePair<string, Gremlin> savedGremlin in LoadingData.playerGremlins) {
+                // Also make sure to update the gremlin's current position so that the GremlinSpawner can use it later:
+                savedGremlin.Value.currentPosition = savedGremlin.Value.transformReference.position;
+                savedGremlin.Value.currentRotation = savedGremlin.Value.transformReference.rotation;
                 var button = Instantiate(gremlinPickerButton);
                 button.transform.parent = gremlinPicker.transform;
                 button.GetComponentInChildren<Text>().text = savedGremlin.Key;
@@ -101,9 +110,7 @@ public class RaceSelection : MonoBehaviour
         }
     }
 
-    public void GremlinSelected(string gremlinName) {
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+    public void DestroyUI() {
         // Destroy the buttons to select gremlins just in case this somehow gets called twice:
         for (int i = 0; i < gremlinPicker.transform.childCount; i++)
         {
@@ -111,7 +118,19 @@ public class RaceSelection : MonoBehaviour
             Destroy(child.gameObject);
         }
         gremlinPicker.SetActive(false);
+    }
+
+    public void GremlinSelected(string gremlinName) {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+        // Make sure player's position and rotation is saved:
+        LoadingData.playerPosition = player.transform.position;
+        LoadingData.playerRotation = player.transform.rotation;
+        DestroyUI();
+
         LoadingData.gremlinToRace = gremlinName;
+        LoadingData.currentRace = selectedRace;
+
         sceneLoader.FadeOutLoad(sceneName, 1);
         selectionUI = false;
     }

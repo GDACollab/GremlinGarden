@@ -87,19 +87,17 @@ public class VN_UIFactory : MonoBehaviour
 		Button choice = CreateChoiceView("End");
 		choice.onClick.AddListener(delegate
 		{
-			audioManager.buttonClick.Play();
+			audioManager.PlayAudio(audioManager.buttonClick);
 
 			if (manager.transitionSceneOnEnd)
 			{
 				manager.activeLoader.QuickFadeOutLoad(manager.nextScene);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
+			}
 			else
             {
 				manager.ForceExitVN();
 			}
-			
+			manager.OnEndStory.Invoke();
 		});
 	}
 
@@ -109,7 +107,7 @@ public class VN_UIFactory : MonoBehaviour
 		Button choice = CreateChoiceView("Start story");
 		choice.onClick.AddListener(delegate
 		{
-			audioManager.buttonClick.Play();
+			audioManager.PlayAudio(audioManager.buttonClick);
 			manager.StartStory();
 		});
 	}
@@ -127,7 +125,7 @@ public class VN_UIFactory : MonoBehaviour
 				// Tell the button what to do when we press it
 				button.onClick.AddListener(delegate
 				{
-					audioManager.buttonClick.Play();
+					audioManager.PlayAudio(audioManager.buttonClick);
 					OnClickChoiceButton(choice);
 				});
 			}
@@ -136,12 +134,13 @@ public class VN_UIFactory : MonoBehaviour
 		// And add a button to continue
 		else if (manager.Story.canContinue)
 		{
-			Button button = CreateChoiceView("Continue");
-			button.onClick.AddListener(delegate {
-				audioManager.buttonClick.Play();
-				manager.RefreshView();
-			});
-		}
+            // Commented out because clicking anywhere now continues
+            //Button button = CreateChoiceView("Continue");
+            //button.onClick.AddListener(delegate
+            //{
+            //    manager.RefreshView();
+            //});
+        }
 		// If there is no more content, prompt to restart
 		else
 		{

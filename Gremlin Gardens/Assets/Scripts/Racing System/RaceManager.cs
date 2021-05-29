@@ -9,6 +9,13 @@ using UnityEngine;
 public class RaceManager : MonoBehaviour
 {
     /// <summary>
+    /// Quick dev cheats using input in update
+    /// End race winning first place press Q
+    /// End race losing press E
+    /// </summary>
+    public bool devCheatEnabled = false;
+
+    /// <summary>
     /// The SceneLoader script in the scene to use to transition after the race has ended. Called in PostResults().
     /// </summary>
     [Tooltip("The SceneLoader script in the scene to use to transition after the race has ended. Called in PostResults().")]
@@ -77,7 +84,7 @@ public class RaceManager : MonoBehaviour
     /// <summary>
     /// Keeps the indices of the tracks for sorting with raceTimes.
     /// </summary>
-    int[] trackIndices;
+    public int[] trackIndices;
 
     /// <summary>
     /// The amount of money a player can win by getting each place. Set by RandomGremlinRace.cs
@@ -302,12 +309,29 @@ public class RaceManager : MonoBehaviour
                 LoadingData.money += winningAmounts[i];
                 // Hack to tell the player what they win:
                 var text = Instantiate(leaderboardText, header.transform);
-                text.GetComponent<UnityEngine.UI.Text>().text = ("Your gremlin placed in: " + (i + 1) + ", so you win: " + winningAmounts[i] + ".");
+                text.GetComponent<UnityEngine.UI.Text>().text = ("You win " + winningAmounts[i] + " money!");
                 text.transform.position = new Vector3(0, heightOffset) + header.transform.position;
+
+                // Player wins
+                if (trackIndices[0] == gremlinPlayerIndex)
+                {
+                    print("You Win" + LoadingData.currentRace.ToString() + " race!");
+                    LoadingData.wonCurrentRace = true;
+                    
+                }
+                // Player loses
+                else
+                {
+                    print("You Lose" + LoadingData.currentRace.ToString() + " race!");
+                    LoadingData.wonCurrentRace = false;
+                }
             }
         }
-        
-        sceneLoader.FadeOutLoad("Hub World", 0.3f);
+
+        print(this + " hasWonRace: " + LoadingData.RaceHistoryDictionary[LoadingData.currentRace].Item1
+            + " seenUnique: " + LoadingData.RaceHistoryDictionary[LoadingData.currentRace].Item2);
+
+        sceneLoader.FadeOutLoad("VioletPostRaceVN", 0.3f);
     }
 
     // Update is called once per frame
@@ -316,6 +340,21 @@ public class RaceManager : MonoBehaviour
         if (timeElapsed >= 0)
         {
             timeElapsed += Time.deltaTime;
+        }
+
+        if (devCheatEnabled)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                trackIndices[0] = gremlinPlayerIndex;
+                PostResults();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                trackIndices[1] = gremlinPlayerIndex;
+                PostResults();
+            }
         }
     }
 }

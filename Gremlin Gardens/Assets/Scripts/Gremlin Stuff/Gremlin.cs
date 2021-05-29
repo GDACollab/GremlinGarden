@@ -10,6 +10,7 @@ public class Gremlin : Object
     //Name of the gremlin
     private string gremlinName;
 
+    // Both of these variables are unused, but are intended to be used to store gremlin positions before and after races.
     /// <summary>
     /// We store this so the GremlinSpawner can place the gremlin back where it was. Used by RaceSelection before loading a new scene (see MouseDown in RaceSelection.cs)
     /// </summary>
@@ -17,6 +18,13 @@ public class Gremlin : Object
 
     public Quaternion currentRotation;
 
+    /// <summary>
+    /// Set when the gremlin is spawned so it can set its currentPosition and currentRotation when we load the next scene.
+    /// DOES NOT TRANSFER ACROSS SCENES.
+    /// </summary>
+    public Transform transformReference;
+
+    // This one is actually used.
     public Color gremColor;
 
     // Dictionary of all gremlin stats and their values

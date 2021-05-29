@@ -34,8 +34,8 @@ public class FruitPickup : MonoBehaviour
         GameObject interactions = Canvas.transform.Find("Interactions").gameObject;
         DropIndicator = interactions.transform.Find("Fruit Drop").gameObject;
         PickupIndicator = interactions.transform.Find("Fruit Pickup").gameObject;
-        CarriedGremlin = player.transform.Find("Carried Gremlin");
-        CarriedFruit = player.transform.Find("Carried Fruit");
+        CarriedGremlin = player.transform.GetChild(0).transform.Find("Carried Gremlin");
+        CarriedFruit = player.transform.GetChild(0).transform.Find("Carried Fruit");
         fruit = this.GetComponent<FoodObject>();
         pickUpSound = this.GetComponent<AudioSource>();
 
@@ -55,23 +55,18 @@ public class FruitPickup : MonoBehaviour
         {
             IsExited();
         }
-        if (beingCarried)
-        {
-            PickupIndicator.SetActive(false);
-            DropIndicator.SetActive(true);
 
-            //drop fruit
-            if (Input.GetKeyDown("q"))
-            {
-                this.transform.parent = null;
-                GetComponent<Rigidbody>().useGravity = true;
-                beingCarried = false;
-                GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                GetComponent<Collider>().enabled = true;
-            }
-        }
-        else
+        //drop fruit
+        if (beingCarried && Input.GetKeyDown("q"))
+        {
+            this.transform.parent = null;
+            GetComponent<Rigidbody>().useGravity = true;
+            beingCarried = false;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            GetComponent<Collider>().enabled = true;
             DropIndicator.SetActive(false);
+        }
+
 
         //replace behavior with animations later
         if (beingEaten)
@@ -86,24 +81,24 @@ public class FruitPickup : MonoBehaviour
                 //set stats
                 maxStatVal = gremlin.maxStatVal;
                 string stat = determineStat(fruit.foodName);
-                float statChange = gremlin.getStat(stat) + (15 * (gremlin.getStat("Happiness") + 1)); //Old formula: + fruit.food.getStatAlteration(stat);
-                if (statChange > maxStatVal)
-                    statChange = maxStatVal;
-                gremlin.setStat(stat, statChange);
+                float statChange = (15 * (gremlin.getStat("Happiness") + 1)); //Old formula: + fruit.food.getStatAlteration(stat);
+                
+                gremlinGameObj.GetComponent<GremlinInteraction>().UpdateStats(stat, statChange, maxStatVal);
 
                 //done eating, destroy game object and re-enable ai
                 Destroy(gameObject);
-                if(!gremlinGameObj.GetComponent<GremlinInteraction>().beingCarried)
-                    gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
+                // if (!gremlinGameObj.GetComponent<GremlinInteraction>().beingCarried)
+                //     gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
             }
         }
-            
+
         //distance between particular fruit and the player
         distanceFromPlayer = Vector3.Distance(player.transform.position, this.transform.position);
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        DropIndicator.SetActive(false);
         GameObject other = collision.gameObject;
         if (other.tag == "Gremlin")
         {
@@ -127,6 +122,14 @@ public class FruitPickup : MonoBehaviour
             other.GetComponentInChildren<GremlinAudioController>().PlayEat();
             other.transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger("isEating");
         }
+        else
+        {
+            this.transform.parent = null;
+            GetComponent<Rigidbody>().useGravity = true;
+            beingCarried = false;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            GetComponent<Collider>().enabled = true;
+        }
     }
 
     private void IsCentered()
@@ -149,6 +152,7 @@ public class FruitPickup : MonoBehaviour
                 this.transform.parent = GameObject.Find("Carried Fruit").transform;
                 beingCarried = true;
                 PickupIndicator.SetActive(false);
+                DropIndicator.SetActive(true);
                 GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 pickUpSound.Play();
                 //GetComponent<Collider>().enabled = false;
@@ -160,7 +164,6 @@ public class FruitPickup : MonoBehaviour
     {
         onFruit = false;
         PickupIndicator.SetActive(false);
-        DropIndicator.SetActive(false);
         GetComponent<Outline>().OutlineWidth = 0;
     }
 

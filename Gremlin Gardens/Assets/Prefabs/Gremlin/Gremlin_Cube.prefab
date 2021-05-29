@@ -819,7 +819,7 @@ AudioSource:
   m_GameObject: {fileID: 817725297955774626}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8f2ff2c172e56a149b75a24947e0592f, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -915,7 +915,7 @@ AudioSource:
   m_GameObject: {fileID: 817725297955774626}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 52d054f239223454d90f1fa725eb69d5, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1011,7 +1011,7 @@ AudioSource:
   m_GameObject: {fileID: 817725297955774626}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
   m_audioClip: {fileID: 8300000, guid: 89285c92d6d5eea42b5c7396b7e721a8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -1404,10 +1404,9 @@ MonoBehaviour:
   petIncrease: 0.05
   cuddleIncrease: 0.05
   yeetIncrease: 0.1
-  tossForce: 300
-  fillSpeed: 4
-  waitTime: 4
+  tossForce: 500
   maxHappinessVal: 1
+  attemptYeet: 0
   beingPet: 0
   beingCarried: 0
   gremlin: {fileID: 0}
@@ -1425,6 +1424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gremlin: {fileID: 0}
   gremlinName: 
+  maxStamina: 0
   nameText: {fileID: 3654205498376032974}
 --- !u!54 &6143168594490065376
 Rigidbody:
@@ -1441,7 +1441,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &3860087015662847079
 MonoBehaviour:
   m_ObjectHideFlags: 0

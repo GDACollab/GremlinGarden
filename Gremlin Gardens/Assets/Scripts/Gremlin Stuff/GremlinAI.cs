@@ -78,4 +78,12 @@ public class GremlinAI : MonoBehaviour
             movementDirection.z = Random.Range(-3f, 3f);
         }
     }
+
+    void OnEnable(){
+        move = false;
+        isMoving = false;
+        waitTime = 0.0f;
+        wait = 1.5f;
+        //transform.Find("gremlinModel").GetComponent<Animator>().SetTrigger("isIdle");
+    }
 }

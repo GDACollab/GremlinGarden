@@ -65,9 +65,9 @@ public class RandomGremlinRace : MonoBehaviour
         List<GameObject> gremlinList = new List<GameObject>();
         int playerGremlin = Random.Range(0, gremlinCount);
         // Hacky solution for inserting rivalGremlin:
-        int rivalGremlin = Random.Range(0, playerGremlin);
-        if (rivalGremlin == playerGremlin) {
-            rivalGremlin = gremlinCount;
+        int rivalGremlin = Random.Range(0, gremlinCount);
+        while (rivalGremlin == playerGremlin) {
+            rivalGremlin = Random.Range(0, gremlinCount);
         }
         for (int i = 0; i < gremlinCount; i++)
         {
@@ -75,7 +75,7 @@ public class RandomGremlinRace : MonoBehaviour
             if (i == playerGremlin)
             {
                 Gremlin gremlinToLoad;
-                if (LoadingData.playerGremlins.Count != 0)
+                if (LoadingData.playerGremlins.Count > 0)
                 {
                     gremlinToLoad = LoadingData.playerGremlins[LoadingData.gremlinToRace];
                 }

@@ -20,6 +20,21 @@ public class TrackModule : MonoBehaviour
     public float BaseSpeed = .5f;
 
     /// <summary>
+    /// How much QTEs should be able to affect the gremlin's speed. Public const because the way Unity handles prefabs is ridiculously stupid.
+    /// </summary>
+    private const float QTEWeight = 2.0f;
+
+    /// <summary>
+    /// Same goes for how long the stamina timer is.
+    /// </summary>
+    private const float staminaTimerLength = 60.0f;
+
+    /// <summary>
+    /// How slowly you move with 0 stamina.
+    /// </summary>
+    private const float staminaSpeed = 0.75f;
+
+    /// <summary>
     /// The animation name to play from the Animator for this TrackModule.
     /// </summary>
     [Tooltip("The animation name to play from the Animator for this TrackModule.")]
@@ -129,6 +144,9 @@ public class TrackModule : MonoBehaviour
     public float timePassed;
     [HideInInspector]
     public Vector3 gOffset;
+
+    private float staminaTimer;
+    private float staminaDecreaseTimer;
     /// <summary>
     /// The QTE object pulled from terrainVariant.
     /// </summary>
@@ -152,6 +170,8 @@ public class TrackModule : MonoBehaviour
         gOffset = gremlinOffset;
         modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
         timePassed = 0.0f;
+        staminaTimer = 0.0f;
+        staminaDecreaseTimer = 0.0f;
         totalDistance = 0;
         toCallback = callbackFunc;
         if (terrainVariant.QTEButton != null && this.GetComponentInParent<TrackManager>().isPlayerTrack) {
@@ -176,7 +196,22 @@ public class TrackModule : MonoBehaviour
     public void SetModifiedSpeed() {
         modifiedSpeed = terrainVariant.relativeSpeed(activeGremlin, this);
         if (qteObject != null) {
-            modifiedSpeed += qteObject.GetComponent<QTEScript>().ModifySpeed();
+            modifiedSpeed += modifiedSpeed * QTEWeight * qteObject.GetComponent<QTEScript>().ModifySpeed();
+        }
+
+        staminaDecreaseTimer += Time.deltaTime;
+        if (staminaDecreaseTimer > 1.0f)
+        {
+            staminaDecreaseTimer = 0;
+            activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") - 1.5f, 0, 1000));
+        }
+        if (activeGremlin.gremlin.getStat("Stamina") <= 0) {
+            modifiedSpeed *= staminaSpeed;
+        }
+        staminaTimer += Time.deltaTime;
+        if (staminaTimer > staminaTimerLength) {
+            staminaTimer = 0;
+            activeGremlin.gremlin.setStat("Stamina", Mathf.Clamp(activeGremlin.gremlin.getStat("Stamina") + activeGremlin.maxStamina * 0.25f, 0, 1000));
         }
     }
 

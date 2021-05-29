@@ -505,6 +505,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: QuickFadeOutLoad
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Start
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7212934023638470034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,6 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d323c809cb95abc4e9d06d499043c354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inVN: 1
   audioMixer: {fileID: 24100000, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
   audioMixerGroup: {fileID: 24300002, guid: e339d3fe25ca71748958f04645255fdb, type: 2}
   uiSounds:
@@ -738,6 +751,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 2489657751822423480}
   Canvas: {fileID: 0}
   SceneMusic: {fileID: 0}
+  isMainMenu: 0
   pausedBGMReduction: 0.3
 --- !u!1 &2639319688789581802
 GameObject:
@@ -1224,7 +1238,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 5578080160256811077}
   m_HandleRect: {fileID: 6446266294945679596}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 1
   m_MaxValue: 6
   m_WholeNumbers: 0
   m_Value: 3.5
@@ -2671,7 +2685,7 @@ RectTransform:
   m_GameObject: {fileID: 7553528374784533632}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 7.6004, z: 1}
   m_Children: []
   m_Father: {fileID: 1286399565528763486}
   m_RootOrder: 0
@@ -2845,7 +2859,55 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1748433426757618814}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8610988191157778921}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: PauseGame
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8610988191157778921}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: ToggleMovement
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8610988191157778921}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: playButtonConfirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8610988191157778921}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: playButtonConfirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8514053185630980556
 MonoBehaviour:
   m_ObjectHideFlags: 0
