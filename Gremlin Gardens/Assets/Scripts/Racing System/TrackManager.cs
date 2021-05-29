@@ -105,7 +105,7 @@ public class TrackManager : MonoBehaviour
     }
 
     private void EndRace() {
-        RacingGremlin.GetComponent<VisualEffect>().enabled = false;
+        RacingGremlin.GetComponentInChildren<VisualEffect>().enabled = false;
         RacingGremlin.GetComponent<GremlinObject>().gremlin.setStat("Stamina", RacingGremlin.GetComponent<GremlinObject>().maxStamina);
         if (toCallback != null)
         {
