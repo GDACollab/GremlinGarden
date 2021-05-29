@@ -16,6 +16,8 @@ public class EquationTrackModule : TrackModule
     [Tooltip("The global offset of the equation. Uses the position of the attached game object if worldPosOffset = 0,0,0")]
     public Vector3 worldPosOffset = Vector3.zero;
 
+    public float yOffset = 0;
+
     /// <summary>
     /// What axes to use in the equation.
     /// </summary>
@@ -45,7 +47,7 @@ public class EquationTrackModule : TrackModule
             var isStopping = true;
             for (int i = 0; i < 3; i++) { //Go through each axis on PositionClip, and check if we're within the threshold. If not, don't EndMove.
                 float position = terrainVariant.positionClip[i];
-                if (position != Mathf.Infinity && terrainVariant.positionFunction(totalDistance, this)[i] - position > terrainVariant.clipTolerance) {
+                if (position != Mathf.Infinity && yOffset + terrainVariant.positionFunction(totalDistance, this)[i] - position > terrainVariant.clipTolerance) {
                     isStopping = false;
                 }
             }
