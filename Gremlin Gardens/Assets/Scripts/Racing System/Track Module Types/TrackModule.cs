@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using PathCreation;
+using UnityEngine.VFX;
 /// <summary>
 /// Handles the individual aspects of each track module.
 /// Should be attached to an object with the PathCreator component.
@@ -179,6 +180,12 @@ public class TrackModule : MonoBehaviour
             qteObject.GetComponent<QTEScript>().SetActiveModule(this);
         }
         settings = s_menu;
+        // Set the VFX:
+        if (gremlin.GetComponentInChildren<VisualEffect>().visualEffectAsset != terrainVariant.visualEffect)
+        {
+            gremlin.GetComponentInChildren<VisualEffect>().visualEffectAsset = terrainVariant.visualEffect;
+            gremlin.GetComponentInChildren<VisualEffect>().enabled = true;
+        }
     }
 
     public void EndMove() {

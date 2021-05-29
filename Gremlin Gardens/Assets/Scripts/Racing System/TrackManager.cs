@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 /// <summary>
 /// Will handle transferring a gremlin along a set of track modules.
@@ -104,6 +105,7 @@ public class TrackManager : MonoBehaviour
     }
 
     private void EndRace() {
+        RacingGremlin.GetComponent<VisualEffect>().enabled = false;
         RacingGremlin.GetComponent<GremlinObject>().gremlin.setStat("Stamina", RacingGremlin.GetComponent<GremlinObject>().maxStamina);
         if (toCallback != null)
         {
