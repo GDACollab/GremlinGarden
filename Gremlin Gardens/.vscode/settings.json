@@ -53,6 +53,5 @@
         "temp/":true,
         "Temp/":true
     },
-    "git.openDiffOnClick": false,
-    "git.enabled": false
+    "git.openDiffOnClick": false
 }

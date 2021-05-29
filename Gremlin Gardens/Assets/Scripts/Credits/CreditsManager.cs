@@ -162,7 +162,7 @@ public class CreditsManager : MonoBehaviour
             // Clones the template canvas, makes the clone visible, and sets it as the child of the gameobject this is attatched to
             Canvas textCanvas = Instantiate(textBoxTemplate);
             textCanvas.gameObject.SetActive(true);
-            textCanvas.transform.parent = gameObject.transform;
+            textCanvas.transform.parent = gameObject.transform.parent;
 
             TextMeshProUGUI[] TextBoxes = textCanvas.GetComponentsInChildren<TextMeshProUGUI>();
             // Check to make sure there are 3 text boxes in the template: header, people, and roles
