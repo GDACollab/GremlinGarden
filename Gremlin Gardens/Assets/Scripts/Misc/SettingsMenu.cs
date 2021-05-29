@@ -67,7 +67,7 @@ public class SettingsMenu : MonoBehaviour
         pauseMenu = gameObject.transform.Find("PauseMenu").gameObject;
         SetSensitivity(SensSlider.value);
         SetVolume(VolumeSlider.value);
-    }  
+    }
 
     void Update()
     {
@@ -170,7 +170,8 @@ public class SettingsMenu : MonoBehaviour
                 gremlinNamer.SetActive(true);
                 ToggleMovement(false);
             }
-            else if(gremlinSelect != null && pausedGremlinSelect == true){
+            else if (gremlinSelect != null && pausedGremlinSelect == true)
+            {
                 gremlinSelect.SetActive(true);
                 pausedGremlinSelect = false;
                 ToggleMovement(false);
@@ -199,11 +200,12 @@ public class SettingsMenu : MonoBehaviour
 
     public void ToggleMovement(bool canMove)
     {
+
         if (player != null)
             player.enableMovement = canMove;
         if (canMove)
         {
-            if(!inVN)
+            if (!inVN)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -214,6 +216,7 @@ public class SettingsMenu : MonoBehaviour
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
         }
+
 
     }
 
