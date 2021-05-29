@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedModifier: 1
   QTEButton: {fileID: 8428923638346549690, guid: b60f65c6d10f7ec42b91d41086b2d253, type: 3}
+  visualEffect: {fileID: 8926484042661614526, guid: f2d73f04a2205d54788772617b3e837a, type: 3}

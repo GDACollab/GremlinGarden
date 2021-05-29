@@ -16,6 +16,8 @@ public class EquationTrackModule : TrackModule
     [Tooltip("The global offset of the equation. Uses the position of the attached game object if worldPosOffset = 0,0,0")]
     public Vector3 worldPosOffset = Vector3.zero;
 
+    public float yOffset = 0;
+
     /// <summary>
     /// What axes to use in the equation.
     /// </summary>
@@ -45,7 +47,7 @@ public class EquationTrackModule : TrackModule
             var isStopping = true;
             for (int i = 0; i < 3; i++) { //Go through each axis on PositionClip, and check if we're within the threshold. If not, don't EndMove.
                 float position = terrainVariant.positionClip[i];
-                if (position != Mathf.Infinity && terrainVariant.positionFunction(totalDistance, this)[i] - position > terrainVariant.clipTolerance) {
+                if (position != Mathf.Infinity && yOffset + terrainVariant.positionFunction(totalDistance, this)[i] - position > terrainVariant.clipTolerance) {
                     isStopping = false;
                 }
             }
@@ -58,12 +60,13 @@ public class EquationTrackModule : TrackModule
             { //Move the Gremlin. We mutliply timePassed by modifiedSpeed to change the speed at which the offset changes (since the speed of the animation also affects the offset).
                 SetModifiedSpeed();
                 var position = terrainVariant.positionFunction(totalDistance, this);
+                Vector3 nextPos = terrainVariant.positionFunction(totalDistance + 0.1f, this);
+                var rotation = Quaternion.LookRotation(activeGremlin.transform.position - new Vector3(nextPos.x, activeGremlin.transform.position.y, nextPos.z), Vector3.up);
                 for (int i = 0; i < 3; i++) {
                     position[i] = position[i] * clampVector[i];
                 }
                 activeGremlin.transform.position = position + gOffset + worldPosOffset; //EndOfPathInstruction.Stop just tells our Gremlin to stop when it reaches the end of the path.
-                Vector3 nextPos = terrainVariant.positionFunction(totalDistance + 0.01f, this);
-                activeGremlin.transform.rotation = Quaternion.LookRotation(new Vector3(nextPos.x, activeGremlin.transform.position.y, nextPos.z) - activeGremlin.transform.position, Vector3.up);
+                activeGremlin.transform.rotation = rotation;
                 timePassed += Time.deltaTime;
             }
         }

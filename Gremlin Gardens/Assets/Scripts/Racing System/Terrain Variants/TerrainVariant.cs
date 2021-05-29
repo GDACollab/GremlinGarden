@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 /// <summary>
 /// A template for new terrain. Place this in an empty game object so that TrackModule can access that game object.
@@ -19,6 +20,12 @@ public class TerrainVariant : ScriptableObject
     /// </summary>
     [Tooltip("Prefab button with associated script to use in this TerrainVariant's QTE. Make a prefab and attach something from the Scripts/Racing System/Button QTEs folder.")]
     public GameObject QTEButton;
+
+    /// <summary>
+    /// Visual effect to use on terrain.
+    /// </summary>
+    [Tooltip("Visual effect to use for gremlin on terrain.")]
+    public VisualEffectAsset visualEffect;
 
     /// <summary>
     /// Calculate how fast the gremlin should be moving in terms of percentage, based on a Gremlin's stats. For a skill at the average level, it should return 1.

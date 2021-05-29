@@ -345,6 +345,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3256234851103289744, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1679200594}
+    - target: {fileID: 3256234851103289744, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: playButtonConfirm
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256234851103289744, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: SettingsMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256234851103289744, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3893049489252380386, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6296566146264632757, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
@@ -704,6 +724,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7788690952204704535, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
   m_PrefabInstance: {fileID: 1679200592}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1679200594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2978293085314757515, guid: c28b88fb2c8fc41528eddda7d39cc2ac, type: 3}
+  m_PrefabInstance: {fileID: 1679200592}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d323c809cb95abc4e9d06d499043c354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1740206819
 GameObject:
   m_ObjectHideFlags: 0
