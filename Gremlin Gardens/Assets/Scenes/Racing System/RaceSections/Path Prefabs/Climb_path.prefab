@@ -47,10 +47,10 @@ MonoBehaviour:
   editorData:
     _bezierPath:
       points:
-      - {x: 0.5, y: 0, z: 0}
-      - {x: 0.5, y: 1, z: 0}
-      - {x: 0.5, y: 4, z: 0}
-      - {x: 0.5, y: 5, z: 0}
+      - {x: 0.5, y: 0, z: -0.2}
+      - {x: 0.5, y: 1, z: -0.2}
+      - {x: 0.5, y: 4, z: -0.2}
+      - {x: 0.5, y: 5, z: -0.2}
       isClosed: 0
       space: 0
       controlMode: 0
@@ -116,3 +116,5 @@ MonoBehaviour:
   activeGremlin: {fileID: 0}
   timePassed: 0
   gOffset: {x: 0, y: 0, z: 0}
+  settings: {fileID: 0}
+  flipPath: 0

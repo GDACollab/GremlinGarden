@@ -63,6 +63,8 @@ MonoBehaviour:
   activeGremlin: {fileID: 0}
   timePassed: 0
   gOffset: {x: 0, y: 0, z: 0}
+  settings: {fileID: 0}
+  flipPath: 0
 --- !u!114 &7929764977496708413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,11 +110,11 @@ MonoBehaviour:
     keepConstantHandleSize: 0
     showNormalsInVertexMode: 0
     showBezierPathInVertexMode: 0
-    showDisplayOptions: 0
+    showDisplayOptions: 1
     showPathOptions: 1
     showVertexPathDisplayOptions: 0
     showVertexPathOptions: 1
-    showNormals: 0
+    showNormals: 1
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1

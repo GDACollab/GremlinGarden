@@ -91,6 +91,15 @@ public class PlayerMovement : MonoBehaviour
             UpdateMouseLook();
         }
 
+        if(Input.GetKeyDown("j"))
+        {
+            GetComponent<RapidGremlinSpawner>().RapidSpawn = true;
+        }
+        if(Input.GetKeyDown("k"))
+        {
+            GetComponent<RapidGremlinSpawner>().RapidSpawn = false;
+        }
+
         //timer for playing footsteps
         //using magnitude > 100 cause using 0 caused footstpes to play when barely moving
         if (velocity.magnitude > 100)
