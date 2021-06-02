@@ -58,7 +58,7 @@ public class FoodObject : MonoBehaviour
             stats.Add(_stats[i], _values[i]);
         }
 
-        food = new Food(this.gameObject.transform.GetChild(1).GetComponent<MeshFilter>().sharedMesh, this.gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material,
+        food = new Food(this.gameObject.transform.GetChild(0).GetComponent<MeshFilter>().sharedMesh, this.gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material,
             foodName, stats);
         
         /*
