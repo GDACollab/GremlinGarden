@@ -87,8 +87,8 @@ public class FruitPickup : MonoBehaviour
 
                 //done eating, destroy game object and re-enable ai
                 Destroy(gameObject);
-                // if (!gremlinGameObj.GetComponent<GremlinInteraction>().beingCarried)
-                //     gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
+                if (!gremlinGameObj.GetComponent<GremlinInteraction>().beingCarried)
+                    gremlinGameObj.GetComponent<GremlinAI>().enabled = true;
             }
         }
 
