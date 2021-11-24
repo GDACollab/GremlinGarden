@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float mouseSensitivity = 3.5f;
     [SerializeField] bool lockCursor = true;
     [SerializeField] float walkSpeed = 6.0f;
+    [SerializeField] private float slopeForce;
+    [SerializeField] private float slopeForceRayLength;
     [SerializeField] [Range(0.0f, 0.5f)] float moveSmoothTime = 0.3f;
 
     float cameraPitch = 0.0f;
@@ -142,6 +144,11 @@ public class PlayerMovement : MonoBehaviour
 
         velocity = (transform.forward * currentDir.y + transform.right * currentDir.x) * walkSpeed;
         controller.SimpleMove(velocity * Time.deltaTime);
+
+        if(targetDir != Vector2.zero && OnSlope())
+        {
+            controller.Move(Vector3.down * (controller.height / 2) * slopeForce);
+        }
     }
 
     public bool UpdateMoney(int changeAmount)
@@ -166,6 +173,20 @@ public class PlayerMovement : MonoBehaviour
     public bool IsGrounded()
     {
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
+    }
+
+    private bool OnSlope()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, (controller.height / 2) * slopeForceRayLength))
+        {
+            if(hit.normal != Vector3.up)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }
